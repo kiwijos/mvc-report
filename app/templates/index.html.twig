@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">Yo, tech wizards!<i class="fa-solid fa-hand-sparkles"></i></h1>
+        <p class="sub-title"><span class="highlight">Alex heter jag och bor i Oskarshamn.</span> Programmera gör jag helst inbäddad i en filt med en kopp kaffe. Andra intressen är att gymma och laga god mat. Jag hittar gärna på saker tillsammans med min familj eller flickvännen.</p>
+
+        <img
+        srcset="{{ asset('img/me.png') }}, {{ asset('img/me-2x.png') }} 2x"
+        src="{{ asset('img/me-2x.png') }}"
+        alt="Drawing of a fast food person.">
+    </div>
+   
+{% endblock %}
