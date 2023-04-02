@@ -25,4 +25,10 @@ class BaseController extends AbstractController
     {
         return $this->render('report.html.twig');
     }
+
+    #[Route("/work", name: "work")]
+    public function work() 
+    {
+        return $this->render('work.html.twig');
+    }
 }
