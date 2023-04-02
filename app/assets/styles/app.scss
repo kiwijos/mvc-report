@@ -4,13 +4,10 @@ $base-color: #fff;
 $base-color-2: #484848;
 $base-background-color: #000;
 $base-background-color-2: #191919;
-
 $accent-color: #BA6DE7;
-
 $base-font-size: 1rem;
 $base-line-height: 1.6;
 $magic-number: $base-font-size * $base-line-height;
-
 $base-border-radius: 0.45rem;
 
 // Render Font Awesome icons in pseudo elements
@@ -57,7 +54,7 @@ main {
     padding: $magic-number*0.5;
     padding-top: calc(3 * $magic-number + 1rem);
     padding-bottom: $magic-number*3;
-    min-height: 100vh;
+    min-height: 40rem;
 }
 
 header {
@@ -149,17 +146,25 @@ img {
     max-width: 100%;
 }
 
-// Style outgoing links
-a[target="_blank"] {
+.icon {
+    color: $base-color;
+
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+// Style outgoing links (omit icons)
+a:not(.icon)[target="_blank"] {
     border-bottom: 2px dotted $base-color-2;
 }
 
-a[target="_blank"]:hover {
+a:not(.icon)[target="_blank"]:hover {
     border-bottom: 2px solid $accent-color;
 }
 
 // Add icon to outgoing links
-a[target="_blank"]::after {
+a:not(.icon)[target="_blank"]::after {
     @include fa-base();
     content: "\f08e";
     padding-left: 0.15em;
@@ -264,12 +269,14 @@ nav a {
 
     div:last-of-type {
         flex: 0.6;
-    }
+    }    
+}
 
-    ul {
-        @include flex-list();
-        flex-direction: column;
-    }
+.pretty-ul {
+    @include flex-list();
+    flex-direction: column;
+    gap: $magic-number*0.5;
+    margin-bottom: $magic-number;
 
     li::before {
         content: "\2022";
@@ -277,6 +284,5 @@ nav a {
         font-weight: bold;
         display: inline-block; 
         width: 1em;
-        // margin-left: -1em;
     }
 }
