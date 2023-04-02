@@ -1,6 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
 
+    globals:
+        my_github: 'https://github.com/kiwijos/mvc-report'
+
 when@test:
     twig:
         strict_variables: true
