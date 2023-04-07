@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use App\Dice\Dice;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,5 +13,18 @@ class DiceGameController extends AbstractController
     public function index(): Response
     {
         return $this->render('pig/index.html.twig');
+    }
+
+    #[Route("/game/pig/test/roll", name: "test_roll_dice")]
+    public function testRollDice(): Response
+    {
+        $die = new Dice();
+
+        $data = [
+            "dice" => $die->roll(),
+            "diceString" => $die->getAsString(),
+        ];
+
+        return $this->render('pig/test/roll.html.twig', $data);
     }
 }
