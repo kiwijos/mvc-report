@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Pig Test{% endblock %}
+
+{% block body %}
+
+<div class="content-header">
+    <h1 class="title">Roll Many Dice</span></h1>
+    <p class="sub-title">Here are the values of the {{ numDice }} dice:
+    {% for roll in diceRoll %}
+        {{ roll }},
+    {% endfor %}
+    </p>
+    <p>Try to roll 
+        <a href="{{ path('test_roll_num_dice', {num: 5}) }}">5</a>
+        or 
+        <a href="{{ path('test_roll_num_dice', {num: 10}) }}">10</a>
+        dice.
+    </p>
+</div>
+
+{% endblock %}
