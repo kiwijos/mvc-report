@@ -11,6 +11,6 @@ a:not(.icon)[target="_blank"]:hover {
 a:not(.icon)[target="_blank"]::after {
     @include fa-base();
     content: "\f08e";
-    padding-left: 0.15em;
-    font-size: 0.7rem;
+    margin-left: 0.1em;
+    font-size: 0.75em;
 }
