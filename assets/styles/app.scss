@@ -313,3 +313,23 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: $base-color-2;
 }
+
+.flash {
+    position: absolute;
+    transform: translate(-50%, 0);
+    top: 5rem;
+    left: 50%;
+    border: 2px solid;
+}
+
+.flash-notice {
+    color: lightblue;
+    border-color: lightblue;
+}
+
+.flash-warning {
+    color: yellow;
+    border-color: yellow;
+}
+
+
