@@ -7,7 +7,9 @@ use App\Dice\DiceHand;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class DiceGameController extends AbstractController
 {
@@ -24,12 +26,18 @@ class DiceGameController extends AbstractController
     }
 
     #[Route("/game/pig/init", name: "pig_init_post", methods: ['POST'])]
-    public function initCallback(): Response
+    public function initCallback(Request $request, SessionInterface $session): Response
     {
-        // Deal with the submitted form
+        $numDice = $request->request->get('num_dice');
+
+        // Set up session variables
+        $session->set("pig_dice", $numDice);
+        $session->set("pig_round", 0);
+        $session->set("pig_total", 0);
 
         return $this->redirectToRoute('pig_play');
     }
+
 
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(): Response
@@ -52,7 +60,7 @@ class DiceGameController extends AbstractController
     {
         // Logic to save the round
 
-        return $this->render('pig/play.html.twig');
+        return $this->redirectToRoute('pig_init_get');
     }
 
     #[Route("/game/pig/test/roll_many/{num<\d+>}", name: "test_roll_num_dice")]
