@@ -17,6 +17,20 @@ class DiceGameController extends AbstractController
         return $this->render('pig/index.html.twig');
     }
 
+    #[Route("/game/pig/init", name: "pig_init_get", methods: ['GET'])]
+    public function init(): Response
+    {
+        return $this->render('pig/init.html.twig');
+    }
+
+    #[Route("/game/pig/init", name: "pig_init_post", methods: ['POST'])]
+    public function initCallback(): Response
+    {
+        // Deal with the submitted form
+
+        return $this->redirectToRoute('pig_play');
+    }
+
     #[Route("/game/pig/test/roll_many/{num<\d+>}", name: "test_roll_num_dice")]
     public function testRollNumDice(int $num): Response
     {
