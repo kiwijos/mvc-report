@@ -1,0 +1,16 @@
+// Style outgoing links (omit icons)
+a:not(.icon)[target="_blank"] {
+    border-bottom: 2px dotted $base-color-2;
+}
+
+a:not(.icon)[target="_blank"]:hover {
+    border-bottom: 2px solid $accent-color;
+}
+
+// Add icon to outgoing links
+a:not(.icon)[target="_blank"]::after {
+    @include fa-base();
+    content: "\f08e";
+    padding-left: 0.15em;
+    font-size: 0.7rem;
+}

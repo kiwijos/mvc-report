@@ -1,0 +1,43 @@
+.highlight {
+    color: $accent-color;
+    font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: $base-color;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: $magic-number * 2;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-bottom: $magic-number;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin-bottom: $magic-number * 0.5;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin-bottom: $magic-number * 0.5;
+}
+
+p,
+a {
+    text-decoration: none;
+    color: $base-color;
+    font-weight: 400;
+    margin-bottom: $magic-number;
+    font-size: $base-font-size;
+}

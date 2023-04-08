@@ -1,0 +1,58 @@
+header {
+    position: fixed;
+    width: 100%;
+    background-color: $base-background-color;
+    z-index: 1;
+}
+
+nav {
+    padding: $magic-number ($magic-number * 0.5);
+
+    &.scrolled {
+        border-bottom: 1px solid $base-color-2;
+    }
+}
+
+nav ul {
+    @include flex-list();
+}
+
+nav a {
+    font-weight: 500;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown::after {
+    @include fa-base();
+    content: "\f107";
+    font-size: 0.7rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $base-background-color-2;
+    min-width: 7rem;
+    z-index: 1;
+    padding: ($magic-number * 0.5);
+    border-radius: $base-border-radius;
+}
+
+.dropdown-content a {
+    margin: 0;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    gap: $magic-number * 0.5;
+    flex-direction: column;
+}
+
+.dropdown:hover::after {
+    content: "\f106";
+}

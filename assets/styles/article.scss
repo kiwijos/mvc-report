@@ -1,0 +1,33 @@
+article {
+    max-width: 67rem;
+    margin: 0 auto;
+}
+
+.blog {
+    @include well-base();
+    padding: $magic-number $magic-number*0.5;
+
+    // Omit last section
+    section:not(section:last-of-type) {
+        border-bottom: 1px solid $base-color-2;
+        margin-bottom: $magic-number * 2;
+    }
+}
+
+.two-col-layout {
+    display: flex;
+    gap: $magic-number;
+
+    div {
+        @include well-base();
+        padding: $magic-number $magic-number*0.5;
+    }
+
+    div:first-of-type {
+        flex: 1.4;
+    }
+
+    div:last-of-type {
+        flex: 0.6;
+    }    
+}

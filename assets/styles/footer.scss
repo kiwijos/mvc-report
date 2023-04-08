@@ -1,0 +1,12 @@
+.footer ul {
+    @include flex-list();
+}
+
+.footer{
+    padding: $magic-number ($magic-number * 0.5);
+}
+
+.footer {
+    border-top: 1px solid $base-color-2;
+    color: $base-color;
+}

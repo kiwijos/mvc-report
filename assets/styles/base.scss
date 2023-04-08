@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    background-color: $base-background-color;
+    line-height: $base-line-height;
+    font-family: $font-body;
+}
+
+main {
+    padding: ($magic-number * 0.5);
+    padding-top: calc(3 * $magic-number + 1rem);
+    padding-bottom: $magic-number * 3;
+    min-height: 40rem;
+}
+
+header,
+footer {
+    margin: 0 auto;
+    padding: 0 ($magic-number * 0.5);
+}

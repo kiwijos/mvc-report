@@ -1,0 +1,14 @@
+.pretty-ul {
+    @include flex-list();
+    flex-direction: column;
+    gap: $magic-number*0.5;
+    margin-bottom: $magic-number;
+
+    li::before {
+        content: "\2022";
+        color: $base-color-2;
+        font-weight: bold;
+        display: inline-block; 
+        width: 1em;
+    }
+}
