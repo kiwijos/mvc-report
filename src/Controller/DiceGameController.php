@@ -30,14 +30,21 @@ class DiceGameController extends AbstractController
     {
         $numDice = $request->request->get('num_dice');
 
+        // Create hand object with given number of dice
+        $diceHand = new DiceHand();
+        for ($i = 1; $i <= $numDice; $i++) {
+            $hand->add(new DiceGraphic());
+        }
+        $hand->roll();
+
         // Set up session variables
+        $session->set("pig_dicehand", $hand);
         $session->set("pig_dice", $numDice);
         $session->set("pig_round", 0);
         $session->set("pig_total", 0);
 
         return $this->redirectToRoute('pig_play');
     }
-
 
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(SessionInterface $session): Response
