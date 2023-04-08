@@ -49,10 +49,13 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(SessionInterface $session): Response
     {
+        $dicehand = $session->get("pig_dicehand");
+
         $data = [
             "pigDice" => $session->get("pig_dice"),
             "pigRound" => $session->get("pig_round"),
             "pigTotal" => $session->get("pig_total"),
+            "diceValues" => $dicehand->getString(),
         ];
 
         return $this->render('pig/play.html.twig', $data);
