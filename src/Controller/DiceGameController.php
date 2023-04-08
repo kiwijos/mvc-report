@@ -56,7 +56,7 @@ class DiceGameController extends AbstractController
     {
         // Logic to roll the dice
 
-        return $this->render('pig/play.html.twig');
+        return $this->redirectToRoute('pig_play');
     }
 
     #[Route("/game/pig/save", name: "pig_save", methods: ['POST'])]
