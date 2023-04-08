@@ -31,7 +31,7 @@ class DiceGameController extends AbstractController
         $numDice = $request->request->get('num_dice');
 
         // Create hand object with given number of dice
-        $diceHand = new DiceHand();
+        $hand = new DiceHand();
         for ($i = 1; $i <= $numDice; $i++) {
             $hand->add(new DiceGraphic());
         }
@@ -49,13 +49,13 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(SessionInterface $session): Response
     {
-        $dicehand = $session->get("pig_dicehand");
+        $hand = $session->get("pig_dicehand");
 
         $data = [
             "pigDice" => $session->get("pig_dice"),
             "pigRound" => $session->get("pig_round"),
             "pigTotal" => $session->get("pig_total"),
-            "diceValues" => $dicehand->getString(),
+            "diceValues" => $hand->getString(),
         ];
 
         return $this->render('pig/play.html.twig', $data);
