@@ -74,6 +74,12 @@ class DiceGameController extends AbstractController
             if ($value === 1) {
                 $round = 0;
                 $roundTotal = 0;
+
+                $this->addFlash(
+                    'warning',
+                    'You got a 1 and lost all points in this round!'
+                );
+
                 break;
             }
             $round += $value;
@@ -92,6 +98,11 @@ class DiceGameController extends AbstractController
 
         $session->set("pig_round", 0);
         $session->set("pig_total", $roundTotal + $gameTotal);
+
+        $this->addFlash(
+            'notice',
+            'Your round total was saved!'
+        );
 
         return $this->redirectToRoute('pig_play');
     }
