@@ -40,6 +40,8 @@
             </nav>
         </header>
         <main role="main">
+            {# read and display all flash messages #}
+            {{ include('./partials/_flash.html.twig') }}
             {% block body %}{% endblock %}
         </main>
         <footer>
