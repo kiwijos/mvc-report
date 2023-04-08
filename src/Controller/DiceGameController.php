@@ -85,11 +85,15 @@ class DiceGameController extends AbstractController
 }
 
     #[Route("/game/pig/save", name: "pig_save", methods: ['POST'])]
-    public function save(): Response
+    public function save(SessionInterface $session): Response
     {
-        // Logic to save the round
+        $roundTotal = $session->get("pig_round");
+        $gameTotal = $session->get("pig_total");
 
-        return $this->redirectToRoute('pig_init_get');
+        $session->set("pig_round", 0);
+        $session->set("pig_total", $roundTotal + $gameTotal);
+
+        return $this->redirectToRoute('pig_play');
     }
 
     #[Route("/game/pig/test/roll_many/{num<\d+>}", name: "test_roll_num_dice")]
