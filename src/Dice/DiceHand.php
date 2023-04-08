@@ -20,7 +20,7 @@ class DiceHand
         }
     }
 
-    public function getNumberDices(): int
+    public function getNumberDice(): int
     {
         return count($this->hand);
     }
