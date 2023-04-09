@@ -31,4 +31,10 @@ class BaseController extends AbstractController
     {
         return $this->render('work.html.twig');
     }
+
+    #[Route("/api", name: "api")]
+    public function api()
+    {
+        return $this->render('api.html.twig');
+    }
 }
