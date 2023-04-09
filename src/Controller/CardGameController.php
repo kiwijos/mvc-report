@@ -58,6 +58,27 @@ class CardGameController extends AbstractController
         return $this->render('card/deck.html.twig', $data);
     }
 
+    #[Route("/card/deck/draw/{number<\d+>}", name: "card_draw_many")]
+    public function cardDrawMany(int $number): Response
+    {
+        $deck = new DeckOfCards();
+
+        foreach (range(0, 3) as $suite) {
+            foreach (range(0, 12) as $rank) {
+                $deck->addCard(new CardGraphic($suite, $rank));
+            }
+        }
+
+        $draw = array_map('strval', $deck->draw($number));
+    
+        $data = [
+            "draw"  => $draw,
+            "count" => $deck->getCount(), 
+        ];
+
+        return $this->render('card/draw.html.twig', $data);
+    }
+
     #[Route("/card/deck/draw", name: "card_draw")]
     public function cardDraw(): Response
     {
