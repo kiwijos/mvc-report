@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Work{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">JSON <span class=highlight>API.</span></h1>
+        <p class="sub-title">Tanken med den här sidan är att samla alla delar i vårt JSON API.</p>
+    </div>
+    <article class="blog">
+        <section>
+            <h3>Kmom01</h3>
+            <ul class="pretty-ul">
+                <li><a href="{{ path('quote') }}">Quote</a></li>
+            </ul>
+        </section>
+    
+        <section>
+            <h3>Kmom02</h3>
+            <ul class="pretty-ul">
+                <li><a href="{{ path('pig_index') }}">Pig Game</a></li>
+                <li><a href="{{ path('card_index') }}">Card Game</a></li>
+            </ul>
+        </section>
+    
+        <section>
+            <h3>Kmom03</h3>
+        </section>
+    
+        <section>
+            <h3>Kmom04</h3>
+        </section>
+    
+        <section>
+            <h3>Kmom05</h3>
+        </section>
+    
+        <section>
+            <h3>Kmom06</h3>
+        </section>
+    
+        <section>
+            <h3>Kmom10</h3>
+        </section>
+    </article>
+   
+{% endblock %}
