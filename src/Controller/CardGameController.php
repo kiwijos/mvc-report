@@ -18,6 +18,7 @@ class CardGameController extends AbstractController
     public function index(SessionInterface $session): Response
     {
         $session->set('currentDeck', $session->get('currentDeck', new DeckOfCards()));
+    
         return $this->render('card/index.html.twig');
     }
 
