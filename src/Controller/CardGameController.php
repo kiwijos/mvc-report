@@ -34,6 +34,27 @@ class CardGameController extends AbstractController
         $data = [
             "deck" => $deck->getString(),
         ];
+
+        return $this->render('card/deck.html.twig', $data);
+    }
+
+    #[Route("/card/deck/shuffle", name: "show_shuffled")]
+    public function showShuffled(): Response
+    {
+        $deck = new DeckOfCards();
+
+        foreach (range(0, 3) as $suite) {
+            foreach (range(0, 12) as $rank) {
+                $deck->addCard(new CardGraphic($suite, $rank));
+            }
+        }
+
+        $deck->shuffleCards();
+    
+        $data = [
+            "deck" => $deck->getString(),
+        ];
+
         return $this->render('card/deck.html.twig', $data);
     }
 }
