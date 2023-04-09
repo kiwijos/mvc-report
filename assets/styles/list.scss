@@ -1,5 +1,6 @@
 .pretty-ul {
     @include flex-list();
+    color: $base-color;
     flex-direction: column;
     gap: $magic-number*0.5;
     margin-bottom: $magic-number;
