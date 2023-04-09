@@ -27,4 +27,24 @@ class CardGameControllerJson
         );
         return $response;
     }
+
+    #[Route("/api/deck/shuffle", name: "json_shuffle", methods: ['POST'])]
+    public function jsonShuffle(SessionInterface $session): JsonResponse
+    {
+        $deck = new DeckOfCards();
+        
+        $deck->shuffleCards();
+        
+        $session->set('currentDeck', $deck);
+
+        $data = [
+            "deck" => $deck->getString(),
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT,
+        );
+        return $response;
+    }
 }
