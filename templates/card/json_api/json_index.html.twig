@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game Json{% endblock %}
+
+{% block body %}
+
+<div class="content-header">
+    <h1 class="title">Card Game JSON API.</span></h1>
+    <p class="sub-title">För att göra alla sidor lättillgänliga har jag valt att skapa den här landingssidan. Varsågod att klicka dig vidare till önskad destination. Observera att Draw och Deal är laddade med defaultvärden. Men det är fritt fram att ändra till valfria värden i URL:en sedan.</p>
+
+    <form method="post" action="">
+        <input type="submit" value="Show Ordered Deck" class="btn"
+            onClick="this.form.action='{{ path('json_deck') }}';this.form.method='get';">
+        <input type="submit" value="Show Shuffled Deck" class="btn"
+            onClick="this.form.action='{{ path('json_shuffle') }}';this.form.method='post';">
+        <input type="submit" value="Draw Single Card" class="btn"
+            onClick="this.form.action='{{ path('json_draw') }}';this.form.method='post';">
+        <input type="submit" value="Draw 5 Cards" class="btn"
+            onClick="this.form.action='{{ path('json_draw_many', {number: 5}) }}';this.form.method='post';">
+        <input type="submit" value="Deal 3 Players 4 Cards Each" class="btn"
+            onClick="this.form.action='{{ path('json_deal', {players: 3, cards: 4}) }}';this.form.method='post';">
+    </form>
+</div>
+
+{% endblock %}
