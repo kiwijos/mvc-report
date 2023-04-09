@@ -31,11 +31,7 @@ class DeckOfCards
      */
     public function getString(): array
     {
-        $values = [];
-        foreach ($this->deck as $card) {
-            $values[] = strval($card);
-        }
-        return $values;
+        return array_map('strval', $this->deck);
     }
 
     /**
