@@ -88,5 +88,30 @@ class CardGameControllerJson
             $response->getEncodingOptions() | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT,
         );
         return $response;
-    }    
+    }
+
+    #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "json_deal", methods: ['POST'])]
+    public function jsonDeal(SessionInterface $session, int $players, int $cards): JsonResponse
+    {        
+        $deck = $session->get('currentDeck', new DeckOfCards());
+
+        $deal = [];
+
+        for ($i = 0; $i < $players; $i++) {
+            $deal[] = array_map('strval', $deck->draw($cards));
+        }
+
+        $session->set('currentDeck', $deck); // Save updated deck
+    
+        $data = [
+            "deal"  => $deal,
+            "count" => $deck->getCount(), 
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT,
+        );
+        return $response;
+    }
 }
