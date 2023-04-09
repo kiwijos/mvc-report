@@ -13,7 +13,7 @@ class CardHand
 
     /**
      * Add card to hand.
-     * 
+     *
      * @param Card $card Card to add.
      */
     public function add(Card $card): void
@@ -23,7 +23,7 @@ class CardHand
 
     /**
      * Set hand to array of cards.
-     * 
+     *
      * @param array $cards Cards to set.
      */
     public function fromArray(array $cards): void
@@ -33,7 +33,7 @@ class CardHand
 
     /**
      * Get number of cards.
-     * 
+     *
      * @return int Number of cards.
      */
     public function getCount(): int
@@ -43,7 +43,7 @@ class CardHand
 
     /**
      * Get array of cards as strings.
-     * 
+     *
      * @return array Cards as strings.
      */
     public function getString(): array

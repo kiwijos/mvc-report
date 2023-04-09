@@ -16,7 +16,7 @@ class DeckOfCards
 
     /**
      * Create new deck object.
-     * 
+     *
      * @param array|null $deck Array of cards to create deck from if given.
      */
     public function __construct($deck = null)
@@ -35,7 +35,7 @@ class DeckOfCards
 
     /**
      * Add card to deck.
-     * 
+     *
      * @param Card $card Card to add.
      */
     public function addCard(Card $card): void
@@ -45,7 +45,7 @@ class DeckOfCards
 
     /**
      * Get array of cards as strings.
-     * 
+     *
      * @return array Cards as strings.
      */
     public function getString(): array
@@ -55,7 +55,7 @@ class DeckOfCards
 
     /**
      * Get array of card objects.
-     * 
+     *
      * @return array Card objects.
      */
     public function getDeck(): array
@@ -65,7 +65,7 @@ class DeckOfCards
 
     /**
      * Get number of cards.
-     * 
+     *
      * @return int Number of cards.
      */
     public function getCount(): int
@@ -103,7 +103,7 @@ class DeckOfCards
 
     /**
      * Get last number of cards and remove them from the deck.
-     * 
+     *
      * @param  int   $num Number of cards to draw.
      * @return array      Drawn cards.
      */

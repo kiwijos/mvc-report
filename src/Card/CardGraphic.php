@@ -28,7 +28,7 @@ class CardGraphic extends Card
     /**
      * Return a string representation of this card.
      *
-     * @return string Rank and suite of this card. 
+     * @return string Rank and suite of this card.
      */
     public function __toString(): string
     {

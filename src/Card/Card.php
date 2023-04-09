@@ -33,7 +33,7 @@ class Card
     /**
      * Get card suit.
      *
-     * @return int Suit of this card. 
+     * @return int Suit of this card.
      */
     public function getSuit(): int
     {
@@ -43,7 +43,7 @@ class Card
     /**
      * Get card rank.
      *
-     * @return int Rank of this card. 
+     * @return int Rank of this card.
      */
     public function getRank(): int
     {
@@ -53,7 +53,7 @@ class Card
     /**
      * Get a string representation of this card.
      *
-     * @return string Rank and suite of this card. 
+     * @return string Rank and suite of this card.
      */
     public function __toString(): string
     {

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Card\DeckOfCards;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +16,7 @@ class CardGameController extends AbstractController
     public function index(SessionInterface $session): Response
     {
         $session->set('currentDeck', $session->get('currentDeck', new DeckOfCards()));
-    
+
         return $this->render('card/index.html.twig');
     }
 
@@ -36,11 +37,11 @@ class CardGameController extends AbstractController
     public function showShuffled(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
-    
+
         $deck->shuffleCards();
 
         $session->set('currentDeck', $deck); // Save shuffled deck
-    
+
         $data = [
             "deck" => $deck->getString(),
         ];
@@ -54,12 +55,12 @@ class CardGameController extends AbstractController
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw($number));
-    
+
         $session->set('currentDeck', $deck); // Save updated deck
 
         $data = [
             "draw"  => $draw,
-            "count" => $deck->getCount(), 
+            "count" => $deck->getCount(),
         ];
 
         return $this->render('card/test/draw.html.twig', $data);
@@ -73,10 +74,10 @@ class CardGameController extends AbstractController
         $draw = array_map('strval', $deck->draw(1));
 
         $session->set('currentDeck', $deck); // Save updated deck
-    
+
         $data = [
             "draw"  => $draw,
-            "count" => $deck->getCount(), 
+            "count" => $deck->getCount(),
         ];
 
         return $this->render('card/test/draw.html.twig', $data);
@@ -86,7 +87,7 @@ class CardGameController extends AbstractController
     public function cardDeal(SessionInterface $session, int $players, int $cards): Response
     {
         $deck = $session->get('currentDeck', new DeckOfCards());
-    
+
         $deal = [];
 
         for ($i = 0; $i < $players; $i++) {
@@ -94,10 +95,10 @@ class CardGameController extends AbstractController
         }
 
         $session->set('currentDeck', $deck); // Save updated deck
-    
+
         $data = [
             "deal"  => $deal,
-            "count" => $deck->getCount(), 
+            "count" => $deck->getCount(),
         ];
 
         return $this->render('card/test/deal.html.twig', $data);

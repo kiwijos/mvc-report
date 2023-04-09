@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Dice\Dice;
 use App\Dice\DiceGraphic;
 use App\Dice\DiceHand;
@@ -86,9 +87,9 @@ class DiceGameController extends AbstractController
         }
 
         $session->set("pig_round", $roundTotal + $round);
-        
+
         return $this->redirectToRoute('pig_play');
-}
+    }
 
     #[Route("/game/pig/save", name: "pig_save", methods: ['POST'])]
     public function save(SessionInterface $session): Response
@@ -143,7 +144,7 @@ class DiceGameController extends AbstractController
 
         return $this->render('pig/test/roll.html.twig', $data);
     }
-    
+
     #[Route("/game/pig/test/dicehand/{num<\d+>}", name: "test_dicehand")]
     public function testDiceHand(int $num): Response
     {

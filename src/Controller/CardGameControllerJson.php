@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Card\DeckOfCards;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -32,9 +33,9 @@ class CardGameControllerJson
     public function jsonShuffle(SessionInterface $session): JsonResponse
     {
         $deck = new DeckOfCards();
-        
+
         $deck->shuffleCards();
-        
+
         $session->set('currentDeck', $deck);
 
         $data = [
@@ -50,16 +51,16 @@ class CardGameControllerJson
 
     #[Route("/api/deck/draw/{number<\d+>}", name: "json_draw_many", methods: ['POST'])]
     public function jsonDrawMany(SessionInterface $session, int $number): JsonResponse
-    {        
+    {
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw($number));
 
         $session->set('currentDeck', $deck); // Save updated deck
-    
+
         $data = [
             "draw"  => $draw,
-            "count" => $deck->getCount(), 
+            "count" => $deck->getCount(),
         ];
 
         $response = new JsonResponse($data);
@@ -71,16 +72,16 @@ class CardGameControllerJson
 
     #[Route("/api/deck/draw", name: "json_draw", methods: ['POST'])]
     public function jsonDraw(SessionInterface $session): JsonResponse
-    {        
+    {
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw(1));
 
         $session->set('currentDeck', $deck); // Save updated deck
-    
+
         $data = [
             "draw"  => $draw,
-            "count" => $deck->getCount(), 
+            "count" => $deck->getCount(),
         ];
 
         $response = new JsonResponse($data);
@@ -92,7 +93,7 @@ class CardGameControllerJson
 
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "json_deal", methods: ['POST'])]
     public function jsonDeal(SessionInterface $session, int $players, int $cards): JsonResponse
-    {        
+    {
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $deal = [];
@@ -102,10 +103,10 @@ class CardGameControllerJson
         }
 
         $session->set('currentDeck', $deck); // Save updated deck
-    
+
         $data = [
             "deal"  => $deal,
-            "count" => $deck->getCount(), 
+            "count" => $deck->getCount(),
         ];
 
         $response = new JsonResponse($data);
