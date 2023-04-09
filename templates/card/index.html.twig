@@ -7,6 +7,29 @@
 <div class="content-header">
     <h1 class="title">Card Game</span></h1>
     <p class="sub-title"></p>
+    <ul>
+        <li><a href="{{ path('show_ordered') }}">Show Ordered Deck</a></li>
+        <li><a href="{{ path('show_shuffled') }}">Show Shuffled Deck</a></li>
+        <li><a href="{{ path('card_draw') }}">Draw Card</a></li>
+        <li><a href="{{ path('card_draw_many', {number: 5}) }}">Draw 5 Cards</a></li>
+        <li><a href="{{ path('card_deal', {players: 3, cards: 4}) }}">Deal 3 Players 4 Cards Each</a></li>
+    </ul>
 </div>
+<article class="blog">
+    <section>
+        <h2>Översikt</h2>
+        <p>Här listar jag de olika klasserna jag skapat i uppgiften så här långt och förklarar hur kravet om att använda arv och komposition har lösts.</p>
+        <ul class="pretty-ul">
+            <li><span class="highlight">Card</span>, basklassen för ett spelkort.</li>
+            <li><span class="highlight">CardGraphic</span>, ärver från basklassen Card och lägger till unicodetecken för de olika kortfärgerna.</li>
+            <li><span class="highlight">DeckOfCards</span>, en kortlek bestående av kortobjekt (komposition).</li>
+        </ul>
+        <p>Jag har även gjort en klass <span class="highlight">CardHand</span>, som ska representera en giv av kort (komposition), men har valt att inte använda den ännu.</p>
+    </section>
+    <section>
+        <h2>Klassdiagram i UML</h2>
+        
+    </section>
+</article>
 
 {% endblock %}
