@@ -14,4 +14,16 @@
     display: flex;
     flex-wrap: wrap;
     gap: $magic-number * 0.5;
+
+    &.draw > .card:last-child {
+        position: relative;
+        margin-left: $magic-number;
+    }
+    &.draw > .card:last-child::before {
+        content: "";
+        position: absolute;
+        left: -$magic-number * 0.75;
+        height: 100%;
+        border-left: 2px solid $base-color-2;
+    }
 }
