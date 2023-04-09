@@ -1,0 +1,17 @@
+.card {
+    height: 1.6 * 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $base-border-radius;
+    background-color: $base-background-color-2;
+    color: $base-color;
+    border: 1px solid $base-color-2
+}
+
+.deck {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $magic-number * 0.5;
+}
