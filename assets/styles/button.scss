@@ -1,0 +1,24 @@
+.btn {
+    font-weight: 500;
+    background-color: transparent;
+    text-decoration: none;
+    display: inline-block;
+    font-family: $font-body;
+    font-size: $base-font-size;
+    padding: ($magic-number * 0.5) $magic-number;
+    text-align: center;
+    line-height: $base-line-height;
+    border-radius: $base-border-radius;
+    background-color: $base-background-color-2;
+    color: $base-color;
+
+    &:not(.disabled) { cursor: pointer; }
+
+    &.pill {
+        border-radius: 99em;
+    }
+
+    &:not(.disabled):hover {
+        background-color: $base-color-2;
+    }
+}
