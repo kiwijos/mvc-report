@@ -29,7 +29,7 @@ class CardGameController extends AbstractController
             "deck" => $deck->getString(),
         ];
 
-        return $this->render('card/deck.html.twig', $data);
+        return $this->render('card/test/deck.html.twig', $data);
     }
 
     #[Route("/card/deck/shuffle", name: "show_shuffled")]
@@ -45,7 +45,7 @@ class CardGameController extends AbstractController
             "deck" => $deck->getString(),
         ];
 
-        return $this->render('card/deck.html.twig', $data);
+        return $this->render('card/test/deck.html.twig', $data);
     }
 
     #[Route("/card/deck/draw/{number<\d+>}", name: "card_draw_many")]
@@ -62,7 +62,7 @@ class CardGameController extends AbstractController
             "count" => $deck->getCount(), 
         ];
 
-        return $this->render('card/draw.html.twig', $data);
+        return $this->render('card/test/draw.html.twig', $data);
     }
 
     #[Route("/card/deck/draw", name: "card_draw")]
@@ -79,7 +79,7 @@ class CardGameController extends AbstractController
             "count" => $deck->getCount(), 
         ];
 
-        return $this->render('card/draw.html.twig', $data);
+        return $this->render('card/test/draw.html.twig', $data);
     }
 
     #[Route("card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_deal")]
@@ -100,6 +100,6 @@ class CardGameController extends AbstractController
             "count" => $deck->getCount(), 
         ];
 
-        return $this->render('card/deal.html.twig', $data);
+        return $this->render('card/test/deal.html.twig', $data);
     }
 }
