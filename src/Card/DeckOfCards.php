@@ -15,6 +15,25 @@ class DeckOfCards
     private $deck;
 
     /**
+     * Create new deck object.
+     * 
+     * @param array|null $deck Array of cards to create deck from if given.
+     */
+    public function __construct($deck = null)
+    {
+        if (is_array($deck)) {
+            $this->deck = $deck;
+            return;
+        }
+
+        foreach (range(0, 3) as $suite) {
+            foreach (range(0, 12) as $rank) {
+                $this->deck[] = new CardGraphic($suite, $rank);
+            }
+        }
+    }
+
+    /**
      * Add card to deck.
      * 
      * @param Card $card Card to add.
