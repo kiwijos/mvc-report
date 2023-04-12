@@ -6,7 +6,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <script src="https://kit.fontawesome.com/2897e71327.js" crossorigin="anonymous"></script>
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -17,29 +17,10 @@
     </head>
     <body>
         <header>
-            <nav id="navbar">
-                <ul>
-                    <li><a href="{{ path('index') }}">Home</a></li>
-                    <li><a href="{{ path('about') }}">About</a></li>
-                    {{ component('dropdown', {
-                        hasHash: true,
-                        head: 'report',
-                        items: ['kmom01', 'kmom02', 'kmom03', 'kmom04', 'kmom05', 'kmom06', 'kmom10'],
-                    }) }}
-                    {{ component('dropdown', {
-                        head: 'work',
-                        items: ['lucky', 'pig_index', 'card_index'],
-                    }) }}
-                    {{ component('dropdown', {
-                        head: 'api',
-                        items: ['quote', 'json_card_index'],
-                    }) }}
-                </ul>
-            </nav>
+            {{ include('./partials/_navbar.html.twig') }}
         </header>
         <main role="main">
-            {# read and display all flash messages #}
-            {{ include('./partials/_flash.html.twig') }}
+            {{ include('./partials/_flash.html.twig') }} {# read and display all flash messages #}
             {% block body %}{% endblock %}
         </main>
         <footer>
