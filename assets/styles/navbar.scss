@@ -34,6 +34,7 @@ nav a {
 
 .dropdown-content {
     display: none;
+    visibility: hidden;
     position: absolute;
     background-color: $color-prime-variant;
     min-width: 9rem;
@@ -48,6 +49,7 @@ nav a {
 }
 
 .dropdown:hover .dropdown-content {
+    visibility: visible;
     display: flex;
     gap: $magic-number * 0.5;
     flex-direction: column;
