@@ -19,67 +19,31 @@
 <article class="blog">
 
     <section id="kmom01">
-        <h1>Kmom01</h1>
-        <h3>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.</h3>
-        <p>Vad gäller objektorientering är det framförallt kursen oopython som ligger till grund. Vi har också jobbat lite med objekt i Javascript men inte riktigt haft det där objektorienterade tänket. Många gånger har vi använt objekt utan att skapa en klass först. Men nu det kan bli ändring på det här. För i kursen webapp har vi satt igång med web components som bygger på klasser bland annat.</p>
-
-        <h3>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå för att kunna komma igång och skapa sina första klasser?</h3>
-        <p>Klasser är en kodstruktur som låter oss samla kod som har med varandra att göra. En bra tumregel är att använda klasser när man både vill kunna lagra något slags tillstånd och kunna ändra på det. Det här tillståndet utgörs av klassens medlemsvariabler, eller properties som det också heter, och vi ändrar på dem genom klassens metoder i första hand. Det är nämligen god sed inom många objektorienterade språk att skydda sin implementation av klassen så att man bara gör tillgängligt sådant som är relevant för användaren. Man brukar tala om inkapsling, och properties är något man gärna stänger in bakom metoder så att de inte ska användas på fel sätt. I PHP använder vi först och främst nyckelorden public och private men även protected för att tala om hur medlemmar av en klass ska användas.</p>
-        <p>För att komma igång och skapa sin klass använder man nyckelorder ”class” följt av namnet på klassen man vill skapa. Inuti klassen deklarerar men sedan de properties och metoder man vill ska ingå. Ofta liknar man klasser vid en mall. Utifrån denna mall kan man skapa objekt, så kallade instanser av klassen. Varje objekt får sin egen uppsättning properties och kan ha ett eget tillstånd. Inuti en klass kan vi använda ”$this" för att referera till en instans av klassen. Medlemmar hos instansen når vi med piloperatorn ”->”. Skulle man till exempel vilja nå en konstant som ligger på klassnivå är det istället ”self” man använder följt av dubbla kolon ”::”.</p>
-
-        <h3>Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</h3>
-        <p>Så här långt känns koden i report bra. De mappar och filer som vi jobbat med tycker jag att man fått koll på. Strukturen överlag påminner mycket om det vi gjort innan med diverse configar, externa paket, statiska assets, kod och templatefiler på olika ställen. Twig som templatespråk är bekant sedan designkursen och det ska bli kul att få lära sig mer om det. På tal om designkursen tog jag tillfället i akt och valde att använda Sass för att styla. Sist var vi bara och skrapade på ytan med variabler och mixins och jag är nyfiken på vad man kan hitta på mer. Att använda controllers känns också bekant. Både i databaskursen och oopython har vi ju använt routrar för att ta emot en request och returnera en respons. Med alla dessa gamla kopplingar i huvudet är jag beredd att ta mig an det nya.</p>
-        <h3>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</h3>
-        <p>Rubriken ”Code Style Guide” fångade blicken direkt. Nu när vi börjar göra större projekt som använder kod från massivs med andra parter förstår man hur viktigt det är att följa en gemensam standard. Det heter ju standard av en anledning, inte bara för att alla skriver på samma sätt, för om alla skrev på samma dåliga sätt så skulle det ju inte heller bli bra, utan för att det är vad som är bäst i många fall. Bäst kan betyda lätt att läsa och förstå men också att koden går att återanvända till exempel. Kanske kommer något av det man själv skriver en vacker dag att användas av andra. Därför ska det bli kul att lära sig mer om det här.</p>
-        <p>En annan del som jag kollade på i artikeln var ”The Basics”. Som det står på sidan är det lätt hänt att man längs vägens gång snappar upp dåliga kodvanor och tar genvägar för att lösa problem snabbt. Det är alridg fel att friska upp minnet en aning. Grunderna blir speciellt viktiga nu när vi ska fokusera få att skriva bra och snygg kod. För egen del var det ett tag sedan jag skrev PHP på riktigt, inte sedan webtec i höstas för att vara noga, och däremellan har det kommit in både mera Python och Javascript. Så grunderna ska jag allt ta och se över så att det inte blir några olyckliga ihopblandningar.</p>
-
-        <h3>Vilken är din TIL för detta kmom?</h3>
-        <p>Den här gångens TIL får bli att komma igång med klasser och objekt i PHP. Varken PHP eller klasser och objekt är nytt i sig men blandning är det. Det är en lite annorlunda syntax och några nya ord att lägga på minnet.</p>
+        {{ '../report/kmom01.md'|parseMarkdownFile }}
     </section>
 
     <section id="kmom02">
-        <h1>Kmom02</h1>
-        <h3>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h3>
-        <p>Gemensamt för de här konstruktionerna är att man organiserar koden i återanvändbara delar. Vad smart! Så låt oss titta närmare på var och en av dessa konstruktioner för sig.</p>
-        <p>Arv skapar en slags hierarki av föräldraklasser och barnklasser som går ut på att barnen får tillgång till alla publika eller skyddade medlemmar hos sin förälder, eller basklass som det också heter. Man säger att en barnklass ”ärver” men även ”utökar” (eng. extends) en basklass. För ofta vill man att barnet just ska bygga vidare på basklassen. Det kan antingen ske genom att barnet skriver över gamla metoder eller lägger till nya.</p>
-        <p>Komposition innebär att en klass helt enkelt använder en annan klass. Antingen skapar man en instans av den andra klassen inuti den förra eller så skickar man in den utifrån. På så vis kan den förra klassen utnyttja den andra klassens publika medlemmar. Ett exempel i vårt fall är en handklass som använder flera tärningsobjekt. Handklassen kan utnyttja tärningsklassens roll-metod för att slå om alla tärningar på samma gång.</p>
-        <p>Guiden sa det bäst: Ett interface är ett slags kontrakt som talar om vilka metoder en klass ska implementera. Det talar visserligen bara om vad metoderna ska heta. Men alla klasser som vill ha ett interface måste implementera dess metoder på något sätt. Flera klasser kan alltså ha samma interface men olika implementation. Fördelen är att man som användare åtminstone vet att metoderna finns. Ett vanligt användningsområde är att kunna byta ut klasser i sin kod mot andra som har samma interface till exempel vid testning. Man skapar ett interface som man gör en klass fast med nyckelordet interface istället för class.</p>
-        <p>Trait kan man säga är en samling metoder som flera klasser kan återanvända. Det liknar arv fast skapar ingen hierarki. En annan skillnad är att klasser kan använda flera trait medan de bara kan ärva från en annan klass i taget. På så vis liknar det snarare hur vi använder komposition. Vi skapar ett trait ungefär som en vanlig klass fast med nyckelorder trait. Man kan inte instansiera ett trait på egen hand utan det ska enbart ses som ett tilläg i andra klasser. För att använda ett trait inuti en klass skriver vi ”use” följt av traitets namn.</p>
-
-        <h3>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</h3>
-        <p>Jag har valt att implementera de delar som föreslogs i uppgiften, det vill säga klasser för ett kort, ett utökat grafiskt kort, en korthand och en kortlek. Själva strukturen med controller och templates följer i mångt och mycket den från övningen. Utseendet på hemsidan lämnar en del att önska. Det är något jag helt klart skulle vilja förbättra när jag får tid över. Även klasserna hade man såklart kunnat göra annorlunda. Men om det hade varit till det bättre återstår nog att se när det väl blir dags att göra ett spel. I nuläget finns det metoder i klasserna som inte används men som jag tror kan vara användbara längre fram. Korthanden används inte alls.</p>
-        <p>Mycket sker inuti kortleken. Från början hade jag en tanke om att skicka in kort utifrån ungefär som vi gjorde i övningen med tärningarna. Men eftersom vi vid flera tillfällen vill kunna återställa kortleken, det vill säga fylla den med kort, blev det enklast att skapa en full kortlek varje gång vi skapar en ny instans. Jag hade också en tanke om att kortleken skulle behöva sorteras innan den visades upp. Så jag skapade metoder för det och byggde korten så att det innehöll heltal för både färg och rang. På så vis blev det lätt att sortera korten baserat på någon av dem. Det här var inte nödvändigt då kortleken är sorterad när den skapas. Men det kan bli användbart längre fram som sagt. Om man till exempel skulle vilja sortera kortleken efter att en antal kort delats ut.</p>
-
-        <h3>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</h3>
-        <p>Att använda klassdiagram är bekant sedan innan så det steget gick hyfsat smidigt. Att rita upp saker och ting på det här sättet kan helt klart vara en god utgångspunkt när man sedan ska börja koda. Ofta ritar och kodar jag samtidigt för att testa mig fram till olika lösningar. Speciellt när det man ska göra är nytt, som i vårt fall.</p>
-
-        <h3>Vilken är din TIL för detta kmom?</h3>
-        <p>Det här gångens till får bli att använda formulär och sessionen i Symfony. Formulär och sessioner är inte helt nya saker såklart men nog blev det lite annorlunda när vi skulle få till det den här gången.</p>
+        {{ '../report/kmom02.md'|parseMarkdownFile }}
     </section>
 
     <section id="kmom03">
-        <h1>Kmom03</h1>
-        <p>Här kommer redovisning om kursmoment 3</p>
+        {{ '../report/kmom03.md'|parseMarkdownFile }}
     </section>
 
     <section id="kmom04">
-        <h1>Kmom04</h1>
-        <p>Här kommer redovisning om kursmoment 4</p>
+        {{ '../report/kmom04.md'|parseMarkdownFile }}
     </section>
 
     <section id="kmom05">
-        <h1>Kmom05</h1>
-        <p>Här kommer redovisning om kursmoment 5</p>
+        {{ '../report/kmom05.md'|parseMarkdownFile }}
     </section>
 
     <section id="kmom06">
-        <h1>Kmom06</h1>
-        <p>Här kommer redovisning om kursmoment 6</p>
+        {{ '../report/kmom06.md'|parseMarkdownFile }}
     </section>
 
     <section id="kmom10">
-        <h1>Kmom10</h1>
-        <p>Här kommer redovisning om kursmoment 10</p>
+        {{ '../report/kmom10.md'|parseMarkdownFile }}
     </section>
 </article>
 {% endblock %}
