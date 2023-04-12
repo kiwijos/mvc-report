@@ -1,0 +1,14 @@
+<div class="dropdown">
+    <a href="{{ path(this.head) }}">{{ head|title }}</a>
+    <div class="dropdown-content">
+        {% if this.hasHash %}
+            {% for item in this.items %}
+                <a href="{{ path(head) ~ '#' ~ item }}">{{ item|replace({'_': ' '})|title }}</a>
+            {% endfor %}
+        {% else %}
+            {% for item in this.items %}
+                <a href="{{ path(item) }}">{{ item|replace({'_': ' '})|title }}</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
