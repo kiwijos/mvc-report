@@ -27,11 +27,11 @@
 }
 
 .flash-notice {
-    color: lightblue;
-    border-color: lightblue;
+    color: $color-notice;
+    border-color: $color-notice;
 }
 
 .flash-warning {
-    color: yellow;
-    border-color: yellow;
+    color: $color-warning;
+    border-color: $color-warning;
 }
