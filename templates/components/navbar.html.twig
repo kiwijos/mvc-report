@@ -1,0 +1,16 @@
+<nav id="navbar">
+    <div class="navbar-content">
+        {% for page in pages %}
+            {% if page.dropdown %}
+                {{ component('dropdown', {
+                    hasHash: page.hasHash,
+                    routeAlias: page.routeAlias,
+                    name: page.name,
+                    items: page.dropdown,
+                }) }}
+            {% else %}
+                <a href="{{ path(page.routeAlias) }}">{{ page.name }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</nav>
