@@ -1,13 +1,13 @@
 <div class="dropdown">
-    <a href="{{ path(this.head) }}">{{ head|title }}</a>
+    <a href="{{ path(routeAlias) }}">{{ name }}</a>
     <div class="dropdown-content">
-        {% if this.hasHash %}
-            {% for item in this.items %}
-                <a href="{{ path(head) ~ '#' ~ item }}">{{ item|replace({'_': ' '})|title }}</a>
+        {% if hasHash %}
+            {% for hash, subName in this.items %}
+                <a href="{{ path(routeAlias) ~ '#' ~ hash }}">{{ subName }}</a>
             {% endfor %}
         {% else %}
-            {% for item in this.items %}
-                <a href="{{ path(item) }}">{{ item|replace({'_': ' '})|title }}</a>
+            {% for subRouteAlias, subName in this.items %}
+                <a href="{{ path(subRouteAlias) }}">{{ subName }}</a>
             {% endfor %}
         {% endif %}
     </div>
