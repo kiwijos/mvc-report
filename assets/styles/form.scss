@@ -5,15 +5,15 @@ select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid $base-color-2;
+    border: 1px solid $color-on-prime-variant;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 input[type=submit] {
     width: 100%;
-    background-color: $base-background-color-2;
-    color: $base-color;
+    background-color: $color-prime-variant;
+    color: $color-on-prime;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -22,5 +22,5 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: $base-color-2;
+    background-color: $color-on-prime-variant;
 }

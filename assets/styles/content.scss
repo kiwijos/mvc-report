@@ -13,7 +13,7 @@
 
     .title i {
         transform: rotate(45deg);
-        color: $accent-color;
+        color: $color-accent;
     }
 
     .sub-title {
@@ -31,9 +31,9 @@
 }
 
 .icon {
-    color: $base-color;
+    color: $color-on-prime;
 
     &:hover {
-        color: $accent-color;
+        color: $color-accent;
     }
 }

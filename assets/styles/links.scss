@@ -1,10 +1,10 @@
 // Style outgoing links (omit icons)
 a:not(.icon)[target="_blank"] {
-    border-bottom: 2px dotted $base-color-2;
+    border-bottom: 2px dotted $color-on-prime-variant;
 }
 
 a:not(.icon)[target="_blank"]:hover {
-    border-bottom: 2px solid $accent-color;
+    border-bottom: 2px solid $color-accent;
 }
 
 // Add icon to outgoing links

@@ -9,7 +9,7 @@ article {
 
     // Omit last section
     section:not(section:last-of-type) {
-        border-bottom: 1px solid $base-color-2;
+        border-bottom: 1px solid $color-on-prime-variant;
         margin-bottom: $magic-number * 2;
     }
 }

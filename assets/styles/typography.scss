@@ -1,5 +1,5 @@
 .highlight {
-    color: $accent-color;
+    color: $color-accent;
     font-weight: 600;
 }
 
@@ -7,7 +7,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: $base-color;
+    color: $color-on-prime;
 }
 
 h1 {
@@ -36,7 +36,7 @@ h4 {
 p,
 a {
     text-decoration: none;
-    color: $base-color;
+    color: $color-on-prime;
     font-weight: 400;
     margin-bottom: $magic-number;
     font-size: $base-font-size;
