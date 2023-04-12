@@ -1,7 +1,10 @@
 {% for label, messages in app.flashes %}
     {% for message in messages %}
         <div class="flash flash-{{ label }}">
-            {{ message }}
+            <span>{{ message }}</span>
+            <a onclick="this.parentElement.style.display='none';">
+                <i class="fa-solid fa-xmark"></i>
+            </a> 
         </div>
     {% endfor %}
 {% endfor %}
