@@ -1,9 +1,29 @@
 .flash {
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, 0);
-    top: 5rem;
+    top: 6rem;
     left: 50%;
-    border: 2px solid;
+    border: 1px solid $color-on-prime-variant;
+    display: flex;
+    justify-content: space-between;
+    gap: $magic-number * 0.5;
+    font-weight: 500;
+    font-family: $font-body;
+    font-size: $base-font-size;
+    padding: ($magic-number * 0.5);
+    line-height: $base-line-height;
+    border-radius: $base-border-radius;
+    background-color: $color-prime-variant;
+
+    > a {
+        margin-bottom: 0;
+       color: $color-on-prime-variant;
+       cursor: pointer;
+    }
+
+    > a:hover {
+        color: $color-on-prime;
+    }
 }
 
 .flash-notice {
