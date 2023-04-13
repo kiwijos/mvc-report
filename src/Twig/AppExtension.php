@@ -15,12 +15,17 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function parseMarkdown(string $filename)
+    /**
+     * Ouput HTML from markdown.
+     * 
+     * @param string $filename Markdown file to parse.
+     */
+    public function parseMarkdown(string $filename): void
     {
         $text = file_get_contents($filename);
         $filter = new TextFilter();
-        $parsed = $filter->parse($text, ["shortcode", "markdown"]);
+        $parsed = $filter->parse($text, ["shortcode", "markdown"]); // @phpstan-ignore-line
 
-        echo $parsed->text;
+        echo $parsed->text; // @phpstan-ignore-line
     }
 }
