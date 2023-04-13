@@ -32,6 +32,6 @@ class CardGraphic extends Card
      */
     public function __toString(): string
     {
-        return $this->ranks[$this->rank_value] . $this->suits[$this->suit_value];
+        return $this->ranks[$this->rankValue] . $this->suits[$this->suitValue];
     }
 }
