@@ -3,16 +3,16 @@
 namespace App\Card;
 
 /**
- * Playing card class with a more graphical representation of suits and ranks.
+ * Playing card class with a more graphical representation of suits
+ * using unicode characters instead of literal names.
  */
 class CardGraphic extends Card
 {
-    /**
-     * @var array $suits The different suits.
-     * @var array $ranks The different ranks.
-     */
-    private $suits = array('♣', '♦', '♥', '♠');
-    private $ranks = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K');
+    /** @var string[] $suits The different suits. */
+    private array $suits = array('♣', '♦', '♥', '♠');
+
+    /** @var string[] $ranks The different ranks. */
+    private array $ranks = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K');
 
     /**
      * Create a new Card object.
@@ -28,7 +28,7 @@ class CardGraphic extends Card
     /**
      * Return a string representation of this card.
      *
-     * @return string Rank and suite of this card.
+     * @return string Rank and suite of this card as string.
      */
     public function __toString(): string
     {

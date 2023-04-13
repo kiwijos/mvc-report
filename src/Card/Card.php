@@ -8,15 +8,17 @@ namespace App\Card;
 class Card
 {
     /**
-     * @var int   $suitValue Number to represent card suit.
-     * @var int   $rankValue Number to represent card rank.
-     * @var array $suits      The different suits.
-     * @var array $ranks      The different ranks.
+     * @var int $suitValue Number to represent card suit.
+     * @var int $rankValue Number to represent card rank.
      */
-    protected $suitValue;
-    protected $rankValue;
-    private $suits = array('Clubs', 'Diamonds', 'Hearts', 'Spades');
-    private $ranks = array('Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King');
+    protected int $suitValue;
+    protected int $rankValue;
+
+    /** @var string[] $suits The different suits. */
+    private array $suits = array('Clubs', 'Diamonds', 'Hearts', 'Spades');
+
+    /** @var string[] $ranks The different ranks. */
+    private array $ranks = array('Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King');
 
     /**
      * Create a new Card object.
@@ -53,7 +55,7 @@ class Card
     /**
      * Get a string representation of this card.
      *
-     * @return string Rank and suite of this card.
+     * @return string Rank and suite of this card as a string.
      */
     public function __toString(): string
     {

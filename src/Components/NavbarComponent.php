@@ -12,18 +12,18 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class NavbarComponent
 {
     /**
-     * @var array $pages List of all pages and subpages in dropdown
+     * @var mixed[] $pages List of all pages and subpages in dropdown
      */
     public array $pages = array(
         [
             'name' => 'Home',
             'routeAlias' => 'index',
-            'dropdown' => False
+            'dropdown' => false
         ],
         [
             'name' => 'About',
             'routeAlias' => 'about',
-            'dropdown' => False
+            'dropdown' => false
         ],
         [
             'name' => 'Report',
@@ -37,7 +37,7 @@ class NavbarComponent
                 'kmom06' => 'Kmom06',
                 'kmom10' => 'Kmom10',
             ],
-            'hasHash' => True,
+            'hasHash' => true,
         ],
         [
             'name' => 'Work',
@@ -47,7 +47,7 @@ class NavbarComponent
                 'pig_index' => 'Pig Game',
                 'card_index' => 'Card Game',
             ],
-            'hasHash' => False,
+            'hasHash' => false,
         ],
         [
             'name' => 'API',
@@ -56,7 +56,7 @@ class NavbarComponent
                 'quote' => 'Daily Quote',
                 'json_card_index' => 'JSON Card Game',
             ],
-            'hasHash' => False,
+            'hasHash' => false,
         ],
     );
 }

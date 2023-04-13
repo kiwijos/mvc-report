@@ -10,14 +10,14 @@ use App\Card\Card;
 class DeckOfCards
 {
     /**
-     * @var array $deck Array of cards.
+     * @var Card[] $deck Cards in this deck.
      */
-    private $deck;
+    private array $deck;
 
     /**
      * Create new deck object.
      *
-     * @param array|null $deck Array of cards to create deck from if given.
+     * @param Card[]|null $deck Array of cards to create deck from if given.
      */
     public function __construct($deck = null)
     {
@@ -46,7 +46,7 @@ class DeckOfCards
     /**
      * Get array of cards as strings.
      *
-     * @return array Cards as strings.
+     * @return string[] Cards as strings.
      */
     public function getString(): array
     {
@@ -56,7 +56,7 @@ class DeckOfCards
     /**
      * Get array of card objects.
      *
-     * @return array Card objects.
+     * @return Card[] Card objects.
      */
     public function getDeck(): array
     {
@@ -104,8 +104,8 @@ class DeckOfCards
     /**
      * Get last number of cards and remove them from the deck.
      *
-     * @param  int   $num Number of cards to draw.
-     * @return array      Drawn cards.
+     * @param  int    $num Number of cards to draw.
+     * @return Card[]      Drawn cards.
      */
     public function draw(int $num): array
     {

@@ -9,7 +9,10 @@ use App\Card\Card;
  */
 class CardHand
 {
-    private $hand;
+    /**
+     * @var Card[] $hand Cards in this hand.
+     */
+    private array $hand;
 
     /**
      * Add card to hand.
@@ -24,7 +27,7 @@ class CardHand
     /**
      * Set hand to array of cards.
      *
-     * @param array $cards Cards to set.
+     * @param Card[] $cards Cards to set.
      */
     public function fromArray(array $cards): void
     {
@@ -44,7 +47,7 @@ class CardHand
     /**
      * Get array of cards as strings.
      *
-     * @return array Cards as strings.
+     * @return string[] Cards as strings.
      */
     public function getString(): array
     {
