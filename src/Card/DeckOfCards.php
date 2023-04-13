@@ -86,8 +86,8 @@ class DeckOfCards
      */
     public function sortBySuit(): void
     {
-        usort($this->deck, function (Card $a, Card $b): int {
-            return $a->getSuit() <=> $b->getSuit();
+        usort($this->deck, function (Card $cardA, Card $cardB): int {
+            return $cardA->getSuit() <=> $cardB->getSuit();
         });
     }
 
@@ -96,8 +96,8 @@ class DeckOfCards
      */
     public function sortByRank(): void
     {
-        usort($this->deck, function (Card $a, Card $b): int {
-            return $a->getRank() <=> $b->getRank();
+        usort($this->deck, function (Card $cardA, Card $cardB): int {
+            return $cardA->getRank() <=> $cardB->getRank();
         });
     }
 
