@@ -30,10 +30,10 @@ class LuckyController extends AbstractController
             2 => "Always remember, when in doubt, hug a tree and it will give you the answer to any question you may have."
         ];
 
-        $rand_key = array_rand($quotes, 1);
+        $randKey = array_rand($quotes, 1);
 
         $data = [
-            'quote' => $quotes[$rand_key],
+            'quote' => $quotes[$randKey],
             'date' => date('l jS \of F Y G:i:s'),
         ];
 
