@@ -77,6 +77,12 @@
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
         "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v",
         "csfix:both": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix src tests",
+        "phpmd": "tools/phpmd/vendor/bin/phpmd src text phpmd.xml || true",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -c phpstan.neon || true",
+        "lint": [
+            "@phpmd",
+            "@phpstan"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
