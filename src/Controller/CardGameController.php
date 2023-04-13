@@ -105,7 +105,7 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/api/card", name: "json_card_index")]
-    public function jsonIndex(SessionInterface $session): Response
+    public function jsonIndex(): Response
     {
         return $this->render('card/json_api/json_index.html.twig');
     }
