@@ -38,6 +38,7 @@ a {
     text-decoration: none;
     color: $color-on-prime;
     font-weight: 400;
-    margin-bottom: $magic-number;
     font-size: $base-font-size;
 }
+
+p { margin-bottom: $magic-number; }
