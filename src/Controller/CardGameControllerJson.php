@@ -15,7 +15,9 @@ class CardGameControllerJson
     #[Route("/api/deck", name: "json_deck", methods: ['GET'])]
     public function jsonDeck(SessionInterface $session): JsonResponse
     {
+        /** @var DeckOfCards $deck */
         $deck = new DeckOfCards();
+
         $session->set('currentDeck', $deck);
 
         $data = [
@@ -32,6 +34,7 @@ class CardGameControllerJson
     #[Route("/api/deck/shuffle", name: "json_shuffle", methods: ['POST'])]
     public function jsonShuffle(SessionInterface $session): JsonResponse
     {
+        /** @var DeckOfCards $deck */
         $deck = new DeckOfCards();
 
         $deck->shuffleCards();
@@ -52,6 +55,7 @@ class CardGameControllerJson
     #[Route("/api/deck/draw/{number<\d+>}", name: "json_draw_many", methods: ['POST'])]
     public function jsonDrawMany(SessionInterface $session, int $number): JsonResponse
     {
+        /** @var DeckOfCards $deck */
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw($number));
@@ -73,6 +77,7 @@ class CardGameControllerJson
     #[Route("/api/deck/draw", name: "json_draw", methods: ['POST'])]
     public function jsonDraw(SessionInterface $session): JsonResponse
     {
+        /** @var DeckOfCards $deck */
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw(1));
@@ -94,6 +99,7 @@ class CardGameControllerJson
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "json_deal", methods: ['POST'])]
     public function jsonDeal(SessionInterface $session, int $players, int $cards): JsonResponse
     {
+        /** @var DeckOfCards $deck */
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $deal = [];

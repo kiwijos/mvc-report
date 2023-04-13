@@ -6,6 +6,8 @@ use App\Dice\Dice;
 use App\Dice\DiceGraphic;
 use App\Dice\DiceHand;
 
+use \Exception;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,8 +33,9 @@ class DiceGameController extends AbstractController
     {
         $numDice = $request->request->get('num_dice');
 
-        // Create hand object with given number of dice
+        /** @var DiceHand $hand */
         $hand = new DiceHand();
+
         for ($i = 1; $i <= $numDice; $i++) {
             $hand->add(new DiceGraphic());
         }
@@ -50,6 +53,7 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(SessionInterface $session): Response
     {
+        /** @var DiceHand $hand */
         $hand = $session->get("pig_dicehand");
 
         $data = [
@@ -65,6 +69,7 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/roll", name: "pig_roll", methods: ['POST'])]
     public function roll(SessionInterface $session): Response
     {
+        /** @var DiceHand $hand */
         $hand = $session->get("pig_dicehand");
         $hand->roll();
 
@@ -112,9 +117,10 @@ class DiceGameController extends AbstractController
     public function testRollNumDice(int $num): Response
     {
         if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dice!");
+            throw new Exception("Can not roll more than 99 dice!");
         }
 
+        /** @var Dice $die */
         $die = new DiceGraphic();
 
         $rolls = [];
@@ -135,6 +141,7 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/test/roll", name: "test_roll_dice")]
     public function testRollDice(): Response
     {
+        /** @var Dice $die */
         $die = new Dice();
 
         $data = [
@@ -149,16 +156,18 @@ class DiceGameController extends AbstractController
     public function testDiceHand(int $num): Response
     {
         if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dice!");
+            throw new Exception("Can not roll more than 99 dice!");
         }
 
+        /** @var DiceHand $hand */
         $hand = new DiceHand();
+
         for ($i = 1; $i <= $num; $i++) {
             if ($i % 2 === 1) {
                 $hand->add(new DiceGraphic());
                 continue;
-            $hand->add(new Dice());
             }
+            $hand->add(new Dice());
         }
 
         $hand->roll();

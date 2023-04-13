@@ -23,7 +23,9 @@ class CardGameController extends AbstractController
     #[Route("/card/deck", name: "show_ordered")]
     public function showOrdered(SessionInterface $session): Response
     {
+        /** @var DeckOfCards $deck */
         $deck = new DeckOfCards();
+
         $session->set('currentDeck', $deck);
 
         $data = [
@@ -36,6 +38,7 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/shuffle", name: "show_shuffled")]
     public function showShuffled(SessionInterface $session): Response
     {
+        /** @var DeckOfCards $deck */
         $deck = new DeckOfCards();
 
         $deck->shuffleCards();
@@ -52,6 +55,7 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/draw/{number<\d+>}", name: "card_draw_many")]
     public function cardDrawMany(SessionInterface $session, int $number): Response
     {
+        /** @var DeckOfCards $deck */
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw($number));
@@ -69,6 +73,7 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/draw", name: "card_draw")]
     public function cardDraw(SessionInterface $session): Response
     {
+        /** @var DeckOfCards $deck */
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $draw = array_map('strval', $deck->draw(1));
@@ -86,6 +91,7 @@ class CardGameController extends AbstractController
     #[Route("card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_deal")]
     public function cardDeal(SessionInterface $session, int $players, int $cards): Response
     {
+        /** @var DeckOfCards $deck */
         $deck = $session->get('currentDeck', new DeckOfCards());
 
         $deal = [];
