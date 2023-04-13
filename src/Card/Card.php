@@ -8,13 +8,13 @@ namespace App\Card;
 class Card
 {
     /**
-     * @var int   $suit_value Number to represent card suit.
-     * @var int   $rank_value Number to represent card rank.
+     * @var int   $suitValue Number to represent card suit.
+     * @var int   $rankValue Number to represent card rank.
      * @var array $suits      The different suits.
      * @var array $ranks      The different ranks.
      */
-    protected $suit_value;
-    protected $rank_value;
+    protected $suitValue;
+    protected $rankValue;
     private $suits = array('Clubs', 'Diamonds', 'Hearts', 'Spades');
     private $ranks = array('Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King');
 
@@ -26,8 +26,8 @@ class Card
      */
     public function __construct(int $suit, int $rank)
     {
-        $this->suit_value = $suit;
-        $this->rank_value = $rank;
+        $this->suitValue = $suit;
+        $this->rankValue = $rank;
     }
 
     /**
@@ -37,7 +37,7 @@ class Card
      */
     public function getSuit(): int
     {
-        return $this->suit_value;
+        return $this->suitValue;
     }
 
     /**
@@ -47,7 +47,7 @@ class Card
      */
     public function getRank(): int
     {
-        return $this->rank_value;
+        return $this->rankValue;
     }
 
     /**
@@ -57,6 +57,6 @@ class Card
      */
     public function __toString(): string
     {
-        return $this->ranks[$this->rank_value] . ' of ' . $this->suits[$this->suit_value];
+        return $this->ranks[$this->rankValue] . ' of ' . $this->suits[$this->suitValue];
     }
 }
