@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game Home{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">Twenty-one</h1>
+        <p class="sub-title">
+            If you're already familiar with the rules you can skip ahead and start the game. Otherwise be sure to have a look through the goals and rules section below. For the interested reader there is also a great <a href="https://en.wikipedia.org/wiki/Twenty-One_(banking_game)" target="_blank"> Wikipedia article</a> about the game. For information about the implementation details check out the documentation.</p>
+            <div class="flex flex-row gap-mid">
+                <a class="btn btn-notice fill" href="{{ path('game_init') }}">Play</a>
+                <a class="btn icon-file" href="{{ path('game_docs') }}">Docs</a>
+            </div>
+    </div>
+    <article class="blog">
+        <section>
+            <h2>Goals and rules</h2>
+            <ul class="pretty-ul">
+                <li>The goal is to score exactly twenty-one points, which will win you the game automatically, or to come closer to twenty-one points than the banker.</li>
+                <li>You also win if the banker exceeds twenty-one points. Conversly, if you exceed twenty-one points you automatically lose.</li>
+                <li>Points are based on the card values dealt. The Ace scores 1 or 14. All other cards score points corresponding to their rank.</li>
+                <li>At the start of the game the banker deals you two cards.</li>
+                <li>The card values add up and you decide whether to stay or to recieve another card.</li>
+                <li>When you decide to stay with your cards the banker takes their turn</li>
+                <li>You lose if the banker comes closer to twenty-one points or if you have the same number of points.</li>
+            </ul> 
+        </section>
+        <section>
+            <h2>Options</h2>
+            <ul class="pretty-ul">
+                <li>With the option <span class="highlight">Assistance mode</span> selected you will recieve help in the form of statistical information about your chances to exceed twenty-one on your next draw.</li>
+                <li>With the option <span class="highlight">Betting</span> selected you will place a bet at the beginning of each round after the two first cards are dealt. The banker will always match your bet if possible. You both start with 100 coins each and play until all coins are won over.</li>
+                <li>There are three <span class="highlight">Difficulty levels</span> to choose from.</li>
+            </ul>
+        </section>
+    </article>
+{% endblock %}
