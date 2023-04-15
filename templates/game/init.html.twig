@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game Setup{% endblock %}
+
+{% block body %}
+    <form method="post" action="">
+        <fieldset>
+            <h3>
+                Assistance Mode
+                {{ component('popup', {
+                    type: 'notice',
+                    message: 'Assistance mode gives you statistical information before your next draw.',
+                    arrow: 'left'
+                }) }}
+            </h3>
+            <label class="switch">
+                <input type="checkbox" checked name="assistance">
+                <span class="slider round"></span>
+            </label>
+        </fieldset>
+        <fieldset>
+            <h3>
+                Betting
+                {{ component('popup', {
+                    type: 'notice',
+                    message: 'The game is won or lost by betting money each round.',
+                    arrow: 'left'
+                }) }}
+            </h3>
+            <label class="switch">
+                <input type="checkbox" checked name="betting">
+                <span class="slider round"></span>
+            </label>
+        </fieldset>
+        <fieldset>
+            <h3>Difficulty</h3>
+            <div class="banker-select">
+                {% for level, banker in bankers %}
+                <div class="banker-select-option">
+                    <h4>{{ level|title }}</h4>
+                    <input type="radio" value="{{ level }}"
+                        class="radio-image"
+                        id="{{ level }}"
+                        name="banker" required>
+                    <label for="{{ level }}" class="circular-square">
+                        <img src="{{ asset('img/' ~ banker.img) }}"
+                            alt="Image of a robot representing {{ level }} difficulty" width="256px"
+                            class="circular-square">
+                    </label>
+                    <h4>
+                        {{ banker.name }}
+                        {{ component('popup', {
+                            type: 'notice',
+                            message: banker.description,
+                            arrow: 'top'
+                        }) }}
+                    </h4>
+                </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <fieldset class="center-content">
+            <button type="submit" class="btn btn-notice round icon-play">Start Game</button>
+        </fieldset>
+    </form>
+{% endblock %}
