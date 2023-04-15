@@ -1,9 +1,11 @@
 .popup {
     position: relative;
+    display: inline;
 }
 
 .popup-content {
-    background-color: $color-prime-variant;
+    width: 33rem;
+    background-color: $color-inverse;
     border-radius: $base-border-radius;
     padding: ($magic-number * 0.5);
     visibility: hidden;
@@ -25,7 +27,7 @@
         transform: translate(0, -50%);
         top: 50%;
         border-top: (0.5 * $magic-number) solid transparent;
-        border-right: (0.5 * $magic-number) solid $color-prime-variant;
+        border-right: (0.5 * $magic-number) solid $color-inverse;
         border-left: none;
         border-bottom: (0.5 * $magic-number) solid transparent;
     }
@@ -43,7 +45,7 @@
         transform: translate(0, -50%);
         top: 50%;
         border-top: (0.5 * $magic-number) solid transparent;
-        border-left: (0.5 * $magic-number) solid $color-prime-variant;
+        border-left: (0.5 * $magic-number) solid $color-inverse;
         border-right: none;
         border-bottom: (0.5 * $magic-number) solid transparent;
     }
@@ -63,7 +65,7 @@
         border-top: none;
         border-right: (0.5 * $magic-number) solid transparent;
         border-left: (0.5 * $magic-number) solid transparent;
-        border-bottom: (0.5 * $magic-number) solid $color-prime-variant;
+        border-bottom: (0.5 * $magic-number) solid $color-inverse;
     }
 
     &.arrow-bottom {
@@ -78,7 +80,7 @@
         left: 50%;
         transform: translate(-50%, 0);
         bottom: -(0.5 * $magic-number);
-        border-top: (0.5 * $magic-number) solid $color-prime-variant;
+        border-top: (0.5 * $magic-number) solid $color-inverse;
         border-right: (0.5 * $magic-number) solid transparent;
         border-left: (0.5 * $magic-number) solid transparent;
         border-bottom: none;
@@ -93,20 +95,20 @@
 }
 
 // Create a mapping of class names to colors
-$colors: (
-"popup-success" $color-success "\f058",
-"popup-notice" $color-notice "\f05a",
-"popup-warning" $color-warning  "\f06a",
-"popup-danger" $color-danger  "\f06a",
+$pop-up-icons: (
+"popup-success": "\f058",
+"popup-notice": "\f05a",
+"popup-warning": "\f06a",
+"popup-danger": "\f06a",
 );
 
 // Apply different styling
-@each $type, $color, $icon in $colors {
+@each $type, $icon in $pop-up-icons {
     .#{$type} {
-        .popup-content { color: $color; }
+        .popup-content { color: $color-on-inverse; }
 
         &::before {
-            color: $color;
+            font-size: $base-font-size;
             @include fa-base();
             content: $icon;
         }
