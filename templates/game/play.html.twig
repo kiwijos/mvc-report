@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game Play{% endblock %}
+
+{% block body %}
+    <form action="">
+        <fieldset>
+            <h3>
+                Assistance Mode: {{ assistance }}
+            </h3>
+        </fieldset>
+        <fieldset>
+            <h3>
+                Betting: {{ betting }}
+            </h3>
+        </fieldset>
+        <fieldset>
+            <h3>
+                Banker: {{ banker }}
+            </h3>
+        </fieldset>
+    </form>
+{% endblock %}
