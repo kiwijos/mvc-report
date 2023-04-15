@@ -16,6 +16,12 @@ class TwentyOneGameController extends AbstractController
         return $this->render('game/index.html.twig');
     }
 
+    #[Route("/game/docs", name: "game_docs")]
+    public function docs(SessionInterface $session): Response
+    {
+        return $this->render('game/docs.html.twig');
+    }
+
     #[Route("/game/init", name: "game_init", methods: ['GET'])]
     public function init(SessionInterface $session): Response
     {
