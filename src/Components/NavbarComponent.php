@@ -58,5 +58,13 @@ class NavbarComponent
             ],
             'hasHash' => false,
         ],
+        [
+            'name' => 'Game',
+            'routeAlias' => 'game_index',
+            'dropdown' => [
+                'game_docs' => 'Docs',
+            ],
+            'hasHash' => false,
+        ],
     );
 }
