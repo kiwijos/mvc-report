@@ -9,16 +9,62 @@
     text-align: center;
     line-height: $base-line-height;
     border-radius: $base-border-radius;
-    background-color: $color-prime-variant;
+    border: 1px solid $color-on-prime-variant;
     color: $color-on-prime;
+    position: relative;
 
     &:not(.disabled) { cursor: pointer; }
 
-    &.pill {
-        border-radius: 99em;
-    }
-
     &:not(.disabled):hover {
         background-color: $color-on-prime-variant;
+    }
+
+    &.round {
+        border-radius: 3rem;
+    }
+
+
+}
+
+$btn-icons: (
+"icon-play": "\f04b",
+"icon-check": "\f058",
+"icon-info": "\f05a",
+"icon-warning": "\f06a",
+"icon-draw": "\e4df"
+);
+
+@each $type, $icon in $btn-icons {
+    .#{$type}::after {
+        margin-left: 0.5em;
+        @include fa-base();
+        content: $icon;
+    }
+}
+
+// Create a mapping of class names to colors
+$btn-colors: (
+"btn-success": $color-success,
+"btn-notice": $color-notice,
+"btn-warning": $color-warning,
+"btn-danger": $color-danger,
+);
+
+// Apply different styling
+@each $type, $color in $btn-colors {
+    .#{$type} {
+        border-color: $color;
+
+        &:not(.disabled):hover {
+            background-color: $color;
+        }
+
+        &.fill {
+            background-color: $color;
+        }
+
+        &:not(.disabled).fill:hover {
+            background-color: color.scale($color, $lightness: -50%)
+        }
     }
 }
