@@ -54,6 +54,18 @@ class DeckOfCards
     }
 
     /**
+     * Get array of card values.
+     *
+     * @return int[] Card values.
+     */
+    public function getValues(): array
+    {
+        return array_map(function($card) {
+            return $card->getRank();
+        }, $this->deck);
+    }
+
+    /**
      * Get array of card objects.
      *
      * @return Card[] Card objects.
