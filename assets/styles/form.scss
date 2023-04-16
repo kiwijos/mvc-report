@@ -1,3 +1,8 @@
+input {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+}
+
 input[type=text],
 input[type=number],
 select {
@@ -10,17 +15,24 @@ select {
     box-sizing: border-box;
 }
 
-input[type=submit] {
-    width: 100%;
-    background-color: $color-prime-variant;
-    color: $color-on-prime;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+form {
+    max-width: 67rem;
+    margin: 0 auto;
+    padding: $magic-number;
+    display: flex;
+    flex-direction: column;
+    gap: $magic-number;
 }
 
-input[type=submit]:hover {
-    background-color: $color-on-prime-variant;
+fieldset {
+    padding: $magic-number;
+    border: none;
+    background-color: $color-prime-variant;
+    border-radius: $base-border-radius;
+    display: flex;
+    flex-direction: column;
+
+    &.center-content {
+        align-items: center;
+    }
 }
