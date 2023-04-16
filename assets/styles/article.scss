@@ -1,11 +1,15 @@
 article {
     max-width: 67rem;
     margin: 0 auto;
+
+    p {
+        text-align: justify;
+    }
 }
 
 .blog {
     @include well-base();
-    padding: $magic-number $magic-number*0.5;
+    padding: $magic-number;
 
     // Omit last section
     section:not(section:last-of-type) {
@@ -20,7 +24,7 @@ article {
 
     div {
         @include well-base();
-        padding: $magic-number $magic-number*0.5;
+        padding: $magic-number;
     }
 
     div:first-of-type {
