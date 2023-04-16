@@ -1,0 +1,35 @@
+.flex {
+    display: flex;
+
+    &.flex-row { flex-direction: row; }
+    &.flex-col {flex-direction: column; }
+
+    &.gap-sm { gap: $magic-number * 0.25; }
+    &.gap-mid { gap: $magic-number * 0.5; }
+    &.gap-lg { gap: $magic-number; }
+
+    &.space-evenly { justify-content: space-evenly; }
+    &.space-between { justify-content: space-between; }
+    &.align-left { align-items: flex-start; }
+    &.align-right { align-items: flex-end; }
+    &.align-center { align-items: center; }
+}
+
+.full-width { width: 100%; }
+
+.grid {
+    display: grid;
+
+    &.three-col {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.circular-square {
+    border-radius: 50%;
+}
+
+.well {
+    @include well-base();
+    padding: $magic-number;
+}
