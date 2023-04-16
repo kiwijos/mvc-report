@@ -5,7 +5,12 @@
     gap: $magic-number*0.5;
     margin-bottom: $magic-number;
 
+    li {
+        margin-left: 1em;
+    }
+
     li::before {
+        margin-left: -1em;
         content: "\2022";
         color: $color-on-prime-variant;
         font-weight: bold;
