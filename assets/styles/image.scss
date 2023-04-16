@@ -1,5 +1,8 @@
 img {
     display: block;
     max-width: 100%;
-    filter: invert(100%);
+
+    &.invert {
+        filter: invert(100%);
+    }
 }
