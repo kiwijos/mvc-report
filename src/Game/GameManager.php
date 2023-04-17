@@ -12,12 +12,6 @@ class GameManager
     private $assistanceMode = true;
     private $removedCards = [];
 
-    public function __construct()
-    {
-        $this->deck = new DeckOfCards();
-        $this->deck->shuffleCards();
-    }
-
     public function cleanRound(): void
     {
         $cardsToRemove = array_merge($player->getCards(), $banker->getCards());
@@ -30,6 +24,11 @@ class GameManager
     {
         $this->assistanceMode = $value;
     }
+
+    public function setDeck(DeckOfCards $deck): void
+    {
+        $this->deck = $deck;
+    } 
 
     /** Set current player */
     public function setPlayer(Player $player): void
@@ -102,7 +101,7 @@ class GameManager
             'bankerPoints' => $this->banker->getPoints(),
             'bankerCards' => $this->banker->getCards(),
             'cardCount' => $this->deck->getCount(),
-            'assistance' => $this->assistanceMode ? $this->getBurstRisk() * 100 : '',
+            'assistance' => $this->assistanceMode ? $this->getBurstRisk() * 100 : null,
         ];
 
         return $state;
