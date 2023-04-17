@@ -34,7 +34,14 @@ trait RecieveTrait
     public function recieve(Card $card): int
     {
         $this->cards[] = $card;
-        $this->points += $card->getRank();
+        $value = $card->getRank();
+
+        // Check if dealt card is Ace and should score 1 or 14
+        if ($value === 1 and $this->points <= 7) {
+            $value = 14;
+        }
+
+        $this->points += $value;
 
         return $this->points;
     }
