@@ -15,4 +15,6 @@ interface BankerInterface
     public function getPoints(): int;
 
     public function getCards(): array;
+
+    public function passInfo(array $removedCards, int $playerPoints): void;
 }
