@@ -94,26 +94,6 @@ class DeckOfCards
     }
 
     /**
-     * Order cards by suit first then rank in ascending order.
-     */
-    public function sortBySuit(): void
-    {
-        usort($this->deck, function (Card $cardA, Card $cardB): int {
-            return $cardA->getSuit() <=> $cardB->getSuit();
-        });
-    }
-
-    /**
-     * Order cards by rank first then suit in ascending order.
-     */
-    public function sortByRank(): void
-    {
-        usort($this->deck, function (Card $cardA, Card $cardB): int {
-            return $cardA->getRank() <=> $cardB->getRank();
-        });
-    }
-
-    /**
      * Get last number of cards and remove them from the deck.
      *
      * @param  int    $num Number of cards to draw.
