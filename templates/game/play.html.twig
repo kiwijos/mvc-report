@@ -3,10 +3,10 @@
 {% block title %}Game Play{% endblock %}
 
 {% block body %}
-<div class="full-width grid three-col">
+<div class="full-width grid three-col well">
     <div class="flex flex-col gap-lg align-left">
         <h2>Player</h2>
-        <div class="full-width flex flex-row gap-mid well wrap">
+        <div class="full-width flex flex-row gap-mid well hole wrap">
             {% for card in playerCards %} 
                 <div class="card-front">{{ card }}</div>
             {% endfor %}
@@ -16,25 +16,32 @@
         </div>
     </div>
     <div class="flex flex-col gap-lg align-center justify-center">
-        <form method="post" action="">
-            <div class="flex flex-row gap-mid">
-            <button class="btn btn-info icon-give"
-                    type="submit"
-                    formaction="{{ path('game_hit') }}">
-                    Hit
-            </button>
-            <button class="btn btn-info icon-stop"
-                    type="submit"
-                    formaction="{{ path('game_stay') }}">
-                    Stay
-            </button>
-        </div>
+        <form method="post">
+            {% if assistance is null %}
+                <div class="well missing">Assistance mode is disabled.</div>
+            {% else %}
+                <div class="well">Currently {{ assistance }}% risk of drawing over 21.</div>
+            {% endif %}
+            <div class="flex flex-row gap-mid justify-center" >
+                <button class="btn btn-notice fill icon-give"
+                        type="submit"
+                        formaction="{{ path('game_hit') }}">
+                        Hit
+                </button>
+                <button class="btn icon-stop"
+                        type="submit"
+                        formaction="{{ path('game_stay') }}">
+                        Stay
+                </button>
+            </div>
         </form>
-        <div class="card-back">{{ cardCount }}</div>
+        <div class="card-back">
+            {{ cardCount }}
+        </div>
     </div>
     <div class="flex flex-col gap-lg align-right">
         <h2>Banker</h2>
-        <div class="full-width flex flex-row gap-mid well wrap">
+        <div class="full-width flex flex-row gap-mid well hole wrap">
             {% for card in bankerCards %} 
                 <div class="card-front">{{ card }}</div>
             {% endfor %}
