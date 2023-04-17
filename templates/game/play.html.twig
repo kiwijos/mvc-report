@@ -3,21 +3,45 @@
 {% block title %}Game Play{% endblock %}
 
 {% block body %}
-    <form action="">
-        <fieldset>
-            <h3>
-                Assistance Mode: {{ assistance }}
-            </h3>
-        </fieldset>
-        <fieldset>
-            <h3>
-                Betting: {{ betting }}
-            </h3>
-        </fieldset>
-        <fieldset>
-            <h3>
-                Banker: {{ banker }}
-            </h3>
-        </fieldset>
-    </form>
+<div class="full-width grid three-col">
+    <div class="flex flex-col gap-lg align-left">
+        <h2>Player</h2>
+        <div class="full-width flex flex-row gap-mid well wrap">
+            {% for card in playerCards %} 
+                <div class="card-front">{{ card }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            <p>Points: <span>{{ playerPoints }}</span></p>
+        </div>
+    </div>
+    <div class="flex flex-col gap-lg align-center justify-center">
+        <form method="post" action="">
+            <div class="flex flex-row gap-mid">
+            <button class="btn btn-info icon-give"
+                    type="submit"
+                    formaction="{{ path('game_hit') }}">
+                    Hit
+            </button>
+            <button class="btn btn-info icon-stop"
+                    type="submit"
+                    formaction="{{ path('game_stay') }}">
+                    Stay
+            </button>
+        </div>
+        </form>
+        <div class="card-back">{{ cardCount }}</div>
+    </div>
+    <div class="flex flex-col gap-lg align-right">
+        <h2>Banker</h2>
+        <div class="full-width flex flex-row gap-mid well wrap">
+            {% for card in bankerCards %} 
+                <div class="card-front">{{ card }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            <p>Points: <span>{{ bankerPoints }}</span></p>
+        </div>
+    </div>
+</div>
 {% endblock %}
