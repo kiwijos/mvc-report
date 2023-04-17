@@ -3,11 +3,14 @@
 namespace App\Game;
 
 use App\Game\RecieveTrait;
+use App\Game\PassInfoTrait;
 use App\Game\BankerInterface;
 
 class EasyBanker implements BankerInterface
 {
     use RecieveTrait;
+
+    use PassInfoTrait;
 
     /**
      * Returns whether or not the banker should keep hitting another card.
