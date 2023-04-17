@@ -31,22 +31,10 @@ class GameManager
         $this->assistanceMode = $value;
     }
 
-    /** @return Player As the current player */
-    public function getPlayer(): Player
-    {
-        return $this->player;
-    }
-
     /** Set current player */
     public function setPlayer(Player $player): void
     {
         $this->player = $player;
-    }
-
-    /** @return BankerInterface As the current banker */
-    public function getBanker(): BankerInterface
-    {
-        return $this->banker;
     }
 
     /** Set current banker */
