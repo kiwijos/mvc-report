@@ -3,69 +3,141 @@
 {% block title %}Game Play{% endblock %}
 
 {% block body %}
-<div class="full-width grid three-col well">
-    <div class="flex flex-col gap-lg align-left">
+<div class="full-width grid three-col well min-height-33">
+
+    {########## PLAYER ##########}
+    <div class="flex flex-col gap-lg space-between align-left">
         <h2>Player</h2>
         <div class="full-width flex flex-row gap-mid well hole wrap">
             {% for card in playerCards %} 
                 <div class="card-front">{{ card }}</div>
             {% endfor %}
         </div>
-        <div>
-            <p>Points: <span>{{ playerPoints }}</span></p>
+        <div class="full-width flex flex-row gap-mid align-left">
+            <div class="well">
+                Points: <span class="highlight">{{ playerPoints }}</span>
+            </div>
+            {% if betting %}
+                <div class="well">
+                    Coins: <span class="highlight icon-coins">{{ playerCoins }}</span>
+                </div>
+            {% endif %}
         </div>
     </div>
-    <div class="flex flex-col gap-lg align-center">
-        <form method="post">
-            {% if hasWon == 0 %}
-                {% if assistance is null %}
-                    <div class="well missing">Assistance mode is disabled.</div>
-                {% else %}
-                    <div class="well">Currently {{ assistance }}% risk of drawing over 21.</div>
-                {% endif %}
-                <div class="flex flex-row gap-mid justify-center">
-                    <button class="btn btn-notice fill icon-give"
+    {########## END PLAYER ##########}
+
+    {########## MIDDLE SECTION ##########}
+    <div class="flex flex-col gap-lg space-between align-center">
+        
+        {% if hasWon == 0 %} {# No one has won yet #}
+            
+            {# Assistance mode #}
+            {% if assistance is null %}
+                <div class="well missing">Assistance mode is disabled.</div>
+            {% else %}
+                <div class="well">Currently {{ assistance }}% risk of drawing over 21.</div>
+            {% endif %}
+
+            {% if betting and hasBet == false %} {# No current bet #}
+
+                {# Place bet form #}
+                <form method="post">
+                    <div class="flex flex-col gap-mid align-center">
+                        {{ component('ticked_range', {
+                            name: 'bet',
+                            value: step,
+                            min: step,
+                            max: playerCoins,
+                            step: step,
+                            values: ticks, 
+                        }) }}
+                        <button class="btn btn-notice icon-coins"
+                                type="submit"
+                                formaction="{{ path('game_bet') }}">
+                                Place Bet
+                        </button>
+                    </div>
+                </form>
+
+            {% else %} {# Bet placed, hit or stay #}
+
+                {# Hit or stay form #}
+                <form method="post">
+                    <div class="flex flex-col gap-mid justify-center">
+                        <button class="btn btn-notice icon-give"
+                                type="submit"
+                                formaction="{{ path('game_hit') }}">
+                                Hit
+                        </button>
+                        <button class="btn icon-stop"
+                                type="submit"
+                                formaction="{{ path('game_stay') }}">
+                                Stay
+                        </button>
+                    </div>
+                </form>
+            {% endif %}
+            
+        {% else %} {# Someone has won #}
+            
+            {# Win message #}
+            {% if hasWon == -1 %}
+                <div class="well"><span class="highlight">The Banker</span> won.</div>
+            {% else %}
+                <div class="well"><span class="highlight">You</span> won!</div>
+            {% endif %}
+
+            {# Continue or quit form #}
+            <form method="post">
+                <div class="flex flex-col gap-mid justify-center">
+                    {% if gameOver == false %}
+                    <button class="btn btn-notice icon-play"
                             type="submit"
-                            formaction="{{ path('game_hit') }}">
-                            Hit
+                            formaction="{{ path('game_reset') }}">
+                            Continue
                     </button>
-                    <button class="btn icon-stop"
+                    {% endif %}
+                    <button class="btn icon-xmark"
                             type="submit"
-                            formaction="{{ path('game_stay') }}">
-                            Stay
+                            formmethod="get"
+                            formaction="{{ path('game_index') }}">
+                            Quit
                     </button>
                 </div>
-            {% else %}
-            <div class="well">{{ hasWon }} has won!</div>
-            <div class="flex flex-row gap-mid justify-center">
-                <button class="btn btn-notice icon-play"
-                        type="submit"
-                        formaction="{{ path('game_reset') }}">
-                        Continue
-                </button>
-                <button class="btn btn-warning icon-xmark"
-                        type="submit"
-                        formmethod="get"
-                        formaction="{{ path('game_index') }}">
-                        Quit
-                </button>
-            </div>
+            </form>
+        {% endif %}
+        <div class="flex flex-row gap-lg align-center">
+            {% if betting %}
+                <div class="well hole icon-piggy">
+                    {{ stake }}
+                </div>
             {% endif %}
-        </form>
-        <div class="card-back">
-            {{ cardCount }}
+            <div class="deck-stacked">
+                {{ cardCount }}
+            </div>
         </div>
     </div>
-    <div class="flex flex-col gap-lg align-right">
+    {########## END MIDDLE SECTION ##########}
+
+    {########## BANKER ##########}
+    <div class="flex flex-col gap-lg space-between align-right">
         <h2>Banker</h2>
         <div class="full-width flex flex-row gap-mid well hole wrap">
             {% for card in bankerCards %} 
                 <div class="card-front">{{ card }}</div>
             {% endfor %}
         </div>
-        <div>
-            <p>Points: <span>{{ bankerPoints }}</span></p>
+        <div class="full-width flex flex-row reverse gap-mid align-right">
+            <div class="well">
+                Points: <span class="highlight">{{ bankerPoints }}</span>
+            </div>
+            {% if betting %}
+                <div class="well">
+                    Coins: <span class="highlight icon-coins">{{ bankerCoins }}</span>
+                </div>
+            {% endif %}
         </div>
     </div>
+    {########## END BANKER ##########}
 </div>
 {% endblock %}
