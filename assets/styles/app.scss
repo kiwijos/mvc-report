@@ -2,8 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 @import 'variables';
 @import 'mixins';
+@import 'utils';
 @import 'base';
 @import 'button';
+@import 'switch';
+@import 'range';
 @import 'popup';
 @import 'image';
 @import 'links';
@@ -15,4 +18,5 @@
 @import 'footer';
 @import 'form';
 @import 'card';
+@import 'game';
 @import 'typography';
