@@ -2,9 +2,10 @@
 
 namespace App\Game;
 
-use App\Game\RecieveTrait;
+use App\Game\ReceiveTrait;
+use App\Game\ReceiverInterface;
 
-class Player
+class Player implements ReceiverInterface
 {
-    use RecieveTrait;
+    use ReceiveTrait;
 }
