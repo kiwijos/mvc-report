@@ -24,6 +24,12 @@ class GameManager
     /** @var int $hasWon As 0 if no one has won, 1 if player has won or -1 if banker has won. */
     private int $hasWon = 0;
 
+    /** @return int As 0 if no one has won, 1 if player has one or -1 if banker has won. */
+    public function getHasWon(): int
+    {
+        return $this->hasWon;
+    }
+
     /**
      * Move drawn cards to array of removed cards before also resetting player and banker. 
      */
@@ -112,7 +118,9 @@ class GameManager
         $keepHitting = true;
         while ($keepHitting === true) {
             $this->banker->receive($this->deck->draw(1)[0]);
+
             $keepHitting = $this->banker->keepHitting();
+
             $this->refillEmptyDeck();
         }
 
