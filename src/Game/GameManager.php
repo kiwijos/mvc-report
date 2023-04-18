@@ -6,19 +6,32 @@ use App\Card\DeckOfCards;
 
 class GameManager
 {
+    /** @var DeckOfCards $deck */
     private $deck;
-    private $player;
-    private $banker;
-    private $assistanceMode = true;
-    private $removedCards = [];
 
-    /** @var int $hasWon As 0 if no one has won, 1 if player has won or -1 if banker has won */
+    /** @var ReceiverInterface $player */
+    private $player;
+
+    /** @var BankerInterface $banker */
+    private $banker;
+
+    /** @var bool $assistanceMode As true if assistance mode is turned on, otherwise false. */
+    private bool $assistanceMode = false;
+
+    /** @var Card[] $removedCards All cards drawn in previous turns. */
+    private array $removedCards = [];
+
+    /** @var int $hasWon As 0 if no one has won, 1 if player has won or -1 if banker has won. */
     private int $hasWon = 0;
 
+    /**
+     * Move drawn cards to array of removed cards before also resetting player and banker. 
+     */
     public function reset(): void
     {
-        // Move cards dealt to array of removed cards
+        /** @var Card[] $cardsToRemove Cards drawn by the player and banker this turn */
         $cardsToRemove = array_merge($this->player->getCards(), $this->banker->getCards());
+
         $this->removedCards = array_merge($this->removedCards, $cardsToRemove);
 
         // Reset player and banker points and cards
@@ -28,23 +41,25 @@ class GameManager
         $this->hasWon = 0;
     }
 
+    /** @param bool $value As true if mode should be turned on, otherwise false. */
     public function setAssistanceMode(bool $value): void
     {
         $this->assistanceMode = $value;
     }
 
+    /** @param DeckOfCards $deck */
     public function setDeck(DeckOfCards $deck): void
     {
         $this->deck = $deck;
     } 
 
-    /** Set current player */
-    public function setPlayer(Player $player): void
+    /** @param ReceiverInterface $player */
+    public function setPlayer(ReceiverInterface $player): void
     {
         $this->player = $player;
     }
 
-    /** Set current banker */
+    /** @param BankerInterface $banker */
     public function setBanker(BankerInterface $banker): void
     {
         $this->banker = $banker;
@@ -69,7 +84,7 @@ class GameManager
             return $value > $margin;
         });
 
-        /** @var int $burstRisk */
+        /** @var float $burstRisk Risk of drawing over 21. */
         $burstRisk = round(count($burstCards) / $this->deck->getCount(), 2);
 
         return $burstRisk;
@@ -109,6 +124,7 @@ class GameManager
         $this->banker->passInfo($this->removedCards, $this->player->getPoints());
     }
 
+    /** @return mixed[] As the current game state. */
     public function getState(): array
     {
         $state = [
