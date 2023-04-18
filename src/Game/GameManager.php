@@ -60,6 +60,10 @@ class GameManager
         /** @var int $margin Number of points the player can score before bursting. */
         $margin = 21 - $this->player->getPoints();
 
+        if ($margin > 13) {
+            return 0;         // No card will put he player over 21, return early
+        }
+
         /** @var int[] $burstCards Values of all cards that will make the player burst. */
         $burstCards = array_filter($this->deck->getValues(), function($value) use ($margin) {
             return $value > $margin;
@@ -109,12 +113,12 @@ class GameManager
     {
         $state = [
             'playerPoints' => $this->player->getPoints(),
-            'playerCards' => $this->player->getCards(),
+            'playerCards'  => $this->player->getCards(),
             'bankerPoints' => $this->banker->getPoints(),
-            'bankerCards' => $this->banker->getCards(),
-            'cardCount' => $this->deck->getCount(),
-            'assistance' => $this->assistanceMode ? $this->getBurstRisk() * 100 : null,
-            'hasWon' => $this->hasWon,
+            'bankerCards'  => $this->banker->getCards(),
+            'cardCount'    => $this->deck->getCount(),
+            'assistance'   => $this->assistanceMode ? $this->getBurstRisk() * 100 : null,
+            'hasWon'       => $this->hasWon,
         ];
 
         return $state;
