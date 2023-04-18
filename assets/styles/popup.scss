@@ -4,6 +4,7 @@
 }
 
 .popup-content {
+    z-index: 1;
     width: 33rem;
     background-color: $color-inverse;
     border-radius: $base-border-radius;
