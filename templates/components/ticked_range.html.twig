@@ -1,0 +1,15 @@
+<div class="ticked-range">
+    {% if this.label != '' %}<label>{{ this.label }}</label>{% endif %}
+    <input type="range"
+           name="{{ this.name }}"
+           value="{{ this.value }}"
+           min="{{ this.min }}"
+           max="{{ this.max }}"
+           step="{{ this.step }}"
+           list="values">
+    <datalist id="values">
+        {% for value in this.values %}
+            <option value="{{ value }}" label="{{ value }}"></option>
+        {% endfor %}
+    </datalist>
+</div>
