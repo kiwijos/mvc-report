@@ -15,25 +15,42 @@
             <p>Points: <span>{{ playerPoints }}</span></p>
         </div>
     </div>
-    <div class="flex flex-col gap-lg align-center justify-center">
+    <div class="flex flex-col gap-lg align-center">
         <form method="post">
-            {% if assistance is null %}
-                <div class="well missing">Assistance mode is disabled.</div>
+            {% if hasWon == 0 %}
+                {% if assistance is null %}
+                    <div class="well missing">Assistance mode is disabled.</div>
+                {% else %}
+                    <div class="well">Currently {{ assistance }}% risk of drawing over 21.</div>
+                {% endif %}
+                <div class="flex flex-row gap-mid justify-center">
+                    <button class="btn btn-notice fill icon-give"
+                            type="submit"
+                            formaction="{{ path('game_hit') }}">
+                            Hit
+                    </button>
+                    <button class="btn icon-stop"
+                            type="submit"
+                            formaction="{{ path('game_stay') }}">
+                            Stay
+                    </button>
+                </div>
             {% else %}
-                <div class="well">Currently {{ assistance }}% risk of drawing over 21.</div>
-            {% endif %}
-            <div class="flex flex-row gap-mid justify-center" >
-                <button class="btn btn-notice fill icon-give"
+            <div class="well">{{ hasWon }} has won!</div>
+            <div class="flex flex-row gap-mid justify-center">
+                <button class="btn btn-notice icon-play"
                         type="submit"
-                        formaction="{{ path('game_hit') }}">
-                        Hit
+                        formaction="{{ path('game_reset') }}">
+                        Continue
                 </button>
-                <button class="btn icon-stop"
+                <button class="btn btn-warning icon-xmark"
                         type="submit"
-                        formaction="{{ path('game_stay') }}">
-                        Stay
+                        formmethod="get"
+                        formaction="{{ path('game_index') }}">
+                        Quit
                 </button>
             </div>
+            {% endif %}
         </form>
         <div class="card-back">
             {{ cardCount }}
