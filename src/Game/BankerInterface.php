@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Game;
+use App\Game\ReceiverInterface;
 
 /**
  * Interface for implementing the most basic banker actions.
  */
-interface BankerInterface
+interface BankerInterface extends ReceiverInterface
 {
     /** @return bool As true if the banker should hit for another card, otherwise false. */
     public function keepHitting(): bool;
