@@ -98,6 +98,8 @@ class GameManager
         $this->player->receive($this->deck->draw(1)[0]);
 
         $this->updateHasWonStatus();
+
+        $this->refillEmptyDeck();
     }
 
     /**
@@ -111,6 +113,7 @@ class GameManager
         while ($keepHitting === true) {
             $this->banker->receive($this->deck->draw(1)[0]);
             $keepHitting = $this->banker->keepHitting();
+            $this->refillEmptyDeck();
         }
 
         $this->updateHasWonStatus();
@@ -164,5 +167,27 @@ class GameManager
         }
 
         $this->hasWon = 0;
+    }
+
+    /**
+     * Fill deck with removed cards if empty.
+     */
+    private function refillEmptyDeck(): void
+    {
+        if ($this->deck->getCount() > 0) {
+            return;     // Deck is not empty, do nothing and return early
+        }
+
+        // Add removed cards back in the deck
+        foreach ($this->removedCards as $card) {
+            $this->deck->addCard($card);
+        }
+
+        // Shuffle deck
+        $this->deck->shuffleCards();
+
+        // The removed cards are back in the deck, inform banker about it
+        $this->removedCards = [];
+        $this->informBanker();
     }
 }
