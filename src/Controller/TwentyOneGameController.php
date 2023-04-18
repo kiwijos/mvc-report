@@ -222,4 +222,12 @@ class TwentyOneGameController extends AbstractController
         return $this->redirectToRoute('game_play');
     }
 
+    #[Route("/game/destroy", name: "game_destroy", methods: ['POST'])]
+    public function destroy(SessionInterface $session): Response
+    {
+        $session->remove('gameManager');
+        $session->remove('bettingManager');
+
+        return $this->redirectToRoute('game_index');
+    }
 }
