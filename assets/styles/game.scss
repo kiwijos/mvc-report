@@ -59,6 +59,21 @@
 .card-back {
     border: 1px solid $color-on-prime-variant;
     background: $color-prime-variant;
-    background-image: radial-gradient(circle, $color-on-prime-variant 0%, $color-prime-variant 70%);
+    background-image: radial-gradient(circle, $color-on-prime-variant 0%, $color-prime-variant 90%);
     color: $color-on-prime;
+}
+
+.deck-stacked {
+    border: 1px solid $color-on-prime-variant;
+    background: $color-prime-variant;
+    color: $color-on-prime;
+    height: 1.6 * 5.5rem;
+    width: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $base-border-radius;
+    box-shadow:
+        0.2rem 0.2rem 0 0 color.scale($color-prime-variant, $lightness: -5%),
+        0.4rem 0.4rem 0 0 color.scale($color-prime-variant, $lightness: -50%);
 }
