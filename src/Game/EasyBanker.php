@@ -5,9 +5,8 @@ namespace App\Game;
 use App\Game\ReceiveTrait;
 use App\Game\PassInfoTrait;
 use App\Game\BankerInterface;
-use App\Game\ReceiverInterface;
 
-class EasyBanker implements BankerInterface, ReceiverInterface
+class EasyBanker implements BankerInterface
 {
     use ReceiveTrait;
 

@@ -5,9 +5,8 @@ namespace App\Game;
 use App\Game\ReceiveTrait;
 use App\Game\PassInfoTrait;
 use App\Game\BankerInterface;
-use App\Game\ReceiverInterface;
 
-class MediumBanker implements BankerInterface, ReceiverInterface
+class MediumBanker implements BankerInterface
 {
     use ReceiveTrait;
 
@@ -65,8 +64,8 @@ class MediumBanker implements BankerInterface, ReceiverInterface
             return $value > $margin;
         });
         
-        /** @var int $burstRisk Risk of drawing over 21. */
-        $burstRisk = count($burstCards) / count($cardsLeft);
+        /** @var float $burstRisk Risk of drawing over 21. */
+        $burstRisk = round(count($burstCards) / count($cardsLeft), 2);
 
         return $burstRisk <= 0.5;
     }
