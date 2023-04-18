@@ -31,7 +31,12 @@ $btn-icons: (
 "icon-check": "\f058",
 "icon-info": "\f05a",
 "icon-warning": "\f06a",
-"icon-draw": "\e4df"
+"icon-stop": "\f256",
+"icon-give": "\e4f7",
+"icon-file": "\f15c",
+"icon-coins": "\f51e",
+"icon-xmark": "\f00d",
+"icon-piggy": "\f4d3",
 );
 
 @each $type, $icon in $btn-icons {
@@ -64,7 +69,8 @@ $btn-colors: (
         }
 
         &:not(.disabled).fill:hover {
-            background-color: color.scale($color, $lightness: -50%)
+            background-color: color.scale($color, $lightness: -40%);
+            border-color: color.scale($color, $lightness: -40%);
         }
     }
 }
