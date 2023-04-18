@@ -1,8 +1,13 @@
 .flex {
     display: flex;
 
+    &.wrap { flex-wrap: wrap; }
+
     &.flex-row { flex-direction: row; }
     &.flex-col {flex-direction: column; }
+
+    &.flex-row.reverse { flex-direction: row-reverse; }
+    &.flex-col.reverse {flex-direction: column-reverse; }
 
     &.gap-sm { gap: $magic-number * 0.25; }
     &.gap-mid { gap: $magic-number * 0.5; }
@@ -10,12 +15,19 @@
 
     &.space-evenly { justify-content: space-evenly; }
     &.space-between { justify-content: space-between; }
+    &.justify-center { justify-content: center; }
+
     &.align-left { align-items: flex-start; }
     &.align-right { align-items: flex-end; }
     &.align-center { align-items: center; }
+
+    &.auto-items > * { flex: auto; }
+    &.even-items > * { flex: 1; }
 }
 
 .full-width { width: 100%; }
+
+.min-height-33 { min-height: 33rem; }
 
 .grid {
     display: grid;
@@ -32,4 +44,14 @@
 .well {
     @include well-base();
     padding: $magic-number;
+    color: $color-on-prime;
+
+    &.missing {
+        color: $color-on-prime-variant;
+        border-style: dashed;
+    }
+
+    &.hole {
+        background-image: radial-gradient(circle, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 100%);
+    }
 }
