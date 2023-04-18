@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Game\GameManager;
+use App\Game\BettingManager;
 use App\Game\EasyBanker;
 use App\Game\MediumBanker;
 use App\Game\HardBanker;
@@ -81,24 +82,33 @@ class TwentyOneGameController extends AbstractController
         }
 
         // Set up game manager
-        $manager = new GameManager();
+        $gameManager = new GameManager();
 
-        $manager->setBanker($banker);
-        $manager->setPlayer(new Player());
+        $gameManager->setBanker($banker);
+        $gameManager->setPlayer(new Player());
         
         $deck = new DeckOfCards();
         $deck->shuffleCards();
-        $manager->setDeck($deck);
+        $gameManager->setDeck($deck);
 
         // Set assistance mode on or off
         $assistance = $request->request->get('assistance', false) !== false;
-        $manager->setAssistanceMode($assistance);
+        $gameManager->setAssistanceMode($assistance);
 
         // First card is mandatory
-        $manager->dealPlayer();
+        $gameManager->dealPlayer();
 
         // Save state
-        $session->set('manager', $manager);
+        $session->set('gameManager', $gameManager);
+
+        // Create betting manager too
+        $bettingManager = new BettingManager();
+
+        // Set betting mode on or off
+        $betting = $request->request->get('betting', false) !== false;
+        $bettingManager->setBetting($betting);
+
+        $session->set('bettingManager', $bettingManager);
 
         return $this->redirectToRoute('game_play');
     }
@@ -106,10 +116,10 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play", name: "game_play")]
     public function play(SessionInterface $session): Response
     {
-        // Start by checking if manager is set up properly
-        $manager = $session->get('manager', null);
+        // Start by checking if gameManager is set up properly
+        $gameManager = $session->get('gameManager', null);
 
-        if ($manager === null) {
+        if ($gameManager === null) {
             $this->addFlash(
                 'warning',
                 'No active game. Press "Play" to start a new one.'
@@ -117,8 +127,10 @@ class TwentyOneGameController extends AbstractController
             return $this->redirectToRoute('game_index');
         }
 
+        $bettingManager = $session->get('bettingManager');
+
         // Get state to display in view
-        $data = $manager->getState();
+        $data = array_merge($gameManager->getState(), $bettingManager->getState());
 
         return $this->render('game/play.html.twig', $data);
     }
@@ -127,11 +139,25 @@ class TwentyOneGameController extends AbstractController
     public function hit(Request $request, SessionInterface $session): Response
     {
         // Player hit for another card
-        $manager = $session->get('manager');
+        $gameManager = $session->get('gameManager');
 
-        $manager->dealPlayer();
+        $gameManager->dealPlayer();
 
-        $session->set('manager', $manager);
+        $bettingManager = $session->get('bettingManager');
+
+        if ($bettingManager->getBetting() === true) {
+            $hasWon = $gameManager->getHasWon();
+
+            if ($hasWon === -1) {
+                $bettingManager->bankerWinsStake();
+            } elseif ($hasWon === 1) {
+                $bettingManager->playerWinsStake();
+            }
+
+            $session->set('bettingManager', $bettingManager);
+        }
+
+        $session->set('gameManager', $gameManager);
 
         return $this->redirectToRoute('game_play');
     }
@@ -140,11 +166,25 @@ class TwentyOneGameController extends AbstractController
     public function stay(Request $request, SessionInterface $session): Response
     {
         // Player decide to stay, banker takes their turn
-        $manager = $session->get('manager');
+        $gameManager = $session->get('gameManager');
 
-        $manager->dealBanker();
+        $gameManager->dealBanker();
 
-        $session->set('manager', $manager);
+        $bettingManager = $session->get('bettingManager');
+
+        if ($bettingManager->getBetting() === true) {
+            $hasWon = $gameManager->getHasWon();
+
+            if ($hasWon === -1) {
+                $bettingManager->bankerWinsStake();
+            } elseif ($hasWon === 1) {
+                $bettingManager->playerWinsStake();
+            }
+
+            $session->set('bettingManager', $bettingManager);
+        }
+
+        $session->set('gameManager', $gameManager);
 
         return $this->redirectToRoute('game_play');
     }
@@ -152,13 +192,32 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play/reset", name: "game_reset", methods: ['POST'])]
     public function reset(Request $request, SessionInterface $session): Response
     {
-        $manager = $session->get('manager');
+        $gameManager = $session->get('gameManager');
 
-        $manager->reset();
+        $gameManager->reset();
 
-        $manager->dealPlayer();
+        $gameManager->dealPlayer();
 
-        $session->set('manager', $manager);
+        $session->set('gameManager', $gameManager);
+
+        return $this->redirectToRoute('game_play');
+    }
+
+    #[Route("/game/play/bet", name: "game_bet", methods: ['POST'])]
+    public function bet(Request $request, SessionInterface $session): Response
+    {
+        $bettingManager = $session->get('bettingManager');
+
+        $bet = intval($request->request->get('bet'));
+
+        if ($bettingManager->placeBet($bet) === false ) {
+            $this->addFlash(
+                'warning',
+                'Invalid betting amount!'
+            );
+        }
+
+        $session->set('bettingManager', $bettingManager);
 
         return $this->redirectToRoute('game_play');
     }
