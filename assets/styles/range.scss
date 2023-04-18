@@ -1,0 +1,12 @@
+datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    writing-mode:vertical-lr;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+input[type=range] {
+    width: 100%;
+}
