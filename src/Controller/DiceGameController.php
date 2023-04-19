@@ -6,7 +6,7 @@ use App\Dice\Dice;
 use App\Dice\DiceGraphic;
 use App\Dice\DiceHand;
 
-use \Exception;
+use Exception;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

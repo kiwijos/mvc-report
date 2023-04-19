@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Game;
+
 use App\Card\Card;
 
 /**
@@ -28,7 +29,7 @@ trait ReceiveTrait
 
     /**
      * @param Card $card
-     * 
+     *
      * @return int As total points
      */
     public function receive(Card $card): int

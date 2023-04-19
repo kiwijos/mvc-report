@@ -86,7 +86,7 @@ class TwentyOneGameController extends AbstractController
 
         $gameManager->setBanker($banker);
         $gameManager->setPlayer(new Player());
-        
+
         $deck = new DeckOfCards();
         $deck->shuffleCards();
         $gameManager->setDeck($deck);
@@ -210,7 +210,7 @@ class TwentyOneGameController extends AbstractController
 
         $bet = intval($request->request->get('bet'));
 
-        if ($bettingManager->placeBet($bet) === false ) {
+        if ($bettingManager->placeBet($bet) === false) {
             $this->addFlash(
                 'warning',
                 'Invalid betting amount!'

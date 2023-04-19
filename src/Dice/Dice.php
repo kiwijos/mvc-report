@@ -17,8 +17,8 @@ class Dice
         return $this->value;
     }
 
-    /** 
-     * @return int Value 
+    /**
+     * @return int Value
      * */
     public function getValue(): int
     {

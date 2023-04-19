@@ -17,7 +17,7 @@ class AppExtension extends AbstractExtension
 
     /**
      * Ouput HTML from markdown.
-     * 
+     *
      * @param string $filename Markdown file to parse.
      */
     public function parseMarkdown(string $filename): void

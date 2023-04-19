@@ -60,7 +60,7 @@ class DeckOfCards
      */
     public function getValues(): array
     {
-        return array_map(function($card) {
+        return array_map(function ($card) {
             return $card->getRank();
         }, $this->deck);
     }

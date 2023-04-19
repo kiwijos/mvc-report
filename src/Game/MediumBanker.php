@@ -16,7 +16,7 @@ class MediumBanker implements BankerInterface
      * From a simple representation of a full deck,
      * remove cards matching the ones that the banker has draw this turn,
      * as well as any cards drawn in previous turns (suit does not matter).
-     * 
+     *
      * @return int[] $deck Deck of values that the banker assumes are left.
      */
     private function getCardsLeft(): array
@@ -44,7 +44,7 @@ class MediumBanker implements BankerInterface
     /**
      * Returns whether or not the banker should keep hitting another card.
      * This banker does not assume anything about the cards drawn by the player this turn.
-     * 
+     *
      * @return bool As true if the risk of bursting is less than O.5, otherwise false.
      */
     public function keepHitting(): bool
@@ -60,10 +60,10 @@ class MediumBanker implements BankerInterface
         $cardsLeft = $this->getCardsLeft();
 
         /** @var int[] $burstCards Values of all cards that will make the banker burst. */
-        $burstCards = array_filter($cardsLeft, function($value) use ($margin){
+        $burstCards = array_filter($cardsLeft, function ($value) use ($margin) {
             return $value > $margin;
         });
-        
+
         /** @var float $burstRisk Risk of drawing over 21. */
         $burstRisk = round(count($burstCards) / count($cardsLeft), 2);
 

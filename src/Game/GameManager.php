@@ -31,7 +31,7 @@ class GameManager
     }
 
     /**
-     * Move drawn cards to array of removed cards before also resetting player and banker. 
+     * Move drawn cards to array of removed cards before also resetting player and banker.
      */
     public function reset(): void
     {
@@ -57,7 +57,7 @@ class GameManager
     public function setDeck(DeckOfCards $deck): void
     {
         $this->deck = $deck;
-    } 
+    }
 
     /** @param ReceiverInterface $player */
     public function setPlayer(ReceiverInterface $player): void
@@ -73,7 +73,7 @@ class GameManager
 
     /**
      * Get the risk of the player scoring over 21 (bursting).
-     * 
+     *
      * @return int As the risk of bursting on drawing another card.
      */
     public function getBurstRisk(): float
@@ -86,7 +86,7 @@ class GameManager
         }
 
         /** @var int[] $burstCards Values of all cards that will make the player burst. */
-        $burstCards = array_filter($this->deck->getValues(), function($value) use ($margin) {
+        $burstCards = array_filter($this->deck->getValues(), function ($value) use ($margin) {
             return $value > $margin;
         });
 
@@ -162,8 +162,8 @@ class GameManager
         if ($playerPoints === 21 or $bankerPoints > 21) {
             $this->hasWon = 1;
             return;
-        } 
-        
+        }
+
         if ($playerPoints > 21 or $bankerPoints >= $playerPoints) {
             $this->hasWon = -1;
             return;

@@ -23,7 +23,7 @@ class BettingManager
 
     /**
      * Create new betting manager object.
-     * 
+     *
      * @param int $max  Coins go give player and banker to start with.
      * @param int $step Minimum step when betting.
      */
@@ -47,9 +47,9 @@ class BettingManager
 
     /**
      * Player places a bet and banker tries to match it.
-     * 
+     *
      * @param int $bet Amount of coins to bet. This becomes the stake.
-     * 
+     *
      * @return bool As true if bet was successfully made, otherwise false.
      */
     public function placeBet(int $bet): bool
@@ -96,7 +96,7 @@ class BettingManager
 
     /**
      * Create and array of values to use as tick labels for range input.
-     * 
+     *
      * @return int[] As values for the different betting steps.
      */
     private function getInputRangeTicks(): array

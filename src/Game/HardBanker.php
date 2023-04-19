@@ -15,7 +15,7 @@ class HardBanker implements BankerInterface
     /**
      * Returns whether or not the banker should keep hitting another card.
      * This banker knows how much the player scored.
-     * 
+     *
      * @return bool As true if the banker has fewer points than the player, otherwise false
      */
     public function keepHitting(): bool

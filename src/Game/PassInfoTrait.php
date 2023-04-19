@@ -13,7 +13,7 @@ trait PassInfoTrait
     /** @var Card[] $removedCards */
     private array $removedCards = [];
 
-    /** 
+    /**
      * @param Card[] $removedCards Cards removed from the deck.
      * @param int    $playerPoints Players current points.
      */
