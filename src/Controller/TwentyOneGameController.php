@@ -60,8 +60,9 @@ class TwentyOneGameController extends AbstractController
         return $this->render('game/init.html.twig', $data);
     }
 
+    /** @SuppressWarnings(PHPMD.ElseExpression) */
     #[Route("/game/init", name: "game_init_post", methods: ['POST'])]
-    public function init_post(Request $request, SessionInterface $session): Response
+    public function setup(Request $request, SessionInterface $session): Response
     {
         // Start by checking and determining banker difficulty
         $level = $request->request->get('banker', null);
