@@ -34,7 +34,8 @@ class MediumBanker implements BankerInterface
 
         // Remove from deck
         foreach ($cardsToRemove as $card) {
-            if(($key = array_search($card->getRank(), $deck)) !== false) {
+            $key = array_search($card->getRank(), $deck);
+            if ($key !== false) {
                 unset($deck[$key]);
             }
         }
