@@ -60,18 +60,20 @@ class BettingManager
             return $this->hasBet;
         }
 
+        $this->hasBet = true;
+
         $this->playerCoins -= $bet;
         $this->stake += $bet;
 
         if ($this->bankerCoins - $bet < 0) {
             $this->stake += $this->bankerCoins;
             $this->bankerCoins = 0;
-        } else {
-            $this->stake += $bet;
-            $this->bankerCoins -= $bet;
+
+            return $this->hasBet;
         }
 
-        $this->hasBet = true;
+        $this->stake += $bet;
+        $this->bankerCoins -= $bet;
 
         return $this->hasBet;
     }
