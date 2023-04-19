@@ -19,19 +19,19 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class TwentyOneGameController extends AbstractController
 {
     #[Route("/game", name: "game_index", methods: ['GET'])]
-    public function index(SessionInterface $session): Response
+    public function index(): Response
     {
         return $this->render('game/index.html.twig');
     }
 
     #[Route("/game/docs", name: "game_docs", methods: ['GET'])]
-    public function docs(SessionInterface $session): Response
+    public function docs(): Response
     {
         return $this->render('game/docs.html.twig');
     }
 
     #[Route("/game/init", name: "game_init", methods: ['GET'])]
-    public function init(SessionInterface $session): Response
+    public function init(): Response
     {
         /** @var mixed[] $bankers Data to display in difficulty level select form. */
         $bankers = [
@@ -136,7 +136,7 @@ class TwentyOneGameController extends AbstractController
     }
 
     #[Route("/game/play/hit", name: "game_hit", methods: ['POST'])]
-    public function hit(Request $request, SessionInterface $session): Response
+    public function hit(SessionInterface $session): Response
     {
         // Player hit for another card
         $gameManager = $session->get('gameManager');
@@ -163,7 +163,7 @@ class TwentyOneGameController extends AbstractController
     }
 
     #[Route("/game/play/stay", name: "game_stay", methods: ['POST'])]
-    public function stay(Request $request, SessionInterface $session): Response
+    public function stay(SessionInterface $session): Response
     {
         // Player decide to stay, banker takes their turn
         $gameManager = $session->get('gameManager');
@@ -190,7 +190,7 @@ class TwentyOneGameController extends AbstractController
     }
 
     #[Route("/game/play/reset", name: "game_reset", methods: ['POST'])]
-    public function reset(Request $request, SessionInterface $session): Response
+    public function reset(SessionInterface $session): Response
     {
         $gameManager = $session->get('gameManager');
 
