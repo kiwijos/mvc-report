@@ -54,7 +54,8 @@ class NavbarComponent
             'routeAlias' => 'api',
             'dropdown' => [
                 'quote' => 'Daily Quote',
-                'json_card_index' => 'JSON Card Game',
+                'json_card_index' => 'JSON Card',
+                'json_game' => 'JSON Game',
             ],
             'hasHash' => false,
         ],
