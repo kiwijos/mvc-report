@@ -18,6 +18,28 @@
         </section>
         <section>
             <h2>Lösning med pseudokod</h2>
+            <p>Här är min lösning för att räkna ut risken att nästa kort får spelaren att bli tjock (eng. burst).</p>
+            <code>
+                <pre>
+CALCULATE margin as difference between 21 and current points
+
+IF margin > 13 THEN
+    RETURN no risk of bursting as 0
+END IF
+
+SET burstCards to 0
+
+FOR each card in deck
+    IF value of card > margin
+        INCREMENT burstCards
+    END IF
+END FOR
+
+CALCULATE risk of bursting as number of burstCards divided by total number of cards
+
+RETURN risk of bursting
+                </pre>
+            </code>
         </section>
         <section>
             <h2>Klassdiagram med UML</h2>
