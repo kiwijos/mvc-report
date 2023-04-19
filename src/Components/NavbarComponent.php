@@ -63,6 +63,7 @@ class NavbarComponent
             'name' => 'Game',
             'routeAlias' => 'game_index',
             'dropdown' => [
+                'game_init' => 'Play',
                 'game_docs' => 'Docs',
             ],
             'hasHash' => false,
