@@ -1,1 +1,21 @@
 # kmom03
+### Berätta hur det kändes att modellera ett kortspel med flödesdiagram och pseudokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?
+Spelet tjugoett var nytt för mig. Så flödesdiagrammet blev ett sätt att lära mig hur det går till och fundera över vilka delar jag skulle implementera. Redan från början räknade jag med att ha med vadslagning som en del i spelet. Helt klart ett bra första steg i problemlösandet.
+
+Att använda pseudokod kändes omständigt. Men det beror nog delvis på att standarden var ny. Så det blev lite att lära sig. Jag har för vana att rita saker på ett papper vid sidan om medan jag programmerar. Personligen tycker jag att det fungerar bättre. Men får man väl in standardsättet att skriva pseudokod kan jag tänka mig att det är ett smidigt sätt att planera sin kod på, speciellt om man ska sammarbeta i grupp och behöver förstå vad alla har skrivit.
+
+### Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
+Som helhet är jag rätt nöjd men ser också stor förbättringspotential. Vyn för spelet blev som exempel rätt tung med kontrollsatser. Anledningen är att jag ville visa spelets alla stadier på samma sida. Det skulle dessutom gå att välja om man ville spela med statistisk hjälp eller vadslagning. En lösning hade varit att dela upp spelet i flera vyer.
+
+Ett annat exempel på något som kan förbättras är kontakten mellan klassen som hanterar vadslagningen och den som hanterar resten av spelet. Det hade nog varit bättre att låta vadslagningen bli en del av den andra klassen. Just nu sker kontakten mellan dem i kontrollern. En lösning hade varit att antigen använda komposition eller att helt enkelt lägga all kod som har med vadslagning att göra inuti spelklassen.
+
+Får jag möjlighet att uppdatera spelet vid ett senare tillfälle är det här saker som jag helt klart vill fokusera på. Men just nu behöver jag knyta ihop säcken för att se till att jag ligger i fas.
+
+Något jag är hyfsat nöjd med är spelarklassen och bankirerna. Ganska tidigt bestämde jag mig för att ha tre olika bankirer att spela mot. De skulle alla uppfylla samma interface så att man enkelt skulle kunna byta ut vilken man använder och för att undvika arv. Det enda som egentligen skiljer bankirerna från spelaren är att de behöver en metod för att bestämma hur länge de ska fortsätta spela. För övrigt måste både spelaren och bankirerna kunna ta emot ett kort, spara kortet och räkna ut poängen. Så det här fick också bli ett interface. Då koden för att implementera det här interfacet ser likadant ut gjorde jag det till ett trait. Ett tag implementerade bankirerna både det här allmänna interfacet ”ReceiverInterface” och det mer specifika ”BankerInterface” som jag valt att kalla dem. Till slut valde jag dock att låta BankerInterface utöka ReceiverInterface istället för att det skulle bli enklare att typhinta.
+Jag märker att jag börjar bli långrandig så ska runda av nu. För mer information om den tekniska implementationen hänvisar jag till dokumentationen på rapportsidan.
+
+### Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?
+Min känsla så här långt är positiv. Det blir en bra struktur när man delar upp applikationen i klasser, kontrollers och vyer. En annan bra sak med Symfony är att det är lätt att koppla in andra verktyg som Twig eller Sass.
+
+### Vilken är din TIL för detta kmom?
+Något som var nytt för mig och därför blir den här gångens TIL är att använda interface och trait. Vi har också fått lära oss ett och annat om hur man skriver snygg och ren kod. Lyckades jag omsätta allting i praktiken? Nja, kanske inte allt. Men jag har försökt dela upp ansvaret mellan klasser och injicera objekt snarare än att skapa dem inuti andra klasser bland annat. En och annan vy blev kanske lite väl smart och visst blev det lite mycket kod i kontrollern.
