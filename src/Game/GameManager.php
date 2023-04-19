@@ -75,7 +75,7 @@ class GameManager
     /**
      * Get the risk of the player scoring over 21 (bursting).
      *
-     * @return int As the risk of bursting on drawing another card.
+     * @return float As the risk of bursting on drawing another card.
      */
     public function getBurstRisk(): float
     {
