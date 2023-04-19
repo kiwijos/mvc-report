@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
+use App\Card\Card;
+use App\Game\GameManager;
+use App\Game\BettingManager;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -125,6 +128,7 @@ class CardGameControllerJson
     #[Route("/api/game", name: "json_game", methods: ['GET'])]
     public function jsonGame(SessionInterface $session): JsonResponse
     {
+        /** @var GameManager|null $gameManager */
         $gameManager = $session->get('gameManager', null);
 
         if ($gameManager === null) {
@@ -133,9 +137,15 @@ class CardGameControllerJson
 
         $gameState = $gameManager->getState();
 
+        /** @var Card[] $playerCards */
+        $playerCards = $gameState['playerCards'];
+
+        /** @var Card[] $bankerCards */
+        $bankerCards = $gameState['bankerCards'];
+
         // Represent card objects as strings
-        $gameState['playerCards'] = array_map('strval', $gameState['playerCards']);
-        $gameState['bankerCards'] = array_map('strval', $gameState['bankerCards']);
+        $gameState['playerCards'] = array_map('strval', $playerCards);
+        $gameState['bankerCards'] = array_map('strval', $bankerCards);
 
         // Turn assistance number into a sensible message
         $gameState['assistance'] = "Player has {$gameState['assistance']}% risk of bursting";
@@ -143,10 +153,10 @@ class CardGameControllerJson
         // Turn has won status number into a sensible message
         $gameState['hasWon'] = ($gameState['hasWon'] === 1) ? 'Player won' : (($gameState['hasWon'] === -1) ? 'Banker won' : 'No winner');
 
-        // Get state of betting...
+        /** @var BettingManager|null $bettingManager */
         $bettingManager = $session->get('bettingManager', null);
 
-        // ... but only if betting is on
+        // Get state of betting... but only if betting is on
         if ($bettingManager !== null and $bettingManager->getBetting() === true) {
             $bettingState = $bettingManager->getState();
 

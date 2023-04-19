@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Game\GameManager;
 use App\Game\BettingManager;
+use App\Game\BettingInterface;
 use App\Game\EasyBanker;
 use App\Game\MediumBanker;
 use App\Game\HardBanker;
@@ -65,6 +66,7 @@ class TwentyOneGameController extends AbstractController
         // Start by checking and determining banker difficulty
         $level = $request->request->get('banker', null);
 
+        /** @var BankerInterface $banker */
         $banker;
 
         if ($level === 'easy') {
@@ -81,13 +83,15 @@ class TwentyOneGameController extends AbstractController
             return $this->redirectToRoute('game_init');
         }
 
-        // Set up game manager
+        /** @var GameManager $gameManager */
         $gameManager = new GameManager();
 
         $gameManager->setBanker($banker);
         $gameManager->setPlayer(new Player());
 
+        /** @var DeckOfCards $deck */
         $deck = new DeckOfCards();
+
         $deck->shuffleCards();
         $gameManager->setDeck($deck);
 
@@ -101,7 +105,7 @@ class TwentyOneGameController extends AbstractController
         // Save state
         $session->set('gameManager', $gameManager);
 
-        // Create betting manager too
+        /** @var BettingManager $bettingManager */
         $bettingManager = new BettingManager();
 
         // Set betting mode on or off
@@ -116,9 +120,10 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play", name: "game_play")]
     public function play(SessionInterface $session): Response
     {
-        // Start by checking if gameManager is set up properly
+        /** @var GameManager|null $gameManager */
         $gameManager = $session->get('gameManager', null);
 
+        // Start by checking if gameManager is set up properly
         if ($gameManager === null) {
             $this->addFlash(
                 'warning',
@@ -127,6 +132,7 @@ class TwentyOneGameController extends AbstractController
             return $this->redirectToRoute('game_index');
         }
 
+        /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
 
         // Get state to display in view
@@ -138,11 +144,13 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play/hit", name: "game_hit", methods: ['POST'])]
     public function hit(SessionInterface $session): Response
     {
-        // Player hit for another card
+        /** @var GameManager $gameManager */
         $gameManager = $session->get('gameManager');
 
+        // Player hit for another card
         $gameManager->dealPlayer();
 
+        /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
 
         if ($bettingManager->getBetting() === true) {
@@ -165,11 +173,13 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play/stay", name: "game_stay", methods: ['POST'])]
     public function stay(SessionInterface $session): Response
     {
-        // Player decide to stay, banker takes their turn
+        /** @var GameManager $gameManager */
         $gameManager = $session->get('gameManager');
 
+        // Player decide to stay, banker takes their turn
         $gameManager->dealBanker();
 
+        /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
 
         if ($bettingManager->getBetting() === true) {
@@ -192,6 +202,7 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play/reset", name: "game_reset", methods: ['POST'])]
     public function reset(SessionInterface $session): Response
     {
+        /** @var GameManager $gameManager */
         $gameManager = $session->get('gameManager');
 
         $gameManager->reset();
@@ -206,6 +217,7 @@ class TwentyOneGameController extends AbstractController
     #[Route("/game/play/bet", name: "game_bet", methods: ['POST'])]
     public function bet(Request $request, SessionInterface $session): Response
     {
+        /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
 
         $bet = intval($request->request->get('bet'));
