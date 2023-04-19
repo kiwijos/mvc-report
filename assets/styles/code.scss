@@ -3,4 +3,6 @@ code pre {
     background-color: $color-on-prime-variant;
     color: $color-on-prime;
     border-radius: $base-border-radius;
+    overflow-x: scroll;
+    margin-bottom: $magic-number;
 }
