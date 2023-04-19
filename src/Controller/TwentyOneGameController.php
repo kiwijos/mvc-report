@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Game\GameManager;
 use App\Game\BettingManager;
-use App\Game\BettingInterface;
+use App\Game\BankerInterface;
 use App\Game\EasyBanker;
 use App\Game\MediumBanker;
 use App\Game\HardBanker;
@@ -66,8 +66,8 @@ class TwentyOneGameController extends AbstractController
         // Start by checking and determining banker difficulty
         $level = $request->request->get('banker', null);
 
-        /** @var BankerInterface $banker */
-        $banker;
+        /** @var BankerInterface|null $banker */
+        $banker = null;
 
         if ($level === 'easy') {
             $banker = new EasyBanker();
