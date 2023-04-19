@@ -157,7 +157,7 @@ class CardGameControllerJson
         $bettingManager = $session->get('bettingManager', null);
 
         // Get state of betting... but only if betting is on
-        if ($bettingManager !== null and $bettingManager->getBetting() === true) {
+        if ($bettingManager !== null and $bettingManager->isBetting() === true) {
             $bettingState = $bettingManager->getState();
 
             $gameState['playerCoins'] = $bettingState['playerCoins'];

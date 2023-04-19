@@ -153,7 +153,7 @@ class TwentyOneGameController extends AbstractController
         /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
 
-        if ($bettingManager->getBetting() === true) {
+        if ($bettingManager->isBetting() === true) {
             $hasWon = $gameManager->getHasWon();
 
             if ($hasWon === -1) {
@@ -182,7 +182,7 @@ class TwentyOneGameController extends AbstractController
         /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
 
-        if ($bettingManager->getBetting() === true) {
+        if ($bettingManager->isBetting() === true) {
             $hasWon = $gameManager->getHasWon();
 
             if ($hasWon === -1) {

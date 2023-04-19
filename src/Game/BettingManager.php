@@ -40,7 +40,7 @@ class BettingManager
     }
 
     /** @return bool As true if betting is on, otherwise false. */
-    public function getBetting(): bool
+    public function isBetting(): bool
     {
         return $this->betting;
     }
