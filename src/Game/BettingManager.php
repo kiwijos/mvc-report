@@ -94,6 +94,16 @@ class BettingManager
         $this->gameOver = $this->playerCoins <= 0;
     }
 
+    /**
+     * Create and array of values to use as tick labels for range input.
+     * 
+     * @return int[] As values for the different betting steps.
+     */
+    private function getInputRangeTicks(): array
+    {
+        return range($this->step, $this->playerCoins, $this->step);
+    }
+
     /** @return mixed[] $sate As the current betting state. */
     public function getState(): array
     {
@@ -103,7 +113,7 @@ class BettingManager
             'stake'       => $this->stake,
             'step'        => $this->step,
             'hasBet'      => $this->hasBet,
-            'ticks'       => range($this->step, $this->playerCoins, $this->step),
+            'ticks'       => $this->getInputRangeTicks(),
             'betting'     => $this->betting,
             'gameOver'    => $this->gameOver,
         ];
