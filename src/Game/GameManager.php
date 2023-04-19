@@ -3,6 +3,7 @@
 namespace App\Game;
 
 use App\Card\DeckOfCards;
+use App\Card\Card;
 
 class GameManager
 {

@@ -2,6 +2,8 @@
 
 namespace App\Game;
 
+use App\Card\Card;
+
 /**
  * Trait for implementing the action of passing information from game manager to banker.
  */

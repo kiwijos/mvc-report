@@ -3,6 +3,7 @@
 namespace App\Game;
 
 use App\Game\ReceiverInterface;
+use App\Card\Card;
 
 /**
  * Interface for implementing the most basic banker actions.
