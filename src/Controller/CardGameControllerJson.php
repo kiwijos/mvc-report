@@ -121,4 +121,49 @@ class CardGameControllerJson
         );
         return $response;
     }
+
+    #[Route("/api/game", name: "json_game", methods: ['GET'])]
+    public function jsonGame(SessionInterface $session): JsonResponse
+    {
+        $gameManager = $session->get('gameManager', null);
+
+        if ($gameManager === null) {
+            return new JsonResponse(['notice' => 'No active game to display']);
+        }
+
+        $gameState = $gameManager->getState();
+
+        // Represent card objects as strings
+        $gameState['playerCards'] = array_map('strval', $gameState['playerCards']);
+        $gameState['bankerCards'] = array_map('strval', $gameState['bankerCards']);
+
+        // Turn assistance number into a sensible message
+        $gameState['assistance'] = "Player has {$gameState['assistance']}% risk of bursting";
+
+        // Turn has won status number into a sensible message
+        $gameState['hasWon'] = ($gameState['hasWon'] === 1) ? 'Player won' : (($gameState['hasWon'] === -1) ? 'Banker won' : 'No winner');
+
+        // Get state of betting...
+        $bettingManager = $session->get('bettingManager', null);
+
+        // ... but only if betting is on
+        if ($bettingManager !== null and $bettingManager->getBetting() === true)
+        {
+            $bettingState = $bettingManager->getState();
+
+            $gameState['playerCoins'] = $bettingState['playerCoins'];
+            $gameState['bankerCoins'] = $bettingState['bankerCoins'];
+            $gameState['currentBet'] = $bettingState['stake'];
+            $gameState['gameOver'] = $bettingState['gameOver'] ? 'Yes' : 'No';
+        } 
+
+        $data = $gameState;
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT,
+        );
+
+        return $response;
+    }
 }
