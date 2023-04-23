@@ -28,11 +28,11 @@ trait ReceiveTrait
     }
 
     /**
+     * Receive a dealt card and add points.
+     * 
      * @param Card $card
-     *
-     * @return int As total points
      */
-    public function receive(Card $card): int
+    public function receive(Card $card): void
     {
         $this->cards[] = $card;
         $value = $card->getRank();
@@ -43,8 +43,6 @@ trait ReceiveTrait
         }
 
         $this->points += $value;
-
-        return $this->points;
     }
 
     /**
