@@ -10,7 +10,7 @@ use App\Card\Card;
 interface ReceiverInterface
 {
     /** @param Card $card Dealt card to receive. */
-    public function receive(Card $card): int;
+    public function receive(Card $card): void;
 
     /** @return int As current points. */
     public function getPoints(): int;
