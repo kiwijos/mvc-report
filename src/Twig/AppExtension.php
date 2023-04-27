@@ -8,7 +8,7 @@ use Anax\TextFilter\TextFilter;
 
 class AppExtension extends AbstractExtension
 {
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('parseMarkdownFile', [$this, 'parseMarkdown']),
