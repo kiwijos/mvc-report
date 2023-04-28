@@ -13,7 +13,7 @@ class GameManager
     /** @var ReceiverInterface $player */
     private $player;
 
-    /** @var BankerInterface $banker */
+    /** @var BankerInterface&ReceiverInterface $banker */
     private $banker;
 
     /** @var bool $assistanceMode As true if assistance mode is turned on, otherwise false. */
@@ -66,8 +66,8 @@ class GameManager
         $this->player = $player;
     }
 
-    /** @param BankerInterface $banker */
-    public function setBanker(BankerInterface $banker): void
+    /** @param BankerInterface&ReceiverInterface $banker */
+    public function setBanker(BankerInterface&ReceiverInterface $banker): void
     {
         $this->banker = $banker;
     }
