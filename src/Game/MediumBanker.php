@@ -5,9 +5,10 @@ namespace App\Game;
 use App\Game\ReceiveTrait;
 use App\Game\PassInfoTrait;
 use App\Game\BankerInterface;
+use App\Game\ReceiverInterface;
 use App\Card\Card;
 
-class MediumBanker implements BankerInterface
+class MediumBanker implements BankerInterface, ReceiverInterface
 {
     use ReceiveTrait;
 
