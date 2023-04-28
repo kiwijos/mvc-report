@@ -101,6 +101,6 @@ class DeckOfCards
      */
     public function draw(int $num): array
     {
-        return array_splice($this->deck, $num * -1);
+        return array_reverse(array_splice($this->deck, $num * -1));
     }
 }
