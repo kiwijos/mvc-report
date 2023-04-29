@@ -54,7 +54,7 @@ class BettingManager
      */
     public function placeBet(int $bet): bool
     {
-        if ($bet > $this->playerCoins or $bet < $this->step) {
+        if (($bet > $this->playerCoins) or ($bet % $this->step !== 0)) {
             $this->hasBet = false;
 
             return $this->hasBet;
