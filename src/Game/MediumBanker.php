@@ -68,7 +68,7 @@ class MediumBanker implements BankerInterface, ReceiverInterface
         });
 
         /** @var float $burstRisk Risk of drawing over 21. */
-        $burstRisk = round(count($burstCards) / count($cardsLeft), 2);
+        $burstRisk = fdiv(count($burstCards), count($cardsLeft));
 
         return $burstRisk <= 0.5;
     }
