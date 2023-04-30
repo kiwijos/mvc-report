@@ -31,6 +31,12 @@ class GameManager
         return $this->hasWon;
     }
 
+    /** @return bool As true if assistance mode is turned on, otherwise false. */
+    public function getAssistanceMode(): bool
+    {
+        return $this->assistanceMode;
+    }
+
     /**
      * Move drawn cards to array of removed cards before also resetting player and banker.
      */
