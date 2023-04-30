@@ -24,6 +24,9 @@ class WinsStakeTest extends TestCase
     /**
      * Test player wins stake.
      * @dataProvider winProvider
+     * @param int  $bet
+     * @param int  $max
+     * @param bool $gameOver
      */
     function testPlayerWinsStake(int $bet, int $max, bool $gameOver): void
     {
@@ -41,6 +44,9 @@ class WinsStakeTest extends TestCase
     /**
      * Test banker wins stake.
      * @dataProvider winProvider
+     * @param int  $bet
+     * @param int  $max
+     * @param bool $gameOver
      */
     function testBankerWinsStake(int $bet, int $max, bool $gameOver): void
     {

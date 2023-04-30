@@ -25,6 +25,9 @@ class HardBankerTest extends TestCase
     /**
      * Test banker will keep hitting or stop after receiving cards and info about player.
      * @dataProvider cardProvider
+     * @param int[] $ranks
+     * @param int   $playerPoints
+     * @param bool  $expected
      */
     public function testKeepHitting(array $ranks, int $playerPoints, bool $expected): void
     {

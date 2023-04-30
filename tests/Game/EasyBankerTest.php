@@ -25,6 +25,8 @@ class EasyBankerTest extends TestCase
     /**
      * Test banker will keep hitting or stop after receiving cards.
      * @dataProvider cardProvider
+     * @param int[] $ranks
+     * @param bool  $expected
      */
     public function testKeepHitting(array $ranks, bool $expected): void
     {

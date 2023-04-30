@@ -25,6 +25,8 @@ class ReceiverTest extends TestCase
     /**
      * Test receive cards.
      * @dataProvider cardProvider
+     * @param int[] $ranks
+     * @param int   $expected
      */
     public function testReceiveCardsScoreOk(array $ranks, int $expected): void
     {

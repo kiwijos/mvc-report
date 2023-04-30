@@ -26,7 +26,11 @@ class GameHasWonTest extends TestCase
         ];
     }
     /**
+     * Test different cases of who has won.
      * @dataProvider pointsProvider
+     * @param int $playerPoints
+     * @param int $bankerPoints
+     * @param int $expected
      */
     function testHasWon(int $playerPoints, int $bankerPoints, int $expected):void
     {

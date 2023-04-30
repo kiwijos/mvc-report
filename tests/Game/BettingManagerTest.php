@@ -49,8 +49,10 @@ class BettingManagerTest extends TestCase
     /**
      * Test creating a new BettingManager with invalid values passed to the constructor.
      * @dataProvider invalidValueProvider
+     * @param int $max
+     * @param int $step
      */
-    function testCreateBettingManagerWithArgumentsRaisesException($max, $step): void
+    function testCreateBettingManagerWithArgumentsRaisesException(int $max, int $step): void
     {
         $this->expectException(\ValueError::class);
         $bettingManager = new BettingManager($max, $step);

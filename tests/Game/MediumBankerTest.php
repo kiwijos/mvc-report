@@ -28,6 +28,8 @@ class MediumBankerTest extends TestCase
     /**
      * Test banker will keep hitting or stop after receiving cards.
      * @dataProvider cardProvider
+     * @param int[] $ranks
+     * @param bool  $expected
      */
     public function testKeepHitting(array $ranks, bool $expected): void
     {
@@ -60,6 +62,9 @@ class MediumBankerTest extends TestCase
     /**
      * Test banker will keep hitting or stop after receiving cards.
      * @dataProvider cardsRemovedProvider
+     * @param int[] $ranks
+     * @param int[] $removedCards
+     * @param bool  $expected
      */
     public function testKeepHittingCardsRemoved(array $ranks, array $removedCards, bool $expected): void
     {

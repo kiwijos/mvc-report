@@ -39,6 +39,8 @@ class GameManagerPlayerTest extends TestCase
      * Test deal player cards.
      * Because the deck is ordered by default, we can expect which cards are drawn.
      * @dataProvider cardProvider
+     * @param int $numCards
+     * @param int $score
      */
     public function testDealPlayer(int $numCards, int $score): void
     {
@@ -78,6 +80,10 @@ class GameManagerPlayerTest extends TestCase
     /**
      * Test calculate player burst risk.
      * @dataProvider valueProvider
+     * @param int   $playerPoints
+     * @param int   $deckCount
+     * @param int[] $deckValues
+     * @param float $expected
      */
     function testGetPlayerBurstRisk(int $playerPoints, int $deckCount, array $deckValues, float $expected): void
     {

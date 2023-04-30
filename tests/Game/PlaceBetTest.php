@@ -25,6 +25,10 @@ class PlaceBetTest extends TestCase
     /**
      * Test placing bet.
      * @dataProvider betProvider
+     * @param int  $bet
+     * @param int  $max
+     * @param int  $coinsLeft
+     * @param bool $expected
      */
     function testPlaceBet(int $bet, int $max, int $coinsLeft, bool $expected): void
     {
@@ -53,6 +57,9 @@ class PlaceBetTest extends TestCase
     /**
      * Test how stake is updated when placing bet.
      * @dataProvider stakeProvider
+     * @param int $bet
+     * @param int $max
+     * @param int $expected
      */
     function testPlaceBetGetStake(int $bet, int $max, int $expected): void
     {
