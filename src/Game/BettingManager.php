@@ -2,6 +2,8 @@
 
 namespace App\Game;
 
+use ValueError;
+
 class BettingManager
 {
     /**
@@ -29,6 +31,18 @@ class BettingManager
      */
     public function __construct(int $max = 100, int $step = 5)
     {
+        if ($step > $max) {
+            throw new ValueError("Step can not be bigger than max bet");
+        }
+
+        if ($step < 1) {
+            throw new ValueError("Minimum step is 1");
+        }
+
+        if ($max % $step !== 0) {
+            throw new ValueError("Max value must be divisible by step");
+        }
+
         $this->playerCoins = $this->bankerCoins = $max;
         $this->step = $step;
     }
