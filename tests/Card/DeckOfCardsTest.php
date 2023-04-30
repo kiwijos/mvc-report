@@ -131,7 +131,7 @@ class DeckOfCardsTest extends TestCase
         $this->assertEmpty($cards);             // Assert deck is now empty
     }
 
-    function testDrawMultipleCardsCountOk()
+    function testDrawMultipleCardsCountOk(): void
     {
         $deck = new DeckOfCards();              // Create full deck of 52 cards
 
@@ -145,7 +145,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * 
      */
-    function testDrawMultipleCardsOrderIsOk()
+    function testDrawMultipleCardsOrderIsOk(): void
     {
         $deck = new DeckOfCards();              // Create full deck of 52 cards
 
