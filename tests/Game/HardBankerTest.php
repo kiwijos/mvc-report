@@ -11,6 +11,7 @@ class HardBankerTest extends TestCase
 {
     /**
      * Provide data sets to test keepHitting method.
+     * @return mixed[] As data set
      */
     public static function cardProvider(): array
     {
@@ -25,8 +26,6 @@ class HardBankerTest extends TestCase
      * Test banker will keep hitting or stop after receiving cards and info about player.
      * @dataProvider cardProvider
      */
-    #[DataProvider('cardProvider')]
-    #[TestDox('$_dataName')]
     public function testKeepHitting(array $ranks, int $playerPoints, bool $expected): void
     {
         $banker = new HardBanker();
