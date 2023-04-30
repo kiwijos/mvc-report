@@ -58,7 +58,10 @@ class GameManagerPlayerTest extends TestCase
         }
         
         $res = $this->gameManager->getState();
-        $this->assertCount($numCards, $res["playerCards"]);
+
+        /** @var \App\Card\Card[] $playerCards */
+        $playerCards = $res["playerCards"];
+        $this->assertCount($numCards, $playerCards);
         $this->assertSame($score, $res["playerPoints"]);
         $this->assertSame(52 - $numCards, $res["cardCount"]);
     }

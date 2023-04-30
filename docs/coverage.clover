@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1682890503">
-  <project timestamp="1682890503">
+<coverage generated="1682892462">
+  <project timestamp="1682892462">
     <file name="/Users/alex/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="9" coveredelements="9"/>
@@ -607,7 +607,7 @@
       </class>
       <line num="29" type="method" name="getHasWon" visibility="public" complexity="1" crap="1" count="7"/>
       <line num="31" type="stmt" count="7"/>
-      <line num="35" type="method" name="getAssistanceMode" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="35" type="method" name="hasAssistanceMode" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="37" type="stmt" count="1"/>
       <line num="43" type="method" name="reset" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="46" type="stmt" count="0"/>

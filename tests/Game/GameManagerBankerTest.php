@@ -45,7 +45,10 @@ class GameManagerBankerTest extends TestCase
         $this->gameManager->dealBanker();
         
         $res = $this->gameManager->getState();
-        $this->assertCount(5, $res["bankerCards"]);
+
+        /** @var \App\Card\Card[] $bankerCards */
+        $bankerCards = $res["bankerCards"];
+        $this->assertCount(5, $bankerCards);
         $this->assertSame(20, $res["bankerPoints"]);
         $this->assertSame(5, $res["cardCount"]);
     }
