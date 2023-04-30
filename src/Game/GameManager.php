@@ -32,7 +32,7 @@ class GameManager
     }
 
     /** @return bool As true if assistance mode is turned on, otherwise false. */
-    public function getAssistanceMode(): bool
+    public function hasAssistanceMode(): bool
     {
         return $this->assistanceMode;
     }

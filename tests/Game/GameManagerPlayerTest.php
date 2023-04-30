@@ -63,7 +63,7 @@ class GameManagerPlayerTest extends TestCase
 
     /**
      * Provide data sets to test getBurstRisk method.
-     * tests/Game/ReceiverTest.php
+     * @return mixed[] As data set
      */
     public static function valueProvider(): array
     {
@@ -106,12 +106,12 @@ class GameManagerPlayerTest extends TestCase
      */
     function testSetAssistanceMode(): void
     {
-        $before = $this->gameManager->getAssistanceMode();
+        $before = $this->gameManager->hasAssistanceMode();
         $this->assertFalse($before);
 
         $this->gameManager->setAssistanceMode(true);
 
-        $after = $this->gameManager->getAssistanceMode();
+        $after = $this->gameManager->hasAssistanceMode();
         $this->assertTrue($after);
     }
 }
