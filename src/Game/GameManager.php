@@ -103,9 +103,6 @@ class GameManager
     public function dealPlayer(): void
     {
         $this->player->receive($this->deck->draw(1)[0]);
-
-        $this->updateHasWonStatus();
-
         $this->refillEmptyDeck();
     }
 
@@ -124,8 +121,6 @@ class GameManager
 
             $this->refillEmptyDeck();
         }
-
-        $this->updateHasWonStatus();
     }
 
     /**
@@ -155,7 +150,7 @@ class GameManager
     /**
      * Update who (if anyone) has won by checking their respective win conditions.
      */
-    private function updateHasWonStatus(): void
+    public function updateHasWonStatus(): void
     {
         $playerPoints = $this->player->getPoints();
         $bankerPoints = $this->banker->getPoints();
