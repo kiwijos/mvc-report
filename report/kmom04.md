@@ -11,8 +11,8 @@ Jag lyckades täcka in det mesta rätt bra och nådde även 90% på totalen. Pro
 Den överordnade spelklassen som styr över spelets gång var svår att testa. Den har många beroenden i form av andra klasser, varav en del också beror på något. Nästan alla metoder uppdaterar dessutom bara klassens state utan att returnera något. För att inte tala om att flera av dem gör anrop till andra metoder. De här sakerna gjorde det svårt att testa enskilda delar av klassen.
 
 En förhållandevis enkel förbättring som skulle göra klassen mer testbar är att ta bort metodanropen inuti andra metoder och istället göra anropen utanför. Kanske hade man även vunnit på att returnera ett faktiskt värde istället för att tyst uppdatera klassens state. Då hade man kunnat ta det där returvärdet och stoppa in det i klassen igen fast med en settermetod så att det blir tydligt vad man gör.
-Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.
 
+### Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.
 Vissa delar skulle jag vilja skriva om från grunden. Men jag har inte känt att det funnits tid till det just nu så jag har nöjt mig med att göra småändringar och att se det hela som en läxa inför kommande projekt. En sak som jag ändrade är metoden som kollar om någon har vunnit. Innan var den privat och anropades inuti metoderna för att dela ut kort till spelaren och bankiren. Då den jämför spelarens och bankirens poäng var jag tvungen att ha instanser av både även om jag bara ville testa den ena. Så jag gjorde metoden publik och anropar den efter anropet till metoderna som drar kort istället.
 
 ### Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.
