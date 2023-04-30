@@ -11,6 +11,7 @@ class ReceiverTest extends TestCase
 {
     /**
      * Provide data sets to test receive method.
+     * @return mixed[] As data set
      */
     public static function cardProvider(): array
     {
@@ -25,8 +26,6 @@ class ReceiverTest extends TestCase
      * Test receive cards.
      * @dataProvider cardProvider
      */
-    #[DataProvider('cardProvider')]
-    #[TestDox('$_dataName')]
     public function testReceiveCardsScoreOk(array $ranks, int $expected): void
     {
         $player = new Player();
