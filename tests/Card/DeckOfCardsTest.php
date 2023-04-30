@@ -12,7 +12,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test create new object no argument. Expect a deck of 52 Card objects.
      */
-    function testCreateDeckNoArgument(): void
+    public function testCreateDeckNoArgument(): void
     {
         $deck = new DeckOfCards();
         $cards = $deck->getDeck();
@@ -24,7 +24,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test create new object with argument specifying an array of Card objects.
      */
-    function testCreateDeckWithArgument(): void
+    public function testCreateDeckWithArgument(): void
     {
         // Create a test stub for Card
         $card = $this->createStub(Card::class);
@@ -39,7 +39,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test create new object with argument specifying an empty array.
      */
-    function testCreateEmptyDeck(): void
+    public function testCreateEmptyDeck(): void
     {
         $deck = new DeckOfCards([]);
         $cards = $deck->getDeck();
@@ -49,10 +49,10 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test add card.
      */
-    function testAddCard(): void
+    public function testAddCard(): void
     {
         $deck = new DeckOfCards([]); // Create empty deck
-        
+
         // Create a test stub for Card
         $card = $this->createStub(Card::class);
 
@@ -68,15 +68,15 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test get cards as array of strings.
      */
-    function testGetCardsAsString(): void
+    public function testGetCardsAsString(): void
     {
         // Create a test stub for Card
         $card = $this->createStub(Card::class);
 
-         // Configure the test stub
+        // Configure the test stub
         $card->method('__toString')
             ->willReturnOnConsecutiveCalls('first', 'second', 'third');
-        
+
         $deck = new DeckOfCards([$card, $card, $card]);
 
         $res = $deck->getString();
@@ -87,15 +87,15 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test get array of card values.
      */
-    function testGetCardValues(): void
+    public function testGetCardValues(): void
     {
         // Create a test stub for Card
         $card = $this->createStub(Card::class);
 
-         // Configure the test stub
+        // Configure the test stub
         $card->method('getRank')
             ->willReturnOnConsecutiveCalls(1, 2, 3);
-        
+
         $deck = new DeckOfCards([$card, $card, $card]);
 
         $res = $deck->getValues();
@@ -103,22 +103,22 @@ class DeckOfCardsTest extends TestCase
     }
 
     /**
-     * Test get card count. 
+     * Test get card count.
      */
-    function testGetCardCount(): void
+    public function testGetCardCount(): void
     {
-         $card = $this->createStub(Card::class);         // Create a test stub for Card
+        $card = $this->createStub(Card::class);         // Create a test stub for Card
 
-         $deck = new DeckOfCards([$card, $card, $card]);
+        $deck = new DeckOfCards([$card, $card, $card]);
 
-         $count = $deck->getCount();
-         $this->assertSame(3, $count);
+        $count = $deck->getCount();
+        $this->assertSame(3, $count);
     }
 
     /**
      * Test drawing a single card.
      */
-    function testDrawSingleCardIsSame(): void
+    public function testDrawSingleCardIsSame(): void
     {
         $card = $this->createStub(Card::class); // Create a test stub for Card
 
@@ -131,7 +131,7 @@ class DeckOfCardsTest extends TestCase
         $this->assertEmpty($cards);             // Assert deck is now empty
     }
 
-    function testDrawMultipleCardsCountOk(): void
+    public function testDrawMultipleCardsCountOk(): void
     {
         $deck = new DeckOfCards();              // Create full deck of 52 cards
 
@@ -139,18 +139,18 @@ class DeckOfCardsTest extends TestCase
         $this->assertCount(3, $draw);           // Assert count is correct
 
         $cards = $deck->getDeck();              // Get cards left in deck
-        $this->assertCount(49, $cards);         // Assert deck has three fewer cards   
+        $this->assertCount(49, $cards);         // Assert deck has three fewer cards
     }
 
     /**
-     * 
+     *
      */
-    function testDrawMultipleCardsOrderIsOk(): void
+    public function testDrawMultipleCardsOrderIsOk(): void
     {
         $deck = new DeckOfCards();              // Create full deck of 52 cards
 
         $draw = $deck->draw(3);                 // Draw three cards
-        
+
         $res = array_map('strval', $draw);      // Get string representation of each card
 
         // Because deck is ordered by default,
@@ -161,7 +161,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test shuffle cards.
      */
-    function testShuffleCards(): void
+    public function testShuffleCards(): void
     {
         srand(42);                                  // Seed the random number generator to get reproducible results
 

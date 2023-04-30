@@ -29,7 +29,7 @@ trait ReceiveTrait
 
     /**
      * Receive a dealt card and add points.
-     * 
+     *
      * @param Card $card
      */
     public function receive(Card $card): void

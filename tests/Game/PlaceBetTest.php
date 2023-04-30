@@ -30,7 +30,7 @@ class PlaceBetTest extends TestCase
      * @param int  $coinsLeft
      * @param bool $expected
      */
-    function testPlaceBet(int $bet, int $max, int $coinsLeft, bool $expected): void
+    public function testPlaceBet(int $bet, int $max, int $coinsLeft, bool $expected): void
     {
         $bettingManager = new BettingManager($max);
         $bettingManager->placeBet($bet);
@@ -61,7 +61,7 @@ class PlaceBetTest extends TestCase
      * @param int $max
      * @param int $expected
      */
-    function testPlaceBetGetStake(int $bet, int $max, int $expected): void
+    public function testPlaceBetGetStake(int $bet, int $max, int $expected): void
     {
         $bettingManager = new BettingManager($max);
         $bettingManager->placeBet($bet);
@@ -72,14 +72,14 @@ class PlaceBetTest extends TestCase
     /**
      * Test banker cannot match bet.
      */
-    function testBankerCannotMatchBet(): void
+    public function testBankerCannotMatchBet(): void
     {
         $bettingManager = new BettingManager(100);
 
         // Score is 100-100, place first bet and give win to player
         $bettingManager->placeBet(70);
         $bettingManager->playerWinsStake();
-        
+
         // Score is now 170-30, place second bet
         $bettingManager->placeBet(50);
 

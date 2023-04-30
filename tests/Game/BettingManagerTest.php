@@ -12,7 +12,7 @@ class BettingManagerTest extends TestCase
     /**
      * Test creating a new BettingManager without arguments.
      */
-    function testCreateBettingManagerNoArguments(): void
+    public function testCreateBettingManagerNoArguments(): void
     {
         $bettingManager = new BettingManager();
         $res = $bettingManager->getState();
@@ -24,7 +24,7 @@ class BettingManagerTest extends TestCase
     /**
      * Test creating a new BettingManager with arguments successfully.
      */
-    function testCreateBettingManagerWithArgumentsOk(): void
+    public function testCreateBettingManagerWithArgumentsOk(): void
     {
         $bettingManager = new BettingManager(50, 10);
         $res = $bettingManager->getState();
@@ -52,7 +52,7 @@ class BettingManagerTest extends TestCase
      * @param int $max
      * @param int $step
      */
-    function testCreateBettingManagerWithArgumentsRaisesException(int $max, int $step): void
+    public function testCreateBettingManagerWithArgumentsRaisesException(int $max, int $step): void
     {
         $this->expectException(\ValueError::class);
         $bettingManager = new BettingManager($max, $step);
@@ -61,7 +61,7 @@ class BettingManagerTest extends TestCase
     /**
      * Test betting is off (false) by default.
      */
-    function testIsBettingFalse(): void
+    public function testIsBettingFalse(): void
     {
         $bettingManager = new BettingManager();
         $this->assertFalse($bettingManager->isBetting());
@@ -70,7 +70,7 @@ class BettingManagerTest extends TestCase
     /**
      * Test turning betting on (true).
      */
-    function testSetBettingTrue(): void
+    public function testSetBettingTrue(): void
     {
         $bettingManager = new BettingManager();
         $bettingManager->setBetting(true);

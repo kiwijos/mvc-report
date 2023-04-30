@@ -28,7 +28,7 @@ class WinsStakeTest extends TestCase
      * @param int  $max
      * @param bool $gameOver
      */
-    function testPlayerWinsStake(int $bet, int $max, bool $gameOver): void
+    public function testPlayerWinsStake(int $bet, int $max, bool $gameOver): void
     {
         $bettingManager = new BettingManager($max);
         $bettingManager->placeBet($bet);
@@ -48,7 +48,7 @@ class WinsStakeTest extends TestCase
      * @param int  $max
      * @param bool $gameOver
      */
-    function testBankerWinsStake(int $bet, int $max, bool $gameOver): void
+    public function testBankerWinsStake(int $bet, int $max, bool $gameOver): void
     {
         $bettingManager = new BettingManager($max);
         $bettingManager->placeBet($bet);

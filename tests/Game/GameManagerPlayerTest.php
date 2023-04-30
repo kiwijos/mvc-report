@@ -14,7 +14,7 @@ class GameManagerPlayerTest extends TestCase
     protected function setUp(): void
     {
         // Create a test stub for Banker as some of the methods
-        // used in these test cases will be dependent on having 
+        // used in these test cases will be dependent on having
         // a banker defined
         $banker = $this->createStub(BankerInterface::class);
 
@@ -46,8 +46,8 @@ class GameManagerPlayerTest extends TestCase
     {
         // Create actual deck
         $this->gameManager
-            ->setDeck(new \App\Card\DeckOfCards);
-        
+            ->setDeck(new \App\Card\DeckOfCards());
+
         // Create actual player
         $player = new Player();
         $this->gameManager->setPlayer($player);
@@ -56,7 +56,7 @@ class GameManagerPlayerTest extends TestCase
         for ($i = 0; $i < $numCards; $i++) {
             $this->gameManager->dealPlayer();
         }
-        
+
         $res = $this->gameManager->getState();
 
         /** @var \App\Card\Card[] $playerCards */
@@ -88,7 +88,7 @@ class GameManagerPlayerTest extends TestCase
      * @param int[] $deckValues
      * @param float $expected
      */
-    function testGetPlayerBurstRisk(int $playerPoints, int $deckCount, array $deckValues, float $expected): void
+    public function testGetPlayerBurstRisk(int $playerPoints, int $deckCount, array $deckValues, float $expected): void
     {
         // Create and configure player stub
         $player = $this->createStub(ReceiverInterface::class);
@@ -113,7 +113,7 @@ class GameManagerPlayerTest extends TestCase
     /**
      * Test turning assistance mode on (true).
      */
-    function testSetAssistanceMode(): void
+    public function testSetAssistanceMode(): void
     {
         $before = $this->gameManager->hasAssistanceMode();
         $this->assertFalse($before);

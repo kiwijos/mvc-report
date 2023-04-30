@@ -32,7 +32,7 @@ class GameHasWonTest extends TestCase
      * @param int $bankerPoints
      * @param int $expected
      */
-    function testHasWon(int $playerPoints, int $bankerPoints, int $expected):void
+    public function testHasWon(int $playerPoints, int $bankerPoints, int $expected): void
     {
         // Create and configure stubs
         $player = $this->createStub(ReceiverInterface::class);

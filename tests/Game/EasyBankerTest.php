@@ -42,5 +42,5 @@ class EasyBankerTest extends TestCase
 
         $res = $banker->keepHitting();
         $this->assertSame($expected, $res);
-    }  
+    }
 }

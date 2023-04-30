@@ -39,7 +39,7 @@ class ReceiverTest extends TestCase
                 ->willReturn($rank);
             $player->receive($card);
         }
-        
+
         // Assert added values match expected result
         $points = $player->getPoints();
         $this->assertSame($expected, $points);
@@ -48,7 +48,7 @@ class ReceiverTest extends TestCase
     /**
      * Test receive card method stores card.
      */
-    function testGetCards(): void
+    public function testGetCards(): void
     {
         $player = new Player();
         $card = $this->createStub(\App\Card\Card::class);
@@ -61,7 +61,7 @@ class ReceiverTest extends TestCase
     /**
      * Test reset method.
      */
-    function testReset(): void
+    public function testReset(): void
     {
         $player = new Player();
 

@@ -14,7 +14,7 @@ class GameManagerBankerTest extends TestCase
     protected function setUp(): void
     {
         // Create a test stub for Player as some of the methods
-        // used in these test cases will be dependent on having 
+        // used in these test cases will be dependent on having
         // a player defined
         $player = $this->createStub(ReceiverInterface::class);
 
@@ -36,14 +36,14 @@ class GameManagerBankerTest extends TestCase
 
         // Create actual deck
         $this->gameManager->setDeck(new \App\Card\DeckOfCards($cards));
-        
+
         // Use EasyBanker as it has the most straight forward interaction
         $this->gameManager->setBanker(new EasyBanker());
 
         // Because the banker will keep hitting unit it hits 17,
         // we can expect it to draw the cards 2, 3, 4, 5 and 6
         $this->gameManager->dealBanker();
-        
+
         $res = $this->gameManager->getState();
 
         /** @var \App\Card\Card[] $bankerCards */

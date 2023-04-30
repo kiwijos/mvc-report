@@ -44,5 +44,5 @@ class HardBankerTest extends TestCase
         $banker->passInfo([], $playerPoints);
         $res = $banker->keepHitting();
         $this->assertSame($expected, $res);
-    }  
+    }
 }

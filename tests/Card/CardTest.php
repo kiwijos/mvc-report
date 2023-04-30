@@ -13,7 +13,7 @@ class CardTest extends TestCase
     /**
      * Test create new Card object.
      */
-    function testCreateCard(): void
+    public function testCreateCard(): void
     {
         $card = new CardGraphic(1, 1);
         $this->assertInstanceOf('App\Card\Card', $card);
@@ -25,7 +25,7 @@ class CardTest extends TestCase
      * That initial value can be 0 (as in this case) and is used for indexing inside the class.
      * No real playing card has a rank of 0 though, so the getRank method increments it by one.
      */
-    function testGetRank(): void
+    public function testGetRank(): void
     {
         $card = new CardGraphic(42, 0);
         $res = $card->getRank();
@@ -36,7 +36,7 @@ class CardTest extends TestCase
     /**
      * Test get suit integer value.
      */
-    function testGetSuit(): void
+    public function testGetSuit(): void
     {
         $card = new CardGraphic(1, 2);
         $res = $card->getSuit();
@@ -47,7 +47,7 @@ class CardTest extends TestCase
     /**
      * Test get Card string representation.
      */
-    function testCardToString(): void
+    public function testCardToString(): void
     {
         $card = new Card(1, 2);
         $res = $card->__toString();
@@ -58,7 +58,7 @@ class CardTest extends TestCase
     /**
      * Test get CardGraphic string representation.
      */
-    function testCardGraphicToString(): void
+    public function testCardGraphicToString(): void
     {
         $card = new CardGraphic(1, 2);
         $res = $card->__toString();
