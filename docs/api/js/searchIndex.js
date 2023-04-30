@@ -641,6 +641,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Game-GameManager.html#method_getHasWon"
         },                {
+            "fqsen": "\\App\\Game\\GameManager\u003A\u003AhasAssistanceMode\u0028\u0029",
+            "name": "hasAssistanceMode",
+            "summary": "",
+            "url": "classes/App-Game-GameManager.html#method_hasAssistanceMode"
+        },                {
             "fqsen": "\\App\\Game\\GameManager\u003A\u003Areset\u0028\u0029",
             "name": "reset",
             "summary": "Move\u0020drawn\u0020cards\u0020to\u0020array\u0020of\u0020removed\u0020cards\u0020before\u0020also\u0020resetting\u0020player\u0020and\u0020banker.",
