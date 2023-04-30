@@ -35,6 +35,7 @@ class BettingManagerTest extends TestCase
 
     /**
      * Provide data sets to test exception is raised when passing invalid value.
+     * @return mixed[] As data set
      */
     public static function invalidValueProvider(): array
     {

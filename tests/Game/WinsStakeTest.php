@@ -11,6 +11,7 @@ class WinsStakeTest extends TestCase
 {
     /**
      * Provide data sets to test placeBet method.
+     * @return mixed[] As data set
      */
     public static function winProvider(): array
     {

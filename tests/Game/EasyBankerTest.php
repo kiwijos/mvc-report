@@ -11,6 +11,7 @@ class EasyBankerTest extends TestCase
 {
     /**
      * Provide data sets to test keepHitting method.
+     * @return mixed[] As data set
      */
     public static function cardProvider(): array
     {

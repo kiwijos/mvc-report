@@ -11,6 +11,7 @@ class MediumBankerTest extends TestCase
 {
     /**
      * Provide data sets to test keepHitting method.
+     * @return mixed[] As data set
      */
     public static function cardProvider(): array
     {
@@ -46,6 +47,7 @@ class MediumBankerTest extends TestCase
 
     /**
      * Provide data sets to test keepHitting method when some cards have previously been removed.
+     * @return mixed[] As data set
      */
     public static function cardsRemovedProvider(): array
     {

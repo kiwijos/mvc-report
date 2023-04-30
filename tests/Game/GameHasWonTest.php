@@ -11,6 +11,7 @@ class GameHasWonTest extends TestCase
 {
     /**
      * Provide data sets to test who has won.
+     * @return mixed[] As data set
      */
     public static function pointsProvider(): array
     {

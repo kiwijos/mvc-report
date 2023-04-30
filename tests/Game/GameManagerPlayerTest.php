@@ -24,6 +24,7 @@ class GameManagerPlayerTest extends TestCase
 
     /**
      * Provide data sets to test dealPlayer method.
+     * @return mixed[] As data set
      */
     public static function cardProvider(): array
     {
@@ -62,6 +63,7 @@ class GameManagerPlayerTest extends TestCase
 
     /**
      * Provide data sets to test getBurstRisk method.
+     * tests/Game/ReceiverTest.php
      */
     public static function valueProvider(): array
     {
