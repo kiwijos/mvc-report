@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc045872f68327d2e016c24c0583d50a",
+    "content-hash": "82dbafc65691eaaed15010bceafed4e1",
     "packages": [
         {
             "name": "anax/textfilter",
