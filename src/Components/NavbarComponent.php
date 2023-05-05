@@ -46,6 +46,7 @@ class NavbarComponent
                 'lucky' => 'Lucky Number',
                 'pig_index' => 'Pig Game',
                 'card_index' => 'Card Game',
+                'app_product' => 'Product'
             ],
             'hasHash' => false,
         ],
