@@ -16,7 +16,6 @@
     <rule ref="rulesets/design.xml" />
     <rule ref="rulesets/controversial.xml" />
     <rule ref="rulesets/unusedcode.xml" />
-    <rule ref="rulesets/naming.xml" />
 
     <!--
         Import the entire cyclomatic complexity rule set and
@@ -27,5 +26,13 @@
         <properties>
             <property name="reportLevel" value="9" />
         </properties>
+    </rule>
+
+    <!--
+        Import the naming rule set and
+        exclude the ShortVariable rule specifically.
+    -->
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
     </rule>
 </ruleset>
