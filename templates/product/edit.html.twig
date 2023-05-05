@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <form>
+        <a class="" href="{{ path('product_show_all') }}">
+            <i class="fa-solid fa-arrow-left"></i>
+            Show All Products
+        </a>
+        <fieldset class="flex flex-col gap-mid">
+            <input type="text" required value="{{ product.name }}" name="name">
+            <input type="number" required value="{{ product.price }}" name="price">
+            <textarea required rows="4" name="description">{{ product.description }}</textarea>
+            <input type="text" required value="{{ product.company }}" name="company">
+        </fieldset>
+        <fieldset>
+            <div class="flex gap-mid">
+                <button class="btn btn-success fill icon-check"
+                    type="submit"
+                    formmethod="post"
+                    formaction="{{ path('product_edit_post', { id: product.id }) }}">
+                    Confirm
+                </button>
+                <button class="btn"
+                    type="submit"
+                    formmethod="get"
+                    formaction="{{ path('product_show', { id: product.id }) }}">
+                    Cancel
+                </button>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

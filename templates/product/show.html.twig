@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <form method="get">
+        <a class="" href="{{ path('product_show_all') }}">
+            <i class="fa-solid fa-arrow-left"></i>
+            Show All Products
+        </a>
+        <fieldset class="flex flex-col gap-mid">
+            <input type="text" readonly value="{{ product.name }}">
+            <input type="number" readonly value="{{ product.price }}">
+            <textarea readonly rows="4">{{ product.description }}</textarea>
+            <input type="text" readonly value="{{ product.company }}">
+        </fieldset>
+        <fieldset>
+            <div class="flex gap-mid">
+                <button class="btn btn-notice fill icon-edit"
+                        type="submit"
+                        formaction="{{ path('product_edit', { id: product.id }) }}">
+                        Edit
+                </button>
+                <button class="btn btn-danger icon-xmark"
+                        type="submit"
+                        formaction="{{ path('product_delete', { id: product.id }) }}">
+                        Delete
+                </button>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

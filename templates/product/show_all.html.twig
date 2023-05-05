@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">Products</h1>
+        <a class="btn btn-notice fill icon-plus"
+            href="{{ path('create_product')}}">
+            Create Product
+        </a>
+    </div>
+    <article>
+        <div class="flex flex-row gap-lg even-items wrap">
+        {% for product in products %}
+            <div class="well flex flex-col space-between">
+                <h3>{{ product.name }}</h3>
+                <ul class="pretty-ul">
+                    <li>{{ product.price }}$</li>
+                    <li>{{ product.description }}</li>
+                    <li>Made by {{ product.company }}</li>
+                </ul>
+                <form method="get">
+                    <div class="flex gap-mid wrap">
+                        <button class="btn btn-notice fill icon-edit full-width"
+                                type="submit"
+                                formaction="{{ path('product_edit', { id: product.id }) }}">
+                                Edit
+                        </button>
+                        <button class="btn btn-danger icon-xmark full-width"
+                                type="submit"
+                                formaction="{{ path('product_delete', { id: product.id }) }}">
+                                Delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        {% endfor %} 
+        </div>
+    </article>
+    
+{% endblock %}
