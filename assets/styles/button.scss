@@ -28,7 +28,7 @@
 
 $btn-icons: (
 "icon-play": "\f04b",
-"icon-check": "\f058",
+"icon-check": "\f00c",
 "icon-info": "\f05a",
 "icon-warning": "\f06a",
 "icon-stop": "\f256",
@@ -37,6 +37,8 @@ $btn-icons: (
 "icon-coins": "\f51e",
 "icon-xmark": "\f00d",
 "icon-piggy": "\f4d3",
+"icon-edit": "\f044",
+"icon-plus": "\2b",
 );
 
 @each $type, $icon in $btn-icons {
