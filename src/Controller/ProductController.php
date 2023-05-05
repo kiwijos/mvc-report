@@ -78,7 +78,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/delete/{id}', name: 'product_delete')]
+    #[Route('/product/delete/{id}', name: 'product_delete', methods: ['GET'])]
     public function delete(Product $product): Response
     {
         return $this->render('product/delete.html.twig', ['product' => $product]);
