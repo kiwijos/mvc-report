@@ -42,3 +42,36 @@ a {
 }
 
 p { margin-bottom: $magic-number; }
+
+.underline { text-decoration: underline; }
+
+.italic { font-style: italic; }
+
+.weight-light { font-weight: 300; }
+
+.weight-normal { font-weight: 400; }
+
+.weight-medium { font-weight: 500; }
+
+.weight-bold { font-weight: 600; }
+
+// Create a mapping of class names to colors
+$text-colors: (
+"text-prime": $color-prime,
+"text-on-prime": $color-on-prime,
+"text-variant": $color-prime-variant,
+"text-on-variant": $color-on-prime-variant,
+"text-inverse": $color-inverse,
+"text-accent": $color-accent,
+"text-success": $color-success,
+"text-notice": $color-notice,
+"text-warning": $color-warning,
+"text-danger": $color-danger,
+);
+
+// Apply different styling
+@each $type, $color in $text-colors {
+    .#{$type} {
+        color: $color;
+    }
+}
