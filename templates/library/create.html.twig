@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Create Book{% endblock %}
+
+{% block body %}
+    <form>
+        <a href="{{ path('library_read_many') }}" class="btn round">
+            <i class="fa-solid fa-arrow-left"></i>
+            Show All Books
+        </a>
+        <fieldset class="flex flex-col gap-sm">
+            <label class="text-on-prime">Title</label>
+            <input type="text" required placeholder="Enter title" name="title">
+            <label class="text-on-prime">ISBN (13 digits)</label>
+            <input type="text" placeholder="13 digits" required inputmode="decimal" pattern="\d{13,13}" name="isbn">
+            <label class="text-on-prime">Description</label>
+            <textarea rows="4" required placeholder="Enter description" name="description"></textarea>
+            <label class="text-on-prime">Author</label>
+            <input type="text" required placeholder="Enter author" name="author">
+            <label class="text-on-prime">Image URL</label>
+            <input type="text" required placeholder="Enter image URL" name="image_url">
+        </fieldset>
+        <fieldset>
+            <div class="flex gap-mid">
+                <button class="btn btn-success fill icon-check"
+                    type="submit"
+                    formmethod="post"
+                    formaction="{{ path('library_create_post') }}">
+                    Confirm
+                </button>
+                <a class="btn"
+                    href="{{ path('library_read_many') }}">
+                    Cancel
+                </a>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

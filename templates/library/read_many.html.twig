@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">Books</h1>
+        <form>
+            <div class="flex align-center gap-mid">
+                <button class="btn btn-notice fill icon-plus"
+                        type="submit"
+                        formaction="{{ path('library_create')}}">
+                        Add Book
+                </button>
+                <button class="btn icon-clock-rewind"
+                        type="submit"
+                        formmethod="post"
+                        formaction="{{ path('library_reset')}}">
+                        Reset
+                </button>
+                {{ component('popup', {
+                    type: 'notice',
+                    message: 'The table will still include four preset books when reset.',
+                    arrow: 'left'
+                }) }}
+            </div>
+        </form>
+    </div>
+    <article>
+        <div class="flex flex-row gap-lg even-items wrap">
+        {% for book in books %}
+            <div class="flex flex-col space-between">
+                <img src="{{ book.imageUrl }}" class="thumb">
+                <a href="{{ path('library_read_one', { id: book.id }) }}"
+                    class="underline weight-bold">
+                    {{ book.title }}
+                </a>
+                <p class="weight-light text-on-variant">{{ book.author }}</p>
+            </div>
+        {% endfor %} 
+        </div>
+    </article>
+    
+{% endblock %}

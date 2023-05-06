@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <article>
+        <a href="{{ path('library_read_many') }}" class="btn round">
+            <i class="fa-solid fa-arrow-left"></i>
+            Show All Books
+        </a>
+        <div class="flex flex-col align-center gap-mid">
+            <img src="{{ book.imageURL }}" class="thumb shadow-inverse" alt="">
+            <h2>{{ book.title }}</h2>
+            <p class="text-on-variant">by {{ book.author }}</p>
+        </div>
+        <div class="flex flex-col gap-mid bg-variant pad-lg round">
+            <h2>What's it about?</h2>
+            <p>{{ book.description }}</p>
+        </div>
+        <div class="flex gap-mid justify-center pad-lg">
+            <a class="btn btn-notice fill icon-edit"
+                href="{{ path('library_edit', { id: book.id }) }}">
+                Edit
+            </a>
+            <a class="btn btn-danger icon-xmark"
+                href="{{ path('library_delete', { id: book.id }) }}">
+                Delete
+            </a>
+        </div>
+    </article>
+{% endblock %}

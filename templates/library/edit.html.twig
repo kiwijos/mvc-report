@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block body %}
+    <form>
+        <a href="{{ path('library_read_many') }}" class="btn round">
+            <i class="fa-solid fa-arrow-left"></i>
+            Show All Books
+        </a>
+        <fieldset class="flex flex-col gap-sm">
+            <label class="text-on-prime">Title</label>
+            <input type="text" required placeholder="Enter title" value="{{ book.title }}"name="title">
+            <label class="text-on-prime">ISBN (13 digits)</label>
+            <input type="text" placeholder="13 digits" required value="{{ book.isbn }}" inputmode="decimal" pattern="\d{13,13}" name="isbn">
+            <label class="text-on-prime">Description</label>
+            <textarea rows="4" required placeholder="Enter description" name="description">{{ book.description }}</textarea>
+            <label class="text-on-prime">Author</label>
+            <input type="text" required placeholder="Enter athor" value="{{ book.author }}" name="author">
+            <label class="text-on-prime">Image URL</label>
+            <input type="text" required placeholder="Enter image URL" value="{{ book.imageUrl }}" name="image_url">
+        </fieldset>
+        <fieldset>
+            <div class="flex gap-mid">
+                <button class="btn btn-success fill icon-check"
+                    type="submit"
+                    formmethod="post"
+                    formaction="{{ path('library_edit_post', { id: book.id }) }}">
+                    Confirm
+                </button>
+                <a class="btn"
+                    href="{{ path('library_read_one', { id: book.id }) }}">
+                    Cancel
+                </a>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Library{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">Welcome to the Library</h1>
+        <p class="sub-title">A place of refuge from the world outside.
+            Where minds can wander and souls can glide. Please have a look at these books of mine.</p>
+        <a class="btn" href="{{ path('library_read_many') }}">
+            Show All Books
+        </a>
+    </div>
+    
+{% endblock %}
