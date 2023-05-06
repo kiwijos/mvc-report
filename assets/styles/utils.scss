@@ -25,6 +25,52 @@
     &.even-items > * { flex: 1; }
 }
 
+.round { border-radius: $base-border-radius; }
+
+.pad-sm { padding: $magic-number * 0.25; }
+.pad-mid { padding: $magic-number * 0.5; }
+.pad-lg { padding: $magic-number; }
+
+// Create a mapping of class names to colors
+$bg-colors: (
+"bg-prime": $color-prime,
+"bg-on-prime": $color-on-prime,
+"bg-variant": $color-prime-variant,
+"bg-on-variant": $color-on-prime-variant,
+"bg-inverse": $color-inverse,
+"bg-accent": $color-accent,
+"bg-success": $color-success,
+"bg-notice": $color-notice,
+"bg-warning": $color-warning,
+"bg-danger": $color-danger,
+);
+
+// Apply different styling
+@each $type, $color in $bg-colors {
+    .#{$type} {
+        background-color: $color;
+    }
+}
+
+// Create a mapping of class names to colors
+$shadow-colors: (
+"shadow-prime": $color-prime,
+"shadow-on-prime": $color-on-prime,
+"shadow-variant": $color-prime-variant,
+"shadow-on-variant": $color-on-prime-variant,
+"shadow-inverse": $color-inverse,
+"shadow-accent": $color-accent,
+"shadow-success": $color-success,
+"shadow-notice": $color-notice,
+"shadow-warning": $color-warning,
+"shadow-danger": $color-danger,
+);
+
+// Apply different styling
+@each $type, $color in $shadow-colors {
+    .#{$type} { box-shadow: 0 16px 40px 0 color.adjust($color, $alpha: -0.8); }
+}
+
 .full-width { width: 100%; }
 
 .min-height-33 { min-height: 33rem; }
