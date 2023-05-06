@@ -2,14 +2,13 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 class LibraryController extends AbstractController
 {
@@ -30,7 +29,7 @@ class LibraryController extends AbstractController
     {
         $book = new Book();
         $book->setTitle($request->request->get('title'));
-        $book->setIsbn(intval($request->request->get('isbn')));
+        $book->setIsbn($request->request->get('isbn'));
         $book->setDescription($request->request->get('description'));
         $book->setAuthor($request->request->get('author'));
         $book->setImageUrl($request->request->get('image_url'));
@@ -88,6 +87,16 @@ class LibraryController extends AbstractController
     {
         $entityManager->remove($book);
         $entityManager->flush();
+
+        return $this->redirectToRoute('library_read_many');
+    }
+
+    #[Route('/library/reset/', name: 'library_reset', methods: ['POST'])]
+    public function debugTwig(BookRepository $bookRepository): Response
+    {
+        $bookRepository->drop();   // Drop book table
+        $bookRepository->create(); // Create book table
+        $bookRepository->insert(); // Insert default rows
 
         return $this->redirectToRoute('library_read_many');
     }
