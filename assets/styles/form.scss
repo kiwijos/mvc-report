@@ -2,6 +2,7 @@ input,
 textarea {
     font-size: $base-font-size;
     line-height: $base-line-height;
+    font-family: $font-body;
 }
 
 input[type=text],
@@ -16,7 +17,25 @@ textarea {
     background-color: $color-prime;
     border-radius: $base-border-radius;
     box-sizing: border-box;
+
+    &:not(:focus):not(:placeholder-shown):valid {
+        outline: 1px solid $color-success;
+    }
+
+    &:not(:focus):not(:placeholder-shown):invalid {
+        outline: 1px solid $color-danger;
+    }
+
+    &:focus:not(:read-only) {
+        outline: 1px solid $color-notice;
+    }
+
+    &:read-only {
+        outline: none;
+    }
 }
+
+label:not(:first-of-type) { margin-top: $magic-number; }
 
 form {
     max-width: 67rem;
@@ -38,4 +57,9 @@ fieldset {
     &.center-content {
         align-items: center;
     }
+}
+
+::placeholder,
+::-ms-input-placeholder {
+    color: $color-on-prime;
 }
