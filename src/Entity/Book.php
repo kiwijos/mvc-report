@@ -20,14 +20,14 @@ class Book
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column]
+    #[ORM\Column(unique: true)]
     private ?int $isbn = null;
 
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image_url = null;
+    private ?string $imageUrl = null;
 
     public function getId(): ?int
     {
@@ -84,12 +84,12 @@ class Book
 
     public function getImageUrl(): ?string
     {
-        return $this->image_url;
+        return $this->imageUrl;
     }
 
-    public function setImageUrl(string $image_url): self
+    public function setImageUrl(string $imageUrl): self
     {
-        $this->image_url = $image_url;
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }
