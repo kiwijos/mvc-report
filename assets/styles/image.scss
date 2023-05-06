@@ -8,6 +8,7 @@ img {
 
     &.thumb {
         width: 100%;
+        min-width: 160px;
         max-width: 320px;
         aspect-ratio: 1 / 1;
         object-fit: cover;
