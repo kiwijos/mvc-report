@@ -39,6 +39,7 @@ $btn-icons: (
 "icon-piggy": "\f4d3",
 "icon-edit": "\f044",
 "icon-plus": "\2b",
+"icon-clock-rewind": "\f1da"
 );
 
 @each $type, $icon in $btn-icons {
