@@ -5,6 +5,13 @@ img {
     &.invert {
         filter: invert(100%);
     }
+
+    &.thumb {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
 }
 
 .embed-container {
