@@ -74,4 +74,12 @@ $text-colors: (
     .#{$type} {
         color: $color;
     }
+
+    .#{$type}.gradient {
+        background: linear-gradient(90deg, $color, color.scale($color, $lightness: -20%));
+        background: -webkit-linear-gradient(90deg, $color, color.scale($color, $lightness: -20%));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
