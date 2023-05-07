@@ -27,11 +27,23 @@ class ProductController extends AbstractController
     #[Route('/product/create', name: 'create_product_post', methods: ['POST'])]
     public function createProductPost(Request $request, EntityManagerInterface $entityManager): Response
     {
+        /** @var string $name */
+        $name = $request->request->get('name', '');
+
+        /** @var int $price */
+        $price = intval($request->request->get('price', 0));
+
+        /** @var string $description */
+        $description = $request->request->get('description', '');
+
+        /** @var string $company */
+        $company = $request->request->get('company', '');
+
         $product = new Product();
-        $product->setName($request->request->get('name', ''));
-        $product->setPrice(intval($request->request->get('price', 0)));
-        $product->setDescription($request->request->get('description', ''));
-        $product->setCompany($request->request->get('company', ''));
+        $product->setName($name);
+        $product->setPrice($price);
+        $product->setDescription($description);
+        $product->setCompany($company);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);
@@ -67,10 +79,22 @@ class ProductController extends AbstractController
     public function editPost(Request $request, EntityManagerInterface $entityManager, Product $product): Response
     {
 
-        $product->setName($request->request->get('name', $product->getName()));
-        $product->setPrice($request->request->get('price', $product->getPrice()));
-        $product->setDescription($request->request->get('description', $product->getDescription()));
-        $product->setCompany($request->request->get('company', $product->getCompany()));
+        /** @var string $name */
+        $name = $request->request->get('name', $product->getName());
+
+        /** @var int $price */
+        $price = intval($request->request->get('price', $product->getPrice()));
+
+        /** @var string $description */
+        $description = $request->request->get('description', $product->getDescription());
+
+        /** @var string $company */
+        $company = $request->request->get('company', $product->getCompany());
+
+        $product->setName($name);
+        $product->setPrice($price);
+        $product->setDescription($description);
+        $product->setCompany($company);
         $entityManager->flush();
 
         return $this->redirectToRoute('product_show', [
