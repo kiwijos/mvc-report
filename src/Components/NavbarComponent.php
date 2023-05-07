@@ -57,6 +57,7 @@ class NavbarComponent
                 'quote' => 'Daily Quote',
                 'json_card_index' => 'JSON Card',
                 'json_game' => 'JSON Game',
+                'json_library' => 'JSON Library'
             ],
             'hasHash' => false,
         ],
@@ -66,6 +67,14 @@ class NavbarComponent
             'dropdown' => [
                 'game_init' => 'Play',
                 'game_docs' => 'Docs',
+            ],
+            'hasHash' => false,
+        ],
+        [
+            'name' => 'Library',
+            'routeAlias' => 'library_index',
+            'dropdown' => [
+                'library_read_many' => 'Show All Books',
             ],
             'hasHash' => false,
         ],
