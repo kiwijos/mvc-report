@@ -43,7 +43,7 @@ class BookRepository extends ServiceEntityRepository
 
     /**
      * Drop book table.
-     * 
+     *
      * @return mixed[] as the result of query.
      */
     public function drop(): array
@@ -60,7 +60,7 @@ class BookRepository extends ServiceEntityRepository
 
     /**
      * Create book table.
-     * 
+     *
      * @return mixed[] as the result of query.
      */
     public function create(): array
@@ -86,7 +86,7 @@ class BookRepository extends ServiceEntityRepository
 
     /**
      * Insert default values into book table.
-     * 
+     *
      * @return mixed[] as the result of query.
      */
     public function insert(): array
