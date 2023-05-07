@@ -21,6 +21,7 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function save(Book $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +31,7 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function remove(Book $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
