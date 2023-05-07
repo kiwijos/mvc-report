@@ -41,6 +41,11 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Drop book table.
+     * 
+     * @return mixed[] as the result of query.
+     */
     public function drop(): array
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -50,10 +55,14 @@ class BookRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
 
-        // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();
     }
 
+    /**
+     * Create book table.
+     * 
+     * @return mixed[] as the result of query.
+     */
     public function create(): array
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -72,10 +81,14 @@ class BookRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
 
-        // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();
     }
 
+    /**
+     * Insert default values into book table.
+     * 
+     * @return mixed[] as the result of query.
+     */
     public function insert(): array
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -91,7 +104,6 @@ class BookRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
 
-        // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();
     }
 
