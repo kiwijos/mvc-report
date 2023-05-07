@@ -20,7 +20,7 @@ class Book
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255, unique: true)]
+    #[ORM\Column(length: 13, unique: true)]
     private ?string $isbn = null;
 
     #[ORM\Column(length: 255)]
