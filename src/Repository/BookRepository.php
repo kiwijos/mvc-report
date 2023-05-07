@@ -61,7 +61,7 @@ class BookRepository extends ServiceEntityRepository
                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 title VARCHAR(255) NOT NULL,
                 description CLOB NOT NULL,
-                isbn INTEGER NOT NULL,
+                isbn CHAR(13) NOT NULL,
                 author VARCHAR(255) NOT NULL,
                 image_url VARCHAR(255) NOT NULL
             );
