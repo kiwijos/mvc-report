@@ -27,12 +27,27 @@ class LibraryController extends AbstractController
     #[Route('/library/create', name: 'library_create_post', methods: ['POST'])]
     public function createPost(Request $request, EntityManagerInterface $entityManager): Response
     {
+        /** @var string $title */
+        $title = $request->request->get('title');
+
+        /** @var string $isbn ISBN number (13 digits). */
+        $isbn = $request->request->get('isbn');
+
+        /** @var string $description */
+        $description = $request->request->get('description');
+
+        /** @var string $author */
+        $author = $request->request->get('author');
+
+        /** @var string $imageUrl URL to image used as book cover. */
+        $imageUrl = $request->request->get('image_url');
+
         $book = new Book();
-        $book->setTitle($request->request->get('title'));
-        $book->setIsbn($request->request->get('isbn'));
-        $book->setDescription($request->request->get('description'));
-        $book->setAuthor($request->request->get('author'));
-        $book->setImageUrl($request->request->get('image_url'));
+        $book->setTitle($title);
+        $book->setIsbn($isbn);
+        $book->setDescription($description);
+        $book->setAuthor($author);
+        $book->setImageUrl($imageUrl);
 
         $entityManager->persist($book);
         $entityManager->flush();
@@ -63,12 +78,26 @@ class LibraryController extends AbstractController
     #[Route('/library/edit/{id}', name: 'library_edit_post', methods: ['POST'])]
     public function editPost(Request $request, EntityManagerInterface $entityManager, Book $book): Response
     {
+        /** @var string $title */
+        $title = $request->request->get('title', $book->getTitle());
 
-        $book->setTitle($request->request->get('title', $book->getTitle()));
-        $book->setIsbn($request->request->get('isbn', $book->getIsbn()));
-        $book->setDescription($request->request->get('description', $book->getDescription()));
-        $book->setAuthor($request->request->get('author', $book->getAuthor()));
-        $book->setImageUrl($request->request->get('image_url', $book->getImageUrl()));
+        /** @var string $isbn ISBN number (13 digits). */
+        $isbn = $request->request->get('isbn', $book->getIsbn());
+
+        /** @var string $description */
+        $description = $request->request->get('description', $book->getDescription());
+
+        /** @var string $author */
+        $author = $request->request->get('author', $book->getAuthor());
+
+        /** @var string $imageUrl URL to image used as book cover. */
+        $imageUrl = $request->request->get('image_url', $book->getImageUrl());
+
+        $book->setTitle($title);
+        $book->setIsbn($isbn);
+        $book->setDescription($description);
+        $book->setAuthor($author);
+        $book->setImageUrl($imageUrl);
         $entityManager->flush();
 
         return $this->redirectToRoute('library_read_one', [
