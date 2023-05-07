@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class LibraryControllerJson extends AbstractController
 {
     #[Route("/api/library/", name: "json_library")]
-    public function jsonLibrary(BookRepository $bookRepository): Response
+    public function index(BookRepository $bookRepository): Response
     {
         $books = $bookRepository->findAll();
 
@@ -21,7 +21,7 @@ class LibraryControllerJson extends AbstractController
     }
 
     #[Route("/api/library/books", name: "json_books")]
-    public function jsonBooks(BookRepository $bookRepository): JsonResponse
+    public function showAll(BookRepository $bookRepository): JsonResponse
     {
         $books = $bookRepository->findAll();
 
@@ -39,7 +39,7 @@ class LibraryControllerJson extends AbstractController
     }
 
     #[Route("/api/library/book/{isbn}", name: "json_book")]
-    public function jsonBook(Book $book): JsonResponse
+    public function showByIsbn(Book $book): JsonResponse
     {
         $response = $this->json($book);
         $response->setEncodingOptions(

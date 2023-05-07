@@ -19,13 +19,13 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/create', name: 'library_create', methods: ['GET'])]
-    public function createBook(): Response
+    public function create(): Response
     {
         return $this->render('library/create.html.twig');
     }
 
     #[Route('/library/create', name: 'library_create_post', methods: ['POST'])]
-    public function createBookPost(Request $request, EntityManagerInterface $entityManager): Response
+    public function createPost(Request $request, EntityManagerInterface $entityManager): Response
     {
         $book = new Book();
         $book->setTitle($request->request->get('title'));
@@ -49,7 +49,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/read/{id}', name: 'library_read_one')]
-    public function read(Book $book): Response
+    public function readById(Book $book): Response
     {
         return $this->render('library/read.html.twig', ['book' => $book]);
     }
@@ -92,7 +92,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/reset/', name: 'library_reset', methods: ['POST'])]
-    public function debugTwig(BookRepository $bookRepository): Response
+    public function reset(BookRepository $bookRepository): Response
     {
         $bookRepository->drop();   // Drop book table
         $bookRepository->create(); // Create book table
