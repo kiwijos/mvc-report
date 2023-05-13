@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+    <div class="content-header">
+        <h1 class="title">Kodanalys</h1>
+        <p class="sub-title">
+            Här är dokumentationen för min implementation av spelet tjugoett.
+        </p>
+    </div>
+    <article class="blog">
+        <section>
+            <h2>Introduktion</h2>
+            <ul class="pretty-ul">
+                <li><span class="text-accent">Codestyle:</span>
+                Handlar om hur man håller sig till de riktlinjer och standarder som finns för hur kod ska skrivas och struktureras. Det innefattar allt från namngivning av variabler till övergripande designmönster och hur man undviker onödiga konstruktioner. Riktlinjerna baseras på många års gemensam erfarenhet och utgör vad vi skulle kalla god praxis. Att följa en codestyle anses ge god kodkvalitet i allmänhet. En annan konsekvens är att koden ser mer likadan ut, både sett till din egen kodbas som helhet och över tid, men också i förhållande till andra utvecklares kod. Det blir alltså lättare för dig att underhålla och vidareutveckla koden, och för andra att förstå den.
+                </li>
+                <li><span class="text-accent">Coverage:</span>
+                Talar om hur väl olika delar av kodbasen täcks av tester. Värt att påpeka är att det inte nödvändigtvis talar om hur väl testerna är utförda. Men hög kodteckning brukar alltjämt vara ett gott tecken. Att både utveckla och köra tester gör att man blir varse om eventuella brister i koden och kan rätta till dem. Visst borgar det också för att utvecklaren är mån om kvaliteten på sin kod. Kanske har man redan från början designat koden för att den ska vara just lätt att testa. Då har man nog undvikit komplex kod och en del dåliga designmönster.
+                </li>
+                <li><span class="text-accent">Complexity:</span>
+                Talar om hur komplex koden är. Ofta talar man om cyklomatisk komplexitet speciellt. Det baseras på antalet skilda vägar man kan ta i en funktion, klass eller modul. Med andra ord antalet kontrollsatser i form av villkor bland annat. I en bredare bemärkelse handlar komplexitet även om mängden kod. Målet är låg komplexitet. Det brukar ge kod som är jämförelsevis enkel felsöka och testa och därmed lättare att underhålla och bygga vidare på i längden. Ett nära besläktat mått är Maintainability index.
+                </li>
+                <li><span class="text-accent">Cohesion:</span>
+                Talar om hur sammanhållen en koddel är. Låga värden anses bättre då det innebär att koden har färre olika ansvarsområden och därmed är mer sammanhållen. Omvänt sett innebär höga värden att koden nog bör delas upp i mindre delar, vilket kan ge bättre mätvärden även i andra avseenden som lägre komplexitet till exempel.
+                </li>
+                <li><span class="text-accent">Coupling:</span>
+                Handlar om beroenden till och från andra delar av kodbasen. I regel vill man undvika onödiga beroende då flera beroenden innebär att de olika delarna blir svårare att både testa och ändra var för sig.
+                </li>
+                <li><span class="text-accent">CRAP:</span>
+                Baseras på två mätvärden som vi redan nämnt, nämligen cyklomatisk komplexitet och kodtäckning. Man kan säga att det talar om hur väl koden täcks av tester i förhållande till hur komplex den är. Höga poäng på CRAP säger oss att koden har hög komplexitet och förhållandevis låg kodtäckning. Det kan vara svårt att upptäcka fel i sådan kod och därmed blir det svårt att underhålla och bygga vidare på den. En uppenbar lösning är ju att skriva flera tester. Men antagligen vinner man mer på att först förbättra koden. Då blir den inte bara lättare att testa förhoppningsvis, utan också lättare att jobba med i andra avseenden.
+                </li>
+            </ul>
+            <p>Så här på slutet kan det vara värt att slänga in en brasklapp för att inget mätvärde på egen hand är tillräckligt för att säga om koden i fråga är bra eller dålig. Även om alla värden är dåliga på pappret så kan koden fungera alldeles utmärkt. Problemen uppstår kanske inte förrän det är dags att göra ändringar eller utveckla koden vidare eller låta någon annan hjälpa till med den.</p>
+        </section>
+        <section>
+            <h2>Phpmetrics</h2>
+            <img src="{{ asset('img/phpmetrics_before.png')}}" width="320">
+        </section>
+        <section>
+            <h2>Scrutinizer</h2>
+            <div class="flex gap-sm">
+                <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/quality-score.png?b=main">
+                <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/coverage.png?b=main">
+                <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/build.png?b=main">
+            </div>
+        </section>
+        <section>
+            <h2>Förbättringar</h2>
+        </section>
+        <section>
+            <h2>Diskussion</h2>
+        </section>
+    </article>
+{% endblock %}
