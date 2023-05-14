@@ -109,7 +109,7 @@ class TwentyOneGameControllerTest extends WebTestCase
         // Create stubs for manager classes
         $gameManager = $this->getMockBuilder(GameManager::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['dealBanker', 'updateHasWonStatus'])
+            ->onlyMethods(['dealBanker', 'checkBankerWon'])
             ->getMock();
 
         $bettingManager = $this->getMockBuilder(BettingManager::class)
@@ -122,7 +122,7 @@ class TwentyOneGameControllerTest extends WebTestCase
             ->method('dealBanker');
 
         $gameManager->expects($this->any())
-            ->method('updateHasWonStatus')
+            ->method('checkBankerWon')
             ->willReturn($hasWon);
 
         $bettingManager->expects($this->any())
@@ -156,7 +156,7 @@ class TwentyOneGameControllerTest extends WebTestCase
         // Create stubs for manager classes
         $gameManager = $this->getMockBuilder(GameManager::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['dealPlayer', 'updateHasWonStatus'])
+            ->onlyMethods(['dealPlayer', 'checkPlayerWon'])
             ->getMock();
 
         $bettingManager = $this->getMockBuilder(BettingManager::class)
@@ -169,7 +169,7 @@ class TwentyOneGameControllerTest extends WebTestCase
             ->method('dealPlayer');
 
         $gameManager->expects($this->any())
-            ->method('updateHasWonStatus')
+            ->method('checkPlayerWon')
             ->willReturn($hasWon);
 
         $bettingManager->expects($this->any())

@@ -150,7 +150,7 @@ class TwentyOneGameController extends AbstractController
 
         // Player hit for another card
         $gameManager->dealPlayer();
-        $hasWon = $gameManager->updateHasWonStatus();
+        $hasWon = $gameManager->checkPlayerWon();
 
         /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
@@ -178,7 +178,7 @@ class TwentyOneGameController extends AbstractController
 
         // Player decide to stay, banker takes their turn
         $gameManager->dealBanker();
-        $hasWon = $gameManager->updateHasWonStatus();
+        $hasWon = $gameManager->checkBankerWon();
 
         /** @var BettingManager $bettingManager */
         $bettingManager = $session->get('bettingManager');
