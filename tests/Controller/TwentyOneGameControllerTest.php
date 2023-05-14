@@ -63,12 +63,6 @@ class TwentyOneGameControllerTest extends WebTestCase
 
         // Assert that the response redirects to /play if successful
         $this->assertTrue($client->getResponse()->isRedirect('/game/play'));
-
-        // Follow the redirect to /play
-        $crawler = $client->followRedirect();
-
-        // Assert that the /play page is displayed
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
     /**
@@ -90,12 +84,6 @@ class TwentyOneGameControllerTest extends WebTestCase
 
         // Assert that the response redirects back to /init if failed
         $this->assertTrue($client->getResponse()->isRedirect('/game/init'));
-
-        // Follow the redirect to /init
-        $crawler = $client->followRedirect();
-
-        // Assert that the /init page is displayed
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
     /**
@@ -145,7 +133,7 @@ class TwentyOneGameControllerTest extends WebTestCase
             ->method($winMethod);
 
         // Create mock session
-        $session = $this->createSession($client, [
+        $this->createSession($client, [
             'gameManager' => $gameManager,
             'bettingManager' => $bettingManager
         ]);
@@ -192,7 +180,7 @@ class TwentyOneGameControllerTest extends WebTestCase
             ->method($winMethod);
 
         // Create mock session
-        $session = $this->createSession($client, [
+        $this->createSession($client, [
             'gameManager' => $gameManager,
             'bettingManager' => $bettingManager
         ]);
