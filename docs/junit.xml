@@ -1,123 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="68" assertions="105" errors="0" warnings="0" failures="0" skipped="0" time="0.154129">
-    <testsuite name="Project Test Suite" tests="68" assertions="105" errors="0" warnings="0" failures="0" skipped="0" time="0.154129">
-      <testsuite name="App\Card\CardTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.020782">
-        <testcase name="testCreateCard" class="App\Card\CardTest" classname="App.Card.CardTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="1" time="0.017874"/>
-        <testcase name="testGetRank" class="App\Card\CardTest" classname="App.Card.CardTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="28" assertions="1" time="0.001406"/>
-        <testcase name="testGetSuit" class="App\Card\CardTest" classname="App.Card.CardTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="39" assertions="1" time="0.000472"/>
-        <testcase name="testCardToString" class="App\Card\CardTest" classname="App.Card.CardTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="50" assertions="1" time="0.000473"/>
-        <testcase name="testCardGraphicToString" class="App\Card\CardTest" classname="App.Card.CardTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="61" assertions="1" time="0.000556"/>
-      </testsuite>
-      <testsuite name="App\Card\DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="11" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.047601">
-        <testcase name="testCreateDeckNoArgument" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="15" assertions="2" time="0.004654"/>
-        <testcase name="testCreateDeckWithArgument" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="27" assertions="1" time="0.020141"/>
-        <testcase name="testCreateEmptyDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="42" assertions="1" time="0.001370"/>
-        <testcase name="testAddCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="52" assertions="1" time="0.000732"/>
-        <testcase name="testGetCardsAsString" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="71" assertions="1" time="0.012921"/>
-        <testcase name="testGetCardValues" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="90" assertions="1" time="0.000876"/>
-        <testcase name="testGetCardCount" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="108" assertions="1" time="0.000739"/>
-        <testcase name="testDrawSingleCardIsSame" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="121" assertions="2" time="0.000791"/>
-        <testcase name="testDrawMultipleCardsCountOk" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="134" assertions="2" time="0.000917"/>
-        <testcase name="testDrawMultipleCardsOrderIsOk" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="148" assertions="1" time="0.001141"/>
-        <testcase name="testShuffleCards" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="164" assertions="1" time="0.003320"/>
-      </testsuite>
-      <testsuite name="App\Game\BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" tests="7" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="0.009845">
-        <testcase name="testCreateBettingManagerNoArguments" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="15" assertions="3" time="0.002932"/>
-        <testcase name="testCreateBettingManagerWithArgumentsOk" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="27" assertions="3" time="0.000668"/>
-        <testsuite name="App\Game\BettingManagerTest::testCreateBettingManagerWithArgumentsRaisesException" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.003604">
-          <testcase name="testCreateBettingManagerWithArgumentsRaisesException with data set &quot;step larger than max&quot;" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="55" assertions="1" time="0.002535"/>
-          <testcase name="testCreateBettingManagerWithArgumentsRaisesException with data set &quot;step smaller than 1&quot;" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="55" assertions="1" time="0.000532"/>
-          <testcase name="testCreateBettingManagerWithArgumentsRaisesException with data set &quot;max not divisible by step&quot;" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="55" assertions="1" time="0.000536"/>
+  <testsuite name="" tests="9" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="1.689890">
+    <testsuite name="Project Test Suite" tests="9" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="1.689890">
+      <testsuite name="App\Tests\GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" tests="9" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="1.689890">
+        <testcase name="testIndex" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="20" assertions="1" time="1.165985"/>
+        <testsuite name="App\Tests\GameControllerTest::testInitBankerSuccess" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.262298">
+          <testcase name="testInitBankerSuccess with data set &quot;Easy Banker&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="46" assertions="2" time="0.118293"/>
+          <testcase name="testInitBankerSuccess with data set &quot;Medium Banker&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="46" assertions="2" time="0.077732"/>
+          <testcase name="testInitBankerSuccess with data set &quot;Hard Banker&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="46" assertions="2" time="0.066273"/>
         </testsuite>
-        <testcase name="testIsBettingFalse" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="64" assertions="1" time="0.001421"/>
-        <testcase name="testSetBettingTrue" class="App\Game\BettingManagerTest" classname="App.Game.BettingManagerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/BettingManagerTest.php" line="73" assertions="1" time="0.001221"/>
-      </testsuite>
-      <testsuite name="App\Game\EasyBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/EasyBankerTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.009795">
-        <testsuite name="App\Game\EasyBankerTest::testKeepHitting" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.009795">
-          <testcase name="testKeepHitting with data set &quot;add 5 and 7 (under 17)&quot;" class="App\Game\EasyBankerTest" classname="App.Game.EasyBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/EasyBankerTest.php" line="31" assertions="1" time="0.007336"/>
-          <testcase name="testKeepHitting with data set &quot;add 10 and 7 (exactly 17)&quot;" class="App\Game\EasyBankerTest" classname="App.Game.EasyBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/EasyBankerTest.php" line="31" assertions="1" time="0.001206"/>
-          <testcase name="testKeepHitting with data set &quot;add 10, 5 and 7 (over 17)&quot;" class="App\Game\EasyBankerTest" classname="App.Game.EasyBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/EasyBankerTest.php" line="31" assertions="1" time="0.001253"/>
+        <testcase name="testInitBankerFail" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="67" assertions="2" time="0.086493"/>
+        <testsuite name="App\Tests\GameControllerTest::testStay" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.110377">
+          <testcase name="testStay with data set &quot;Banker wins&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="101" assertions="2" time="0.087383"/>
+          <testcase name="testStay with data set &quot;Player wins&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="101" assertions="2" time="0.022994"/>
         </testsuite>
-      </testsuite>
-      <testsuite name="App\Game\GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" tests="7" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.013287">
-        <testsuite name="App\Game\GameHasWonTest::testHasWon" tests="7" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.013287">
-          <testcase name="testHasWon with data set &quot;Player over 21 — Banker wins&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.006868"/>
-          <testcase name="testHasWon with data set &quot;Player scores 21 — Player wins&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.001256"/>
-          <testcase name="testHasWon with data set &quot;Player over banker — Player wins&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.001080"/>
-          <testcase name="testHasWon with data set &quot;Banker over 21 — Player wins&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.001036"/>
-          <testcase name="testHasWon with data set &quot;Banker over player — Banker wins&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.001037"/>
-          <testcase name="testHasWon with data set &quot;Same score — Banker wins&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.001004"/>
-          <testcase name="testHasWon with data set &quot;Only player score — No winner&quot;" class="App\Game\GameHasWonTest" classname="App.Game.GameHasWonTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameHasWonTest.php" line="35" assertions="1" time="0.001007"/>
-        </testsuite>
-      </testsuite>
-      <testsuite name="App\Game\GameManagerBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerBankerTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.001177">
-        <testcase name="testDealBanker" class="App\Game\GameManagerBankerTest" classname="App.Game.GameManagerBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerBankerTest.php" line="29" assertions="3" time="0.001177"/>
-      </testsuite>
-      <testsuite name="App\Game\GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" tests="8" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.012930">
-        <testsuite name="App\Game\GameManagerPlayerTest::testDealPlayer" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.005661">
-          <testcase name="testDealPlayer with data set &quot;Deal 1 card (sum 13)&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="45" assertions="3" time="0.003082"/>
-          <testcase name="testDealPlayer with data set &quot;Deal 2 cards (sum 25)&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="45" assertions="3" time="0.001305"/>
-          <testcase name="testDealPlayer with data set &quot;Deal 3 cards (sum 36)&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="45" assertions="3" time="0.001274"/>
-        </testsuite>
-        <testsuite name="App\Game\GameManagerPlayerTest::testGetPlayerBurstRisk" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.006430">
-          <testcase name="testGetPlayerBurstRisk with data set &quot;No card will put the player over 21 — 0% risk&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="91" assertions="1" time="0.002319"/>
-          <testcase name="testGetPlayerBurstRisk with data set &quot;1 of 4 cards will put player over 21 - 25% risk&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="91" assertions="1" time="0.001509"/>
-          <testcase name="testGetPlayerBurstRisk with data set &quot;1 of 2 cards will put player over 21 - 50% risk&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="91" assertions="1" time="0.001341"/>
-          <testcase name="testGetPlayerBurstRisk with data set &quot;All cards will put player over 21 - 100% risk&quot;" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="91" assertions="1" time="0.001261"/>
-        </testsuite>
-        <testcase name="testSetAssistanceMode" class="App\Game\GameManagerPlayerTest" classname="App.Game.GameManagerPlayerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/GameManagerPlayerTest.php" line="116" assertions="2" time="0.000840"/>
-      </testsuite>
-      <testsuite name="App\Game\HardBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/HardBankerTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.005681">
-        <testsuite name="App\Game\HardBankerTest::testKeepHitting" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.005681">
-          <testcase name="testKeepHitting with data set &quot;add 5 and 7 (less than player)&quot;" class="App\Game\HardBankerTest" classname="App.Game.HardBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/HardBankerTest.php" line="32" assertions="1" time="0.003138"/>
-          <testcase name="testKeepHitting with data set &quot;add 10 and 8 (same as player)&quot;" class="App\Game\HardBankerTest" classname="App.Game.HardBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/HardBankerTest.php" line="32" assertions="1" time="0.001265"/>
-          <testcase name="testKeepHitting with data set &quot;add 7, 3 and 6 (more than player)&quot;" class="App\Game\HardBankerTest" classname="App.Game.HardBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/HardBankerTest.php" line="32" assertions="1" time="0.001277"/>
-        </testsuite>
-      </testsuite>
-      <testsuite name="App\Game\MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" tests="8" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.015785">
-        <testsuite name="App\Game\MediumBankerTest::testKeepHitting" tests="6" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.011865">
-          <testcase name="testKeepHitting with data set &quot;add 3 and 4 (no risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="34" assertions="1" time="0.003333"/>
-          <testcase name="testKeepHitting with data set &quot;add 4, 4 and 3 (low (≈ 24%) risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="34" assertions="1" time="0.001686"/>
-          <testcase name="testKeepHitting with data set &quot;add 5, 5, and 4 (≈ 49% risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="34" assertions="1" time="0.001548"/>
-          <testcase name="testKeepHitting with data set &quot;add 2, 3, 4 and 5 (50% risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="34" assertions="1" time="0.001743"/>
-          <testcase name="testKeepHitting with data set &quot;add 3, 3, 3, 4 and 1 (≈ 51% risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="34" assertions="1" time="0.001942"/>
-          <testcase name="testKeepHitting with data set &quot;add 10 and 9 (high (84 %) risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="34" assertions="1" time="0.001613"/>
-        </testsuite>
-        <testsuite name="App\Game\MediumBankerTest::testKeepHittingCardsRemoved" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.003919">
-          <testcase name="testKeepHittingCardsRemoved with data set &quot;remove 10 and 5, add 6 and 8 (≈ 46% risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="69" assertions="1" time="0.001851"/>
-          <testcase name="testKeepHittingCardsRemoved with data set &quot;remove 7, 8 and 9, add 4, 5 and 6 (≈ 54% risk of bursting)&quot;" class="App\Game\MediumBankerTest" classname="App.Game.MediumBankerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/MediumBankerTest.php" line="69" assertions="1" time="0.002068"/>
-        </testsuite>
-      </testsuite>
-      <testsuite name="App\Game\PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" tests="6" assertions="12" errors="0" warnings="0" failures="0" skipped="0" time="0.003764">
-        <testsuite name="App\Game\PlaceBetTest::testPlaceBet" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.001768">
-          <testcase name="testPlaceBet with data set &quot;bet ok&quot;" class="App\Game\PlaceBetTest" classname="App.Game.PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" line="33" assertions="3" time="0.000643"/>
-          <testcase name="testPlaceBet with data set &quot;bet not ok — not enough coins&quot;" class="App\Game\PlaceBetTest" classname="App.Game.PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" line="33" assertions="3" time="0.000552"/>
-          <testcase name="testPlaceBet with data set &quot;bet not ok — incorrect step&quot;" class="App\Game\PlaceBetTest" classname="App.Game.PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" line="33" assertions="3" time="0.000573"/>
-        </testsuite>
-        <testsuite name="App\Game\PlaceBetTest::testPlaceBetGetStake" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.001393">
-          <testcase name="testPlaceBetGetStake with data set &quot;bet ok - update stake &quot;" class="App\Game\PlaceBetTest" classname="App.Game.PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" line="64" assertions="1" time="0.000844"/>
-          <testcase name="testPlaceBetGetStake with data set &quot;bet not ok — do not update stake&quot;" class="App\Game\PlaceBetTest" classname="App.Game.PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" line="64" assertions="1" time="0.000549"/>
-        </testsuite>
-        <testcase name="testBankerCannotMatchBet" class="App\Game\PlaceBetTest" classname="App.Game.PlaceBetTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/PlaceBetTest.php" line="75" assertions="1" time="0.000603"/>
-      </testsuite>
-      <testsuite name="App\Game\ReceiverTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/ReceiverTest.php" tests="5" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.010965">
-        <testsuite name="App\Game\ReceiverTest::testReceiveCardsScoreOk" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.003549">
-          <testcase name="testReceiveCardsScoreOk with data set &quot;add 5, 2 and 3&quot;" class="App\Game\ReceiverTest" classname="App.Game.ReceiverTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/ReceiverTest.php" line="31" assertions="1" time="0.001474"/>
-          <testcase name="testReceiveCardsScoreOk with data set &quot;add 8 and Ace (worth 1)&quot;" class="App\Game\ReceiverTest" classname="App.Game.ReceiverTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/ReceiverTest.php" line="31" assertions="1" time="0.001070"/>
-          <testcase name="testReceiveCardsScoreOk with data set &quot;add 7 and Ace (worth 14)&quot;" class="App\Game\ReceiverTest" classname="App.Game.ReceiverTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/ReceiverTest.php" line="31" assertions="1" time="0.001005"/>
-        </testsuite>
-        <testcase name="testGetCards" class="App\Game\ReceiverTest" classname="App.Game.ReceiverTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/ReceiverTest.php" line="51" assertions="1" time="0.000754"/>
-        <testcase name="testReset" class="App\Game\ReceiverTest" classname="App.Game.ReceiverTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/ReceiverTest.php" line="64" assertions="4" time="0.006662"/>
-      </testsuite>
-      <testsuite name="App\Game\WinsStakeTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/WinsStakeTest.php" tests="4" assertions="16" errors="0" warnings="0" failures="0" skipped="0" time="0.002516">
-        <testsuite name="App\Game\WinsStakeTest::testPlayerWinsStake" tests="2" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.001259">
-          <testcase name="testPlayerWinsStake with data set &quot;win — game not over&quot;" class="App\Game\WinsStakeTest" classname="App.Game.WinsStakeTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/WinsStakeTest.php" line="31" assertions="4" time="0.000683"/>
-          <testcase name="testPlayerWinsStake with data set &quot;win — game over&quot;" class="App\Game\WinsStakeTest" classname="App.Game.WinsStakeTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/WinsStakeTest.php" line="31" assertions="4" time="0.000576"/>
-        </testsuite>
-        <testsuite name="App\Game\WinsStakeTest::testBankerWinsStake" tests="2" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.001257">
-          <testcase name="testBankerWinsStake with data set &quot;win — game not over&quot;" class="App\Game\WinsStakeTest" classname="App.Game.WinsStakeTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/WinsStakeTest.php" line="51" assertions="4" time="0.000685"/>
-          <testcase name="testBankerWinsStake with data set &quot;win — game over&quot;" class="App\Game\WinsStakeTest" classname="App.Game.WinsStakeTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Game/WinsStakeTest.php" line="51" assertions="4" time="0.000572"/>
+        <testsuite name="App\Tests\GameControllerTest::testHit" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.064737">
+          <testcase name="testHit with data set &quot;Banker wins&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="148" assertions="2" time="0.031592"/>
+          <testcase name="testHit with data set &quot;Player wins&quot;" class="App\Tests\GameControllerTest" classname="App.Tests.GameControllerTest" file="/Users/alex/dbwebb-kurser/mvc/me/report/tests/Controller/GameControllerTest.php" line="148" assertions="2" time="0.033145"/>
         </testsuite>
       </testsuite>
     </testsuite>
