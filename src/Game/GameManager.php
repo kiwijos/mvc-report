@@ -155,28 +155,23 @@ class GameManager
 
     /**
      * Update who (if anyone) has won by checking their respective win conditions.
+     * 
+     * @return int As who (if anyone) has won.
      */
-    public function updateHasWonStatus(): void
+    public function updateHasWonStatus(): int
     {
         $playerPoints = $this->player->getPoints();
         $bankerPoints = $this->banker->getPoints();
 
         if ($playerPoints === 21 or $bankerPoints > 21) {
             $this->hasWon = 1;
-            return;
-        }
-
-        if ($playerPoints > 21 or $bankerPoints >= $playerPoints) {
+        } else if ($playerPoints > 21 or $bankerPoints >= $playerPoints) {
             $this->hasWon = -1;
-            return;
-        }
-
-        if ($bankerPoints > 0 and $playerPoints > $bankerPoints) {
+        } else if ($bankerPoints > 0 and $playerPoints > $bankerPoints) {
             $this->hasWon = 1;
-            return;
         }
 
-        $this->hasWon = 0;
+        return $this->hasWon;
     }
 
     /**
