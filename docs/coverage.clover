@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684069752">
-  <project timestamp="1684069752">
+<coverage generated="1684073502">
+  <project timestamp="1684073502">
     <file name="/Users/alex/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="9" coveredelements="9"/>
@@ -798,10 +798,10 @@
     </file>
     <file name="/Users/alex/dbwebb-kurser/mvc/me/report/src/Game/GameManager.php">
       <class name="App\Game\GameManager" namespace="global">
-        <metrics complexity="25" methods="14" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="44" elements="68" coveredelements="56"/>
+        <metrics complexity="25" methods="15" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="55" coveredstatements="45" elements="70" coveredelements="58"/>
       </class>
-      <line num="29" type="method" name="getHasWon" visibility="public" complexity="1" crap="1" count="7"/>
-      <line num="31" type="stmt" count="7"/>
+      <line num="29" type="method" name="getHasWon" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="31" type="stmt" count="6"/>
       <line num="35" type="method" name="hasAssistanceMode" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="37" type="stmt" count="1"/>
       <line num="43" type="method" name="reset" visibility="public" complexity="1" crap="2" count="0"/>
@@ -814,10 +814,10 @@
       <line num="60" type="stmt" count="1"/>
       <line num="64" type="method" name="setDeck" visibility="public" complexity="1" crap="1" count="8"/>
       <line num="66" type="stmt" count="8"/>
-      <line num="70" type="method" name="setPlayer" visibility="public" complexity="1" crap="1" count="15"/>
-      <line num="72" type="stmt" count="15"/>
-      <line num="76" type="method" name="setBanker" visibility="public" complexity="1" crap="1" count="16"/>
-      <line num="78" type="stmt" count="16"/>
+      <line num="70" type="method" name="setPlayer" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="72" type="stmt" count="14"/>
+      <line num="76" type="method" name="setBanker" visibility="public" complexity="1" crap="1" count="15"/>
+      <line num="78" type="stmt" count="15"/>
       <line num="86" type="method" name="getBurstRisk" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="89" type="stmt" count="4"/>
       <line num="91" type="stmt" count="4"/>
@@ -850,25 +850,27 @@
       <line num="150" type="stmt" count="4"/>
       <line num="151" type="stmt" count="4"/>
       <line num="153" type="stmt" count="4"/>
-      <line num="161" type="method" name="updateHasWonStatus" visibility="public" complexity="7" crap="7" count="7"/>
-      <line num="163" type="stmt" count="7"/>
-      <line num="164" type="stmt" count="7"/>
-      <line num="166" type="stmt" count="7"/>
-      <line num="167" type="stmt" count="2"/>
-      <line num="168" type="stmt" count="5"/>
-      <line num="169" type="stmt" count="3"/>
-      <line num="170" type="stmt" count="2"/>
-      <line num="171" type="stmt" count="1"/>
-      <line num="174" type="stmt" count="7"/>
-      <line num="180" type="method" name="refillEmptyDeck" visibility="private" complexity="3" crap="6.28" count="4"/>
-      <line num="182" type="stmt" count="4"/>
-      <line num="183" type="stmt" count="4"/>
-      <line num="187" type="stmt" count="0"/>
-      <line num="188" type="stmt" count="0"/>
-      <line num="192" type="stmt" count="0"/>
-      <line num="195" type="stmt" count="0"/>
-      <line num="196" type="stmt" count="0"/>
-      <metrics loc="199" ncloc="151" classes="1" methods="14" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="44" elements="68" coveredelements="56"/>
+      <line num="175" type="method" name="checkPlayerWon" visibility="public" complexity="3" crap="3" count="2"/>
+      <line num="177" type="stmt" count="2"/>
+      <line num="178" type="stmt" count="1"/>
+      <line num="179" type="stmt" count="1"/>
+      <line num="180" type="stmt" count="1"/>
+      <line num="182" type="stmt" count="2"/>
+      <line num="185" type="method" name="checkBankerWon" visibility="public" complexity="4" crap="4" count="4"/>
+      <line num="187" type="stmt" count="4"/>
+      <line num="188" type="stmt" count="2"/>
+      <line num="189" type="stmt" count="2"/>
+      <line num="190" type="stmt" count="2"/>
+      <line num="192" type="stmt" count="4"/>
+      <line num="198" type="method" name="refillEmptyDeck" visibility="private" complexity="3" crap="6.28" count="4"/>
+      <line num="200" type="stmt" count="4"/>
+      <line num="201" type="stmt" count="4"/>
+      <line num="205" type="stmt" count="0"/>
+      <line num="206" type="stmt" count="0"/>
+      <line num="210" type="stmt" count="0"/>
+      <line num="213" type="stmt" count="0"/>
+      <line num="214" type="stmt" count="0"/>
+      <metrics loc="217" ncloc="158" classes="1" methods="15" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="55" coveredstatements="45" elements="70" coveredelements="58"/>
     </file>
     <file name="/Users/alex/dbwebb-kurser/mvc/me/report/src/Game/HardBanker.php">
       <class name="App\Game\HardBanker" namespace="global">
@@ -1015,6 +1017,6 @@
       <line num="29" type="stmt" count="0"/>
       <metrics loc="32" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
     </file>
-    <metrics files="35" loc="2642" ncloc="2195" classes="27" methods="149" coveredmethods="45" conditionals="0" coveredconditionals="0" statements="661" coveredstatements="165" elements="810" coveredelements="210"/>
+    <metrics files="35" loc="2660" ncloc="2202" classes="27" methods="150" coveredmethods="46" conditionals="0" coveredconditionals="0" statements="662" coveredstatements="166" elements="812" coveredelements="212"/>
   </project>
 </coverage>
