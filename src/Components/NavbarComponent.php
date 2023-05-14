@@ -78,5 +78,10 @@ class NavbarComponent
             ],
             'hasHash' => false,
         ],
+        [
+            'name' => 'Metrics',
+            'routeAlias' => 'metrics',
+            'dropdown' => false,
+        ],
     );
 }
