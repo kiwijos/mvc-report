@@ -33,18 +33,25 @@
         </section>
         <section>
             <h2>Phpmetrics</h2>
-            <img src="{{ asset('img/phpmetrics_before.png')}}" width="320">
-            <p>Vi kan börja med att kolla på maintainability- och complexity-grafen som visas här i form av olika cirklar. Nu går det inte att hovra över cirklarna för att se vilka delar av koden det gäller så jag kommer istället att beskriva de två största.</p>
-            <p>Den allra största och rödaste är TwentyOneGameController med en cyklomatisk komplexitet på 12 och maintainability index på 63,65. Näst störst om än gulfärgad är GameManager med en cyklomatisk komplexitet på 12 och maintainability index på 70,97. Kanske är det inte så konstigt. Dessa klasser utgör två nav i spelet och sköter merparten av spellogiken. Med det sagt finns det stor förbättringspotential här.</p>
+            <div class="flex gap-med">
+                <img src="{{ asset('img/phpmetrics_before.png')}}" width="320">
+                <div>
+                    <p>Vi kan börja med att kolla på maintainability- och complexity-grafen som visas här i form av olika cirklar. Nu går det inte att hovra över cirklarna för att se vilka delar av koden det gäller så jag kommer istället att beskriva de två största.</p>
+                    <p>Den allra största och rödaste är TwentyOneGameController med en cyklomatisk komplexitet på 12 och maintainability index på 63,65. Näst störst om än gulfärgad är GameManager med en cyklomatisk komplexitet på 12 och maintainability index på 70,97. Kanske är det inte så konstigt. Dessa klasser utgör två nav i spelet och sköter merparten av spellogiken. Med det sagt finns det stor förbättringspotential här.</p>
+                </div>
+        </div>
+            
             <p>När jag kollar på violations får jag upp tre av mina kontrollerklasser, däribland TwentyOneGameController och CardGameControllerJson. Enligt Phpmetrics är de förmodligen buggade. Här ser jag möjligheten att slå två flugor i en smäll. Det saknas nämligen tester för kontrollerklasserna, och gör jag några tester kan jag kanske hitta buggarna i koden. Hela 74.29 % av klasserna i mitt projekt har faktiskt inga tester alls. Så kodtäckning är något som kan förbättras överlag.</p>
         </section>
         <section>
             <h2>Scrutinizer</h2>
-            <a class="flex gap-sm" href="https://scrutinizer-ci.com/g/kiwijos/mvc-report/?branch=main">
-                <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/quality-score.png?b=main">
-                <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/coverage.png?b=main">
-                <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/build.png?b=main">
-            </a>
+            <p>
+                <a class="flex gap-sm" href="https://scrutinizer-ci.com/g/kiwijos/mvc-report/?branch=main">
+                    <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/quality-score.png?b=main">
+                    <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/coverage.png?b=main">
+                    <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/build.png?b=main">
+                </a>
+            </p>
             <p>Min första build lyckas. Scrutinizers kvalitetsindex är 9.95 och kodtäckningen är 23%. Om vi bara utgår från det här känns det rimligt att fokusera på testning. Kollar vi på CRAP är det metoden jsonGame() i CardGameControllerJson som tar hem pristet med ett CRAP-score på 56.</p>
             <p>Även i Scrutinizer är det GameManager och  TwentyOneGameController som toppar listan av komplexa klasser överlag med värdena 25 respektive 21. De förtjänar helt klart en närmare titt.</p>
             <p>Kollar jag på violations dyker det upp ett par stycken, två av vilka jag lyckats orsaka helt på egen hand. Det ena rör kod som inte används och det andra ett värde som implicit behandlas som en boolean istället för en lista. Man kan säga att de hamnar under kategorin code style. Men mer om dem i nästa avsnitt.</p>
