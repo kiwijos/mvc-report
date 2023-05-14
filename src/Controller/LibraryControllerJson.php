@@ -25,7 +25,7 @@ class LibraryControllerJson extends AbstractController
     {
         $books = $bookRepository->findAll();
 
-        if (!$books) {
+        if (empty($books)) {
             throw $this->createNotFoundException(
                 'No books found'
             );
