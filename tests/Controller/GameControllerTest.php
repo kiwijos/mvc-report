@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class GameControllerTest extends WebTestCase
 {
-    use SessionHelperTrait; 
+    use SessionHelperTrait;
 
     public function testIndex()
     {

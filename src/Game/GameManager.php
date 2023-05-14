@@ -155,7 +155,7 @@ class GameManager
 
     /**
      * Update who (if anyone) has won by checking their respective win conditions.
-     * 
+     *
      * @return int As who (if anyone) has won.
      */
     public function updateHasWonStatus(): int
@@ -165,9 +165,9 @@ class GameManager
 
         if ($playerPoints === 21 or $bankerPoints > 21) {
             $this->hasWon = 1;
-        } else if ($playerPoints > 21 or $bankerPoints >= $playerPoints) {
+        } elseif ($playerPoints > 21 or $bankerPoints >= $playerPoints) {
             $this->hasWon = -1;
-        } else if ($bankerPoints > 0 and $playerPoints > $bankerPoints) {
+        } elseif ($bankerPoints > 0 and $playerPoints > $bankerPoints) {
             $this->hasWon = 1;
         }
 
