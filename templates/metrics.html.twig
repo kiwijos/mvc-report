@@ -5,9 +5,6 @@
 {% block body %}
     <div class="content-header">
         <h1 class="title">Kodanalys</h1>
-        <p class="sub-title">
-            Här är dokumentationen för min implementation av spelet tjugoett.
-        </p>
     </div>
     <article class="blog">
         <section>
@@ -26,7 +23,7 @@
                 Talar om hur sammanhållen en koddel är. Låga värden anses bättre då det innebär att koden har färre olika ansvarsområden och därmed är mer sammanhållen. Omvänt sett innebär höga värden att koden nog bör delas upp i mindre delar, vilket kan ge bättre mätvärden även i andra avseenden som lägre komplexitet till exempel.
                 </li>
                 <li><span class="text-accent">Coupling:</span>
-                Handlar om beroenden till och från andra delar av kodbasen. I regel vill man undvika onödiga beroende då flera beroenden innebär att de olika delarna blir svårare att både testa och ändra var för sig.
+                Handlar om beroenden till och från andra delar av kodbasen. I regel vill man undvika onödiga beroenden då flera beroenden innebär att de olika delarna blir svårare att både testa och ändra var för sig.
                 </li>
                 <li><span class="text-accent">CRAP:</span>
                 Baseras på två mätvärden som vi redan nämnt, nämligen cyklomatisk komplexitet och kodtäckning. Man kan säga att det talar om hur väl koden täcks av tester i förhållande till hur komplex den är. Höga poäng på CRAP säger oss att koden har hög komplexitet och förhållandevis låg kodtäckning. Det kan vara svårt att upptäcka fel i sådan kod och därmed blir det svårt att underhålla och bygga vidare på den. En uppenbar lösning är ju att skriva flera tester. Men antagligen vinner man mer på att först förbättra koden. Då blir den inte bara lättare att testa förhoppningsvis, utan också lättare att jobba med i andra avseenden.
@@ -37,17 +34,28 @@
         <section>
             <h2>Phpmetrics</h2>
             <img src="{{ asset('img/phpmetrics_before.png')}}" width="320">
+            <p>Vi kan börja med att kolla på maintainability- och complexity-grafen som visas här i form av olika cirklar. Nu går det inte att hovra över cirklarna för att se vilka delar av koden det gäller så jag kommer istället att beskriva de två största.</p>
+            <p>Den allra största och rödaste är TwentyOneGameController med en cyklomatisk komplexitet på 12 och maintainability index på 63,65. Näst störst om än gulfärgad är GameManager med en cyklomatisk komplexitet på 12 och maintainability index på 70,97. Kanske är det inte så konstigt. Dessa klasser utgör två nav i spelet och sköter merparten av spellogiken. Med det sagt finns det stor förbättringspotential här.</p>
+            <p>När jag kollar på violations får jag upp tre av mina kontrollerklasser, däribland TwentyOneGameController och CardGameControllerJson. Enligt Phpmetrics är de förmodligen buggade. Här ser jag möjligheten att slå två flugor i en smäll. Det saknas nämligen tester för kontrollerklasserna, och gör jag några tester kan jag kanske hitta buggarna i koden. Hela 74.29 % av klasserna i mitt projekt har faktiskt inga tester alls. Så kodtäckning är något som kan förbättras överlag.</p>
         </section>
         <section>
             <h2>Scrutinizer</h2>
-            <div class="flex gap-sm">
+            <a class="flex gap-sm" href="https://scrutinizer-ci.com/g/kiwijos/mvc-report/?branch=main">
                 <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/quality-score.png?b=main">
                 <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/coverage.png?b=main">
                 <img src="https://scrutinizer-ci.com/g/kiwijos/mvc-report/badges/build.png?b=main">
-            </div>
+            </a>
+            <p>Min första build lyckas. Scrutinizers kvalitetsindex är 9.95 och kodtäckningen är 23%. Om vi bara utgår från det här känns det rimligt att fokusera på testning. Kollar vi på CRAP är det metoden jsonGame() i CardGameControllerJson som tar hem pristet med ett CRAP-score på 56.</p>
+            <p>Även i Scrutinizer är det GameManager och  TwentyOneGameController som toppar listan av komplexa klasser överlag med värdena 25 respektive 21. De förtjänar helt klart en närmare titt.</p>
+            <p>Kollar jag på violations dyker det upp ett par stycken, två av vilka jag lyckats orsaka helt på egen hand. Det ena rör kod som inte används och det andra ett värde som implicit behandlas som en boolean istället för en lista. Man kan säga att de hamnar under kategorin code style. Men mer om dem i nästa avsnitt.</p>
         </section>
         <section>
             <h2>Förbättringar</h2>
+            <p>Till att börja med ska jag fixa mitt ena issue som har med listan att göra. Det är bara ett minor issue och man kan kalla det för lågt hängande frukt. Jag förväntar mig bara ett marginellt bättre kvalitetsindex i nuläget. Men det finns ju ingen anledning att inte fixa det</p>
+            <p>Mitt andra issue som handlar om oanvänd kod låter jag vara. Det uppstår nämligen i en testklass där jag förväntar mig att ett exception ska uppstå när jag skapar en instans av BettingManager med felaktiga argument till konstruktorn. Issuet beror på att jag inte gör något med instansen sedan, med det är ju inte heller tanken.
+            </p>
+            <p>Jag ska försöka att öka kodtäckningen genom att testa en eller flera av mina kontrollerklasser. Det bör såklart ge ett högre mätvärde för just kodtäckning och lägre CRAP-score. Men också göra att jag upptäcker eventuella buggar i koden. Fokus blir att testa TwentyOneGameController eftersom den står ut i analyserna jag gjort ovan och är central i vårt spel. Metoderna setup(), hit() och stay() har alla varsitt CRAP-score på 20, så det är i första hand dem som jag kommer att testa.
+            </p>
         </section>
         <section>
             <h2>Diskussion</h2>
