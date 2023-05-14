@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use App\Tests\SessionHelperTrait;
 use App\Game\GameManager;
 use App\Game\BettingManager;
-use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Test cases for TwentyOneGameController.
  */
-class GameControllerTest extends WebTestCase
+class TwentyOneGameControllerTest extends WebTestCase
 {
     use SessionHelperTrait;
 
