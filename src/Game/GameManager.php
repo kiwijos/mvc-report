@@ -163,12 +163,10 @@ class GameManager
         $playerPoints = $this->player->getPoints();
         $bankerPoints = $this->banker->getPoints();
 
-        if ($playerPoints === 21 or $bankerPoints > 21) {
+        if ($playerPoints === 21 || $bankerPoints > 21 || ($bankerPoints > 0 && $playerPoints > $bankerPoints)) {
             $this->hasWon = 1;
-        } elseif ($playerPoints > 21 or $bankerPoints >= $playerPoints) {
+        } elseif ($playerPoints > 21 || $bankerPoints >= $playerPoints) {
             $this->hasWon = -1;
-        } elseif ($bankerPoints > 0 and $playerPoints > $bankerPoints) {
-            $this->hasWon = 1;
         }
 
         return $this->hasWon;
