@@ -1,1 +1,9 @@
 # kmom06
+### Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? Var det några särskilda metrics eller bilder du uppskattade?
+Phpmetrics ger en bra överblick. Jag gillar speciellt grafen med olika cirklar som visar hur lätta (eller svåra) olika delar av kodbasen är att underhålla. Saker som class rank och coupling är också intressanta att kolla på för att se hur olika klasser hör ihop och vilka som verkar vara särskilt ”viktiga”.
+### Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? Vilken kodtäckning och kodkvalitet fick du efter första bygget?
+Arbetet med Scrutinizer har flutit på bra. Jag gillar att få siffror på det man gör så det här är helt klart ett verktyg i min smak. Efter min första build fick jag 23% i kodtäckning och 9.95 i kodkvalitet.
+### Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?
+Tänker man långsiktigt så är jag beredd att sticka ut hakan och säga att kodkvalitet är avgörande. Det minskar risken för fel och gör koden enklare att underhålla och jobba tillsammans med. Jag tror att badges kan vara ett bra omdöme. Men man behöver såklart se dem i sitt sammanhang. Gamal kod som inte längre underhålls kanske helt saknar tester fast det fungerar alldeles utmärkt. Bara för att ge ett exempel.
+### Vilken är din TIL för detta kmom?
+Den här gångens TIL får bli att koppla vår applikation till automatiska tester med Scrutinizer. Det känns som ett självklart sätt att jobba med kodkvalitet på.
