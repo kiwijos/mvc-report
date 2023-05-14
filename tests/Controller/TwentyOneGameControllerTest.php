@@ -17,6 +17,12 @@ class TwentyOneGameControllerTest extends WebTestCase
 
     public function testIndex()
     {
+        if (getenv('APP_ENV') !== 'dev') {
+            $this->markTestSkipped(
+                'This test can only be run on the local host.'
+            );
+        }
+
         $client = static::createClient();
 
         $client->request('GET', '/game');
@@ -43,6 +49,12 @@ class TwentyOneGameControllerTest extends WebTestCase
      */
     public function testInitBankerSuccess(string $banker)
     {
+        if (getenv('APP_ENV') !== 'dev') {
+            $this->markTestSkipped(
+                'This test can only be run on the local host.'
+            );
+        }
+
         $client = static::createClient();
 
         $client->request('POST', '/game/init', [
@@ -64,6 +76,12 @@ class TwentyOneGameControllerTest extends WebTestCase
      */
     public function testInitBankerFail()
     {
+        if (getenv('APP_ENV') !== 'dev') {
+            $this->markTestSkipped(
+                'This test can only be run on the local host.'
+            );
+        }
+
         $client = static::createClient();
 
         $client->request('POST', '/game/init', [
