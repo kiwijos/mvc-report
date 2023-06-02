@@ -1,5 +1,10 @@
 <h1>Location: {{ location.getName() }}</h1>
 <h2>Description: {{ location.getDescription() }}</h2>
+<textarea>
+    {% for entry in log.getEntries() %}
+        {{ entry }}
+    {% endfor %}
+</textarea>
 <form method="post">
     <input type="text" name="input">
     <button type="submit"
