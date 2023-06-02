@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Adventure\Player;
 use App\Adventure\Location;
+use App\Adventure\Log;
 
 class AdventureController extends AbstractController
 {
@@ -37,19 +38,30 @@ class AdventureController extends AbstractController
     #[Route("/proj/game/location", name: "render_location")]
     public function renderLocation(SessionInterface $session)
     {
+        $log = $session->get('game_log', new Log());
+
         $player = $session->get('player');
 
         $location = $player->getCurrentLocation();
 
-        return $this->render('adventure/location.html.twig', [ 'location' => $location, ]);
+        return $this->render('adventure/location.html.twig', [
+            'location' => $location,
+            'log'      => $log,
+        ]);
     }
 
     #[Route("/proj/game/action", name: "perform_action", methods: ['POST'])]
     public function performAction(SessionInterface $session, Request $request)
     {
+        $log = $session->get('game_log', new Log());
+
         $player = $session->get('player');
 
         $input = $request->get('input');
+
+        $log->addEntry($input); // Store input as entry
+
+        $session->set('game_log', $log);
 
         // Split the input into action and target
         $parts = explode(' ', $input, 2);
