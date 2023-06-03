@@ -1,0 +1,74 @@
+html {
+    /* Foreground, Background */
+    scrollbar-color: $color-prime $color-on-prime;
+}
+
+::-webkit-scrollbar {
+    width: 1rem; /* Mostly for vertical scrollbars */
+    height: 1rem; /* Mostly for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-corner {
+    background-color: $color-prime;
+    border: 2px solid $color-on-prime;
+}
+
+::-webkit-scrollbar-thumb { /* Foreground */
+    background-color: $color-prime;
+    background-image:
+        radial-gradient($color-on-prime 20%, transparent 16%),
+        radial-gradient($color-on-prime 20%, transparent 16%);
+    background-size: 4px 4px; /* Size of the dots */
+    background-position: -1px -1px, 1px 1px; /* Offset for the dots */
+    border: 2px solid $color-on-prime;
+}
+
+::-webkit-scrollbar-track { /* Background */
+    background: $color-on-prime;
+}
+
+/* Styles for scrollbar buttons */
+::-webkit-scrollbar-button {
+    &:vertical:start:increment,
+    &:vertical:end:decrement,
+    &:horizontal:start:increment,
+    &:horizontal:end:decrement {
+        display: none;
+    }
+
+    &:vertical:start:decrement,
+    &:vertical:end:increment,
+    &:horizontal:start:decrement,
+    &:horizontal:end:increment {
+        display: block;
+        height: 8px;
+        width: 8px;
+        background-color: $color-on-prime;
+    }
+
+    &:vertical:start:decrement {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $color-prime;
+    }
+
+    &:vertical:end:increment {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid $color-prime;
+    }
+  
+    /* Horizontal start button */
+    &:horizontal:start:decrement {
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid $color-prime;
+    }
+  
+    /* Horizontal end button */
+    &:horizontal:end:increment {
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid $color-prime;
+    }
+}

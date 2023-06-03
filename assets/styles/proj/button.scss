@@ -1,0 +1,8 @@
+button,
+input[type=submit] {
+    @include base-style();
+    padding: 0.5rem 1rem;
+    box-shadow: 0.25rem 0.25rem 0 0 $color-on-prime;
+    border-radius: 0.5rem;
+    border-bottom-right-radius: 1rem;
+}

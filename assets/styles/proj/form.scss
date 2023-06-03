@@ -1,0 +1,20 @@
+::placeholder,
+::-ms-input-placeholder {
+    color: color.change($color-on-prime, $lightness: 50%);
+}
+
+input {
+    accent-color: $color-on-prime;
+    caret-color: $color-on-prime;
+    
+    &:focus {
+        outline: none;
+    }
+}
+
+input[type=text] {
+    @include base-style();
+    padding: 0.5rem 1rem;
+    box-shadow: 0.25rem 0.25rem 0 0 $color-on-prime;
+    border-radius: 0.5rem;
+}
