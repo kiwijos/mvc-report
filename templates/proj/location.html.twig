@@ -1,0 +1,20 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Game{% endblock %}
+
+{% block body %}
+    <h1>Location: {{ location.getName() }}</h1>
+    <h2>Description: {{ location.getDescription() }}</h2>
+    <textarea>
+        {% for entry in log.getEntries() %}
+            {{ entry }}
+        {% endfor %}
+    </textarea>
+    <form method="post">
+        <input type="text" name="input" placeholder="Your action" autocomplete="off">
+        <button type="submit"
+                formaction="{{ path('perform_action') }}">
+            Skicka
+        </button>
+    </form>
+{% endblock %}

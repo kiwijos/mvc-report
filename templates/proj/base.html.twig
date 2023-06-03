@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Proj{% endblock %}</title>
+        <script src="https://kit.fontawesome.com/2897e71327.js" crossorigin="anonymous"></script>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('proj') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('proj') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+        </header>
+        <main role="main">
+            {% block body %}{% endblock %}
+        </main>
+        <footer>
+        </footer>
+    </body>
+</html>
