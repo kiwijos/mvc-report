@@ -31,6 +31,21 @@ class Log
     }
 
     /**
+     * Adds a separate entry to the log for each new line in the entered string.
+     *
+     * @param string $bulkEntry The string of entries to be added, separated by "\n".
+     */
+    public function addBulkEntry(string $bulkEntry)
+    {
+        $trimmedEntry = trim($bulkEntry);
+        $lines = explode("\n", $trimmedEntry);
+
+        foreach ($lines as $line) {
+            $this->entries[] = $entry;
+        }
+    }
+
+    /**
      * Retrieves all logged entries.
      *
      * @return array The logged entries.
