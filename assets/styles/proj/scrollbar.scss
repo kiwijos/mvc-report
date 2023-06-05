@@ -44,31 +44,26 @@ html {
         height: 8px;
         width: 8px;
         background-color: $color-on-prime;
+        border: 8px solid transparent;
     }
 
+    /* Vertical start button */
     &:vertical:start:decrement {
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
         border-bottom: 8px solid $color-prime;
     }
 
+    /* Vertical end button */
     &:vertical:end:increment {
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
         border-top: 8px solid $color-prime;
     }
   
     /* Horizontal start button */
     &:horizontal:start:decrement {
-        border-top: 8px solid transparent;
-        border-bottom: 8px solid transparent;
         border-right: 8px solid $color-prime;
     }
   
     /* Horizontal end button */
     &:horizontal:end:increment {
-        border-top: 8px solid transparent;
-        border-bottom: 8px solid transparent;
         border-left: 8px solid $color-prime;
     }
 }
