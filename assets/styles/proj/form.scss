@@ -1,20 +1,62 @@
+/* Input placeholder text */
 ::placeholder,
 ::-ms-input-placeholder {
     color: color.change($color-on-prime, $lightness: 50%);
 }
 
+// Reset some default input style
 input {
-    accent-color: $color-on-prime;
-    caret-color: $color-on-prime;
-    
-    &:focus {
-        outline: none;
-    }
+    background: none;
+    border: none;
+    outline: none;
+    padding: 2rem;
+    color: $color-prime;
 }
 
-input[type=text] {
-    @include base-style();
-    padding: 0.5rem 1rem;
-    box-shadow: 0.25rem 0.25rem 0 0 $color-on-prime;
-    border-radius: 0.5rem;
+form {
+    overflow: hidden;
+    background-color: $color-on-prime;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 0.25rem;
+    height: 100%;
+    accent-color: $color-prime;
+    caret-color: $color-prime;
+}
+
+/* Wrapper to reverse the default scroll position */
+.log {
+    padding: 1rem 2rem;
+    padding-bottom: 0;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+}
+
+/* Wrapper for displaying logged entries */
+.log-inner {
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: color.change($color-on-prime, $lightness: 50%);
+}
+
+.log-inner pre:nth-last-child(2) {
+    background-color: $color-prime;
+    color: $color-on-prime;
+}
+
+.log-inner pre:last-of-type { color: $color-prime; }
+
+/* Wrap text */
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    overflow-wrap: break-word;
 }
