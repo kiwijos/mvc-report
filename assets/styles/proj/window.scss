@@ -1,0 +1,22 @@
+.window {
+    @include base-style();
+    background-color: $color-prime;
+    border-radius: 1rem;
+    box-shadow: 1rem 1rem 0 0 $color-on-prime;
+    display: grid;
+    height: 100%;
+    grid-template-rows: max-content minmax(0, 1fr);
+}
+
+.window-heading {
+    width: 100%;
+    text-align: center;
+    padding: 0.25rem;
+    border-bottom: 4px solid $color-on-prime;
+}
+
+.window-body {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+}
