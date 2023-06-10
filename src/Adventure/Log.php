@@ -31,9 +31,9 @@ class Log
     }
 
     /**
-     * Adds a separate entry to the log for each new line in the entered string.
+     * Adds multiple entries to the log from a bulk string.
      *
-     * @param string $bulkEntry The string of entries to be added, separated by "\n".
+     * @param string $bulkEntry The bulk string containing multiple entries separated by "\n".
      */
     public function addBulkEntry(string $bulkEntry)
     {
@@ -41,7 +41,7 @@ class Log
         $lines = explode("\n", $trimmedEntry);
 
         foreach ($lines as $line) {
-            $this->entries[] = $entry;
+            $this->entries[] = $line;
         }
     }
 
@@ -53,5 +53,19 @@ class Log
     public function getEntries(): array
     {
         return $this->entries;
+    }
+
+    /**
+     * Dumps the log entries as a string, filtering out empty entries.
+     *
+     * @return string The log entries as a string.
+     */
+    public function dump(): string
+    {
+        $filteredEntries = array_filter($this->entries, function ($entry) {
+            return trim($entry) !== '';
+        });
+
+        return implode("\n", $filteredEntries);
     }
 }
