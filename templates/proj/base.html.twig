@@ -15,12 +15,25 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-        </header>
         <main role="main">
             {% block body %}{% endblock %}
         </main>
+        <nav>
+            <a class="desktop-button">
+                <span class="icon-folder icon-lg icon-shadow"></span>
+                <p>JSON_API</p>
+            </a>
+            <a class="desktop-button">
+                <span class="icon-folder icon-lg icon-shadow"></span>
+                <p>About</p>
+            </a>
+            <a class="desktop-button">
+                <span class="icon-disc icon-lg icon-shadow"></span>
+                <p>Adventure Game</p>
+            </a>
+        </nav>
         <footer>
+            {% block footer %}{% endblock %}
         </footer>
     </body>
 </html>
