@@ -6,3 +6,26 @@ input[type=submit] {
     border-radius: 0.5rem;
     border-bottom-right-radius: 1rem;
 }
+
+.desktop-button {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    color: $color-on-prime;
+    cursor: pointer;
+    width: 5rem;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word; /* For older versions of IE */
+    text-align: center;
+
+    &:focus p,
+    &:active p {
+        color: $color-prime;
+        background-color: $color-on-prime;
+    }
+}
