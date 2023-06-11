@@ -267,7 +267,9 @@ class Game
 
         $this->performLocationResponse($actionObject);
 
-        $this->inventory->removeItem($itemObject);
+        if (!$actionObject->isRepeatable()) {
+            $this->inventory->removeItem($itemObject);
+        }
 
         $textResponse = $actionObject->getTextResponse();
 
