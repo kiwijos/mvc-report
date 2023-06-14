@@ -17,10 +17,10 @@ doctrine:
                         dir: '%kernel.project_dir%/src/Entity/Main'
                         prefix: 'App\Entity\Main'
                         alias: Main
-            customer:
+            game:
                 connection: game
                 mappings:
-                    Customer:
+                    Game:
                         is_bundle: false
                         dir: '%kernel.project_dir%/src/Entity/Game'
                         prefix: 'App\Entity\Game'
