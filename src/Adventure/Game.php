@@ -265,7 +265,7 @@ class Game
             return "You hold the {$itemName} in your hands, eager to use it. But alas, this is not the place.";
         }
 
-        $this->performLocationResponse($actionObject);
+        $newLocationDescription = $this->performLocationResponse($actionObject);
 
         if (!$actionObject->isRepeatable()) {
             $this->inventory->removeItem($itemObject);
@@ -273,7 +273,7 @@ class Game
 
         $textResponse = $actionObject->getTextResponse();
 
-        return $textResponse ?? "Nothing notable happens when you use the {$itemName}.";
+        return $textResponse . "\n" . $newLocationDescription;
     }
 
     /**
@@ -320,13 +320,20 @@ class Game
      * Perform the location response action associated with the given action object.
      *
      * @param InputActionInterface $actionObject The action object containing the location response.
+     * @return string The descriptions of connections and items in the resulting location.
      */
-    private function performLocationResponse(InputActionInterface $actionObject): void
+    private function performLocationResponse(InputActionInterface $actionObject): string
     {
         $locationResponseObject = $actionObject->getLocationResponse();
 
         // Execute the location response action and update the current location
         $resultLocation = $locationResponseObject->doLocationResponse($this->currentLocation);
         $this->currentLocation = $resultLocation;
+
+        $resultLocationDescription = 
+            Unpacker::unpackVisibleConnectionsToLocation($resultLocation) . 
+            Unpacker::unpackVisibleItemsInLocation($resultLocation);
+        
+        return $resultLocationDescription;
     }
 }
