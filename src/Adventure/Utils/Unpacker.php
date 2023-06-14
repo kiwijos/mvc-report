@@ -57,10 +57,32 @@ class Unpacker
         $itemDescriptions = "";
         foreach ($itemsInLocation as $item) {
             if (!$item->isHidden()) {
-                $itemDescriptions .= "{$item->getDescription()}\n";
+                $itemDescription = self::encloseWordInBrackets($item->getDescription(), $item->getName());
+                $itemDescriptions .= $itemDescription . "\n";
             }
         }
 
         return $itemDescriptions;
+    }
+
+    /**
+     * Add brackets around a specific word in a given text.
+     *
+     * @param string $text The input text.
+     * @param string $word The word to be enclosed in brackets.
+     * @return string The modified text with the word enclosed by brackets.
+     */
+    private static function encloseWordInBrackets(string $text, string $word): string
+    {
+        // Escape any special characters in the word
+        $escapedWord = preg_quote($word);
+
+        // Create the regex pattern to search for the word
+        $pattern = '/\b' . $escapedWord . '\b/i';
+
+        // Add brackets around the word
+        $modifiedText = preg_replace($pattern, '[$0]', $text);
+
+        return $modifiedText;
     }
 }
