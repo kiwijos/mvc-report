@@ -38,7 +38,7 @@ class Unpacker
 
         $connectionDescriptions = "";
         foreach ($connectedLocations as $direction => $location) {
-            $connectionDescriptions .= "To the {$direction} you see {$location->getDescription()}\n";
+            $connectionDescriptions .= "To the {$direction}, {$location->getDescription()}\n";
         }
 
         return $connectionDescriptions;
