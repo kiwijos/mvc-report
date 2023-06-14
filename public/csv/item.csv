@@ -1,0 +1,13 @@
+id,name,description,locationId
+1,core,A small mechanical core lies amidst a pile of discarded machinery.,1
+2,robot,"A giant robot is slumped in front of the exit, blocking your path. Its joints are stiff, and its exposed wires dangle lifelessly.",1
+3,robot,"The revived robot, slightly battered but standing tall, now stands aside from the exit. ",2
+4,cyberarm,A prosthetic cyberarm rests on a display stand.,10
+5,cloak,"A black, form-fitting cloak is draped over a rack.",6
+6,terminal,"An ancient terminal sits on a dusty shelf, seemingly forgotten.",5
+7,console,A large console dominates the center of the room.,11
+8,statue,"As you take in the serenity, you notice an intricately carved statue.",14
+9,statue,"As you take in the serenity, you glance at the transformed statue.",15
+10,door,"You find yourself face to face with a solid, imposing door.",16
+11,artifact,"At the heart of the lair stands a towering pedestal, upon which rests a magnificent artifact, radiating a brilliance that pierces through the darkness.",17
+12,book,A dusty book lays on a table.,13

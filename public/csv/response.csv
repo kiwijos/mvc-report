@@ -1,0 +1,6 @@
+id,type,locationId,actionId
+1,swap,2,3
+2,move,8,11
+3,swap,15,18
+4,swap,18,8
+5,move,19,22
