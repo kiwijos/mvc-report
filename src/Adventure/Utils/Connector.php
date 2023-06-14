@@ -37,9 +37,10 @@ class Connector
      * @param Location $oldLocation The location to be replaced.
      * @param Location $newLocation The new location to replace the old location.
      *
+     * @return Location The new location.
      * @throws Exception If there is an error in swapping the locations.
      */
-    public static function swapLocations(Location $oldLocation, Location $newLocation): void
+    public static function swapLocations(Location $oldLocation, Location $newLocation): Location
     {
         // Get the connections of the old location
         $connections = $oldLocation->getConnectedLocations();
@@ -53,6 +54,8 @@ class Connector
         foreach ($connections as $direction => $location) {
             self::connectLocations($newLocation, $location, $direction);
         }
+
+        return $newLocation;
     }
 
     /**
