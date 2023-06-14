@@ -118,7 +118,7 @@ class Location
      */
     public function disconnectFrom(Location $location): void
     {
-        foreach ($this->connections as $direction => $connectedLocation) {
+        foreach ($this->connectedLocations as $direction => $connectedLocation) {
             if ($connectedLocation === $location) {
                 unset($this->connections[$direction]);
                 return;
