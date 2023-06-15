@@ -59,7 +59,7 @@ class ResetGameDatabaseCommand extends Command
             $this->importCsv($output, $filename, 'game');
         }
 
-        // Create message indicating successfull import
+        // Create message indicating successful import
         $fileCount = count($csvFiles);
         $output->setVerbosity(OutputInterface::VERBOSITY_NORMAL);
         $output->writeln([
