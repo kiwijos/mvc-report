@@ -23,7 +23,7 @@ class AvailableActionsProvider
             [
                 'name' => 'where',
                 'target' => '',
-                'description' => 'Get information about your current location',
+                'description' => 'Recall where you are and view all exits and interactions in your current location',
             ],
             [
                 'name' => 'inventory',
