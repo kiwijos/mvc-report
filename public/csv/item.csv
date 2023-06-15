@@ -1,6 +1,6 @@
 id,name,description,locationId
 1,core,A small mechanical core lies amidst a pile of discarded machinery.,1
-2,robot,"A giant robot is slumped in front of the exit, blocking your path. Its joints are stiff, and its exposed wires dangle lifelessly.",1
+2,robot,"A giant robot is slumped in front of the exit to the north, blocking your path. Its joints are stiff, and its exposed wires dangle lifelessly.",1
 3,robot,"The revived robot, slightly battered but standing tall, now stands aside from the exit. ",2
 4,cyberarm,A prosthetic cyberarm rests on a display stand.,10
 5,cloak,"A black, form-fitting cloak is draped over a rack.",6
