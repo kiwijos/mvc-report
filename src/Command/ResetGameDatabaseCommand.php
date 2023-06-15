@@ -4,7 +4,6 @@ namespace App\Command;
 
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -50,13 +49,26 @@ class ResetGameDatabaseCommand extends Command
 
         // Import CSV files
         $io->section('Importing CSV files...');
-        $this->importCsv($output, 'location.csv', 'game');
-        $this->importCsv($output, 'connection.csv', 'game');
-        $this->importCsv($output, 'item.csv', 'game');
-        $this->importCsv($output, 'action.csv', 'game');
-        $this->importCsv($output, 'response.csv', 'game');
+        $output->writeln([
+            '',
+            ' Importing CSV files...',
+        ]);
 
-        $io->success('Database reset and data import completed.');
+        $csvFiles = ['location.csv', 'connection.csv', 'item.csv', 'action.csv', 'response.csv'];
+        foreach ($csvFiles as $filename) {
+            $this->importCsv($output, $filename, 'game');
+        }
+
+        // Create message indicating successfull import
+        $fileCount = count($csvFiles);
+        $output->setVerbosity(OutputInterface::VERBOSITY_NORMAL);
+        $output->writeln([
+            '',
+            "     <info>{$fileCount}</info> CSV files imported",
+            '',
+        ]);
+
+        $io->success('Database reset and data import completed!');
 
         return Command::SUCCESS;
     }
