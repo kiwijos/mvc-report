@@ -118,7 +118,7 @@ class Item
      * @param string $actionName The name of the action.
      * @return InputActionInterface|null The action object if found, or null if not found.
      */
-    public function getAction(string $actionName): InputActionInterface
+    public function getAction(string $actionName): ?InputActionInterface
     {
         foreach ($this->actions as $action) {
             if ($action->getName() === $actionName) {
