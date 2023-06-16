@@ -26,20 +26,14 @@ trait InputActionTrait
     private $requiredLocation;
 
     /**
-     * @var bool Whether the action can be repeated.
-     */
-    private $repeatable;
-
-    /**
      * InputAction constructor.
      *
      * @param string $textResponse The text response for the input action.
      * @param bool   $textResponse Whether the action is repeatable. Default is false.
      */
-    public function __construct(string $textResponse, bool $repeatable = false)
+    public function __construct(string $textResponse)
     {
         $this->textResponse = $textResponse;
-        $this->repeatable = $repeatable;
         $this->locationResponse = null;
         $this->requiredLocation = null;
     }
@@ -92,16 +86,5 @@ trait InputActionTrait
     public function getRequiredLocation(): ?Location
     {
         return $this->requiredLocation;
-    }
-
-    /**
-     * Checks whether the player should be allowed to repeat the action
-     * more than once.
-     *
-     * @return bool Whether the action is repeatable.
-     */
-    public function isRepeatable(): bool
-    {
-        return $this->repeatable;
     }
 }
