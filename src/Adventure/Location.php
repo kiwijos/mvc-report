@@ -2,6 +2,8 @@
 
 namespace App\Adventure;
 
+use Exception;
+
 /**
  * Represents a location in the adventure game.
  */
@@ -92,11 +94,15 @@ class Location
      * Retrieves the connected location in the specified direction.
      *
      * @param string $direction The direction to retrieve the connected location.
-     * @return Location The connected location object.
+     * @return Location|null The connected location object if found, .
      */
     public function getConnectedLocation(string $direction)
     {
-        return $this->connectedLocations[$direction];
+        if ($this->hasConnection($direction)) {
+            return $this->connectedLocations[$direction];
+        }
+
+        return null;
     }
 
     /**
@@ -105,9 +111,14 @@ class Location
      *
      * @param Location $location  The location to connect to.
      * @param string   $direction The direction of the connection.
+     * @throws Exception If the specified direction is already connected to another location.
      */
     public function connectTo(Location $location, string $direction): void
     {
+        if ($this->hasConnection($direction)) {
+            throw new Exception("The direction '{$direction}' is already connected to another location.");
+        }
+
         $this->connectedLocations[$direction] = $location;
     }
 
@@ -120,7 +131,7 @@ class Location
     {
         foreach ($this->connectedLocations as $direction => $connectedLocation) {
             if ($connectedLocation === $location) {
-                unset($this->connections[$direction]);
+                unset($this->connectedLocations[$direction]);
                 return;
             }
         }
@@ -152,11 +163,15 @@ class Location
      * Retrieves the item with the specified name.
      *
      * @param  string $itemName The name of the item.
-     * @return Item   The item object.
+     * @return Item|null The item object if found, or null if not found.
      */
     public function getItem(string $itemName): ?Item
     {
-        return $this->items[$itemName];
+        if ($this->hasItem($itemName)) {
+            return $this->items[$itemName];
+        }
+
+        return null;
     }
 
     /**
