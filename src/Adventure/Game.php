@@ -267,13 +267,11 @@ class Game
 
         $newLocationDescription = $this->performLocationResponse($actionObject);
 
-        if (!$actionObject->isRepeatable()) {
-            $this->inventory->removeItem($itemObject);
-        }
+        $this->inventory->removeItem($itemObject);
 
         $textResponse = $actionObject->getTextResponse();
 
-        return $textResponse . "\n" . $newLocationDescription;
+        return $textResponse . "\n\n" . $newLocationDescription;
     }
 
     /**
@@ -330,9 +328,7 @@ class Game
         $resultLocation = $locationResponseObject->doLocationResponse($this->currentLocation);
         $this->currentLocation = $resultLocation;
 
-        $resultLocationDescription = 
-            Unpacker::unpackVisibleConnectionsToLocation($resultLocation) . 
-            Unpacker::unpackVisibleItemsInLocation($resultLocation);
+        $resultLocationDescription = Unpacker::unpackLocationDescriptions($resultLocation);
         
         return $resultLocationDescription;
     }
