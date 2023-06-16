@@ -10,7 +10,7 @@ class Inventory
     /**
      * @var array The inventory of the player.
      */
-    private $inventory;
+    private $inventory = [];
 
     /**
      * Retrieves the entire inventory.
@@ -40,7 +40,11 @@ class Inventory
      */
     public function getItem(string $itemName): ?Item
     {
-        return $this->inventory[$itemName];
+        if ($this->hasItem($itemName)) {
+            return $this->inventory[$itemName];
+        }
+
+        return null;
     }
 
     /**
