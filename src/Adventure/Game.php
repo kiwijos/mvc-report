@@ -18,12 +18,12 @@ use Exception;
 class Game
 {
     /**
-     * @var Location The current location of the player.
+     * @var Location|null The current location of the player.
      */
     private $currentLocation;
 
     /**
-     * @var Inventory The inventory of the player.
+     * @var Inventory|null The inventory of the player.
      */
     private $inventory;
 
@@ -40,9 +40,9 @@ class Game
     /**
      * Retrieves the current location of the player.
      *
-     * @return Location The current location of the player.
+     * @return Location|null The current location of the player, or null if not set.
      */
-    public function getCurrentLocation(): Location
+    public function getCurrentLocation(): ?Location
     {
         return $this->currentLocation;
     }
@@ -55,6 +55,16 @@ class Game
     public function setInventory(Inventory $inventory): void
     {
         $this->inventory = $inventory;
+    }
+
+    /**
+     * Retrieves the inventory of the player.
+     *
+     * @return Inventory|null The inventory object representing the player's inventory, or null if not set.
+     */
+    public function getInventory(): ?Inventory
+    {
+        return $this->inventory;
     }
 
     /**
@@ -237,8 +247,8 @@ class Game
             return "The {$itemName} has already been added to your inventory.";
         }
 
-        $itemObject->setHidden(true);
         $this->inventory->addItem($itemObject);
+        $this->currentLocation->removeItem($itemObject);
 
         $textResponse = $actionObject->getTextResponse();
 
@@ -300,11 +310,7 @@ class Game
     private function getItemToHandleAction(string $target)
     {
         if ($this->currentLocation->hasItem($target)) {
-            $itemInLocation = $this->currentLocation->getItem($target);
-            
-            if (!$itemInLocation->isHidden()) {
-                return $itemInLocation;
-            }
+            return $this->currentLocation->getItem($target);
         }
 
         if ($this->inventory->hasItem($target)) {
