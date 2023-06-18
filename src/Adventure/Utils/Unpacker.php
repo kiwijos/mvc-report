@@ -38,7 +38,7 @@ class Unpacker
 
         $connectionDescriptions = "";
         foreach ($connectedLocations as $direction => $location) {
-            $connectionDescriptions .= "To the {$direction}, {$location->getDescription()}\n";
+            $connectionDescriptions .= "- To the {$direction}, {$location->getDescription()}\n";
         }
 
         return $connectionDescriptions;
@@ -56,10 +56,8 @@ class Unpacker
 
         $itemDescriptions = "";
         foreach ($itemsInLocation as $item) {
-            if (!$item->isHidden()) {
-                $itemDescription = self::encloseWordInBrackets($item->getDescription(), $item->getName());
-                $itemDescriptions .= $itemDescription . "\n";
-            }
+            $itemDescription = self::encloseWordInBrackets($item->getDescription(), $item->getName());
+            $itemDescriptions .= "- {$itemDescription}\n";
         }
 
         return $itemDescriptions;
