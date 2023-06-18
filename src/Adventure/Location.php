@@ -194,4 +194,17 @@ class Location
     {
         $this->items[$item->getName()] = $item;
     }
+
+    /**
+     * Removes an item from the location.
+     *
+     * @param Item $item The item to remove.
+     */
+    public function removeItem(Item $item): void
+    {
+        $key = array_search($item, $this->items);
+        if ($key !== false) {
+            unset($this->items[$key]);
+        }
+    }
 }
