@@ -27,22 +27,15 @@ class Item
     private $actions;
 
     /**
-     * @var bool Whether the item can be seen and interacted with when in a location.
-     */
-    private $hidden;
-
-    /**
      * Item constructor.
      *
      * @param string $name        The name of the item.
      * @param string $description The description of the item.
-     * @param bool   $hidden      Whether the item is hidden or not. Default is false.
      */
-    public function __construct(string $name, string $description, bool $hidden = false)
+    public function __construct(string $name, string $description)
     {
         $this->name = $name;
         $this->description = $description;
-        $this->hidden = $hidden;
         $this->actions = [];
     }
 
@@ -64,26 +57,6 @@ class Item
     public function getDescription(): string
     {
         return $this->description;
-    }
-
-    /**
-     * Checks if the item is hidden.
-     *
-     * @return bool True if the item is hidden, false otherwise.
-     */
-    public function isHidden(): bool
-    {
-        return $this->hidden;
-    }
-
-    /**
-     * Sets the hidden status of the item.
-     *
-     * @param bool $value The hidden status to set.
-     */
-    public function setHidden(bool $value): void
-    {
-        $this->hidden = $value;
     }
 
     /**
