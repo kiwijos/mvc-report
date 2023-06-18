@@ -28,10 +28,10 @@ class MoveLocationResponse implements LocationResponseInterface
     /**
      * Performs the location response action by returning the new location.
      *
-     * @param  Location $oldLocation The current location.
+     * @param  Location|null $oldLocation The current location.
      * @return Location The resulting location after the move, will be the new location.
      */
-    public function doLocationResponse(Location $oldLocation): Location
+    public function doLocationResponse(?Location $oldLocation): Location
     {
         $resultLocation = $this->newLocation;
 

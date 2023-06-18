@@ -13,8 +13,8 @@ interface LocationResponseInterface
     /**
      * Performs the location response action and returns the resulting location.
      *
-     * @param  Location $location The current location.
+     * @param  Location|null $location The current location, or null.
      * @return Location The resulting location after the response action.
      */
-    public function doLocationResponse(Location $location): Location;
+    public function doLocationResponse(?Location $location): Location;
 }
