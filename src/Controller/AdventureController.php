@@ -39,7 +39,7 @@ class AdventureController extends AbstractController
         // Add instructions around the first location's description.
         $instructions = "Welcome! You are about to embark on an epic adventure. Remember, at any time, you can type 'help' for assistance. Good luck!\n\n";
         $instructions .= Unpacker::unpackLocationDescriptions($startingLocation) . "\n";
-        $instructions .= "You can have a closer look at objects in the scene by typing 'examine' followed by the name of the object. Interactable objects are enclosed in brackets [name]";
+        $instructions .= "You can have a closer look at objects in the scene by typing 'examine' followed by the name of the object. Interactable objects are enclosed in brackets [name].";
         
         $log->addEntry($instructions); // Save to log
 
@@ -51,9 +51,11 @@ class AdventureController extends AbstractController
     #[Route('/proj/game/location', name: 'render_location')]
     public function renderLocation(SessionInterface $session)
     {
-        $log = $session->get('game_log', new Log()); // Get logged entries
+        // Get logged entries
+        $log = $session->get('game_log', new Log());
+        $entries = $log->getEntries();
 
-        return $this->render('proj/location.html.twig', [ 'log' => $log, ]);
+        return $this->render('proj/location.html.twig', [ 'entries' => $entries, ]);
     }
 
     #[Route('/proj/game/action', name: 'perform_action', methods: ['POST'])]
@@ -76,11 +78,11 @@ class AdventureController extends AbstractController
             return $this->redirectToRoute('reset');
         }
 
-        // Retrive game object to process action
+        // Retrieve game object to process action
         $game = $session->get('game');
         $result = $game->processAction($action, $target);
 
-        $log->addEntry($result); // Save action response to log
+        $log->addEntry($result); // Save response to log
 
         $session->set('game', $game);
         $session->set('game_log', $log);
