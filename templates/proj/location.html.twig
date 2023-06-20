@@ -11,7 +11,7 @@
         <form method="post" action="{{ path('perform_action') }}">
             <div class="log">
                 <div class="log-inner">
-                    {% for entry in log.getEntries() %}
+                    {% for entry in entries %}
                         <pre>{{ entry }}</pre>
                     {% endfor %}
                 </div>
