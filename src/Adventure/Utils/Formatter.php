@@ -17,7 +17,7 @@ class Formatter
      * @param  bool         $asArray Whether to return the formatted rows as an array or a string. Default is false (string).
      * @return string|array The formatted data as a string.
      */
-    public static function formatRows(array $data, int $gap = 1, $asArray = false): ?string
+    public static function formatRows(array $data, int $gap = 1, $asArray = false): string|array
     {
         $columns = array_map(null, ...array_values($data));
 
