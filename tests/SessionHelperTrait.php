@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 trait SessionHelperTrait
 {
     /**
-     * @param KernelBrowser $clien Current client.
+     * @param KernelBrowser $client Current client.
      * @param mixed[]       $data  Session data.
      * @return Session
      */
