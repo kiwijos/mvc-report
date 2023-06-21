@@ -12,6 +12,9 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
 {
     use DatabaseHelperTrait;
 
+    /**
+     * Bootstrap kernel and prepare database.
+     */
     protected function setUp(): void
     {
         // Bootstrap the Symfony kernel with the 'test' environment
@@ -21,6 +24,9 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         $this->truncateTable($this->getEntityManager('game'), 'location');
     }
 
+    /**
+     * Test case for execute method with valid input.
+     */
     public function testExecute()
     {
         // Get the entity manager for the 'game' connection
@@ -49,6 +55,9 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         $this->assertNonEmptyTable($entityManager, 'location');
     }
 
+    /**
+     * Test case for execute method with invalid file.
+     */
     public function testExecuteWithNonExistentCsvFile()
     {
         $application = new Application(self::$kernel);
@@ -68,6 +77,9 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         $this->assertStringContainsString('The CSV file "public/csv/nonexistent.csv" does not exist.', $output);
     }
 
+    /**
+     * Test case for execute method with invalid entity manager.
+     */
     public function testExecuteWithNonExistentEntityManager()
     {
         $application = new Application(self::$kernel);
@@ -87,6 +99,31 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         $this->assertStringContainsString('The Entity Manager "nonexistent" does not exist.', $output);
     }
 
+    /**
+     * Test case for execute method with missing entity class.
+     */
+    public function testExecuteWithNoEntityClassFound()
+    {
+        $application = new Application(self::$kernel);
+
+        $command = $application->find('app:import-csv');
+
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([
+            'filename' => 'dummy.csv',
+            '--manager' => 'game',
+        ]);
+
+        $this->assertSame(Command::FAILURE, $commandTester->getStatusCode());
+
+        // Check the output of the command in the console
+        $output = $commandTester->getDisplay();
+        $this->assertStringContainsString('No entity class found for the CSV file "dummy.csv".', $output);
+    }
+
+    /**
+     * @return object The entity manager.
+     */
     private function getEntityManager(string $name = 'default')
     {
         $container = self::$kernel->getContainer();
