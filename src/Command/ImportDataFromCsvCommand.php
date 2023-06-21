@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use InvalidArgumentException;
 
 #[AsCommand(
     name: 'app:import-csv',
@@ -87,10 +88,9 @@ class ImportDataFromCsvCommand extends Command
 
         $entityManagerName = $input->getOption('manager');
 
-        // Update to custom EntityManager service name
-        $entityManager = $this->doctrine->getManager($entityManagerName) ?? null;
-        
-        if ($entityManager === null) {
+        try {
+            $entityManager = $this->doctrine->getManager($entityManagerName);
+        } catch (InvalidArgumentException) {
             $io->error(sprintf('The Entity Manager "%s" does not exist.', $entityManagerName));
             return Command::FAILURE;
         }
