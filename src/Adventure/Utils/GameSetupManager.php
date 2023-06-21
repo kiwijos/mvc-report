@@ -3,6 +3,7 @@
 namespace App\Adventure\Utils;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectManager;
 use App\Entity\Game\Location;
 use App\Entity\Game\Item;
 use App\Entity\Game\Action;
@@ -23,9 +24,9 @@ class GameSetupManager {
     /**
      * GameSetupManager constructor.
      *
-     * @param EntityManagerInterface $entityManager The Doctrine entity manager.
+     * @param EntityManagerInterface|ObjectManager $entityManager The Doctrine entity manager.
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface|ObjectManager $entityManager)
     {
         $this->entityManager = $entityManager;
     }
