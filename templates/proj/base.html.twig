@@ -19,21 +19,18 @@
             {% block body %}{% endblock %}
         </main>
         <nav>
-            <a class="desktop-button">
+            <a class="desktop-button" href="{{path('proj_api')}}">
                 <span class="icon-folder icon-lg icon-shadow"></span>
                 <p>JSON_API</p>
             </a>
-            <a class="desktop-button">
+            <a class="desktop-button" href="{{path('proj_about')}}">
                 <span class="icon-folder icon-lg icon-shadow"></span>
                 <p>About</p>
             </a>
-            <a class="desktop-button">
+            <a class="desktop-button" href="{{path('setup_game')}}">
                 <span class="icon-disc icon-lg icon-shadow"></span>
                 <p>Adventure Game</p>
             </a>
         </nav>
-        <footer>
-            {% block footer %}{% endblock %}
-        </footer>
     </body>
 </html>

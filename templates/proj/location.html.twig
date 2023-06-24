@@ -8,7 +8,7 @@
         <span>Adventure Game</span>
     </div>
     <div class="window-body game">
-        <form method="post" action="{{ path('perform_action') }}">
+        <form class="log-form" method="post" action="{{ path('perform_action') }}">
             <div class="log">
                 <div class="log-inner">
                     {% for entry in entries %}
@@ -20,7 +20,4 @@
         </form>
     </div>
 </div>
-{% endblock %}
-
-{% block footer %}
 {% endblock %}
