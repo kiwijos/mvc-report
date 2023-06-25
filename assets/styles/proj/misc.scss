@@ -7,3 +7,68 @@
     background: $color-on-prime;
     color: $color-prime;
 }
+
+.flex {
+    display: flex;
+
+    &.flex-row { flex-direction: row; }
+
+    &.flex-col {flex-direction: column; }
+
+    &.gap-sm { gap: 0.5rem; }
+    &.gap-med { gap: 1rem; }
+    &.gap-lg { gap: 2rem; }
+
+    &.space-evenly { justify-content: space-evenly; }
+    &.space-between { justify-content: space-between; }
+    &.justify-center { justify-content: center; }
+    &.justify-start { justify-content: start; }
+    &.justify-end { justify-content: end; }
+
+    &.align-start { align-items: flex-start; }
+    &.align-end { align-items: flex-end; }
+    &.align-center { align-items: center; }
+}
+
+.full-width { width: 100%; }
+
+.arrow-box {
+    border: 4px solid $color-on-prime;
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    &.arrow-right::after {
+        content: "";
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 100%;
+        border: 1rem solid transparent;
+        border-left: 1rem solid $color-on-prime;
+    }
+
+    &.arrow-top::after {
+        content: "";
+        position: absolute;
+        transform: translateX(-50%) translateY(-100%);
+        top: 0;
+        left: 50%;
+        border: 1rem solid transparent;
+        border-bottom: 1rem solid $color-on-prime;
+    }
+
+    &.arrow-bottom::after {
+        content: "";
+        position: absolute;
+        transform: translateX(-50%) translateY(100%);
+        bottom: 0;
+        left: 50%;
+        border: 1rem solid transparent;
+        border-top: 1rem solid $color-on-prime;
+    }
+}
+
+.overflow-auto {
+    overflow: auto;
+}
