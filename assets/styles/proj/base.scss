@@ -36,8 +36,7 @@ body {
     grid-template-columns: minmax(0, 1fr) max-content;
     grid-template-rows: minmax(0, 1fr) max-content;
     grid-template-areas:
-    "main nav"
-    "footer footer";
+    "main nav";
 
     main {
         padding: 1rem;
@@ -48,20 +47,10 @@ body {
         padding: 1rem;
         grid-area: nav;
     }
-
-    footer {
-        grid-area: footer;
-    }
 }
 
 nav {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-
-footer {
-    margin-top: 2rem;
-    background-color: $color-on-prime;
-    height: 3rem;
 }
