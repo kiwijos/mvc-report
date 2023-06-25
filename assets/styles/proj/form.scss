@@ -13,7 +13,16 @@ input {
     color: $color-prime;
 }
 
-form {
+select {
+    background: $color-on-prime;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: $color-prime;
+    border-radius: 0.5rem;
+}
+
+.log-form {
     overflow: hidden;
     background-color: $color-on-prime;
     display: flex;
