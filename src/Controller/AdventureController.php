@@ -25,7 +25,10 @@ class AdventureController extends AbstractController
             "Remember, at any time, you can type 'help' for assistance. Good luck!\n"
         ];
 
-        return $this->render('proj/location.html.twig', [ 'entries' => $message]);
+        return $this->render('proj/location.html.twig', [
+            'entries' => $message,
+            'inputs' => [],
+        ]);
     }
 
     #[Route('/proj/game/init', name: 'setup_game')]
@@ -66,7 +69,13 @@ class AdventureController extends AbstractController
         $log = $session->get('game_log', new Log());
         $entries = $log->getEntries();
 
-        return $this->render('proj/location.html.twig', [ 'entries' => $entries, ]);
+        $inputLog = $session->get('input_log', new Log());
+        $inputs = $inputLog->getEntries();
+
+        return $this->render('proj/location.html.twig', [
+            'entries' => $entries,
+            'inputs' => $inputs,
+        ]);
     }
 
     #[Route('/proj/game/action', name: 'perform_action', methods: ['POST'])]
@@ -87,15 +96,19 @@ class AdventureController extends AbstractController
             return $this->redirectToRoute('setup_game');
         }
 
+        $inputLog = $session->get('input_log', new Log()); // Only for logging user input
         $log = $session->get('game_log', new Log());
 
-        $log->addEntry($userInput); // Save input to log
+        $inputLog->addEntry($userInput); // Save input
+        $session->set('input_log', $inputLog);
+
+        $log->addEntry($userInput); // Save input to the main log too
 
         // Retrieve game object to process action
         $game = $session->get('game');
         $result = $game->processAction($action, $target);
 
-        $log->addEntry($result); // Save response to log
+        $log->addEntry($result); // Save response to the main log
 
         $session->set('game', $game);
         $session->set('game_log', $log);
