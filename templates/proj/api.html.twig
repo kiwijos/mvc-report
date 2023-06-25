@@ -1,0 +1,97 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}JSON_API{% endblock %}
+
+{% block body %}
+<div class="window">
+    <div class="window-heading">
+        <span>JSON_API</span>
+    </div>
+    <div class="window-body split-two">
+        <div class="flex flex-col gap-lg space-between overflow-auto">
+            <div class="arrow-box arrow-bottom">
+                <p>POST /connect: Connects two locations together</p>
+            </div>
+            <form class="flex flex-col gap-lg">
+                <div class="flex flex-col gap-sm">
+                    <label for="from_location">From Location:</label>
+                    <select name="from_location" id="from_location" required>
+                        {% for location in locations %}
+                            <option value="{{ location.id }}">{{ location.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="flex flex-col gap-sm">
+                    <label for="to_location">To Location:</label>
+                    <select name="to_location" id="to_location" required>
+                        {% for location in locations %}
+                            <option value="{{ location.id }}">{{ location.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="flex flex-col gap-sm">
+                    <label for="direction">Direction:</label>
+                    <select name="direction" id="direction" required>
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
+                    </select>
+                </div>
+                <button
+                    class="button"
+                    type="submit"
+                    formaction="{{ path('proj_api_connect') }}"
+                    formmethod="post"
+                    >
+                    Connect Locations
+                </button>
+                
+            </form>
+        </div>
+        <form class="flex flex-col gap-lg full-width align-end justify-start overflow-auto">
+            <div class="flex flex-row gap-med">
+                <div class="flex flex-col gap-med justify-center arrow-box arrow-right">
+                    <p>GET /locations: Retrieves a list of all locations in the game database</p>
+                    <p>GET /locations/{id}: Retrieves a specific location by its ID</p>
+                </div>
+                <button
+                    class="desktop-button"
+                    formaction="{{ path('proj_api_locations') }}"
+                    formmethod="get"
+                    >
+                    <span class="icon-file icon-lg icon-shadow"></span>
+                    <p>locations.json</p>
+                </button>
+            </div>
+            <div class="flex flex-row gap-med">
+                <div class="flex flex-col gap-med justify-center arrow-box arrow-right">
+                    <p>GET /items: Retrieves a list of all items in the game database</p>
+                    <p>GET /items/{id}: Retrieves a specific item by its ID</p>
+                </div>
+                <button
+                    class="desktop-button"
+                    formaction="{{ path('proj_api_items') }}"
+                    formmethod="get"
+                    >
+                    <span class="icon-file icon-lg icon-shadow"></span>
+                    <p>items.json</p>
+                </button>
+            </div>
+            <div class="flex flex-row gap-med">
+                <div class="flex flex-col gap-med justify-center arrow-box arrow-right">
+                    <p>GET /log: Retrieves a list of all logged entries currently in the session</p>
+                </div>
+                <button
+                    class="desktop-button"
+                    formaction="{{ path('proj_api_log') }}"
+                    formmethod="get"
+                    >
+                    <span class="icon-file icon-lg icon-shadow"></span>
+                    <p>log.json</p>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
