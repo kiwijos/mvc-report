@@ -32,6 +32,18 @@ class AdventureControllerTest extends WebTestCase
     }
 
     /**
+     * Test case for start route.
+     */
+    public function testStart()
+    {
+        $this->client->request('GET', '/proj/game');
+
+        // Assert successfull
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertSelectorTextContains('.log', 'Welcome!');
+    }
+
+    /**
      * Test case for init route.
      */
     public function testInit()
@@ -107,11 +119,11 @@ class AdventureControllerTest extends WebTestCase
     }
 
     /**
-     * Test case for session reset route.
+     * Test case for action route with 'restart'.
      */
-    public function testResetSession()
+    public function testActionRouteWithResetSessionRedirect()
     {
-        $this->client->request('GET', '/proj/game/reset');
+        $this->client->request('POST', '/proj/game/action', ['input' => 'restart']);
 
         // Assert redirect back to init route
         $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
