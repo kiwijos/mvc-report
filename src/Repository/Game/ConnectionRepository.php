@@ -38,4 +38,18 @@ class ConnectionRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /**
+     * Retrieves the highest ID.
+     * 
+     * @return int|null The ID if found, or null if not found.
+     */
+    public function findHighestId(): ?int
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('MAX(c.id) as highestId');
+        $result = $qb->getQuery()->getSingleScalarResult();
+
+        return $result !== null ? (int) $result : null;
+    }
 }
