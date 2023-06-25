@@ -19,4 +19,17 @@
     padding: 1rem;
     width: 100%;
     height: 100%;
+
+    &.split-two {
+        padding: 0;
+        display: flex;
+    }
+
+    &.split-two > * {
+        padding: 1rem;
+    }
+
+    &.split-two > *:first-child {
+        border-right: 4px solid $color-on-prime;
+    }
 }
