@@ -38,8 +38,14 @@ class ProjectControllerJson extends AbstractController
     }
 
     #[Route("/proj/api/locations/{id}", name: "proj_api_locations_by_id")]
-    public function locationById(Location $location): JsonResponse
+    public function locationById(int $id, LocationRepository $locationRepository): JsonResponse
     {
+        $location = $locationRepository->find($id);
+
+        if (!$location) {
+            return $this->json(['error' => "No location found with ID {$id}"], Response::HTTP_NOT_FOUND);
+        }
+
         $response = $this->json($location);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT,
@@ -64,15 +70,20 @@ class ProjectControllerJson extends AbstractController
     }
 
     #[Route("/proj/api/items/{id}", name: "proj_api_items_by_id")]
-    public function itemById(Item $item): JsonResponse
+    public function itemById(int $id, ItemRepository $itemRepository): JsonResponse
     {
+        $item = $itemRepository->find($id);
+
+        if (!$item) {
+            return $this->json(['error' => "No item found with ID {$id}"], Response::HTTP_NOT_FOUND);
+        }
+
         $response = $this->json($item);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT,
         );
         return $response;
     }
-
 
     #[Route("/proj/api/log", name: "proj_api_log")]
     public function log(SessionInterface $session): JsonResponse
