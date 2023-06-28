@@ -10,6 +10,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 #[AsCommand(
     name: 'app:reset-database',
@@ -19,6 +21,14 @@ use Symfony\Component\Console\Input\ArrayInput;
 )]
 class ResetGameDatabaseCommand extends Command
 {
+    private $kernel;
+
+    public function __construct(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+        parent::__construct();
+    }
+
     protected function configure()
     {
         $this
@@ -39,6 +49,16 @@ class ResetGameDatabaseCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
+        $csvFiles = ['location.csv', 'connection.csv', 'item.csv', 'action.csv', 'response.csv'];
+        $csvDirectory = $this->kernel->getProjectDir() . '/' . 'public/csv';
+
+        // Make sure files are present before attempting to reset database
+        $missingFiles = $this->getMissingCsvFiles($csvFiles, $csvDirectory);
+        if (!empty($missingFiles)) {
+            $io->error('The following CSV files are missing in the ' . $csvDirectory . ' directory: ' . implode(', ', $missingFiles) . '. Aborting database reset!');
+            return Command::FAILURE;
+        }
+
         // Drop the database schema
         $io->section('Dropping the database schema...');
         $this->runCommand($output, 'doctrine:schema:drop', ['--em' => 'game', '--force' => true]);
@@ -54,7 +74,6 @@ class ResetGameDatabaseCommand extends Command
             ' Importing CSV files...',
         ]);
 
-        $csvFiles = ['location.csv', 'connection.csv', 'item.csv', 'action.csv', 'response.csv'];
         foreach ($csvFiles as $filename) {
             $this->importCsv($output, $filename, 'game');
         }
@@ -111,5 +130,24 @@ class ResetGameDatabaseCommand extends Command
         ],
             OutputInterface::VERBOSITY_QUIET
         );
+    }
+
+    /**
+     * @param string[] $csvFiles The array of files to see if present.
+     * @param string   $csvDirectory The path to the csv files.
+     * 
+     * @return string[] The missing CSV files.
+     */
+    private function getMissingCsvFiles(array $csvFiles, string $csvDirectory): array
+    {
+        $filesystem = new Filesystem();
+        $missingFiles = [];
+        foreach ($csvFiles as $filename) {
+            $filePath = $csvDirectory . '/' . $filename;
+            if (!$filesystem->exists($filePath)) {
+                $missingFiles[] = $filename;
+            }
+        }
+        return $missingFiles;
     }
 }
