@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\HttpKernel\KernelInterface;
 use InvalidArgumentException;
 
 #[AsCommand(
@@ -27,16 +28,19 @@ class ImportDataFromCsvCommand extends Command
     /** @var ManagerRegistry */
     private $doctrine;
 
+    private $kernel;
+
     /**
      * ImportDataCommand constructor.
      *
      * @param ManagerRegistry $doctrine
      */
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(ManagerRegistry $doctrine, KernelInterface $kernel)
     {
-        parent::__construct();
         $this->entityManager = $doctrine->getManager();
         $this->doctrine = $doctrine;
+        $this->kernel = $kernel;
+        parent::__construct();
     }
 
     /**
@@ -64,7 +68,9 @@ class ImportDataFromCsvCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $filename = $input->getArgument('filename'); // Retrieve the argument value
-        $csvFile = sprintf('public/csv/%s', $filename);
+        
+        $csvDirectory = $this->kernel->getProjectDir() . '/' . 'public/csv/';
+        $csvFile = $csvDirectory . $filename;
 
         // Check if file exists
         if (!file_exists($csvFile)) {
