@@ -14,8 +14,19 @@ use PHPUnit\Framework\TestCase;
  */
 class HandleExamineTest extends TestCase
 {
+    /**
+     * @var Game
+     */
     private $game;
+
+    /**
+     * @var Location
+     */
     private $location;
+
+    /**
+     * @var Inventory
+     */
     private $inventory;
 
     protected function setUp(): void
