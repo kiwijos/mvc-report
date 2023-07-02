@@ -10,7 +10,7 @@ class ProjectControllerJsonTest extends WebTestCase
 {
     use DatabaseHelperTrait;
     use SessionHelperTrait;
-    
+
     private $client;
 
     protected function setUp(): void

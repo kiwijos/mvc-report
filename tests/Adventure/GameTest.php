@@ -111,7 +111,7 @@ class GameTest extends TestCase
     public function testProcessActionHelp(): void
     {
         $response = $this->game->processAction('help', '');
-        
+
         // Assert the response contains information about all available actions
         $this->assertStringContainsString('where', $response);
         $this->assertStringContainsString('inventory', $response);

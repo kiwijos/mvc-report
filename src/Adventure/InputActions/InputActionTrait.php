@@ -14,7 +14,7 @@ trait InputActionTrait
      * @var string The text response for the input action.
      */
     private $textResponse;
-    
+
     /**
      * @var LocationResponseInterface|null The location response object for the input action.
      */

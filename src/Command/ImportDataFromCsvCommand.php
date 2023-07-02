@@ -68,7 +68,7 @@ class ImportDataFromCsvCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $filename = $input->getArgument('filename'); // Retrieve the argument value
-        
+
         $csvDirectory = $this->kernel->getProjectDir() . '/' . 'public/csv/';
         $csvFile = $csvDirectory . $filename;
 

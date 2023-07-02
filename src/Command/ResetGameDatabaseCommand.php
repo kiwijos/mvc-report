@@ -124,7 +124,10 @@ class ResetGameDatabaseCommand extends Command
      */
     private function importCsv(OutputInterface $output, string $csvFile, string $entityManagerName): void
     {
-        $this->runCommand($output, 'app:import-csv', [
+        $this->runCommand(
+            $output,
+            'app:import-csv',
+            [
             'filename'     => $csvFile,
             '--manager' => $entityManagerName,
         ],
@@ -135,7 +138,7 @@ class ResetGameDatabaseCommand extends Command
     /**
      * @param string[] $csvFiles The array of files to see if present.
      * @param string   $csvDirectory The path to the csv files.
-     * 
+     *
      * @return string[] The missing CSV files.
      */
     private function getMissingCsvFiles(array $csvFiles, string $csvDirectory): array

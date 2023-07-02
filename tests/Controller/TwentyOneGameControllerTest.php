@@ -116,7 +116,7 @@ class TwentyOneGameControllerTest extends WebTestCase
             ->disableOriginalConstructor()
             ->onlyMethods([$winMethod, 'isBetting'])
             ->getMock();
-   
+
         // Set up expectation for methods
         $gameManager->expects($this->any())
             ->method('dealBanker');
@@ -140,7 +140,7 @@ class TwentyOneGameControllerTest extends WebTestCase
 
         // Make a POST request to the /game/play/stay endpoint
         $client->request('POST', '/game/play/stay');
-    
+
         // Assert that the response redirects back to /game/play
         $this->assertResponseRedirects('/game/play');
     }
@@ -163,7 +163,7 @@ class TwentyOneGameControllerTest extends WebTestCase
             ->disableOriginalConstructor()
             ->onlyMethods([$winMethod, 'isBetting'])
             ->getMock();
-   
+
         // Set up expectation for methods
         $gameManager->expects($this->any())
             ->method('dealPlayer');
@@ -187,7 +187,7 @@ class TwentyOneGameControllerTest extends WebTestCase
 
         // Make a POST request to the /game/play/hit endpoint
         $client->request('POST', '/game/play/hit');
-    
+
         // Assert that the response redirects back to /game/play
         $this->assertResponseRedirects('/game/play');
     }

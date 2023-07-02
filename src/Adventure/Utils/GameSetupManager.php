@@ -17,8 +17,8 @@ use Exception;
 /**
  * Handles setting up the game from the database.
  */
-class GameSetupManager {
-
+class GameSetupManager
+{
     private $entityManager;
 
     /**
@@ -38,7 +38,7 @@ class GameSetupManager {
      *
      * @return string|null The fully qualified class name if it exists, or null if not found.
      */
-    private function getActionClass(string $type): ?string 
+    private function getActionClass(string $type): ?string
     {
         $namespace = 'App\Adventure\InputActions';
 

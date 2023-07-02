@@ -24,7 +24,7 @@ class ConnectorTest extends TestCase
             ->disableOriginalConstructor() // Do not invoke the constructor
             ->onlyMethods(['connectTo'])
             ->getMock();
-        
+
         $secondLocationMock = $this->getMockBuilder(Location::class)
             ->disableOriginalConstructor() // Do not invoke the constructor
             ->onlyMethods(['connectTo'])
@@ -35,17 +35,19 @@ class ConnectorTest extends TestCase
         // (this allows us to test the outcome using the hasConnection method for example)
         $firstLocationMock->expects($this->once())
             ->method('connectTo')
-            ->willReturnCallback(function ($location, $direction) use ($firstLocation) {
-                $firstLocation->connectTo($location, $direction);
-            }
-        );
+            ->willReturnCallback(
+                function ($location, $direction) use ($firstLocation) {
+                    $firstLocation->connectTo($location, $direction);
+                }
+            );
 
         $secondLocationMock->expects($this->once())
             ->method('connectTo')
-            ->willReturnCallback(function ($location, $direction) use ($secondLocation) {
-                $secondLocation->connectTo($location, $direction);
-            }
-        );
+            ->willReturnCallback(
+                function ($location, $direction) use ($secondLocation) {
+                    $secondLocation->connectTo($location, $direction);
+                }
+            );
 
         // Connect the locations in both directions
         $resultLocation = Connector::connectLocations($firstLocationMock, $secondLocationMock, 'north');

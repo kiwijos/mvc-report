@@ -31,5 +31,5 @@ interface InputActionInterface
      *
      * @return LocationResponseInterface|null The location response object, or null if not set.
      */
-    public function getLocationResponse(): ?LocationResponseInterface; 
+    public function getLocationResponse(): ?LocationResponseInterface;
 }

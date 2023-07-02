@@ -81,7 +81,7 @@ class FormatterTest extends TestCase
         ];
 
         $expectedResult =
-            "Name    John\n" . 
+            "Name    John\n" .
             "Age     25\n" .
             "Country USA\n";
 
@@ -101,7 +101,7 @@ class FormatterTest extends TestCase
         ];
 
         $expectedResult =
-            "Name       John\n" . 
+            "Name       John\n" .
             "Age        25\n" .
             "Country    USA\n";
 

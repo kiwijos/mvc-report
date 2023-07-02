@@ -22,8 +22,8 @@ class Unpacker
         $locationText = $location->getLocationDetails() . "\n";
         $locationText .= self::unpackVisibleConnectionsToLocation($location);
         $locationText .= self::unpackVisibleItemsInLocation($location);
-        
-        return $locationText;  
+
+        return $locationText;
     }
 
     /**

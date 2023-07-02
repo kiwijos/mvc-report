@@ -67,7 +67,7 @@ class HandleTakeTest extends TestCase
 
         $this->game->setInventory($this->inventory);
         $this->game->setCurrentLocation($this->location);
-        
+
         // Assert that the same take message is returned
         $response = $this->game->processAction('take', 'key');
         $this->assertSame("You take the key.", $response);
@@ -102,7 +102,7 @@ class HandleTakeTest extends TestCase
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
-        
+
         // Expect item to NOT get removed/added
         $this->location->expects($this->never())
             ->method('removeItem');

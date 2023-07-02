@@ -10,11 +10,11 @@ class ExamineAction implements InputActionInterface
 {
     use InputActionTrait;
 
-     /**
-     * Retrieves the name for the examine action.
-     *
-     * @return string The name for the examine action.
-     */
+    /**
+    * Retrieves the name for the examine action.
+    *
+    * @return string The name for the examine action.
+    */
     public function getName(): string
     {
         return 'examine';

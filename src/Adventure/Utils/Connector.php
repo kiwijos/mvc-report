@@ -66,7 +66,7 @@ class Connector
      * @return string The opposite direction.
      * @throws Exception If no opposite direction is found for the given direction.
      */
-    public static function getOppositeDirection(string $direction): string
+    private static function getOppositeDirection(string $direction): string
     {
         $oppositeDirections = [
             'north' => 'south',

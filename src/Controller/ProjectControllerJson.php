@@ -142,7 +142,7 @@ class ProjectControllerJson extends AbstractController
             $connection->setFromLocationId($fromId);
             $connection->setToLocationId($toId);
             $connection->setDirection($direction);
-            
+
             // Persist new connection in the database
             $entityManager = $doctrine->getManager('game');
             $entityManager->persist($connection);

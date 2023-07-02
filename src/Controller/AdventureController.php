@@ -17,7 +17,8 @@ use App\Adventure\Inventory;
 class AdventureController extends AbstractController
 {
     #[Route('/proj/game', name: 'start_game')]
-    public function start() {
+    public function start()
+    {
         // Don't log this message
         $message = [
             "Welcome! You are about to embark on an epic adventure.\n" .
@@ -38,8 +39,8 @@ class AdventureController extends AbstractController
         $entityManager = $doctrine->getManager('game');
         $gameManager = new GameSetupManager($entityManager);
         $game = $gameManager->setupGameFromDatabase();
-        
-        // Set the player's inventory 
+
+        // Set the player's inventory
         $inventory = new Inventory();
         $game->setInventory($inventory);
 
@@ -54,7 +55,7 @@ class AdventureController extends AbstractController
         // Add some instructions after the first location's description to help player get started
         $message = Unpacker::unpackLocationDescriptions($startingLocation) . "\n";
         $message .= "You can have a closer look at objects in the scene by typing 'examine' followed by the name of the object. Interactable objects are enclosed in brackets [name].";
-        
+
         $log->addEntry($message); // Save to log
 
         $session->set('game_log', $log);
@@ -89,7 +90,7 @@ class AdventureController extends AbstractController
         $action = $parts[0] ?? ''; // Get the first part as action, e.g. 'go'
         $target = $parts[1] ?? ''; // Get the second part as target, e.g. 'south'
 
-        // Restart 
+        // Restart
         if ($action === 'start' || $action === 'restart') {
             $session->invalidate();
 

@@ -48,10 +48,10 @@ class HandleUseTest extends TestCase
         $action = $this->createMock(UseAction::class);
         $action->method('getTextResponse')->willReturn('You use the key.');
         $action->method('getLocationResponse')->willReturn($response);
-        
+
         // Create and configure item mock
         $item = $this->createMock(Item::class);
-        $item->method('hasAction')->with('use')->willReturn(true);        
+        $item->method('hasAction')->with('use')->willReturn(true);
         $item->method('getAction')->with('use')->willReturn($action);
         $item->method('getName')->willReturn('key');
 
@@ -60,7 +60,7 @@ class HandleUseTest extends TestCase
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
- 
+
         $this->inventory->expects($this->exactly(2))
             ->method('hasItem')
             ->with('key')
@@ -70,7 +70,7 @@ class HandleUseTest extends TestCase
         $this->inventory->expects($this->once())
             ->method('removeItem')
             ->with($item);
-        
+
         // Perform action
         $this->game->setInventory($this->inventory);
         $this->game->setCurrentLocation($this->location);
@@ -91,10 +91,10 @@ class HandleUseTest extends TestCase
         // Create and configure use action mock
         $action = $this->createMock(UseAction::class);
         $action->method('getTextResponse')->willReturn('You use the key.');
-        
+
         // Create and configure item mock
         $item = $this->createMock(Item::class);
-        $item->method('hasAction')->with('use')->willReturn(true);        
+        $item->method('hasAction')->with('use')->willReturn(true);
         $item->method('getAction')->with('use')->willReturn($action);
         $item->method('getName')->willReturn('key');
 

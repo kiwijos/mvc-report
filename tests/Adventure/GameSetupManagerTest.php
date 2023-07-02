@@ -51,7 +51,7 @@ class GameSetupManagerTest extends TestCase
         $forrest = $game->getCurrentLocation();
         $this->assertInstanceOf(AdventureLocation::class, $forrest);
         $this->assertSame('Forrest', $forrest->getName());
-        
+
         $this->assertTrue($forrest->hasConnection('north')); // To the Cave
         $this->assertFalse($forrest->hasConnection('south')); // No connection
         $this->assertInstanceOf(AdventureLocation::class, $forrest->getConnectedLocation('north'));
@@ -63,11 +63,11 @@ class GameSetupManagerTest extends TestCase
         $this->assertTrue($cave->hasItem('Axe'));
         $this->assertFalse($cave->hasItem('Sword'));
         $this->assertNull($cave->getItem('Sword'));
-        
+
         $axe = $cave->getItem('Axe');
         $this->assertSame('Axe', $axe->getName());
         $this->assertTrue($axe->hasAction('take'));
-        
+
         $examineAxe = $axe->getAction('examine');
         $this->assertInstanceOf(ExamineAction::class, $examineAxe);
         $this->assertNull($examineAxe->getRequiredLocation());
@@ -95,7 +95,7 @@ class GameSetupManagerTest extends TestCase
         $location2->setName('Cave')
             ->setDescription('A dark cave.')
             ->setDetails('The cave is damp and cold.');
-        
+
         $location3 = new Location();
         $location3->setId(3);
         $location3->setName('Lake')
@@ -176,12 +176,13 @@ class GameSetupManagerTest extends TestCase
         $actionRepository = $this->createMock(ObjectRepository::class);
         $actionRepository->expects($this->once())
             ->method('findAll')
-            ->willReturn([
+            ->willReturn(
+                [
                 $action1,
                 $action2,
                 $action3,
             ]
-        );
+            );
 
         return $actionRepository;
     }
@@ -201,11 +202,12 @@ class GameSetupManagerTest extends TestCase
         $responseRepository = $this->createMock(ObjectRepository::class);
         $responseRepository->expects($this->once())
             ->method('findAll')
-            ->willReturn([
+            ->willReturn(
+                [
                 $response,
             ]
-        );
-    
+            );
+
         return $responseRepository;
     }
 
@@ -220,7 +222,7 @@ class GameSetupManagerTest extends TestCase
             ->setFromLocationId(1)
             ->setToLocationId(2)
             ->setDirection('north');
-        
+
         $connection2 = new Connection();
         $connection2
             ->setId(2)
@@ -231,12 +233,13 @@ class GameSetupManagerTest extends TestCase
         $connectionRepository = $this->createMock(ObjectRepository::class);
         $connectionRepository->expects($this->once())
             ->method('findAll')
-            ->willReturn([
+            ->willReturn(
+                [
                 $connection1,
                 $connection2,
             ]
-        );
-        
+            );
+
         return $connectionRepository;
     }
 }

@@ -11,7 +11,7 @@ class Item
 {
     /**
      * This is the name that the player has to input in order to perform actions on the item.
-     * 
+     *
      * @var string The name of the item.
      */
     private $name;

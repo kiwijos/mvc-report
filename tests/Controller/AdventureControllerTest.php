@@ -68,7 +68,7 @@ class AdventureControllerTest extends WebTestCase
             ->method('getEntries')
             ->willReturn([$expected]);
 
-        
+
         $this->session->set('game_log', $log);
         $this->session->save();
 
@@ -105,9 +105,9 @@ class AdventureControllerTest extends WebTestCase
         // Assert redirect
         $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
         $this->assertResponseRedirects('/proj/game/location');
-        
+
         $this->client->followRedirect(); // Follow the redirect
-        
+
         // Retrieve the real log and check it contains the expected entries
         // (Meaning both the input and the response from the game mock instance)
         $log = $this->session->get('game_log');

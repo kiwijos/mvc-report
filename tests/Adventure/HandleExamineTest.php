@@ -49,7 +49,7 @@ class HandleExamineTest extends TestCase
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
-        
+
         // If the item is found in the location, it will not be looked for in the inventory
         $this->inventory->expects($this->never())
             ->method('hasItem')

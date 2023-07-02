@@ -140,7 +140,7 @@ class Location
     /**
      * Checks whether the location is connected to another location
      * in the specified direction.
-     * 
+     *
      * @param string $direction The direction to check.
      * @return bool Whether the location has a connection in the specified direction.
      */
@@ -176,7 +176,7 @@ class Location
 
     /**
      * Checks whether the given item is in the location.
-     * 
+     *
      * @param string $itemName The name of the item.
      * @return bool Whether the item is in the location.
      */
@@ -187,7 +187,7 @@ class Location
 
     /**
      * Adds the item to the location.
-     * 
+     *
      * @param Item $item The item to add to the location.
      */
     public function addItem(Item $item): void

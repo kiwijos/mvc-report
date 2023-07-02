@@ -116,7 +116,7 @@ class Game
     private function handleInventoryAction()
     {
         $itemStringsInInventory = $this->inventory->lookInInventory();
-        
+
         $textResponse = "You look in your inventory:\n";
 
         if (empty($itemStringsInInventory)) {
@@ -186,7 +186,7 @@ class Game
         if (empty($target)) {
             return "You must specify a target to {$action}.";
         }
-        
+
         $itemObject = $this->getItemToHandleAction($target);
 
         if ($itemObject === null) {
@@ -228,7 +228,7 @@ class Game
             return "Upon examining the {$itemName}, you find nothing noteworthy. It appears to be just an ordinary {$itemName}.";
         }
 
-        return $textResponse; 
+        return $textResponse;
     }
 
     /**
@@ -334,8 +334,8 @@ class Game
         $resultLocation = $locationResponseObject->doLocationResponse($this->currentLocation);
         $this->currentLocation = $resultLocation;
 
-        $resultLocationDescription = Unpacker::unpackLocationDescriptions($resultLocation);
-        
-        return $resultLocationDescription;
+        $textResponse = "A change has occurred. Behold, the updated location awaits:\n" . Unpacker::unpackLocationDescriptions($resultLocation);
+
+        return $textResponse;
     }
 }

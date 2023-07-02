@@ -41,7 +41,7 @@ class ConnectionRepository extends ServiceEntityRepository
 
     /**
      * Retrieves the highest ID.
-     * 
+     *
      * @return int|null The ID if found, or null if not found.
      */
     public function findHighestId(): ?int
