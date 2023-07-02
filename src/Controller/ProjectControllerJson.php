@@ -2,22 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\Game\Location;
-use App\Repository\Game\LocationRepository;
-use App\Entity\Game\Item;
-use App\Repository\Game\ItemRepository;
-use App\Repository\Game\ConnectionRepository;
-use App\Entity\Game\Connection;
-use App\Adventure\Log;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Persistence\ManagerRegistry;
 use Exception;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Adventure\Log;
+use App\Entity\Game\Connection;
+use App\Entity\Game\Item;
+use App\Entity\Game\Location;
+use App\Repository\Game\ConnectionRepository;
+use App\Repository\Game\ItemRepository;
+use App\Repository\Game\LocationRepository;
 
 class ProjectControllerJson extends AbstractController
 {
@@ -154,6 +159,54 @@ class ProjectControllerJson extends AbstractController
         ];
 
         $response = $this->json($response, Response::HTTP_CREATED);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT,
+        );
+
+        return $response;
+    }
+
+
+    /**
+     * Reset the game database by running the reset-database command.
+     */
+    #[Route("/proj/api/reset", name: "proj_reset_database", methods: ['POST'])]
+    public function resetDatabase(KernelInterface $kernel): JsonResponse
+    {
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput([
+            'command' => 'app:reset-database',
+        ]);
+
+        $output = new NullOutput();
+
+        try {
+            $statusCode = $application->run($input, $output);
+            if ($statusCode === 0) {
+                $response = $this->json([
+                    'status' => 'success',
+                    'message' => 'Database reset data import completed!',
+                ], Response::HTTP_OK);
+            } else {
+                $response = $this->json([
+                    'status' => 'error',
+                    'message' => 'Database reset and data import failed.',
+                ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        } catch (CommandNotFoundException $exception) {
+            $response = $this->json([
+                'status' => 'error',
+                'message' => 'Reset database command not found.',
+            ], Response::HTTP_NOT_FOUND);
+        } catch (Exception $exception) {
+            $response = $this->json([
+                'status' => 'error',
+                'message' => $exception->getMessage(),
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT,
         );
