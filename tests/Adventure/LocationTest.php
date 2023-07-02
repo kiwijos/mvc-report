@@ -28,7 +28,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the getName method.
      */
-    public function testGetName()
+    public function testGetName(): void
     {
         $this->assertEquals('Forest', $this->location->getName());
     }
@@ -36,7 +36,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the getDescription method.
      */
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $this->assertEquals('A dense forest.', $this->location->getDescription());
     }
@@ -44,7 +44,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the getLocationDetails method.
      */
-    public function testGetLocationDetails()
+    public function testGetLocationDetails(): void
     {
         $this->assertEquals('This forest is filled with tall trees and lush vegetation.', $this->location->getLocationDetails());
     }
@@ -52,7 +52,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the connectTo method.
      */
-    public function testConnectTo()
+    public function testConnectTo(): void
     {
         $location1 = $this->location;
         $location2 = new Location('Cave', 'A dark cave.', 'The cave is damp and cold.');
@@ -67,7 +67,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the connectTo method when direction is already connected to another location.
      */
-    public function testConnectToThrowsException()
+    public function testConnectToThrowsException(): void
     {
         $location1 = $this->location;
         $location2 = new Location('Cave', 'A dark cave.', 'The cave is damp and cold.');
@@ -84,7 +84,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the disconnectFrom method.
      */
-    public function testDisconnectFrom()
+    public function testDisconnectFrom(): void
     {
         $location1 = $this->location;
         $location2 = new Location('Cave', 'A dark cave.', 'The cave is damp and cold.');
@@ -99,7 +99,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the addItem and getItems methods.
      */
-    public function testAddItemAndGetItems()
+    public function testAddItemAndGetItems(): void
     {
         $location = $this->location;
         $this->assertEquals([], $location->getItems());
@@ -119,7 +119,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the addItem and getItem methods.
      */
-    public function testAddItemAndGetItem()
+    public function testAddItemAndGetItem(): void
     {
         $location = $this->location;
 
@@ -140,7 +140,7 @@ class LocationTest extends TestCase
     /**
      * Test case for the hasItem method.
      */
-    public function testHasItem()
+    public function testHasItem(): void
     {
         $location = $this->location;
 

@@ -11,7 +11,7 @@ class LogTest extends TestCase
     /**
      * Test case for addEntry and getEntriesMethods.
      */
-    public function testAddEntryAndGetEntries()
+    public function testAddEntryAndGetEntries(): void
     {
         $log = new Log();
 
@@ -31,7 +31,7 @@ class LogTest extends TestCase
     /**
      * Test case fot addBulkEntry method.
      */
-    public function testAddBulkEntry()
+    public function testAddBulkEntry(): void
     {
         $log = new Log();
 
@@ -46,7 +46,7 @@ class LogTest extends TestCase
     /**
      * Test case for dump method.
      */
-    public function testDump()
+    public function testDump(): void
     {
         $log = new Log();
 

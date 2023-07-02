@@ -13,7 +13,7 @@ class LocationResponseTest extends TestCase
     /**
      * Test case for SwapLocationResponse.
      */
-    public function testSwapLocationResponse()
+    public function testSwapLocationResponse(): void
     {
         // Create a mock for the current location
         $currentLocation = $this->createStub(Location::class);
@@ -34,7 +34,7 @@ class LocationResponseTest extends TestCase
     /**
      * Test case for MoveLocationResponse.
      */
-    public function testMoveLocationResponse()
+    public function testMoveLocationResponse(): void
     {
         // Create a mock for the new location
         $newLocation = $this->createStub(Location::class);

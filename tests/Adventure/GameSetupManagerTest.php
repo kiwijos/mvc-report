@@ -24,7 +24,7 @@ class GameSetupManagerTest extends TestCase
     /**
      * Test case for setupGameFromDatabase method.
      */
-    public function testSetupGameFromDatabase()
+    public function testSetupGameFromDatabase(): void
     {
         // Mock the manager
         $objectManager = $this->createMock(ObjectManager::class);
@@ -82,7 +82,7 @@ class GameSetupManagerTest extends TestCase
     /**
      * @return ObjectRepository The mocked Location repository.
      */
-    private function getLocationRepositoryMock()
+    private function getLocationRepositoryMock(): ObjectRepository
     {
         $location1 = new Location();
         $location1->setId(1);
@@ -117,7 +117,7 @@ class GameSetupManagerTest extends TestCase
     /**
      * @return ObjectRepository The mocked Item repository.
      */
-    private function getItemRepositoryMock()
+    private function getItemRepositoryMock(): ObjectRepository
     {
         $item1 = new Item();
         $item1
@@ -147,7 +147,7 @@ class GameSetupManagerTest extends TestCase
     /**
      * @return ObjectRepository The mocked Action repository.
      */
-    private function getActionRepositoryMock()
+    private function getActionRepositoryMock(): ObjectRepository
     {
         $action1 = new Action();
         $action1
@@ -190,7 +190,7 @@ class GameSetupManagerTest extends TestCase
     /**
      * @return ObjectRepository The mocked Response repository.
      */
-    private function getResponseRepositoryMock()
+    private function getResponseRepositoryMock(): ObjectRepository
     {
         $response = new Response();
         $response
@@ -214,7 +214,7 @@ class GameSetupManagerTest extends TestCase
     /**
      * @return ObjectRepository The mocked Connection repository.
      */
-    private function getConnectionRepositoryMock()
+    private function getConnectionRepositoryMock(): ObjectRepository
     {
         $connection1 = new Connection();
         $connection1

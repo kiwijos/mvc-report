@@ -13,7 +13,7 @@ class AvailableActionsProviderTest extends TestCase
      * Instead of asserting the exact array, as it might get updated,
      * validate the structure and properties of the returned array.
      */
-    public function testGetAvailableActions()
+    public function testGetAvailableActions(): void
     {
         $availableActions = AvailableActionsProvider::getAvailableActions();
 
@@ -33,7 +33,7 @@ class AvailableActionsProviderTest extends TestCase
     /**
      * Test case for isValidAction method.
      */
-    public function testIsValidAction()
+    public function testIsValidAction(): void
     {
         // Test with valid actions
         $validActions = ['help', 'where', 'inventory', 'use', 'take', 'go', 'examine'];

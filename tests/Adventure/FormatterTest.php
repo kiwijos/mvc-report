@@ -11,7 +11,7 @@ class FormatterTest extends TestCase
     /**
      * Test case for formatRows method with return string.
      */
-    public function testFormatRowsAsString()
+    public function testFormatRowsAsString(): void
     {
         $data = [
             ['Name', 'Age', 'Country'],
@@ -35,7 +35,7 @@ class FormatterTest extends TestCase
     /**
      * Test case for formatRows method with return array.
      */
-    public function testFormatRowsAsArray()
+    public function testFormatRowsAsArray(): void
     {
         $data = [
             ['Name', 'Age', 'Country'],
@@ -59,7 +59,7 @@ class FormatterTest extends TestCase
     /**
      * Test case for formatSingleRow method.
      */
-    public function testFormatSingleRow()
+    public function testFormatSingleRow(): void
     {
         $data = ['Name', 'Age', 'Country'];
 
@@ -72,7 +72,7 @@ class FormatterTest extends TestCase
     /**
      * Test case for formatKeyValueColumns.
      */
-    public function testFormatKeyValueColumns()
+    public function testFormatKeyValueColumns(): void
     {
         $data = [
             'Name' => 'John',
@@ -92,7 +92,7 @@ class FormatterTest extends TestCase
     /**
      * Test case for formatKeyValueColumns with different gap size.
      */
-    public function testFormatKeyValueColumnsGapSize()
+    public function testFormatKeyValueColumnsGapSize(): void
     {
         $data = [
             'Name' => 'John',

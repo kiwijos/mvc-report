@@ -34,7 +34,7 @@ class AdventureControllerTest extends WebTestCase
     /**
      * Test case for start route.
      */
-    public function testStart()
+    public function testStart(): void
     {
         $this->client->request('GET', '/proj/game');
 
@@ -46,7 +46,7 @@ class AdventureControllerTest extends WebTestCase
     /**
      * Test case for init route.
      */
-    public function testInit()
+    public function testInit(): void
     {
         $this->client->request('GET', '/proj/game/init');
 
@@ -58,7 +58,7 @@ class AdventureControllerTest extends WebTestCase
     /**
      * Test case for render location route.
      */
-    public function testRenderLocation()
+    public function testRenderLocation(): void
     {
         $expected = 'Welcome!';
 
@@ -84,7 +84,7 @@ class AdventureControllerTest extends WebTestCase
     /**
      * Test case for perform action route.
      */
-    public function testPerformAction()
+    public function testPerformAction(): void
     {
         $input = 'test';
         $response = 'This is a test.';
@@ -121,7 +121,7 @@ class AdventureControllerTest extends WebTestCase
     /**
      * Test case for action route with 'restart'.
      */
-    public function testActionRouteWithResetSessionRedirect()
+    public function testActionRouteWithResetSessionRedirect(): void
     {
         $this->client->request('POST', '/proj/game/action', ['input' => 'restart']);
 

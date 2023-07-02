@@ -12,7 +12,7 @@ class ConnectorTest extends TestCase
     /**
      * Test case for connectLocations method.
      */
-    public function testConnectLocations()
+    public function testConnectLocations(): void
     {
         // Create two real instances of the Location class
         $firstLocation = new Location('', '', '');
@@ -63,7 +63,7 @@ class ConnectorTest extends TestCase
     /**
      * Test case for connectLocations method with already connected direction.
      */
-    public function testConnectLocationsThrowsException()
+    public function testConnectLocationsThrowsException(): void
     {
         // Create two mock instances of the Location class
         $firstLocation = $this->createMock(Location::class);
@@ -82,7 +82,7 @@ class ConnectorTest extends TestCase
     /**
      * Test case for swapLocations method.
      */
-    public function testSwapLocations()
+    public function testSwapLocations(): void
     {
         // Create mock instances of the Location class
         $oldLocation = $this->createMock(Location::class);

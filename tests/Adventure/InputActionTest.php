@@ -35,7 +35,7 @@ class InputActionTest extends TestCase
     /**
      * Test case for getName method (not provided by the trait, by the way).
      */
-    public function testGetName()
+    public function testGetName(): void
     {
         $action = new TestAction('');
         $this->assertEquals('test', $action->getName());
@@ -44,7 +44,7 @@ class InputActionTest extends TestCase
     /**
      * Test case for getTextResponse method.
      */
-    public function testGetTextResponse()
+    public function testGetTextResponse(): void
     {
         $action = new TestAction('This is a test response');
         $this->assertEquals('This is a test response', $action->getTextResponse());
@@ -53,7 +53,7 @@ class InputActionTest extends TestCase
     /**
      * Test case for setRequiredLocation and getRequiredLocation methods.
      */
-    public function testSetAndGetLocationResponse()
+    public function testSetAndGetLocationResponse(): void
     {
         $action = new TestAction('');
         $this->assertNull($action->getLocationResponse());
@@ -67,7 +67,7 @@ class InputActionTest extends TestCase
     /**
      * Test case for setRequiredLocation and getRequiredLocation methods.
      */
-    public function testSetAndGetRequiredLocation()
+    public function testSetAndGetRequiredLocation(): void
     {
         $action = new TestAction('');
         $this->assertNull($action->getRequiredLocation());

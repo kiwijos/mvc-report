@@ -27,7 +27,7 @@ class ItemTest extends TestCase
     /**
      * Test case for the getName method.
      */
-    public function testGetName()
+    public function testGetName(): void
     {
         $this->assertEquals('Sword', $this->item->getName());
     }
@@ -35,7 +35,7 @@ class ItemTest extends TestCase
     /**
      * Test case for the getDescription method.
      */
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $this->assertEquals('A powerful sword', $this->item->getDescription());
     }
@@ -43,7 +43,7 @@ class ItemTest extends TestCase
     /**
      * Test case for the isHidden method.
      */
-    public function testIsHidden()
+    public function testIsHidden(): void
     {
         $item = $this->item;
         $this->assertFalse($item->isHidden());
@@ -55,7 +55,7 @@ class ItemTest extends TestCase
     /**
      * Test case for the addAction method.
      */
-    public function testAddAction()
+    public function testAddAction(): void
     {
         $item = $this->item;
         $action = $this->createMock(InputActionInterface::class);
@@ -70,7 +70,7 @@ class ItemTest extends TestCase
     /**
      * Test case for the hasAction method.
      */
-    public function testHasAction()
+    public function testHasAction(): void
     {
         $item = $this->item;
         $this->assertFalse($item->hasAction('Take'));
@@ -85,7 +85,7 @@ class ItemTest extends TestCase
     /**
      * Test case for the getAction method.
      */
-    public function testGetAction()
+    public function testGetAction(): void
     {
         $item = $this->item;
         $this->assertNull($item->getAction('Take'));

@@ -12,7 +12,7 @@ class InventoryTest extends TestCase
     /**
      * Test case for the getInventory method.
      */
-    public function testGetInventory()
+    public function testGetInventory(): void
     {
         $inventory = new Inventory();
         $this->assertEquals([], $inventory->getInventory());
@@ -32,7 +32,7 @@ class InventoryTest extends TestCase
     /**
      * Test case for the lookInInventory method.
      */
-    public function testLookInInventory()
+    public function testLookInInventory(): void
     {
         $inventory = new Inventory();
         $this->assertEquals([], $inventory->lookInInventory());
@@ -52,7 +52,7 @@ class InventoryTest extends TestCase
     /**
      * Test case for the getItem method.
      */
-    public function testGetItem()
+    public function testGetItem(): void
     {
         $inventory = new Inventory();
         $item = $this->createStub(Item::class);
@@ -66,7 +66,7 @@ class InventoryTest extends TestCase
     /**
      * Test case for the hasItem method.
      */
-    public function testHasItem()
+    public function testHasItem(): void
     {
         $inventory = new Inventory();
         $item = $this->createStub(Item::class);
@@ -80,7 +80,7 @@ class InventoryTest extends TestCase
     /**
      * Test case for the addItem method.
      */
-    public function testAddItem()
+    public function testAddItem(): void
     {
         $inventory = new Inventory();
         $item = $this->createMock(Item::class);
@@ -97,7 +97,7 @@ class InventoryTest extends TestCase
     /**
      * Test case for the removeItem method.
      */
-    public function testRemoveItem()
+    public function testRemoveItem(): void
     {
         $inventory = new Inventory();
         $item = $this->createStub(Item::class);

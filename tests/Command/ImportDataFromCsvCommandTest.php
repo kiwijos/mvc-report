@@ -27,7 +27,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     /**
      * Test case for execute method with valid input.
      */
-    public function testExecute()
+    public function testExecute(): void
     {
         // Get the entity manager for the 'game' connection
         $entityManager = $this->getEntityManager('game');
@@ -58,7 +58,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     /**
      * Test case for execute method with invalid file.
      */
-    public function testExecuteWithNonExistentCsvFile()
+    public function testExecuteWithNonExistentCsvFile(): void
     {
         $application = new Application(self::$kernel);
 
@@ -80,7 +80,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     /**
      * Test case for execute method with invalid entity manager.
      */
-    public function testExecuteWithNonExistentEntityManager()
+    public function testExecuteWithNonExistentEntityManager(): void
     {
         $application = new Application(self::$kernel);
 
@@ -102,7 +102,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     /**
      * Test case for execute method with missing entity class.
      */
-    public function testExecuteWithNoEntityClassFound()
+    public function testExecuteWithNoEntityClassFound(): void
     {
         $application = new Application(self::$kernel);
 
