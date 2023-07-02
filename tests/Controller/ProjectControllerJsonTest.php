@@ -30,11 +30,14 @@ class ProjectControllerJsonTest extends WebTestCase
     {
         $this->client->request('GET', '/proj/api/locations');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertNotEmpty($responseData);
     }
@@ -49,11 +52,14 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $this->client->request('GET', '/proj/api/locations');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertArrayHasKey('error', $responseData);
     }
@@ -72,11 +78,14 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $this->client->request('GET', '/proj/api/locations/11');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertSame($expected, $responseData);
     }
 
@@ -87,11 +96,14 @@ class ProjectControllerJsonTest extends WebTestCase
     {
         $this->client->request('GET', '/proj/api/locations/55'); // No location with ID 55
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertArrayHasKey('error', $responseData);
     }
@@ -103,11 +115,14 @@ class ProjectControllerJsonTest extends WebTestCase
     {
         $this->client->request('GET', '/proj/api/items');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertNotEmpty($responseData);
     }
@@ -122,11 +137,14 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $this->client->request('GET', '/proj/api/items');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertArrayHasKey('error', $responseData);
     }
@@ -145,11 +163,14 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $this->client->request('GET', '/proj/api/items/99');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertSame($expected, $responseData);
     }
 
@@ -160,11 +181,14 @@ class ProjectControllerJsonTest extends WebTestCase
     {
         $this->client->request('GET', '/proj/api/items/55'); // No item with ID 55
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertArrayHasKey('error', $responseData);
     }
@@ -181,14 +205,17 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $session->set('game_log', $log);
         $session->save();
-
+        
         $this->client->request('GET', '/proj/api/log');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertContains('This is a test log', $responseData);
     }
@@ -208,11 +235,14 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $this->client->request('GET', '/proj/api/log');
 
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
+
         $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
-        $this->assertJson($this->client->getResponse()->getContent());
+        $this->assertJson($content);
 
         // Perform additional assertions on the response content
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertArrayHasKey('error', $responseData);
     }
@@ -228,10 +258,14 @@ class ProjectControllerJsonTest extends WebTestCase
             'direction' => 'south'
         ]);
 
-        $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
-        $this->assertJson($this->client->getResponse()->getContent());
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
 
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
+        $this->assertJson($content);
+
+        // Perform additional assertions on the response content
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertEquals('Locations connected successfully', $responseData['message']);
     }
@@ -247,10 +281,14 @@ class ProjectControllerJsonTest extends WebTestCase
             'direction' => 'north'
         ]);
 
-        $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
-        $this->assertJson($this->client->getResponse()->getContent());
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
 
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
+        $this->assertJson($content);
+
+        // Perform additional assertions on the response content
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertEquals('Cannot connect a location to itself', $responseData['error']);
     }
@@ -266,10 +304,14 @@ class ProjectControllerJsonTest extends WebTestCase
             'direction' => 'north'
         ]);
 
-        $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
-        $this->assertJson($this->client->getResponse()->getContent());
+        /** @var string*/
+        $content = $this->client->getResponse()->getContent();
 
-        $responseData = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
+        $this->assertJson($content);
+
+        // Perform additional assertions on the response content
+        $responseData = json_decode($content, true);
         $this->assertIsArray($responseData);
         $this->assertEquals('Locations are already connected in the specified direction', $responseData['error']);
     }
