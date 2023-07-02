@@ -25,12 +25,12 @@ class Location
     private $locationDetails;
 
     /**
-     * @var Location[] An array of connected locations.
+     * @var array<string, Location> An array of connected locations.
      */
     private $connectedLocations;
 
     /**
-     * @var Item[] An array of items in the location.
+     * @var array<string, Item> An array of items in the location.
      */
     private $items;
 
@@ -83,7 +83,7 @@ class Location
     /**
      * Returns an array of connected locations.
      *
-     * @return Location[] The connected locations.
+     * @return array<string, Location> The connected locations.
      */
     public function getConnectedLocations(): array
     {
@@ -152,7 +152,7 @@ class Location
     /**
      * Returns an array of all items in the location.
      *
-     * @return array The items in the location.
+     * @return array<string, Item> The items in the location.
      */
     public function getItems(): array
     {

@@ -12,10 +12,10 @@ class Formatter
      * Formats a 2D array of data into rows, without displaying keys,
      * with equal spacing between columns.
      *
-     * @param  array        $data    The data to format.
-     * @param  int          $gap     The spacing between columns. Default is 1.
-     * @param  bool         $asArray Whether to return the formatted rows as an array or a string. Default is false (string).
-     * @return string|array The formatted data as a string.
+     * @param  string[]        $data    The data to format.
+     * @param  int             $gap     The spacing between columns. Default is 1.
+     * @param  bool            $asArray Whether to return the formatted rows as an array or a string. Default is false (string).
+     * @return string|string[] The formatted data as a string.
      */
     public static function formatRows(array $data, int $gap = 1, $asArray = false): string|array
     {
@@ -52,9 +52,9 @@ class Formatter
     /**
      * Formats the values of a 1D array into a single row of data, with equal spacing between columns.
      *
-     * @param  array  $data The data to format.
-     * @param  int    $gap The spacing between columns. Default is 1.
-     * @return string The formatted row as a string.
+     * @param  string[] $data The data to format.
+     * @param  int      $gap The spacing between columns. Default is 1.
+     * @return string   The formatted row as a string.
      */
     public static function formatSingleRow(array $data, int $gap = 1): string
     {

@@ -10,7 +10,7 @@ class AvailableActionsProvider
     /**
      * Retrieves the available actions with their corresponding descriptions.
      *
-     * @return array An array of available actions, each containing 'name', 'target', and 'description'.
+     * @return string[] An array of available actions, each containing 'name', 'target', and 'description'.
      */
     public static function getAvailableActions(): array
     {

@@ -4,6 +4,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use App\Tests\DatabaseHelperTrait;
 use App\Tests\SessionHelperTrait;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use App\Adventure\Log;
 
 class ProjectControllerJsonTest extends WebTestCase
@@ -11,6 +12,9 @@ class ProjectControllerJsonTest extends WebTestCase
     use DatabaseHelperTrait;
     use SessionHelperTrait;
 
+    /**
+     * @var KernelBrowser
+     */
     private $client;
 
     protected function setUp(): void

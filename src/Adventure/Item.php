@@ -64,7 +64,7 @@ class Item
      *
      * @param InputActionInterface $action The action to add.
      */
-    public function addAction(InputActionInterface $action)
+    public function addAction(InputActionInterface $action): void
     {
         $this->actions[] = $action;
     }

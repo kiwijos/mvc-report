@@ -103,7 +103,7 @@ class Game
      *
      * @return string The response message containing the description of the current location.
      */
-    private function handleWhereAction()
+    private function handleWhereAction(): string
     {
         return Unpacker::unpackLocationDescriptions($this->currentLocation);
     }
@@ -113,7 +113,7 @@ class Game
      *
      * @return string The response message containing the items in the inventory.
      */
-    private function handleInventoryAction()
+    private function handleInventoryAction(): string
     {
         $itemStringsInInventory = $this->inventory->lookInInventory();
 
@@ -307,7 +307,7 @@ class Game
      * @param string $target The target item.
      * @return Item|null The item object if found, null otherwise.
      */
-    private function getItemToHandleAction(string $target)
+    private function getItemToHandleAction(string $target): ?Item
     {
         if ($this->currentLocation->hasItem($target)) {
             return $this->currentLocation->getItem($target);

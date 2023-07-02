@@ -15,7 +15,7 @@ class TwentyOneGameControllerTest extends WebTestCase
 {
     use SessionHelperTrait;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         if (getenv('APP_ENV') !== 'dev') {
             $this->markTestSkipped(
@@ -47,7 +47,7 @@ class TwentyOneGameControllerTest extends WebTestCase
      * Test setting up game with different bankers submitted.
      * @dataProvider bankerProvider
      */
-    public function testInitBankerSuccess(string $banker)
+    public function testInitBankerSuccess(string $banker): void
     {
         if (getenv('APP_ENV') !== 'dev') {
             $this->markTestSkipped(
@@ -68,7 +68,7 @@ class TwentyOneGameControllerTest extends WebTestCase
     /**
      * Test redirects back when no valid banker has been submitted.
      */
-    public function testInitBankerFail()
+    public function testInitBankerFail(): void
     {
         if (getenv('APP_ENV') !== 'dev') {
             $this->markTestSkipped(
@@ -102,7 +102,7 @@ class TwentyOneGameControllerTest extends WebTestCase
      * Test stay redirects when banker or player wins.
      * @dataProvider winProvider
      */
-    public function testStay(int $hasWon, string $winMethod)
+    public function testStay(int $hasWon, string $winMethod): void
     {
         $client = static::createClient();
 
@@ -149,7 +149,7 @@ class TwentyOneGameControllerTest extends WebTestCase
      * Test hit redirects when banker or player wins.
      * @dataProvider winProvider
      */
-    public function testHit(int $hasWon, string $winMethod)
+    public function testHit(int $hasWon, string $winMethod): void
     {
         $client = static::createClient();
 

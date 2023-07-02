@@ -15,7 +15,7 @@ class Inventory
     /**
      * Retrieves the entire inventory.
      *
-     * @return array The inventory.
+     * @return array<string, Item> The inventory.
      */
     public function getInventory(): array
     {
@@ -25,7 +25,7 @@ class Inventory
     /**
      * Retrieves the list of items in the inventory.
      *
-     * @return array The names of the items in the inventory.
+     * @return string[] The names of the items in the inventory.
      */
     public function lookInInventory(): array
     {

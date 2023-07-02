@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Tests\SessionHelperTrait;
 use App\Adventure\Log;
 use App\Adventure\Game;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Application tests for AdventureController.
@@ -15,7 +17,14 @@ class AdventureControllerTest extends WebTestCase
 {
     use SessionHelperTrait;
 
+    /**
+     * @var KernelBrowser
+     */
     private $client;
+
+    /**
+     * @var Session
+     */
     private $session;
 
     protected function setUp(): void

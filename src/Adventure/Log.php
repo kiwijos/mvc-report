@@ -8,7 +8,7 @@ namespace App\Adventure;
 class Log
 {
     /**
-     * @var array An array of logged entries.
+     * @var string[] An array of logged entries.
      */
     private $entries;
 
@@ -25,7 +25,7 @@ class Log
      *
      * @param string $entry The entry to be added.
      */
-    public function addEntry(string $entry)
+    public function addEntry(string $entry): void
     {
         $this->entries[] = $entry;
     }
@@ -35,7 +35,7 @@ class Log
      *
      * @param string $bulkEntry The bulk string containing multiple entries separated by "\n".
      */
-    public function addBulkEntry(string $bulkEntry)
+    public function addBulkEntry(string $bulkEntry): void
     {
         $trimmedEntry = trim($bulkEntry);
         $lines = explode("\n", $trimmedEntry);
@@ -48,7 +48,7 @@ class Log
     /**
      * Retrieves all logged entries.
      *
-     * @return array The logged entries.
+     * @return string[] The logged entries.
      */
     public function getEntries(): array
     {
