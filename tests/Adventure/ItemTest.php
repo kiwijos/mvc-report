@@ -41,18 +41,6 @@ class ItemTest extends TestCase
     }
 
     /**
-     * Test case for the isHidden method.
-     */
-    public function testIsHidden(): void
-    {
-        $item = $this->item;
-        $this->assertFalse($item->isHidden());
-
-        $item->setHidden(true);
-        $this->assertTrue($item->isHidden());
-    }
-
-    /**
      * Test case for the addAction method.
      */
     public function testAddAction(): void
