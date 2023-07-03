@@ -5,13 +5,14 @@ use App\Adventure\Utils\GameSetupManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
-use App\Entity\Game\Location;
-use App\Entity\Game\Item;
+use App\Entity\Game\Location as LocationEntity;
+use App\Entity\Game\Item as ItemEntity;
 use App\Entity\Game\Action;
 use App\Entity\Game\Response;
 use App\Entity\Game\Connection;
 use App\Adventure\Game;
-use App\Adventure\Location as AdventureLocation;
+use App\Adventure\Location;
+use App\Adventure\Item;
 use App\Adventure\InputActions\UseAction;
 use App\Adventure\InputActions\ExamineAction;
 use App\Adventure\ActionResponses\SwapLocationResponse;
@@ -31,8 +32,8 @@ class GameSetupManagerTest extends TestCase
 
         // Set up the mock to return sample data from repositories
         $objectManager->method('getRepository')->willReturnMap([
-            [Location::class, $this->getLocationRepositoryMock()],
-            [Item::class, $this->getItemRepositoryMock()],
+            [LocationEntity::class, $this->getLocationRepositoryMock()],
+            [ItemEntity::class, $this->getItemRepositoryMock()],
             [Action::class, $this->getActionRepositoryMock()],
             [Response::class, $this->getResponseRepositoryMock()],
             [Connection::class, $this->getConnectionRepositoryMock()],
@@ -49,12 +50,12 @@ class GameSetupManagerTest extends TestCase
 
         // Perform additional assertion to check if the game object is configured as expected
         $forrest = $game->getCurrentLocation();
-        $this->assertInstanceOf(AdventureLocation::class, $forrest);
+        $this->assertInstanceOf(Location::class, $forrest);
         $this->assertSame('Forrest', $forrest->getName());
 
         $this->assertTrue($forrest->hasConnection('north')); // To the Cave
         $this->assertFalse($forrest->hasConnection('south')); // No connection
-        $this->assertInstanceOf(AdventureLocation::class, $forrest->getConnectedLocation('north'));
+        $this->assertInstanceOf(Location::class, $forrest->getConnectedLocation('north'));
         $this->assertNull($forrest->getConnectedLocation('south'));
 
         $cave = $forrest->getConnectedLocation('north');
@@ -64,7 +65,9 @@ class GameSetupManagerTest extends TestCase
         $this->assertFalse($cave->hasItem('Sword'));
         $this->assertNull($cave->getItem('Sword'));
 
+        /** @var Item */
         $axe = $cave->getItem('Axe');
+
         $this->assertSame('Axe', $axe->getName());
         $this->assertTrue($axe->hasAction('take'));
 
@@ -84,19 +87,19 @@ class GameSetupManagerTest extends TestCase
      */
     private function getLocationRepositoryMock(): ObjectRepository
     {
-        $location1 = new Location();
+        $location1 = new LocationEntity();
         $location1->setId(1);
         $location1->setName('Forrest')
             ->setDescription('A dense forest.')
             ->setDetails('This forest is filled with tall trees and lush vegetation.');
 
-        $location2 = new Location();
+        $location2 = new LocationEntity();
         $location2->setId(2);
         $location2->setName('Cave')
             ->setDescription('A dark cave.')
             ->setDetails('The cave is damp and cold.');
 
-        $location3 = new Location();
+        $location3 = new LocationEntity();
         $location3->setId(3);
         $location3->setName('Lake')
             ->setDescription('A serene lake.')
@@ -115,18 +118,18 @@ class GameSetupManagerTest extends TestCase
     }
 
     /**
-     * @return ObjectRepository The mocked Item repository.
+     * @return ObjectRepository The mocked ItemEntity repository.
      */
     private function getItemRepositoryMock(): ObjectRepository
     {
-        $item1 = new Item();
+        $item1 = new ItemEntity();
         $item1
             ->setId(1)
             ->setName('Sword')
             ->setDescription('A powerful sword.')
             ->setLocationId(1);
 
-        $item2 = new Item();
+        $item2 = new ItemEntity();
         $item2
             ->setId(2)
             ->setName('Axe')

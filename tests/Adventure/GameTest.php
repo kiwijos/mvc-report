@@ -14,8 +14,19 @@ use PHPUnit\Framework\TestCase;
  */
 class GameTest extends TestCase
 {
+    /**
+     * @var Game
+     */
     private $game;
+
+    /**
+     * @var Location
+     */
     private $location;
+
+    /**
+     * @var Inventory
+     */
     private $inventory;
 
     protected function setUp(): void
@@ -108,6 +119,9 @@ class GameTest extends TestCase
         $this->assertSame($expected, $response);
     }
 
+    /**
+     * Test case for processAction method with input action 'help'.
+     */
     public function testProcessActionHelp(): void
     {
         $response = $this->game->processAction('help', '');
@@ -136,7 +150,7 @@ class GameTest extends TestCase
      * Provides target actions for help and their expected outputs.
      * As the exact message might change, simply expect the output will contain the name of the target action.
      * 
-     * @return string[] The inputs and expected outputs.
+     * @return array<int, array<int, string>> The inputs and expected outputs.
      */
     public function helpWithTargetProvider(): array
     {
@@ -202,7 +216,7 @@ class GameTest extends TestCase
     /**
      * Provides item related actions.
      * 
-     * @return string[] The inputs.
+     * @return array<int, array<int, string>> The inputs.
      */
     public function itemActionProvider(): array
     {
