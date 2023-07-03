@@ -17,7 +17,7 @@ use App\Adventure\Inventory;
 class AdventureController extends AbstractController
 {
     #[Route('/proj/game', name: 'start_game')]
-    public function start()
+    public function start(): Response
     {
         // Don't log this message
         $message = [
@@ -33,7 +33,7 @@ class AdventureController extends AbstractController
     }
 
     #[Route('/proj/game/init', name: 'setup_game')]
-    public function init(SessionInterface $session, ManagerRegistry $doctrine)
+    public function init(SessionInterface $session, ManagerRegistry $doctrine): Response
     {
         // Set up game from database
         $entityManager = $doctrine->getManager('game');
@@ -64,7 +64,7 @@ class AdventureController extends AbstractController
     }
 
     #[Route('/proj/game/location', name: 'render_location')]
-    public function renderLocation(SessionInterface $session)
+    public function renderLocation(SessionInterface $session): Response
     {
         // Get logged entries
         $log = $session->get('game_log', new Log());
@@ -80,7 +80,7 @@ class AdventureController extends AbstractController
     }
 
     #[Route('/proj/game/action', name: 'perform_action', methods: ['POST'])]
-    public function performAction(SessionInterface $session, Request $request)
+    public function performAction(SessionInterface $session, Request $request): Response
     {
         $userInput = $request->get('input');
 
