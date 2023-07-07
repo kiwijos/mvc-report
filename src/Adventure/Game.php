@@ -18,12 +18,12 @@ use Exception;
 class Game
 {
     /**
-     * @var Location|null The current location of the player.
+     * @var Location The current location of the player.
      */
     private $currentLocation;
 
     /**
-     * @var Inventory|null The inventory of the player.
+     * @var Inventory The inventory of the player.
      */
     private $inventory;
 
@@ -40,9 +40,9 @@ class Game
     /**
      * Retrieves the current location of the player.
      *
-     * @return Location|null The current location of the player, or null if not set.
+     * @return Location The current location of the player, or null if not set.
      */
-    public function getCurrentLocation(): ?Location
+    public function getCurrentLocation(): Location
     {
         return $this->currentLocation;
     }
@@ -60,9 +60,9 @@ class Game
     /**
      * Retrieves the inventory of the player.
      *
-     * @return Inventory|null The inventory object representing the player's inventory, or null if not set.
+     * @return Inventory The inventory object representing the player's inventory, or null if not set.
      */
-    public function getInventory(): ?Inventory
+    public function getInventory(): Inventory
     {
         return $this->inventory;
     }
@@ -137,6 +137,7 @@ class Game
         $availableActions = AvailableActionsProvider::getAvailableActions();
 
         if (empty($target)) {
+            /** @var string */
             $formattedRows = Formatter::formatRows($availableActions, 4);
 
             return $formattedRows;
@@ -144,6 +145,7 @@ class Game
 
         foreach ($availableActions as $action) {
             if ($target === $action['name']) {
+                /** @var string */
                 $formattedRow = Formatter::formatSingleRow($action, 4);
 
                 return $formattedRow;
@@ -156,7 +158,7 @@ class Game
     /**
      * Handles the 'go' action.
      *
-     * @param  string $target The target direction to go.
+     * @param  string $direction The direction to go.
      * @return string The response message with the new location description or an error message.
      */
     private function handleGoAction(string $direction): string
@@ -164,7 +166,8 @@ class Game
         $currentLocation = $this->currentLocation;
 
         if ($currentLocation->hasConnection($direction)) {
-            $newLocation = $this->currentLocation->getConnectedLocation($direction);
+            /** @var Location */
+            $newLocation = $currentLocation->getConnectedLocation($direction);
 
             $this->currentLocation = $newLocation;
 
@@ -197,6 +200,7 @@ class Game
             return "You cannot {$action} the {$target}.";
         }
 
+        /** @var InputActionInterface */
         $actionObject = $itemObject->getAction($action);
 
         switch ($action) {
@@ -214,11 +218,11 @@ class Game
     /**
      * Handles the 'examine' action for an item.
      *
-     * @param Item          $itemObject   The item to examine.
-     * @param ExamineAction $actionObject The action object associated with the action.
+     * @param Item                 $itemObject   The item to examine.
+     * @param InputActionInterface $actionObject The action object associated with the action.
      * @return string The response message from the examine action.
      */
-    private function handleExamineAction(Item $itemObject, ExamineAction $actionObject): string
+    private function handleExamineAction(Item $itemObject, InputActionInterface $actionObject): string
     {
         $textResponse = $actionObject->getTextResponse();
 
@@ -234,11 +238,11 @@ class Game
     /**
      * Handles the 'take' action for an item.
      *
-     * @param Item       $itemObject   The item to take.
-     * @param TakeAction $actionObject The action object associated with the action.
+     * @param Item                 $itemObject   The item to take.
+     * @param InputActionInterface $actionObject The action object associated with the action.
      * @return string The response message from the take action or an error message.
      */
-    private function handleTakeAction(Item $itemObject, TakeAction $actionObject): string
+    private function handleTakeAction(Item $itemObject, InputActionInterface $actionObject): string
     {
         $itemName = $itemObject->getName();
 
@@ -252,17 +256,21 @@ class Game
 
         $textResponse = $actionObject->getTextResponse();
 
-        return $textResponse ?? "The {$itemName} has been added to your inventory.";
+        if (!$textResponse) {
+            return "The {$itemName} has been added to your inventory.";
+        }
+
+        return $textResponse;
     }
 
     /**
      * Handles the 'use' action for an item.
      *
-     * @param Item      $itemObject   The item to use.
-     * @param UseAction $actionObject The action object associated with the action.
+     * @param Item                 $itemObject   The item to use.
+     * @param InputActionInterface $actionObject The action object associated with the action.
      * @return string The response message from the use action or an error message.
      */
-    private function handleUseAction(Item $itemObject, UseAction $actionObject): string
+    private function handleUseAction(Item $itemObject, InputActionInterface $actionObject): string
     {
         $itemName = $itemObject->getName();
 
@@ -328,6 +336,7 @@ class Game
      */
     private function performLocationResponse(InputActionInterface $actionObject): string
     {
+        /** @var LocationResponseInterface */
         $locationResponseObject = $actionObject->getLocationResponse();
 
         // Execute the location response action and update the current location
