@@ -10,8 +10,7 @@
         My custom rule set that checks my code...
     </description>
 
-    <!-- Import all the rule sets -->
-    <rule ref="rulesets/cleancode.xml" />
+    <!-- Import entire rule sets -->
     <rule ref="rulesets/codesize.xml" />
     <rule ref="rulesets/design.xml" />
     <rule ref="rulesets/controversial.xml" />
@@ -24,15 +23,24 @@
     <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
         <priority>1</priority>
         <properties>
-            <property name="reportLevel" value="9" />
+            <property name="reportLevel" value="10" />
         </properties>
     </rule>
 
     <!--
+        Import the clean code rule set and
+        exclude the StaticAccess rule specifically.
+    -->
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="StaticAccess"/>
+    </rule>
+
+    <!--
         Import the naming rule set and
-        exclude the ShortVariable rule specifically.
+        exclude the ShortVariable and LongVariable rules specifically.
     -->
     <rule ref="rulesets/naming.xml">
         <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
     </rule>
 </ruleset>
