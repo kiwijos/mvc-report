@@ -4,8 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Proj{% endblock %}</title>
-        <script src="https://kit.fontawesome.com/2897e71327.js" crossorigin="anonymous"></script>
-
         {% block stylesheets %}
             {{ encore_entry_link_tags('proj') }}
         {% endblock %}
@@ -27,7 +25,7 @@
                 <span class="icon-folder icon-lg icon-shadow"></span>
                 <p>About</p>
             </a>
-            <a class="desktop-button" href="{{path('setup_game')}}">
+            <a class="desktop-button" href="{{path('start_game')}}">
                 <span class="icon-disc icon-lg icon-shadow"></span>
                 <p>Adventure Game</p>
             </a>
