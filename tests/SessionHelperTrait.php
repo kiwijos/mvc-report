@@ -4,18 +4,21 @@ namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\SessionFactoryInterface;
 
 trait SessionHelperTrait
 {
     /**
      * @param KernelBrowser $client Current client.
      * @param mixed[]       $data  Session data.
-     * @return Session
+     * @return SessionInterface
      */
-    public function createSession(KernelBrowser $client, array $data): Session
+    public function createSession(KernelBrowser $client, array $data): SessionInterface
     {
-        $session = $client->getContainer()->get('session.factory')->createSession(null);
+        /** @var SessionFactoryInterface */
+        $sessionCreator = $client->getContainer()->get('session.factory');
+        $session = $sessionCreator->createSession();
 
         $session->setId('session-mock-id');
         $session->start();

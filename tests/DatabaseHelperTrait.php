@@ -2,15 +2,17 @@
 
 namespace App\Tests;
 
+use Doctrine\ORM\EntityManagerInterface;
+
 trait DatabaseHelperTrait
 {
     /**
      * Truncates the specified table to remove all data.
      *
-     * @param object $entityManager The entity manager instance.
-     * @param string $tableName     The name of the table to truncate.
+     * @param EntityManagerInterface $entityManager The entity manager instance.
+     * @param string                 $tableName     The name of the table to truncate.
      */
-    private function truncateTable($entityManager, string $tableName): void
+    private function truncateTable(EntityManagerInterface $entityManager, string $tableName): void
     {
         $connection = $entityManager->getConnection();
         $platform = $connection->getDatabasePlatform();
@@ -22,10 +24,10 @@ trait DatabaseHelperTrait
     /**
      * Asserts that the specified table is empty.
      *
-     * @param object $entityManager The entity manager instance.
-     * @param string $tableName     The name of the table to check.
+     * @param EntityManagerInterface $entityManager The entity manager instance.
+     * @param string                 $tableName     The name of the table to check.
      */
-    private function assertEmptyTable($entityManager, string $tableName): void
+    private function assertEmptyTable(EntityManagerInterface $entityManager, string $tableName): void
     {
         $tableName = ucfirst($tableName); // Assume that the name's first character should be uppercase
         $query = $entityManager->createQuery("SELECT COUNT(e) FROM App\Entity\Game\\{$tableName} e");
@@ -37,10 +39,10 @@ trait DatabaseHelperTrait
     /**
      * Asserts that the specified table is not empty.
      *
-     * @param object $entityManager The entity manager instance.
-     * @param string $tableName     The name of the table to check.
+     * @param EntityManagerInterface $entityManager The entity manager instance.
+     * @param string                 $tableName     The name of the table to check.
      */
-    private function assertNonEmptyTable($entityManager, string $tableName): void
+    private function assertNonEmptyTable(EntityManagerInterface $entityManager, string $tableName): void
     {
         $tableName = ucfirst($tableName); // Assume that the name's first character should be uppercase
         $query = $entityManager->createQuery("SELECT COUNT(e) FROM App\Entity\Game\\{$tableName} e");
