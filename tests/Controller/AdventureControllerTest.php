@@ -8,7 +8,7 @@ use App\Tests\SessionHelperTrait;
 use App\Adventure\Log;
 use App\Adventure\Game;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Application tests for AdventureController.
@@ -23,7 +23,7 @@ class AdventureControllerTest extends WebTestCase
     private $client;
 
     /**
-     * @var Session
+     * @var SessionInterface
      */
     private $session;
 
@@ -119,6 +119,7 @@ class AdventureControllerTest extends WebTestCase
 
         // Retrieve the real log and check it contains the expected entries
         // (Meaning both the input and the response from the game mock instance)
+        /** @var Log */
         $log = $this->session->get('game_log');
         $this->assertSame([$input, $response], $log->getEntries());
 

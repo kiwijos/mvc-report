@@ -1,11 +1,13 @@
 <?php
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
+use App\Adventure\Log;
 use App\Tests\DatabaseHelperTrait;
 use App\Tests\SessionHelperTrait;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use App\Adventure\Log;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProjectControllerJsonTest extends WebTestCase
 {
@@ -47,6 +49,7 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocationsNotFound(): void
     {
+        /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
         $this->truncateTable($entityManager, 'location'); // Empty table
 
@@ -132,6 +135,7 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItemsNotFound(): void
     {
+        /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
         $this->truncateTable($entityManager, 'item'); // Empty table
 
@@ -322,7 +326,10 @@ class ProjectControllerJsonTest extends WebTestCase
     private function getEntityManager(string $name = 'default')
     {
         $container = $this->client->getContainer();
+
+        /** @var ManagerRegistry $doctrine */
         $doctrine = $container->get('doctrine');
+
         $entityManager = $doctrine->getManager($name);
 
         return $entityManager;
