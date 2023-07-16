@@ -12,12 +12,11 @@ class Formatter
      * Formats a 2D array of data into rows, without displaying keys,
      * with equal spacing between columns.
      *
-     * @param  string[]        $data    The data to format.
-     * @param  int             $gap     The spacing between columns. Default is 1.
-     * @param  bool            $asArray Whether to return the formatted rows as an array or a string. Default is false (string).
-     * @return string|string[] The formatted data as a string.
+     * @param  array<mixed, array<mixed, string>> $data    The data to format.
+     * @param  int                                $gap     The spacing between columns. Default is 1.
+     * @return string The formatted data as a string.
      */
-    public static function formatRows(array $data, int $gap = 1, $asArray = false): string|array
+    public static function formatRows(array $data, int $gap = 1): string
     {
         $columns = array_map(null, ...array_values($data));
 
@@ -42,10 +41,6 @@ class Formatter
             $formattedRows[] = $formattedRow;
         }
 
-        if ($asArray) {
-            return $formattedRows;
-        }
-
         return implode("\n", $formattedRows);
     }
 
@@ -54,7 +49,7 @@ class Formatter
      *
      * @param  string[] $data The data to format.
      * @param  int      $gap The spacing between columns. Default is 1.
-     * @return string   The formatted row as a string.
+     * @return string The formatted row as a string.
      */
     public static function formatSingleRow(array $data, int $gap = 1): string
     {
@@ -70,8 +65,8 @@ class Formatter
      * Formats a 1D associative array of data into columns,
      * with keys and values displayed in separate columns.
      *
-     * @param  array  $data The data to format.
-     * @param  int    $gap The spacing between the key and value columns. Default is 1.
+     * @param  array<string, string> $data The data to format.
+     * @param  int                   $gap The spacing between the key and value columns. Default is 1.
      * @return string The formatted data as a string.
      */
     public static function formatKeyValueColumns(array $data, int $gap = 1): string
