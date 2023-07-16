@@ -9,3 +9,4 @@ parameters:
             - src/Entity
     bootstrapFiles:
         #- .phpstan.constants.php
+    checkGenericClassInNonGenericObjectType: false
