@@ -8,7 +8,7 @@ namespace App\Adventure;
 class Inventory
 {
     /**
-     * @var array The inventory of the player.
+     * @var array<string, Item> The inventory of the player.
      */
     private $inventory = [];
 

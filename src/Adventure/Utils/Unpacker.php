@@ -68,9 +68,9 @@ class Unpacker
      *
      * @param string $text The input text.
      * @param string $word The word to be enclosed in brackets.
-     * @return string The modified text with the word enclosed by brackets.
+     * @return string|null The modified text with the word enclosed by brackets.
      */
-    private static function encloseWordInBrackets(string $text, string $word): string
+    private static function encloseWordInBrackets(string $text, string $word): ?string
     {
         // Escape any special characters in the word
         $escapedWord = preg_quote($word);
