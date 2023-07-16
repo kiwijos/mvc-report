@@ -34,6 +34,10 @@ class SwapLocationResponse implements LocationResponseInterface
      */
     public function doLocationResponse(?Location $oldLocation): Location
     {
+        if ($oldLocation === null) {
+            return $this->newLocation;
+        }
+
         $resultLocation = Connector::swapLocations($oldLocation, $this->newLocation);
 
         return $resultLocation;
