@@ -21,6 +21,7 @@ class ConnectionRepository extends ServiceEntityRepository
         parent::__construct($registry, Connection::class);
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function save(Connection $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +31,7 @@ class ConnectionRepository extends ServiceEntityRepository
         }
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function remove(Connection $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -42,7 +44,7 @@ class ConnectionRepository extends ServiceEntityRepository
     /**
      * Retrieves the highest ID.
      *
-     * @return int|null The ID if found, or null if not found.
+     * @return int The highest ID.
      */
     public function findHighestId(): ?int
     {
@@ -50,6 +52,6 @@ class ConnectionRepository extends ServiceEntityRepository
         $qb->select('MAX(c.id) as highestId');
         $result = $qb->getQuery()->getSingleScalarResult();
 
-        return $result !== null ? (int) $result : null;
+        return intval($result);
     }
 }

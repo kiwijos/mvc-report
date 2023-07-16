@@ -21,6 +21,7 @@ class ResponseRepository extends ServiceEntityRepository
         parent::__construct($registry, Response::class);
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function save(Response $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +31,7 @@ class ResponseRepository extends ServiceEntityRepository
         }
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function remove(Response $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

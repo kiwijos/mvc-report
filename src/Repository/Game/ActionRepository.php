@@ -21,6 +21,7 @@ class ActionRepository extends ServiceEntityRepository
         parent::__construct($registry, Action::class);
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function save(Action $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +31,7 @@ class ActionRepository extends ServiceEntityRepository
         }
     }
 
+    /** @SuppressWarnings(PHPMD.BooleanArgumentFlag) */
     public function remove(Action $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
