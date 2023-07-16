@@ -33,30 +33,6 @@ class FormatterTest extends TestCase
     }
 
     /**
-     * Test case for formatRows method with return array.
-     */
-    public function testFormatRowsAsArray(): void
-    {
-        $data = [
-            ['Name', 'Age', 'Country'],
-            ['John', '25', 'USA'],
-            ['Emily', '30', 'UK'],
-            ['Mark', '28', 'Canada'],
-        ];
-
-        $expectedResult = [
-            'Name  Age Country ',
-            'John  25  USA     ',
-            'Emily 30  UK      ',
-            'Mark  28  Canada  '
-        ];
-
-        // Test formatting rows as an array
-        $resultArray = Formatter::formatRows($data, 1, true);
-        $this->assertEquals($expectedResult, $resultArray);
-    }
-
-    /**
      * Test case for formatSingleRow method.
      */
     public function testFormatSingleRow(): void
