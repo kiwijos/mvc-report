@@ -29,7 +29,6 @@ trait InputActionTrait
      * InputAction constructor.
      *
      * @param string $textResponse The text response for the input action.
-     * @param bool   $textResponse Whether the action is repeatable. Default is false.
      */
     public function __construct(string $textResponse)
     {
