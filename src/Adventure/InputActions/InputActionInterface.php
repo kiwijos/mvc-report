@@ -2,13 +2,14 @@
 
 namespace App\Adventure\InputActions;
 
+use App\Adventure\ActionResponses\LocationResponseInterface;
+use App\Adventure\Location;
+
 /**
  * InputActionInterface represents an input action in the adventure game.
  * Classes implementing this interface should at least define the name identifying the action,
- * and the text response for when the action is performed.
+ * and the text response for when the action is performed with non-null return values.
  */
-use App\Adventure\ActionResponses\LocationResponseInterface;
-
 interface InputActionInterface
 {
     /**
@@ -32,4 +33,11 @@ interface InputActionInterface
      * @return LocationResponseInterface|null The location response object, or null if not set.
      */
     public function getLocationResponse(): ?LocationResponseInterface;
+
+    /**
+     * Retrieves the location required for the action to work.
+     *
+     * @return Location|null The required location, or null if not set.
+     */
+    public function getRequiredLocation(): ?Location;
 }
