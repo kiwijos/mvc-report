@@ -5,6 +5,7 @@ namespace App\Controller;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Exception\CommandNotFoundException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -93,6 +94,7 @@ class ProjectControllerJson extends AbstractController
     #[Route("/proj/api/log", name: "proj_api_log")]
     public function log(SessionInterface $session): JsonResponse
     {
+        /** @var Log */
         $log = $session->get('game_log', new Log());
 
         $entries = $log->getEntries();
@@ -111,8 +113,11 @@ class ProjectControllerJson extends AbstractController
     public function connect(Request $request, ManagerRegistry $doctrine, ConnectionRepository $connectionRepository): JsonResponse
     {
         // Retrieve request data
-        $fromId = $request->request->get('from_location');
-        $toId = $request->request->get('to_location');
+        /** @var int */
+        $fromId = intval($request->request->get('from_location'));
+        /** @var int */
+        $toId = intval($request->request->get('to_location'));
+        /** @var string */
         $direction = $request->request->get('direction');
 
         // Exit early with error message if locations are the same
@@ -170,42 +175,54 @@ class ProjectControllerJson extends AbstractController
     /**
      * Reset the game database by running the reset-database command.
      */
-    #[Route("/proj/api/reset", name: "proj_reset_database", methods: ['POST'])]
+    #[Route("/proj/api/reset", name: "proj_api_reset", methods: ['POST'])]
     public function resetDatabase(KernelInterface $kernel): JsonResponse
     {
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
+        $command = 'app:reset-database';
+
         $input = new ArrayInput([
-            'command' => 'app:reset-database',
+            'command' => $command,
         ]);
 
         $output = new NullOutput();
 
         try {
+            if (!$application->has($command)) {
+                throw new CommandNotFoundException("The command {$command} does not exist.");
+            }
+
             $statusCode = $application->run($input, $output);
+            
             if ($statusCode === 0) {
                 $response = $this->json([
                     'status' => 'success',
                     'message' => 'Database reset data import completed!',
                 ], Response::HTTP_OK);
-            } else {
-                $response = $this->json([
-                    'status' => 'error',
-                    'message' => 'Database reset and data import failed.',
-                ], Response::HTTP_INTERNAL_SERVER_ERROR);
+
+                $response->setEncodingOptions(
+                    $response->getEncodingOptions() | JSON_PRETTY_PRINT,
+                );
+
+                return $response;
             }
+
+            $errorMessage = 'Database reset and data import failed.';
+            $errorStatusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
         } catch (CommandNotFoundException $exception) {
-            $response = $this->json([
-                'status' => 'error',
-                'message' => 'Reset database command not found.',
-            ], Response::HTTP_NOT_FOUND);
+            $errorMessage = $exception->getMessage();
+            $errorStatusCode = Response::HTTP_NOT_FOUND;
         } catch (Exception $exception) {
-            $response = $this->json([
-                'status' => 'error',
-                'message' => $exception->getMessage(),
-            ], Response::HTTP_BAD_REQUEST);
+            $errorMessage = $exception->getMessage();
+            $errorStatusCode = Response::HTTP_BAD_REQUEST;
         }
+
+        $response = $this->json([
+            'status' => 'error',
+            'message' => $errorMessage,
+        ], $errorStatusCode);
 
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT,
