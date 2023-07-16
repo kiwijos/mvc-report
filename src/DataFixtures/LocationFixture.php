@@ -11,6 +11,13 @@ class LocationFixture extends Fixture implements FixtureGroupInterface
 {
     public function load(ObjectManager $manager): void
     {
+        $location = new Location();
+        $location->setName('Mountain');
+        $location->setDescription('A misty mountain.');
+        $location->setDetails('The mountain is hidden in a vast sea of mist.');
+        $location->setId(1);
+        $manager->persist($location);
+
         $location1 = new Location();
         $location1->setName('Cave');
         $location1->setDescription('A dark cave.');
