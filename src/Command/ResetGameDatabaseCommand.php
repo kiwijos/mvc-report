@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,6 +22,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
 )]
 class ResetGameDatabaseCommand extends Command
 {
+    /**
+     * @var KernelInterface
+     */
     private $kernel;
 
     public function __construct(KernelInterface $kernel)
@@ -29,7 +33,7 @@ class ResetGameDatabaseCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('app:reset-database')
@@ -95,13 +99,14 @@ class ResetGameDatabaseCommand extends Command
     /**
      * Runs a Symfony console command.
      *
-     * @param OutputInterface $output    The output interface for command output
-     * @param string          $command   The command name
-     * @param array           $arguments The command arguments
-     * @param int             $verbosity The desired verbosity level for command output. Default it normal.
+     * @param OutputInterface      $output    The output interface for command output
+     * @param string               $command   The command name
+     * @param array<string, mixed> $arguments The command arguments
+     * @param int                  $verbosity The desired verbosity level for command output. Default it normal.
      */
     private function runCommand(OutputInterface $output, string $command, array $arguments = [], int $verbosity = OutputInterface::VERBOSITY_NORMAL): void
     {
+        /** @var Application */
         $application = $this->getApplication();
         $application->setAutoExit(false);
 

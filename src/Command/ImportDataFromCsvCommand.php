@@ -4,6 +4,7 @@ namespace App\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,18 +23,26 @@ use InvalidArgumentException;
 )]
 class ImportDataFromCsvCommand extends Command
 {
-    /** @var EntityManagerInterface */
+    /**
+     * @var EntityManagerInterface|ObjectManager
+    */
     private $entityManager;
 
-    /** @var ManagerRegistry */
+    /**
+     * @var ManagerRegistry
+     */
     private $doctrine;
 
+    /**
+     * @var KernelInterface
+     */
     private $kernel;
 
     /**
      * ImportDataCommand constructor.
      *
      * @param ManagerRegistry $doctrine
+     * @param KernelInterface $kernel
      */
     public function __construct(ManagerRegistry $doctrine, KernelInterface $kernel)
     {
@@ -46,7 +55,7 @@ class ImportDataFromCsvCommand extends Command
     /**
      * Configures the command.
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('app:import-data')
@@ -67,8 +76,11 @@ class ImportDataFromCsvCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
+        
+        /** @var string */
         $filename = $input->getArgument('filename'); // Retrieve the argument value
 
+        /** @var string */
         $csvDirectory = $this->kernel->getProjectDir() . '/' . 'public/csv/';
         $csvFile = $csvDirectory . $filename;
 
@@ -87,11 +99,15 @@ class ImportDataFromCsvCommand extends Command
         ]);
 
         // Parse CSV file into array of fields
-        $csvData = array_map('str_getcsv', file($csvFile));
+        /** @var string[] */
+        $fileAsArray = file($csvFile);
+        $csvData = array_map('str_getcsv', $fileAsArray);
 
         // Shift off first value of the array, i.e. the headers
+        /** @var string[] */
         $headers = array_shift($csvData);
 
+        /** @var string */
         $entityManagerName = $input->getOption('manager');
 
         try {
@@ -150,6 +166,7 @@ class ImportDataFromCsvCommand extends Command
         $entityName = basename($filename, '.csv');
 
         // Get the entity namespace based on the entity manager configuration
+        /** @var EntityManagerInterface */
         $entityManager = $this->entityManager;
         $configuration = $entityManager->getConfiguration();
         $entityNamespaces = $configuration->getEntityNamespaces();
