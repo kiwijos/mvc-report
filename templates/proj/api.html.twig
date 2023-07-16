@@ -8,7 +8,7 @@
         <span>JSON_API</span>
     </div>
     <div class="window-body split-two">
-        <div class="flex flex-col gap-lg space-between overflow-auto">
+        <div class="flex flex-col gap-lg overflow-auto">
             <div class="arrow-box arrow-bottom">
                 <p>POST /connect: Connects two locations together</p>
             </div>
@@ -89,6 +89,19 @@
                     >
                     <span class="icon-file icon-lg icon-shadow"></span>
                     <p>log.json</p>
+                </button>
+            </div>
+            <div class="flex flex-row gap-med">
+                <div class="flex flex-col gap-med justify-center arrow-box arrow-right">
+                    <p>POST /reset: Resets the game database</p>
+                </div>
+                <button
+                    class="desktop-button"
+                    formaction="{{ path('proj_api_reset') }}"
+                    formmethod="post"
+                    >
+                    <span class="icon-file icon-lg icon-shadow"></span>
+                    <p>reset.json</p>
                 </button>
             </div>
         </form>
