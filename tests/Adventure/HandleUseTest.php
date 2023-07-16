@@ -20,21 +20,9 @@ class HandleUseTest extends TestCase
      */
     private $game;
 
-    /**
-     * @var Location
-     */
-    private $location;
-
-    /**
-     * @var Inventory
-     */
-    private $inventory;
-
     protected function setUp(): void
     {
         $this->game = new Game();
-        $this->location = $this->createMock(Location::class);
-        $this->inventory = $this->createMock(Inventory::class);
     }
 
     /**
@@ -42,6 +30,9 @@ class HandleUseTest extends TestCase
      */
     public function testProcessActionUseItemOnlyInInventory(): void
     {
+        // Stub a location to start in
+        $startingLocation = $this->createStub(Location::class);
+
         // Create a mock location to move to
         $responseLocation = $this->createMock(Location::class);
         $responseLocation->expects($this->once())
@@ -52,7 +43,7 @@ class HandleUseTest extends TestCase
         $response = $this->createMock(MoveLocationResponse::class);
         $response->expects($this->once())
             ->method('doLocationResponse')
-            ->with($this->location)
+            ->with($startingLocation)
             ->willReturn($responseLocation);
 
         // Create and configure use action mock
@@ -67,24 +58,25 @@ class HandleUseTest extends TestCase
         $item->method('getName')->willReturn('key');
 
         // Configure inventory mock to find the item
-        $this->inventory->expects($this->once())
+        $inventory = $this->createMock(Inventory::class);
+        $inventory->expects($this->once())
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
 
-        $this->inventory->expects($this->exactly(2))
+        $inventory->expects($this->exactly(2))
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
         // Expect item to be removed after use
-        $this->inventory->expects($this->once())
+        $inventory->expects($this->once())
             ->method('removeItem')
             ->with($item);
 
         // Perform action
-        $this->game->setInventory($this->inventory);
-        $this->game->setCurrentLocation($this->location);
+        $this->game->setInventory($inventory);
+        $this->game->setCurrentLocation($startingLocation);
         $response = $this->game->processAction('use', 'key');
 
         // Assert use message is returned with the resuling locations details
@@ -110,28 +102,30 @@ class HandleUseTest extends TestCase
         $item->method('getName')->willReturn('key');
 
         // Configure location mock to find the item
-        $this->location->expects($this->once())
+        $location = $this->createMock(Location::class);
+        $location->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
-        $this->location->expects($this->once())
+        $location->expects($this->once())
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
 
         // Configure inventory to NOT have the item
-        $this->inventory->method('hasItem')
+        $inventory = $this->createMock(Inventory::class);
+        $inventory->method('hasItem')
             ->with('key')
             ->willReturn(false);
 
         // Expect item to NOT get removed
-        $this->inventory->expects($this->never())
+        $inventory->expects($this->never())
             ->method('removeItem');
 
         // Perform action
-        $this->game->setCurrentLocation($this->location);
-        $this->game->setInventory($this->inventory);
+        $this->game->setCurrentLocation($location);
+        $this->game->setInventory($inventory);
         $response = $this->game->processAction('use', 'key');
 
         // Assert error message is returned

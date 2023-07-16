@@ -19,21 +19,9 @@ class HandleExamineTest extends TestCase
      */
     private $game;
 
-    /**
-     * @var Location
-     */
-    private $location;
-
-    /**
-     * @var Inventory
-     */
-    private $inventory;
-
     protected function setUp(): void
     {
         $this->game = new Game();
-        $this->location = $this->createMock(Location::class);
-        $this->inventory = $this->createMock(Inventory::class);
     }
 
     /**
@@ -51,24 +39,26 @@ class HandleExamineTest extends TestCase
         $item->method('getAction')->with('examine')->willReturn($action);
 
         // Configure location mock to find the item
-        $this->location->expects($this->once())
+        $location = $this->createMock(Location::class);
+        $location->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
-        $this->location->expects($this->once())
+        $location->expects($this->once())
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
 
         // If the item is found in the location, it will not be looked for in the inventory
-        $this->inventory->expects($this->never())
+        $inventory = $this->createMock(Inventory::class);
+        $inventory->expects($this->never())
             ->method('hasItem')
             ->with('key');
 
         // Perform action
-        $this->game->setInventory($this->inventory);
-        $this->game->setCurrentLocation($this->location);
+        $this->game->setInventory($inventory);
+        $this->game->setCurrentLocation($location);
         $response = $this->game->processAction('examine', 'key');
 
         // Assert examine message is returned
@@ -90,25 +80,27 @@ class HandleExamineTest extends TestCase
         $item->method('getAction')->with('examine')->willReturn($action);
 
         // Configure location mock to NOT find the item
-        $this->location->expects($this->once())
+        $location = $this->createMock(Location::class);
+        $location->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(false);
 
         // Configure inventory mock to find the item
-        $this->inventory->expects($this->once())
+        $inventory = $this->createMock(Inventory::class);
+        $inventory->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
-        $this->inventory->expects($this->once())
+        $inventory->expects($this->once())
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
 
         // Perform action
-        $this->game->setCurrentLocation($this->location);
-        $this->game->setInventory($this->inventory);
+        $this->game->setCurrentLocation($location);
+        $this->game->setInventory($inventory);
         $response = $this->game->processAction('examine', 'key');
 
         // Assert examine message is returned
@@ -130,12 +122,13 @@ class HandleExamineTest extends TestCase
         $item->method('getAction')->with('examine')->willReturn($action);
 
         // Configure location mock to find the item
-        $this->location->expects($this->once())
+        $location = $this->createMock(Location::class);
+        $location->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
-        $this->location->expects($this->once())
+        $location->expects($this->once())
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
@@ -145,9 +138,11 @@ class HandleExamineTest extends TestCase
             ->method('getName')
             ->willReturn('pizza');
 
-        // Perform action
-        $this->game->setInventory($this->inventory);
-        $this->game->setCurrentLocation($this->location);
+        $inventory = $this->createStub(Inventory::class);
+
+        // Perform action    
+        $this->game->setInventory($inventory);
+        $this->game->setCurrentLocation($location);
         $response = $this->game->processAction('examine', 'key');
 
         // Assert default examine message is returned

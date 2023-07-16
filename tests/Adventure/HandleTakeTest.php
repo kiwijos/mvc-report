@@ -19,21 +19,9 @@ class HandleTakeTest extends TestCase
      */
     private $game;
 
-    /**
-     * @var Location
-     */
-    private $location;
-
-    /**
-     * @var Inventory
-     */
-    private $inventory;
-
     protected function setUp(): void
     {
         $this->game = new Game();
-        $this->location = $this->createMock(Location::class);
-        $this->inventory = $this->createMock(Inventory::class);
     }
 
     /**
@@ -52,32 +40,34 @@ class HandleTakeTest extends TestCase
         $item->method('getName')->willReturn('key');
 
         // Configure location mock to find the item
-        $this->location->expects($this->once())
+        $location = $this->createMock(Location::class);
+        $location->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
-        $this->location->expects($this->once())
+        $location->expects($this->once())
             ->method('getItem')
             ->with('key')
             ->willReturn($item);
 
-        $this->location->expects($this->once())
+        $location->expects($this->once())
             ->method('removeItem')
             ->with($item);
 
-        $this->inventory->expects($this->once())
+        $inventory = $this->createMock(Inventory::class);
+        $inventory->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(false); // Item NOT in inventory
 
         // Expect item to be added exactly once
-        $this->inventory->expects($this->once())
+        $inventory->expects($this->once())
             ->method('addItem')
             ->with($item);
 
-        $this->game->setInventory($this->inventory);
-        $this->game->setCurrentLocation($this->location);
+        $this->game->setInventory($inventory);
+        $this->game->setCurrentLocation($location);
 
         // Assert that the same take message is returned
         $response = $this->game->processAction('take', 'key');
@@ -100,30 +90,32 @@ class HandleTakeTest extends TestCase
         $item->method('getName')->willReturn('key');
 
         // Configure location mock to find the item
-        $this->location->method('hasItem')
+        $location = $this->createMock(Location::class);
+        $location->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
-        $this->location->method('getItem')
+        $location->method('getItem')
             ->with('key')
             ->willReturn($item);
 
         // Configure inventory mock to already have the item
-        $this->inventory->expects($this->once())
+        $inventory = $this->createMock(Inventory::class);
+        $inventory->expects($this->once())
             ->method('hasItem')
             ->with('key')
             ->willReturn(true);
 
         // Expect item to NOT get removed/added
-        $this->location->expects($this->never())
+        $location->expects($this->never())
             ->method('removeItem');
 
-        $this->inventory->expects($this->never())
+        $inventory->expects($this->never())
             ->method('addItem');
 
         // Perform action
-        $this->game->setCurrentLocation($this->location);
-        $this->game->setInventory($this->inventory);
+        $this->game->setCurrentLocation($location);
+        $this->game->setInventory($inventory);
         $response = $this->game->processAction('take', 'key');
 
         // Assert error message is returned

@@ -19,21 +19,9 @@ class GameTest extends TestCase
      */
     private $game;
 
-    /**
-     * @var Location
-     */
-    private $location;
-
-    /**
-     * @var Inventory
-     */
-    private $inventory;
-
     protected function setUp(): void
     {
         $this->game = new Game();
-        $this->location = $this->createMock(Location::class);
-        $this->inventory = $this->createMock(Inventory::class);
     }
 
     /**
@@ -41,8 +29,9 @@ class GameTest extends TestCase
      */
     public function testSetAndGetCurrentLocation(): void
     {
-        $this->game->setCurrentLocation($this->location);
-        $this->assertSame($this->location, $this->game->getCurrentLocation());
+        $location = $this->createStub(Location::class);
+        $this->game->setCurrentLocation($location);
+        $this->assertSame($location, $this->game->getCurrentLocation());
     }
 
     /**
@@ -50,8 +39,9 @@ class GameTest extends TestCase
      */
     public function testSetAndGetInventory(): void
     {
-        $this->game->setInventory($this->inventory);
-        $this->assertSame($this->inventory, $this->game->getInventory());
+        $inventory = $this->createStub(Inventory::class);
+        $this->game->setInventory($inventory);
+        $this->assertSame($inventory, $this->game->getInventory());
     }
 
     /**
@@ -71,11 +61,12 @@ class GameTest extends TestCase
      */
     public function testProcessActionWhere(): void
     {
-        // Configure mock
-        $this->location
+        // Create and configure location mock
+        $location = $this->createMock(Location::class);
+        $location
             ->method('getLocationDetails')
             ->willReturn('This is a test location');
-        $this->game->setCurrentLocation($this->location);
+        $this->game->setCurrentLocation($location);
 
         // Assert 'where' action returns the current location's description
         $response = $this->game->processAction('where', '');
@@ -88,10 +79,11 @@ class GameTest extends TestCase
     public function testProcessActionInventoryEmpty(): void
     {
         // Configure mock to return an empty inventory
-        $this->inventory
+        $inventory = $this->createMock(Inventory::class);
+        $inventory
             ->method('lookInInventory')
             ->willReturn([]);
-        $this->game->setInventory($this->inventory);
+        $this->game->setInventory($inventory);
 
         // Assert correct message is returned
         $response = $this->game->processAction('inventory', '');
@@ -103,15 +95,11 @@ class GameTest extends TestCase
      */
     public function testProcessActionInventoryWithItems(): void
     {
-        $item1 = $this->createMock(Item::class);
-        $item2 = $this->createMock(Item::class);
-        $item1->method('getName')->willReturn('Sword');
-        $item2->method('getName')->willReturn('Shield');
-
-        $this->inventory
+        $inventory = $this->createMock(Inventory::class);
+        $inventory
             ->method('lookInInventory')
             ->willReturn(['Sword', 'Shield']);
-        $this->game->setInventory($this->inventory);
+        $this->game->setInventory($inventory);
 
         // Asssert message contains both items' names
         $response = $this->game->processAction('inventory', '');
@@ -200,17 +188,17 @@ class GameTest extends TestCase
     public function testProcessActionGoInvalidDirection(): void
     {
         // Create and configure mock location
-        $location1 = $this->createMock(Location::class);
-        $location1
+        $location = $this->createMock(Location::class);
+        $location
             ->method('hasConnection')
             ->with('north')
             ->willReturn(false);
-        $this->game->setCurrentLocation($location1);
+        $this->game->setCurrentLocation($location);
 
         // Assert error mesage is returned, also make sure location doesn't change
         $response = $this->game->processAction('go', 'north');
         $this->assertSame('You cannot go that way.', $response);
-        $this->assertSame($location1, $this->game->getCurrentLocation());
+        $this->assertSame($location, $this->game->getCurrentLocation());
     }
 
     /**
@@ -241,12 +229,21 @@ class GameTest extends TestCase
     public function testProcessItemActionItemNotFound(string $action): void
     {
         // Configure location and inventory mocks to NOT find the item
-        $this->location->expects($this->once())->method('hasItem')->willReturn(false);
-        $this->inventory->expects($this->once())->method('hasItem')->willReturn(false);
+        $location = $this->createMock(Location::class);
+        $location
+            ->expects($this->once())
+            ->method('hasItem')
+            ->willReturn(false);
+
+        $inventory = $this->createMock(Inventory::class);
+        $inventory
+            ->expects($this->once())
+            ->method('hasItem')
+            ->willReturn(false);
 
         $target = 'key';
-        $this->game->setCurrentLocation($this->location);
-        $this->game->setInventory($this->inventory);
+        $this->game->setCurrentLocation($location);
+        $this->game->setInventory($inventory);
 
         // Assert error message is returned
         $response = $this->game->processAction($action, $target);
@@ -261,14 +258,25 @@ class GameTest extends TestCase
     {
         // Create and configure item mock
         $item = $this->createMock(Item::class);
-        $item->method('hasAction')->with($action)->willReturn(false); // No action object
+        $item
+            ->method('hasAction')
+            ->with($action)
+            ->willReturn(false); // No action object
 
         // Configure location mock to find the item
-        $this->location->expects($this->once())->method('hasItem')->willReturn(true);
-        $this->location->expects($this->once())->method('getItem')->willReturn($item);
+        $location = $this->createMock(Location::class);
+        $location
+            ->expects($this->once())
+            ->method('hasItem')
+            ->willReturn(true);
+
+        $location
+            ->expects($this->once())
+            ->method('getItem')
+            ->willReturn($item);
 
         $target = 'key';
-        $this->game->setCurrentLocation($this->location);
+        $this->game->setCurrentLocation($location);
 
         // Assert error message is returned
         $response = $this->game->processAction($action, $target);
