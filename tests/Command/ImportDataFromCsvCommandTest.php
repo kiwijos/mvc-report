@@ -2,11 +2,13 @@
 
 namespace App\Tests\Command;
 
+use App\Tests\DatabaseHelperTrait;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Command\Command;
-use App\Tests\DatabaseHelperTrait;
+use Symfony\Component\Console\Tester\CommandTester;
 
 class ImportDataFromCsvCommandTest extends KernelTestCase
 {
@@ -20,8 +22,11 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         // Bootstrap the Symfony kernel with the 'test' environment
         self::bootKernel(['environment' => 'test']);
 
-        // Truncate the location table before each test
-        $this->truncateTable($this->getEntityManager('game'), 'location');
+        /** @var EntityManagerInterface */
+        $entityManager = $this->getEntityManager('game');
+
+        // Truncate the location table before each test        
+        $this->truncateTable($entityManager, 'location');
     }
 
     /**
@@ -30,6 +35,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     public function testExecute(): void
     {
         // Get the entity manager for the 'game' connection
+        /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
 
         // Check the contents of the 'location' table before executing the command
@@ -127,7 +133,10 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     private function getEntityManager(string $name = 'default')
     {
         $container = self::$kernel->getContainer();
+
+        /** @var ManagerRegistry $doctrine */
         $doctrine = $container->get('doctrine');
+
         $entityManager = $doctrine->getManager($name);
 
         return $entityManager;
