@@ -107,7 +107,7 @@ class AdventureController extends AbstractController
             return $this->redirectToRoute('setup_game');
         }
 
-        /** @var Game */
+        /** @var Game|null */
         $game = $session->get('game', null); // Retrieve game object
 
         // Check game before attempting to process action, redirect if not found
