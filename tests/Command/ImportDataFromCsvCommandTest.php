@@ -78,9 +78,12 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
 
         $this->assertSame(Command::FAILURE, $commandTester->getStatusCode());
 
+        // Expected path to the file
+        $csvPath = self::$kernel->getProjectDir() . '/public/csv/nonexistent.csv';
+
         // Check the output of the command in the console
         $output = $commandTester->getDisplay();
-        $this->assertStringContainsString('The CSV file "public/csv/nonexistent.csv" does not exist.', $output);
+        $this->assertStringContainsString('The CSV file "' . $csvPath . '" does not exist.', $output);
     }
 
     /**
