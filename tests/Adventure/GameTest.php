@@ -137,7 +137,7 @@ class GameTest extends TestCase
     /**
      * Provides target actions for help and their expected outputs.
      * As the exact message might change, simply expect the output will contain the name of the target action.
-     * 
+     *
      * @return array<int, array<int, string>> The inputs and expected outputs.
      */
     public function helpWithTargetProvider(): array
@@ -203,7 +203,7 @@ class GameTest extends TestCase
 
     /**
      * Provides item related actions.
-     * 
+     *
      * @return array<int, array<int, string>> The inputs.
      */
     public function itemActionProvider(): array

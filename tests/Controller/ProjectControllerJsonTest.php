@@ -209,7 +209,7 @@ class ProjectControllerJsonTest extends WebTestCase
 
         $session->set('game_log', $log);
         $session->save();
-        
+
         $this->client->request('GET', '/proj/api/log');
 
         /** @var string*/

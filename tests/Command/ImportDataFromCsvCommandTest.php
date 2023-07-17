@@ -25,7 +25,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
 
-        // Truncate the location table before each test        
+        // Truncate the location table before each test
         $this->truncateTable($entityManager, 'location');
     }
 

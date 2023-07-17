@@ -195,7 +195,7 @@ class ProjectControllerJson extends AbstractController
             }
 
             $statusCode = $application->run($input, $output);
-            
+
             if ($statusCode === 0) {
                 $response = $this->json([
                     'status' => 'success',

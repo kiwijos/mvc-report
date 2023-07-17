@@ -76,7 +76,7 @@ class ImportDataFromCsvCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        
+
         /** @var string */
         $filename = $input->getArgument('filename'); // Retrieve the argument value
 

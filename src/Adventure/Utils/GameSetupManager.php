@@ -98,7 +98,7 @@ class GameSetupManager
      *
      * @return Game The configured game instance.
      * @throws Exception If any error occurs during the setup process.
-     * 
+     *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function setupGameFromDatabase(): Game

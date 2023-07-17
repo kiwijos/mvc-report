@@ -140,7 +140,7 @@ class HandleExamineTest extends TestCase
 
         $inventory = $this->createStub(Inventory::class);
 
-        // Perform action    
+        // Perform action
         $this->game->setInventory($inventory);
         $this->game->setCurrentLocation($location);
         $response = $this->game->processAction('examine', 'key');
