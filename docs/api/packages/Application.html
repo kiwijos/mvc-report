@@ -60,7 +60,15 @@
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
+                <a href="namespaces/app-adventure.html" class="">Adventure</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-card.html" class="">Card</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-command.html" class="">Command</a>
                 
             </li>
                     <li>
@@ -69,6 +77,10 @@
             </li>
                     <li>
                 <a href="namespaces/app-controller.html" class="">Controller</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-datafixtures.html" class="">DataFixtures</a>
                 
             </li>
                     <li>
@@ -134,6 +146,10 @@
         <dd>Interface for implementing the most basic banker actions.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/App-Game-ReceiverInterface.html"><abbr title="\App\Game\ReceiverInterface">ReceiverInterface</abbr></a></dt>
         <dd>Interface for implementing the action of recieving a card and managing related properties.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/App-Adventure-ActionResponses-LocationResponseInterface.html"><abbr title="\App\Adventure\ActionResponses\LocationResponseInterface">LocationResponseInterface</abbr></a></dt>
+        <dd>The LocationResponseInterface represents an action response that affects the current location in the adventure game.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/App-Adventure-InputActions-InputActionInterface.html"><abbr title="\App\Adventure\InputActions\InputActionInterface">InputActionInterface</abbr></a></dt>
+        <dd>InputActionInterface represents an input action in the adventure game.</dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a></dt>
         <dd>Playing card class.</dd>
@@ -190,19 +206,93 @@ using unicode characters instead of literal names.</dd>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Controller-ProductController.html"><abbr title="\App\Controller\ProductController">ProductController</abbr></a></dt>
         <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Book.html"><abbr title="\App\Entity\Book">Book</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Product.html"><abbr title="\App\Entity\Product">Product</abbr></a></dt>
-        <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-ProductRepository.html"><abbr title="\App\Repository\ProductRepository">ProductRepository</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-ActionResponses-MoveLocationResponse.html"><abbr title="\App\Adventure\ActionResponses\MoveLocationResponse">MoveLocationResponse</abbr></a></dt>
+        <dd>MoveLocationResponse implements the LocationResponseInterface.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-ActionResponses-SwapLocationResponse.html"><abbr title="\App\Adventure\ActionResponses\SwapLocationResponse">SwapLocationResponse</abbr></a></dt>
+        <dd>SwapLocationResponse implements the LocationResponseInterface.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Game.html"><abbr title="\App\Adventure\Game">Game</abbr></a></dt>
+        <dd>Contains the core game logic, handling player actions, locations, and inventory.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-InputActions-ExamineAction.html"><abbr title="\App\Adventure\InputActions\ExamineAction">ExamineAction</abbr></a></dt>
+        <dd>ExamineAction implements InputActionInterface.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-InputActions-TakeAction.html"><abbr title="\App\Adventure\InputActions\TakeAction">TakeAction</abbr></a></dt>
+        <dd>TakeAction implements InputActionInterface.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-InputActions-UseAction.html"><abbr title="\App\Adventure\InputActions\UseAction">UseAction</abbr></a></dt>
+        <dd>UseAction implements InputActionInterface.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Inventory.html"><abbr title="\App\Adventure\Inventory">Inventory</abbr></a></dt>
+        <dd>Represents the inventory of the player in the adventure game.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Item.html"><abbr title="\App\Adventure\Item">Item</abbr></a></dt>
+        <dd>Represents an item in the adventure game.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Location.html"><abbr title="\App\Adventure\Location">Location</abbr></a></dt>
+        <dd>Represents a location in the adventure game.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Log.html"><abbr title="\App\Adventure\Log">Log</abbr></a></dt>
+        <dd>Represents an adventure log that keeps track of user input.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Utils-AvailableActionsProvider.html"><abbr title="\App\Adventure\Utils\AvailableActionsProvider">AvailableActionsProvider</abbr></a></dt>
+        <dd>Provides information about available actions in the game, including their names, targets, and descriptions.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Utils-Connector.html"><abbr title="\App\Adventure\Utils\Connector">Connector</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Utils-Formatter.html"><abbr title="\App\Adventure\Utils\Formatter">Formatter</abbr></a></dt>
+        <dd>The Formatter class provides methods for formatting data in various ways, such as organizing data into rows,
+aligning columns, and formatting key-value pairs into columns.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Utils-GameSetupManager.html"><abbr title="\App\Adventure\Utils\GameSetupManager">GameSetupManager</abbr></a></dt>
+        <dd>Handles setting up the game from the database.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Adventure-Utils-Unpacker.html"><abbr title="\App\Adventure\Utils\Unpacker">Unpacker</abbr></a></dt>
+        <dd>The Unpacker class is responsible for unpacking location descriptions,
+that includes descriptions of visible connections and visible items in the location.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Command-ImportDataFromCsvCommand.html"><abbr title="\App\Command\ImportDataFromCsvCommand">ImportDataFromCsvCommand</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Command-ResetGameDatabaseCommand.html"><abbr title="\App\Command\ResetGameDatabaseCommand">ResetGameDatabaseCommand</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Controller-AdventureController.html"><abbr title="\App\Controller\AdventureController">AdventureController</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Controller-ProjectController.html"><abbr title="\App\Controller\ProjectController">ProjectController</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Controller-ProjectControllerJson.html"><abbr title="\App\Controller\ProjectControllerJson">ProjectControllerJson</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-DataFixtures-ActionFixture.html"><abbr title="\App\DataFixtures\ActionFixture">ActionFixture</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-DataFixtures-ConnectionFixture.html"><abbr title="\App\DataFixtures\ConnectionFixture">ConnectionFixture</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-DataFixtures-ItemFixture.html"><abbr title="\App\DataFixtures\ItemFixture">ItemFixture</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-DataFixtures-LocationFixture.html"><abbr title="\App\DataFixtures\LocationFixture">LocationFixture</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-DataFixtures-ResponseFixture.html"><abbr title="\App\DataFixtures\ResponseFixture">ResponseFixture</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Game-Action.html"><abbr title="\App\Entity\Game\Action">Action</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Game-Connection.html"><abbr title="\App\Entity\Game\Connection">Connection</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Game-Item.html"><abbr title="\App\Entity\Game\Item">Item</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Game-Location.html"><abbr title="\App\Entity\Game\Location">Location</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Game-Response.html"><abbr title="\App\Entity\Game\Response">Response</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Main-Book.html"><abbr title="\App\Entity\Main\Book">Book</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Entity-Main-Product.html"><abbr title="\App\Entity\Main\Product">Product</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-Game-ActionRepository.html"><abbr title="\App\Repository\Game\ActionRepository">ActionRepository</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-Game-ConnectionRepository.html"><abbr title="\App\Repository\Game\ConnectionRepository">ConnectionRepository</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-Game-ItemRepository.html"><abbr title="\App\Repository\Game\ItemRepository">ItemRepository</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-Game-LocationRepository.html"><abbr title="\App\Repository\Game\LocationRepository">LocationRepository</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Repository-Game-ResponseRepository.html"><abbr title="\App\Repository\Game\ResponseRepository">ResponseRepository</abbr></a></dt>
         <dd></dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/App-Game-PassInfoTrait.html"><abbr title="\App\Game\PassInfoTrait">PassInfoTrait</abbr></a></dt>
         <dd>Trait for implementing the action of passing information from game manager to banker.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/App-Game-ReceiveTrait.html"><abbr title="\App\Game\ReceiveTrait">ReceiveTrait</abbr></a></dt>
         <dd>Trait for implementing the basic action of recieving a dealt card and accessing properties.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/App-Adventure-InputActions-InputActionTrait.html"><abbr title="\App\Adventure\InputActions\InputActionTrait">InputActionTrait</abbr></a></dt>
+        <dd>The InputActionTrait provides common functionality for input actions in the game.</dd>
     
     </dl>
 
