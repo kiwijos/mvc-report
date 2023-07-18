@@ -30,6 +30,12 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocations(): void
     {
+        if (getenv('APP_ENV') !== 'test') {
+            $this->markTestSkipped(
+                'This test can only be run on the test environment.'
+            );
+        }
+
         $this->client->request('GET', '/proj/api/locations');
 
         /** @var string*/
@@ -49,6 +55,12 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocationsNotFound(): void
     {
+        if (getenv('APP_ENV') !== 'test') {
+            $this->markTestSkipped(
+                'This test can only be run on the test environment.'
+            );
+        }
+
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
         $this->truncateTable($entityManager, 'location'); // Empty table
@@ -128,6 +140,12 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItems(): void
     {
+        if (getenv('APP_ENV') !== 'test') {
+            $this->markTestSkipped(
+                'This test can only be run on the test environment.'
+            );
+        }
+
         $this->client->request('GET', '/proj/api/items');
 
         /** @var string*/
@@ -147,6 +165,12 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItemsNotFound(): void
     {
+        if (getenv('APP_ENV') !== 'test') {
+            $this->markTestSkipped(
+                'This test can only be run on the test environment.'
+            );
+        }
+
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
         $this->truncateTable($entityManager, 'item'); // Empty table
