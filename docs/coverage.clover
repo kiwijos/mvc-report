@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1689595728">
-  <project timestamp="1689595728">
+<coverage generated="1689705313">
+  <project timestamp="1689705313">
     <file name="/Users/alex/dbwebb-kurser/mvc/me/report/src/Adventure/ActionResponses/LocationResponseInterface.php">
       <metrics loc="21" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
