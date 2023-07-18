@@ -19,8 +19,8 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
      */
     protected function setUp(): void
     {
-        // Bootstrap the Symfony kernel with the 'test' environment
-        self::bootKernel(['environment' => 'test']);
+        // Bootstrap the Symfony kernel
+        self::bootKernel();
 
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
