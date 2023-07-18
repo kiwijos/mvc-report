@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-14 14:16:13        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-07-17 12:14:35        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none">
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z">
                         </svg>
-                        Violations (6)
+                        Violations (13)
                     </a>
                 </li>
                                     <li>
@@ -277,7 +277,65 @@
         "relations": []
     },
     {
-        "name": "\\App\\Entity\\Product",
+        "name": "\\App\\Entity\\Main\\Product",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Game\\ActionRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Game\\Action"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\Game\\Action",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Game\\ConnectionRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Game\\Connection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Game\\ItemRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Game\\Item",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Game\\LocationRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Game\\Location",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Game\\ResponseRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Game\\Response"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\Game\\Response",
         "size": 3000,
         "relations": []
     },
@@ -287,7 +345,7 @@
         "relations": []
     },
     {
-        "name": "\\App\\Entity\\Book",
+        "name": "\\App\\Entity\\Main\\Book",
         "size": 3000,
         "relations": []
     },
@@ -305,6 +363,71 @@
         "name": "\\App\\Card\\DeckOfCards",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\DataFixtures\\ActionFixture",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\FixturesBundle\\Fixture",
+            "\\Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface",
+            "\\Doctrine\\Persistence\\ObjectManager",
+            "\\App\\Entity\\Game\\Action"
+        ]
+    },
+    {
+        "name": "\\Doctrine\\Bundle\\FixturesBundle\\Fixture",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Persistence\\ObjectManager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\DataFixtures\\LocationFixture",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\FixturesBundle\\Fixture",
+            "\\Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface",
+            "\\Doctrine\\Persistence\\ObjectManager",
+            "\\App\\Entity\\Game\\Location"
+        ]
+    },
+    {
+        "name": "\\App\\DataFixtures\\ResponseFixture",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\FixturesBundle\\Fixture",
+            "\\Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface",
+            "\\Doctrine\\Persistence\\ObjectManager",
+            "\\App\\Entity\\Game\\Response"
+        ]
+    },
+    {
+        "name": "\\App\\DataFixtures\\ItemFixture",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\FixturesBundle\\Fixture",
+            "\\Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface",
+            "\\Doctrine\\Persistence\\ObjectManager",
+            "\\App\\Entity\\Game\\Item"
+        ]
+    },
+    {
+        "name": "\\App\\DataFixtures\\ConnectionFixture",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\FixturesBundle\\Fixture",
+            "\\Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface",
+            "\\Doctrine\\Persistence\\ObjectManager",
+            "\\App\\Entity\\Game\\Connection"
+        ]
     },
     {
         "name": "\\App\\Dice\\DiceHand",
@@ -379,6 +502,132 @@
         "relations": []
     },
     {
+        "name": "\\App\\Adventure\\ActionResponses\\MoveLocationResponse",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\ActionResponses\\LocationResponseInterface",
+            "\\App\\Adventure\\Location"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\ActionResponses\\LocationResponseInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Location",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\Location",
+            "\\App\\Adventure\\Item"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\ActionResponses\\SwapLocationResponse",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\ActionResponses\\LocationResponseInterface",
+            "\\App\\Adventure\\Location",
+            "\\App\\Adventure\\Utils\\Connector"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\Utils\\Connector",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\Location",
+            "\\Exception"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\Game",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Inventory",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Utils\\AvailableActionsProvider",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Utils\\Unpacker",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Utils\\Formatter",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Item",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\InputActions\\InputActionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\InputActions\\InputActionInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\InputActions\\ExamineAction",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\InputActions\\InputActionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\InputActions\\UseAction",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\InputActions\\InputActionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\InputActions\\TakeAction",
+        "size": 3000,
+        "relations": [
+            "\\App\\Adventure\\InputActions\\InputActionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Adventure\\InputActions\\InputActionTrait",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Utils\\GameSetupManager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Exception",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\actionClass",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\responseClass",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Adventure\\Log",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\CardGameController",
         "size": 3000,
         "relations": [
@@ -404,6 +653,72 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ProjectController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Repository\\Game\\LocationRepository"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectControllerJson",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Repository\\Game\\LocationRepository",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "\\App\\Repository\\Game\\ItemRepository",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Adventure\\Log",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Repository\\Game\\ConnectionRepository",
+            "\\App\\Entity\\Game\\Connection",
+            "\\Symfony\\Component\\HttpKernel\\KernelInterface",
+            "\\Symfony\\Bundle\\FrameworkBundle\\Console\\Application",
+            "\\Symfony\\Component\\Console\\Input\\ArrayInput",
+            "\\Symfony\\Component\\Console\\Output\\NullOutput",
+            "\\Symfony\\Component\\Console\\Exception\\CommandNotFoundException"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\Request",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpKernel\\KernelInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Bundle\\FrameworkBundle\\Console\\Application",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Input\\ArrayInput",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Output\\NullOutput",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Exception\\CommandNotFoundException",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\LuckyController",
         "size": 3000,
         "relations": [
@@ -413,11 +728,6 @@
         ]
     },
     {
-        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Controller\\LibraryControllerJson",
         "size": 3000,
         "relations": [
@@ -425,7 +735,7 @@
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\App\\Repository\\BookRepository",
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-            "\\App\\Entity\\Book"
+            "\\App\\Entity\\Main\\Book"
         ]
     },
     {
@@ -446,11 +756,6 @@
         ]
     },
     {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Request",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Controller\\ProductController",
         "size": 3000,
         "relations": [
@@ -458,7 +763,7 @@
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Doctrine\\ORM\\EntityManagerInterface",
-            "\\App\\Entity\\Product",
+            "\\App\\Entity\\Main\\Product",
             "\\App\\Repository\\ProductRepository"
         ]
     },
@@ -482,11 +787,6 @@
         ]
     },
     {
-        "name": "\\Exception",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Controller\\BaseController",
         "size": 3000,
         "relations": [
@@ -502,7 +802,7 @@
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Doctrine\\ORM\\EntityManagerInterface",
-            "\\App\\Entity\\Book",
+            "\\App\\Entity\\Main\\Book",
             "\\App\\Repository\\BookRepository"
         ]
     },
@@ -513,6 +813,21 @@
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Card\\DeckOfCards"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\AdventureController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Adventure\\Utils\\GameSetupManager",
+            "\\App\\Adventure\\Inventory",
+            "\\App\\Adventure\\Log",
+            "\\App\\Adventure\\Utils\\Unpacker"
         ]
     },
     {
@@ -532,6 +847,62 @@
     },
     {
         "name": "\\App\\Components\\TickedRangeComponent",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Command\\ResetGameDatabaseCommand",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Console\\Command\\Command",
+            "\\Symfony\\Component\\HttpKernel\\KernelInterface",
+            "\\Symfony\\Component\\Console\\Input\\InputInterface",
+            "\\Symfony\\Component\\Console\\Output\\OutputInterface",
+            "\\Symfony\\Component\\Console\\Style\\SymfonyStyle",
+            "\\Symfony\\Component\\Console\\Input\\ArrayInput",
+            "\\Symfony\\Component\\Filesystem\\Filesystem"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Command\\Command",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Input\\InputInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Output\\OutputInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Style\\SymfonyStyle",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Filesystem\\Filesystem",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Command\\ImportDataFromCsvCommand",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Console\\Command\\Command",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\Symfony\\Component\\HttpKernel\\KernelInterface",
+            "\\Symfony\\Component\\Console\\Input\\InputInterface",
+            "\\Symfony\\Component\\Console\\Output\\OutputInterface",
+            "\\Symfony\\Component\\Console\\Style\\SymfonyStyle",
+            "\\entityClass"
+        ]
+    },
+    {
+        "name": "\\entityClass",
         "size": 3000,
         "relations": []
     },
