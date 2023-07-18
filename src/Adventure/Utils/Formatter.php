@@ -12,7 +12,7 @@ class Formatter
      * Formats a 2D array of data into rows, without displaying keys,
      * with equal spacing between columns.
      *
-     * @param  array<mixed, array<mixed, string>> $data    The data to format.
+     * @param  array<int|string, array<int|string, string>> $data    The data to format.
      * @param  int                                $gap     The spacing between columns. Default is 1.
      * @return string The formatted data as a string.
      */
