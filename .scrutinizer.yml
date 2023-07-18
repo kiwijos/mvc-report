@@ -14,13 +14,14 @@ build:
                     version: 8.1.13
                     # version: 8.1.17
                     # version: 8.2.4
+                APP_ENV: "test"
         analysis:
             tests:
                 override:
                     - php-scrutinizer-run
     tests:
         override:
-            -   command: "composer phpunit"
+            -   command: "APP_ENV=test composer phpunit"
                 # command: "XDEBUG_MODE=coverage  vendor/bin/phpunit" 
                 coverage:
                     file: "docs/coverage.clover"
