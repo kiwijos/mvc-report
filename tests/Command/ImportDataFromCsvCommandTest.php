@@ -19,11 +19,11 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
      */
     protected function setUp(): void
     {
-        if (getenv('APP_ENV') !== 'test') {
-            $this->markTestSkipped(
-                'This test can only be run on the test environment.'
-            );
-        }
+        // if (getenv('APP_ENV') !== 'test') {
+        //     $this->markTestSkipped(
+        //         'This test can only be run on the test environment.'
+        //     );
+        // }
 
         // Bootstrap the Symfony kernel
         self::bootKernel();
