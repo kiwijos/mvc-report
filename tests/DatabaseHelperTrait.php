@@ -18,7 +18,7 @@ trait DatabaseHelperTrait
         $platform = $connection->getDatabasePlatform();
 
         // Execute a truncate table SQL statement for the specified table
-        $connection->executeQuery($platform->getTruncateTableSQL($tableName, true));
+        $connection->executeQuery($platform->getTruncateTableSQL(ucfirst($tableName), true));
     }
 
     /**
@@ -51,7 +51,15 @@ trait DatabaseHelperTrait
         $this->assertGreaterThan(0, $count, "The '$tableName' table is empty.");
     }
 
-    private function getEntityNameSpace(EntityManagerInterface $entityManager, string $tableName): string
+    /**
+     * Retrieves the namespace for the given table.
+     *
+     * @param EntityManagerInterface $entityManager The entity manager instance.
+     * @param string                 $tableName     The name associated with the entity to retrieve.
+     * 
+     * @return string|null The namespace if found, or null if not found.
+     */
+    private function getEntityNameSpace(EntityManagerInterface $entityManager, string $tableName): ?string
     {
         $configuration = $entityManager->getConfiguration();
         $entityNamespaces = $configuration->getEntityNamespaces();
@@ -62,5 +70,7 @@ trait DatabaseHelperTrait
                 return $entityClass;
             }
         }
+
+        return null;
     }
 }
