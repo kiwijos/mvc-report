@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ImportDataFromCsvCommandTest extends KernelTestCase
 {
@@ -19,14 +20,24 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
      */
     protected function setUp(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         // Bootstrap the Symfony kernel
         self::bootKernel();
+
+        // Get the parameter bag from the container
+        $container = self::$kernel->getContainer();
+        /** @var ParameterBagInterface $parameterBag */
+        $parameterBag = $container->getParameterBag();
+
+        // Get the database connection parameters
+        $databaseParams = $parameterBag->get('doctrine.connections');
+
+        var_dump($databaseParams);
+
+        if (getenv('APP_ENV') !== 'test') {
+            $this->markTestSkipped(
+                'This test can only be run on the test environment.'
+            );
+        }
 
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
