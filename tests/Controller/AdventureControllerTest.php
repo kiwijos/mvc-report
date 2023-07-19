@@ -57,16 +57,16 @@ class AdventureControllerTest extends WebTestCase
      */
     public function testInit(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
+        if (getenv('APP_ENV') !== 'test') {
+            $this->markTestSkipped(
+                'This test can only be run on the test environment.'
+            );
+        }
 
         $this->client->request('GET', '/proj/game/init');
 
         // Assert redirect
-        // $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
+        $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
         $this->assertResponseRedirects('/proj/game/location');
     }
 
