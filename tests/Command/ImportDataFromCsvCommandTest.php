@@ -3,6 +3,7 @@
 namespace App\Tests\Command;
 
 use App\Tests\DatabaseHelperTrait;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
@@ -32,6 +33,28 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         $databaseParams = $parameterBag->get('doctrine.connections');
 
         var_dump($databaseParams);
+
+        // Get the database connection name (game in this case)
+        $connectionName = 'game';
+
+        // Get the entity manager and connection from the container
+        $entityManager = $this->getEntityManager($connectionName);
+        /** @var Connection $connection */
+        $connection = $entityManager->getConnection();
+
+        // Query the schema manager to get the table names
+        $schemaManager = $connection->createSchemaManager();
+        $tables = $schemaManager->listTables();
+
+        // Output the table names to the console
+        echo "\nTables in the '{$connectionName}' database:\n\n";
+        foreach ($tables as $table) {
+            echo $table->getName() . " columns:\n";
+            foreach ($table->getColumns() as $column) {
+                echo ' - ' . $column->getName() . "\n";
+            }
+            echo "\n";
+        }
 
         if (getenv('APP_ENV') !== 'test') {
             $this->markTestSkipped(
