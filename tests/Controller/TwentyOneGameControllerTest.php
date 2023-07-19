@@ -17,9 +17,9 @@ class TwentyOneGameControllerTest extends WebTestCase
 
     public function testIndex(): void
     {
-        if (getenv('APP_ENV') !== 'dev') {
+        if (getenv('APP_ENV') !== 'test') {
             $this->markTestSkipped(
-                'This test can only be run on the local host.'
+                'This test can only be run on the test environment.'
             );
         }
 
@@ -49,9 +49,9 @@ class TwentyOneGameControllerTest extends WebTestCase
      */
     public function testInitBankerSuccess(string $banker): void
     {
-        if (getenv('APP_ENV') !== 'dev') {
+        if (getenv('APP_ENV') !== 'test') {
             $this->markTestSkipped(
-                'This test can only be run on the local host.'
+                'This test can only be run on the test environment.'
             );
         }
 
@@ -70,9 +70,9 @@ class TwentyOneGameControllerTest extends WebTestCase
      */
     public function testInitBankerFail(): void
     {
-        if (getenv('APP_ENV') !== 'dev') {
+        if (getenv('APP_ENV') !== 'test') {
             $this->markTestSkipped(
-                'This test can only be run on the local host.'
+                'This test can only be run on the test environment.'
             );
         }
 
