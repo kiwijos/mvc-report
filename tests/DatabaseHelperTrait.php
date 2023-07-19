@@ -29,8 +29,8 @@ trait DatabaseHelperTrait
      */
     private function assertEmptyTable(EntityManagerInterface $entityManager, string $tableName): void
     {
-        $tableName = ucfirst($tableName); // Assume that the name's first character should be uppercase
-        $query = $entityManager->createQuery("SELECT COUNT(e) FROM App\Entity\Game\\{$tableName} e");
+        $entityNamespace = $this->getEntityNameSpace($entityManager, $tableName);
+        $query = $entityManager->createQuery("SELECT COUNT(e) FROM {$entityNamespace} e");
         $count = $query->getSingleScalarResult();
 
         $this->assertSame(0, $count, "The '$tableName' table is not empty.");
@@ -44,10 +44,23 @@ trait DatabaseHelperTrait
      */
     private function assertNonEmptyTable(EntityManagerInterface $entityManager, string $tableName): void
     {
-        $tableName = ucfirst($tableName); // Assume that the name's first character should be uppercase
-        $query = $entityManager->createQuery("SELECT COUNT(e) FROM App\Entity\Game\\{$tableName} e");
+        $entityNamespace = $this->getEntityNameSpace($entityManager, $tableName);
+        $query = $entityManager->createQuery("SELECT COUNT(e) FROM {$entityNamespace} e");
         $count = $query->getSingleScalarResult();
 
         $this->assertGreaterThan(0, $count, "The '$tableName' table is empty.");
+    }
+
+    private function getEntityNameSpace(EntityManagerInterface $entityManager, string $tableName): string
+    {
+        $configuration = $entityManager->getConfiguration();
+        $entityNamespaces = $configuration->getEntityNamespaces();
+        foreach ($entityNamespaces as $namespace) {
+            $entityClass = $namespace . '\\' . ucfirst($tableName); // Assume that the name's first character should be uppercase
+
+            if (class_exists($entityClass)) {
+                return $entityClass;
+            }
+        }
     }
 }
