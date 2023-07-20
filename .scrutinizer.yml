@@ -25,7 +25,13 @@ build:
                     - php-scrutinizer-run
     tests:
         before:
+                # Reset and load game database
             -   command: "php bin/console app:reset-database"
+
+                # Set up test database and load fixtures
+            -   command: "php bin/console --env=test --em=game doctrine:database:create"
+            -   command: "php bin/console --env=test --em=game doctrine:schema:create"
+            -   command: "php bin/console doctrine:fixtures:load --em=game --group=group1 --env=test --no-interaction"
         override:
             -   command: "composer phpunit --debug --verbose"
                 # command: "XDEBUG_MODE=coverage  vendor/bin/phpunit" 
