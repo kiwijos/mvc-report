@@ -19,8 +19,6 @@ build:
                     # version: 8.1.13
                     # version: 8.1.17
                     version: 8.2.4
-                sqlite:
-                    version: 3.41.2  
         analysis:
             tests:
                 override:
