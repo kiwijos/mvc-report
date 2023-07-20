@@ -57,9 +57,9 @@ class AdventureControllerTest extends WebTestCase
      */
     public function testInit(): void
     {
-        if (getenv('APP_ENV') !== 'test') {
+        if (getenv('APP_ENV') !== 'dev') {
             $this->markTestSkipped(
-                'This test can only be run on the test environment.'
+                'This test can only be run in the dev environment.'
             );
         }
 
