@@ -3,14 +3,12 @@
 namespace App\Tests\Command;
 
 use App\Tests\DatabaseHelperTrait;
-use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ImportDataFromCsvCommandTest extends KernelTestCase
 {
@@ -23,50 +21,6 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
     {
         // Bootstrap the Symfony kernel
         self::bootKernel();
-
-        // Get the parameter bag from the container
-        $container = self::$kernel->getContainer();
-        /** @var ParameterBagInterface $parameterBag */
-        $parameterBag = $container->getParameterBag();
-
-        // Get the database connection parameters
-        $databaseParams = $parameterBag->get('doctrine.connections');
-
-        var_dump($databaseParams);
-
-        // Get the database connection name (game in this case)
-        $connectionName = 'game';
-
-        // Get the entity manager and connection from the container
-        $entityManager = $this->getEntityManager($connectionName);
-        /** @var Connection $connection */
-        $connection = $entityManager->getConnection();
-
-        // Query the schema manager to get the table names
-        $schemaManager = $connection->createSchemaManager();
-        $tables = $schemaManager->listTables();
-
-        // Output the table names to the console
-        echo "\nTables in the '{$connectionName}' database:\n\n";
-        foreach ($tables as $table) {
-            echo $table->getName() . " columns:\n";
-            foreach ($table->getColumns() as $column) {
-                echo ' - ' . $column->getName() . "\n";
-            }
-            echo "\n";
-        }
-
-        // Execute the query to get SQLite version
-        $versionQuery = $connection->query('SELECT sqlite_version() as version');
-        while (($row = $versionQuery->fetchAssociative()) !== false) {
-            var_dump($row);
-        }
-        
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
 
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
@@ -129,7 +83,7 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
 
         // Check the output of the command in the console
         $output = $commandTester->getDisplay();
-        $this->assertStringContainsString('The CSV file "' . $csvPath . '" does not exist.', $output);
+        $this->assertStringContainsString('The CSV file "' . $csvPath . '" does not exist.', trim($output));
     }
 
     /**
