@@ -56,11 +56,17 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
             echo "\n";
         }
 
-        if (getenv('APP_ENV') !== 'test') {
-            $this->markTestSkipped(
-                'This test can only be run on the test environment.'
-            );
+        // Execute the query to get SQLite version
+        $versionQuery = $connection->query('SELECT sqlite_version() as version');
+        while (($row = $versionQuery->fetchAssociative()) !== false) {
+            var_dump($row);
         }
+        
+        // if (getenv('APP_ENV') !== 'test') {
+        //     $this->markTestSkipped(
+        //         'This test can only be run on the test environment.'
+        //     );
+        // }
 
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
