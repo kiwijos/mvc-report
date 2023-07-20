@@ -26,7 +26,6 @@ build:
     tests:
         before:
             -   command: "php bin/console app:reset-database"
-            -   command: "php bin/console doctrine:migrations:migrate --conn=game --no-interaction"
         override:
             -   command: "composer phpunit --debug --verbose"
                 # command: "XDEBUG_MODE=coverage  vendor/bin/phpunit" 
