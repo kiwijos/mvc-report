@@ -81,9 +81,9 @@ class ImportDataFromCsvCommandTest extends KernelTestCase
         // Expected path to the file
         $csvPath = self::$kernel->getProjectDir() . '/public/csv/nonexistent.csv';
 
-        // Check the output of the command in the console
-        $output = $commandTester->getDisplay();
-        $this->assertStringContainsString('The CSV file "' . $csvPath . '" does not exist.', trim($output));
+        // Check the output of the command in the console and replace multiple spaces with single spaces
+        $output = preg_replace('/\s+/', ' ', $commandTester->getDisplay());
+        $this->assertStringContainsString('The CSV file "' . $csvPath . '" does not exist.', $output);
     }
 
     /**
