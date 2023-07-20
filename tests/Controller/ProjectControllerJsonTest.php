@@ -30,12 +30,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocations(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('GET', '/proj/api/locations');
 
         /** @var string*/
@@ -55,12 +49,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocationsNotFound(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
         $this->truncateTable($entityManager, 'location'); // Empty table
@@ -84,12 +72,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocationById(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $expected = [
             'id' => 11,
             'name' => 'Cave',
@@ -115,12 +97,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testLocationByIdNotFound(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('GET', '/proj/api/locations/55'); // No location with ID 55
 
         /** @var string*/
@@ -140,12 +116,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItems(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('GET', '/proj/api/items');
 
         /** @var string*/
@@ -165,12 +135,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItemsNotFound(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         /** @var EntityManagerInterface */
         $entityManager = $this->getEntityManager('game');
         $this->truncateTable($entityManager, 'item'); // Empty table
@@ -194,12 +158,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItemById(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $expected = [
             'id' => 99,
             'name' => 'sword',
@@ -225,12 +183,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testItemByIdNotFound(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('GET', '/proj/api/items/55'); // No item with ID 55
 
         /** @var string*/
@@ -304,12 +256,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testConnect(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('POST', '/proj/api/connect', [
             'from_location' => '22',
             'to_location' => '11',
@@ -333,12 +279,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testConnectSameLocation(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('POST', '/proj/api/connect', [
             'from_location' => '11',
             'to_location' => '11',
@@ -362,12 +302,6 @@ class ProjectControllerJsonTest extends WebTestCase
      */
     public function testConnectConnectionAlreadyExists(): void
     {
-        // if (getenv('APP_ENV') !== 'test') {
-        //     $this->markTestSkipped(
-        //         'This test can only be run on the test environment.'
-        //     );
-        // }
-
         $this->client->request('POST', '/proj/api/connect', [
             'from_location' => '11',
             'to_location' => '22',
