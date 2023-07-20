@@ -25,7 +25,9 @@ build:
                     - php-scrutinizer-run
     tests:
         before:
-                # Load fixtures into test database
+            -   command: "php bin/console doctrine:schema:drop --em=game --force"
+            -   command: "php bin/console doctrine:schema:update --em=game --force --complete"
+                # Load fixtures
             -   command: "php bin/console doctrine:fixtures:load --em=game --group=group1 --env=test --no-interaction"
         override:
             -   command: "composer phpunit --debug --verbose"
