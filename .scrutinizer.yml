@@ -25,8 +25,8 @@ build:
                     - php-scrutinizer-run
     tests:
         before:
-            -   command: "php bin/console doctrine:migrations:migrate --env=test --conn=game --no-interaction"
-            -   command: "php bin/console doctrine:fixtures:load --env=test --em=game --group=group1 --no-interaction"
+            -   command: "php bin/console app:reset-database"
+            -   command: "php bin/console doctrine:migrations:migrate --conn=game --no-interaction"
         override:
             -   command: "composer phpunit --debug --verbose"
                 # command: "XDEBUG_MODE=coverage  vendor/bin/phpunit" 
