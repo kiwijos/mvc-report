@@ -2,7 +2,12 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, test/*]
+    excluded_paths:
+        - vendor/*
+        - tests/*
+
+    dependency_paths:
+        - vendor/
 
 build:
     image: default-bionic
@@ -11,14 +16,19 @@ build:
         my-tests:
             environment:
                 php:
-                    version: 8.1.13
+                    # version: 8.1.13
                     # version: 8.1.17
-                    # version: 8.2.4
+                    version: 8.2.4
+            services:
+                sqlite: 3.41.2
         analysis:
             tests:
                 override:
                     - php-scrutinizer-run
     tests:
+        before:
+            -   command: "php bin/console doctrine:migrations:migrate --env=test --conn=game --no-interaction"
+            -   command: "php bin/console doctrine:fixtures:load --env=test --em=game --group=group1 --no-interaction"
         override:
             -   command: "composer phpunit --debug --verbose"
                 # command: "XDEBUG_MODE=coverage  vendor/bin/phpunit" 
