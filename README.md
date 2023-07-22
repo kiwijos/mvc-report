@@ -14,7 +14,7 @@ To test the learned concepts, I have chosen to create a text-based adventure gam
 ### Quick guide to cloning the repository
 1. On GitHub.com, navigate to the main page of the repository and click **Code**
 
-2. Copy the URL for your prefered method (e.g. using SSH)
+2. Copy the URL (e.g. HTTPS)
 
 3. In your terminal, go the the directory where you want the cloned repository
 
@@ -32,7 +32,9 @@ Before attempting to set up and run the application, make sure you have **PHP 8.
 You can now install the dependencies with Composer, assuming you have a local clone of the project (see previous section).
 
 1. Go to the project directory and run `composer install`
-`cd <project-directory>/`
-`composer install`
+```
+cd <project-directory>/
+composer install
+```
 
 For more information, see the official Symfony guide: [Setting up an Existing Symfony Project](https://symfony.com/doc/current/setup.html#setting-up-an-existing-symfony-project)
