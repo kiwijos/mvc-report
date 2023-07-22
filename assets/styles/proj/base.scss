@@ -54,3 +54,34 @@ nav {
     flex-direction: column;
     gap: 1rem;
 }
+
+.article {
+    line-height: 1.5;
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.pretty-ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: $color-on-prime;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    li {
+        margin-left: 1em;
+    }
+
+    li::before {
+        margin-left: -1em;
+        content: "\2022";
+        color: $color-on-prime;
+        font-weight: bold;
+        display: inline-block; 
+        width: 1em;
+    }
+}
