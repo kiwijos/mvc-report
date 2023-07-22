@@ -7,7 +7,9 @@
     <div class="window-heading">
         <span>About</span>
     </div>
-    <div class="window-body flex flex-row gap-lg align-start">
+    <div class="window-body flex flex-col gap-lg article overflow-auto">
+        <h1>Projektet</h1>
+        <p>Jag har valt att göra ett textbaserat äventyrsspel i Symfony. Alla väsentliga delar är implementerade i PHP och det hela följer MVC-mönstret. Fokus har varit att skriva bra objektorienterad kod och att få in de olika momenten vi gjort under kursens gång, som att använda Doctrine ORM för att hantera databaser, testning och kodanalys. Här kan du läsa mer om <a href="{{ path('proj_about_database') }}">databaser och testning</a>.</p>
     </div>
 </div>
 {% endblock %}
