@@ -83,5 +83,10 @@ class NavbarComponent
             'routeAlias' => 'metrics',
             'dropdown' => false,
         ],
+        [
+            'name' => 'Project',
+            'routeAlias' => 'proj',
+            'dropdown' => false,
+        ],
     );
 }
