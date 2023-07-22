@@ -56,7 +56,7 @@ trait DatabaseHelperTrait
      *
      * @param EntityManagerInterface $entityManager The entity manager instance.
      * @param string                 $tableName     The name associated with the entity to retrieve.
-     * 
+     *
      * @return string|null The namespace if found, or null if not found.
      */
     private function getEntityNameSpace(EntityManagerInterface $entityManager, string $tableName): ?string
