@@ -14,7 +14,7 @@ To test the learned concepts, I have chosen to create a text-based adventure gam
 ### Quick guide to cloning the repository
 1. On GitHub.com, navigate to the main page of the repository and click **Code**
 
-2. Copy the URL (e.g. HTTPS)
+2. Copy the URL (e.g. SSH)
 
 3. In your terminal, go the the directory where you want the cloned repository
 
